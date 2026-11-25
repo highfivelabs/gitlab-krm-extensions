@@ -1,0 +1,280 @@
+# Copyright 2026 High Five Labs
+# SPDX-License-Identifier: Apache-2.0
+# The manager reads Connections and their Secrets in every namespace it
+# reconciles; narrow the binding per namespace if that is too broad.
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: manager
+  namespace: gitlab-krm-extensions-system
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: gitlab-krm-extensions-manager
+rules:
+- apiGroups: &id001
+  - application.gitlab.hfl.dev
+  - branch.gitlab.hfl.dev
+  - cluster.gitlab.hfl.dev
+  - deploy.gitlab.hfl.dev
+  - group.gitlab.hfl.dev
+  - pages.gitlab.hfl.dev
+  - pipeline.gitlab.hfl.dev
+  - project.gitlab.hfl.dev
+  - release.gitlab.hfl.dev
+  - repository.gitlab.hfl.dev
+  - runner.gitlab.hfl.dev
+  - tag.gitlab.hfl.dev
+  - topic.gitlab.hfl.dev
+  - user.gitlab.hfl.dev
+  resources:
+  - applicationappearances
+  - applications
+  - applicationsettingses
+  - branches
+  - branchprotections
+  - clusteragents
+  - clusteragenttokens
+  - deploykeys
+  - groupaccesstokens
+  - groupbadges
+  - groupbranchprotections
+  - groupcustomattributes
+  - groupdeploytokens
+  - grouphooks
+  - grouplabels
+  - groupmemberships
+  - groupprotectedenvironments
+  - groups
+  - groupsamllinks
+  - groupserviceaccounts
+  - groupvariables
+  - pagesdomains
+  - pipelineschedules
+  - pipelineschedulevariables
+  - pipelinetriggers
+  - projectaccesstokens
+  - projectapprovalrules
+  - projectbadges
+  - projectcustomattributes
+  - projectdeploytokens
+  - projectenvironments
+  - projecterrortrackingsettingses
+  - projectfeatureflags
+  - projectfeatureflaguserlists
+  - projectfreezeperiods
+  - projecthooks
+  - projectissuelinks
+  - projectissues
+  - projectjobtokenscopes
+  - projectlabels
+  - projectmemberships
+  - projectmergerequestnotes
+  - projectmilestones
+  - projectprotectedenvironments
+  - projects
+  - projectsecurefiles
+  - projectsecuritysettingses
+  - projectserviceaccounts
+  - projecttags
+  - projectvariables
+  - projectwikipages
+  - releaselinks
+  - releases
+  - repositoryfiles
+  - runnercontrollers
+  - runnercontrollertokens
+  - tagprotections
+  - topics
+  - usercustomattributes
+  - userimpersonationtokens
+  - users
+  verbs:
+  - get
+  - list
+  - watch
+  - update
+  - patch
+- apiGroups: *id001
+  resources:
+  - applicationappearances/status
+  - applications/status
+  - applicationsettingses/status
+  - branches/status
+  - branchprotections/status
+  - clusteragents/status
+  - clusteragenttokens/status
+  - deploykeys/status
+  - groupaccesstokens/status
+  - groupbadges/status
+  - groupbranchprotections/status
+  - groupcustomattributes/status
+  - groupdeploytokens/status
+  - grouphooks/status
+  - grouplabels/status
+  - groupmemberships/status
+  - groupprotectedenvironments/status
+  - groups/status
+  - groupsamllinks/status
+  - groupserviceaccounts/status
+  - groupvariables/status
+  - pagesdomains/status
+  - pipelineschedules/status
+  - pipelineschedulevariables/status
+  - pipelinetriggers/status
+  - projectaccesstokens/status
+  - projectapprovalrules/status
+  - projectbadges/status
+  - projectcustomattributes/status
+  - projectdeploytokens/status
+  - projectenvironments/status
+  - projecterrortrackingsettingses/status
+  - projectfeatureflags/status
+  - projectfeatureflaguserlists/status
+  - projectfreezeperiods/status
+  - projecthooks/status
+  - projectissuelinks/status
+  - projectissues/status
+  - projectjobtokenscopes/status
+  - projectlabels/status
+  - projectmemberships/status
+  - projectmergerequestnotes/status
+  - projectmilestones/status
+  - projectprotectedenvironments/status
+  - projects/status
+  - projectsecurefiles/status
+  - projectsecuritysettingses/status
+  - projectserviceaccounts/status
+  - projecttags/status
+  - projectvariables/status
+  - projectwikipages/status
+  - releaselinks/status
+  - releases/status
+  - repositoryfiles/status
+  - runnercontrollers/status
+  - runnercontrollertokens/status
+  - tagprotections/status
+  - topics/status
+  - usercustomattributes/status
+  - userimpersonationtokens/status
+  - users/status
+  verbs:
+  - get
+  - update
+  - patch
+- apiGroups: *id001
+  resources:
+  - applicationappearances/finalizers
+  - applications/finalizers
+  - applicationsettingses/finalizers
+  - branches/finalizers
+  - branchprotections/finalizers
+  - clusteragents/finalizers
+  - clusteragenttokens/finalizers
+  - deploykeys/finalizers
+  - groupaccesstokens/finalizers
+  - groupbadges/finalizers
+  - groupbranchprotections/finalizers
+  - groupcustomattributes/finalizers
+  - groupdeploytokens/finalizers
+  - grouphooks/finalizers
+  - grouplabels/finalizers
+  - groupmemberships/finalizers
+  - groupprotectedenvironments/finalizers
+  - groups/finalizers
+  - groupsamllinks/finalizers
+  - groupserviceaccounts/finalizers
+  - groupvariables/finalizers
+  - pagesdomains/finalizers
+  - pipelineschedules/finalizers
+  - pipelineschedulevariables/finalizers
+  - pipelinetriggers/finalizers
+  - projectaccesstokens/finalizers
+  - projectapprovalrules/finalizers
+  - projectbadges/finalizers
+  - projectcustomattributes/finalizers
+  - projectdeploytokens/finalizers
+  - projectenvironments/finalizers
+  - projecterrortrackingsettingses/finalizers
+  - projectfeatureflags/finalizers
+  - projectfeatureflaguserlists/finalizers
+  - projectfreezeperiods/finalizers
+  - projecthooks/finalizers
+  - projectissuelinks/finalizers
+  - projectissues/finalizers
+  - projectjobtokenscopes/finalizers
+  - projectlabels/finalizers
+  - projectmemberships/finalizers
+  - projectmergerequestnotes/finalizers
+  - projectmilestones/finalizers
+  - projectprotectedenvironments/finalizers
+  - projects/finalizers
+  - projectsecurefiles/finalizers
+  - projectsecuritysettingses/finalizers
+  - projectserviceaccounts/finalizers
+  - projecttags/finalizers
+  - projectvariables/finalizers
+  - projectwikipages/finalizers
+  - releaselinks/finalizers
+  - releases/finalizers
+  - repositoryfiles/finalizers
+  - runnercontrollers/finalizers
+  - runnercontrollertokens/finalizers
+  - tagprotections/finalizers
+  - topics/finalizers
+  - usercustomattributes/finalizers
+  - userimpersonationtokens/finalizers
+  - users/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - core.gitlab.hfl.dev
+  resources:
+  - connections
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - ''
+  resources:
+  - secrets
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+- apiGroups:
+  - coordination.k8s.io
+  resources:
+  - leases
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - ''
+  resources:
+  - events
+  verbs:
+  - create
+  - patch
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: gitlab-krm-extensions-manager
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: gitlab-krm-extensions-manager
+subjects:
+- kind: ServiceAccount
+  name: manager
+  namespace: gitlab-krm-extensions-system
