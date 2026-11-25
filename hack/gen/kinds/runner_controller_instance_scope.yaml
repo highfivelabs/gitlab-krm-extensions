@@ -1,0 +1,18 @@
+terraform: [gitlab_runner_controller_instance_scope]
+shape: upsert
+params:
+  runner_controller_id:
+    type: integer
+    placeholder: id
+serverFields: {created_at: "2026-01-01T00:00:00Z", updated_at: "2026-01-01T00:00:00Z"}
+sample: {runner_controller_id: 7}
+create:
+  method: POST
+  path: /runner_controllers/{id}/scopes/instance
+read:
+  method: GET
+  path: /runner_controllers/{id}/scopes
+  find: {list: instance_level_scopings}
+delete:
+  method: DELETE
+  path: /runner_controllers/{id}/scopes/instance

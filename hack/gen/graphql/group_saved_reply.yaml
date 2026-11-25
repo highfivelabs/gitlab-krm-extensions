@@ -1,0 +1,72 @@
+# A comment template (saved reply) shared across a group: GraphQL only.
+# GitLab Premium or Ultimate.
+#
+# The create names the group by its global ID (gid://gitlab/Group/<id>,
+# from groupId, the group's numeric ID); the read by its full path
+# (fullPath). Terraform's group attribute takes either, and looks the other
+# up first (a REST GET of the group); here the spec gives both.
+#
+# Sources:
+#   - gitlabhq/terraform-provider-gitlab v19.5.0,
+#     internal/provider/resource_gitlab_group_saved_reply.go: the four
+#     documents below, as Terraform sends them (named here: GraphQL lets an
+#     operation be named; the fake API answers by name), and
+#     internal/provider/api/graphql_helper.go (GetGroupGIDFromID: the
+#     group's ID from group(fullPath) { id }).
+#   - GitLab's GraphQL reference, mutations groupSavedReplyCreate,
+#     groupSavedReplyUpdate, groupSavedReplyDestroy and Group.savedReply:
+#     https://docs.gitlab.com/api/graphql/reference/#mutationgroupsavedreplycreate
+# Written 2026-11-22.
+terraform: [gitlab_group_saved_reply]
+shape: crud
+params:
+  groupId:
+    description: The group's numeric ID; the create names the group as gid://gitlab/Group/<groupId>.
+  fullPath:
+    description: The group's full path, which the read names it by.
+fields:
+  name:
+    type: string
+    description: The name of the saved reply.
+  content:
+    type: string
+    description: The content of the saved reply.
+required: [name, content]
+sample: {groupId: "7", fullPath: example-group, name: example-name, content: example-content}
+create:
+  query: |
+    mutation GroupSavedReplyCreate($groupId: GroupID!, $name: String!, $content: String!) {
+      groupSavedReplyCreate(input: {groupId: $groupId, name: $name, content: $content}) {
+        savedReply { id name content }
+        errors
+      }
+    }
+  variables: {groupId: "gid://gitlab/Group/{groupId}", name: "{name}", content: "{content}"}
+  result: groupSavedReplyCreate/savedReply
+read:
+  query: |
+    query GroupSavedReply($fullPath: ID!, $id: GroupsSavedReplyID!) {
+      group(fullPath: $fullPath) {
+        savedReply(id: $id) { id name content }
+      }
+    }
+  variables: {fullPath: "{fullPath}", id: "{id}"}
+  result: group/savedReply
+update:
+  query: |
+    mutation GroupSavedReplyUpdate($id: GroupsSavedReplyID!, $name: String!, $content: String!) {
+      groupSavedReplyUpdate(input: {id: $id, name: $name, content: $content}) {
+        savedReply { id name content }
+        errors
+      }
+    }
+  variables: {id: "{id}", name: "{name}", content: "{content}"}
+  result: groupSavedReplyUpdate/savedReply
+delete:
+  query: |
+    mutation GroupSavedReplyDestroy($id: GroupsSavedReplyID!) {
+      groupSavedReplyDestroy(input: {id: $id}) {
+        errors
+      }
+    }
+  variables: {id: "{id}"}

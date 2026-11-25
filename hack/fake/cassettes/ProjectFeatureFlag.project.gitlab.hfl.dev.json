@@ -1,0 +1,92 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "agent": 280000008,
+    "group": 280000001,
+    "project": 280000002,
+    "schedule": 280000009,
+    "user": 280000007
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/projects/280000002/feature_flags",
+      "body": "{\"description\":\"a\",\"name\":\"{{name_}}\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"created_at\":\"2019-11-04T08:13:51.423Z\",\"description\":\"a\",\"name\":\"{{name_}}\",\"scopes\":[],\"updated_at\":\"2019-11-04T08:13:51.423Z\",\"version\":\"new_version_flag\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/feature_flags/{{name_}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"created_at\":\"2019-11-04T08:13:51.423Z\",\"description\":\"a\",\"name\":\"{{name_}}\",\"scopes\":[],\"updated_at\":\"2019-11-04T08:13:51.423Z\",\"version\":\"new_version_flag\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/feature_flags/{{name_}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"created_at\":\"2019-11-04T08:13:51.423Z\",\"description\":\"a\",\"name\":\"{{name_}}\",\"scopes\":[],\"updated_at\":\"2019-11-04T08:13:51.423Z\",\"version\":\"new_version_flag\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/projects/280000002/feature_flags/{{name_}}",
+      "body": "{\"description\":\"b\",\"name\":\"{{name_}}\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"created_at\":\"2019-11-04T08:13:51.423Z\",\"description\":\"b\",\"name\":\"{{name_}}\",\"scopes\":[],\"updated_at\":\"2019-11-04T08:13:51.423Z\",\"version\":\"new_version_flag\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/feature_flags/{{name_}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"created_at\":\"2019-11-04T08:13:51.423Z\",\"description\":\"b\",\"name\":\"{{name_}}\",\"scopes\":[],\"updated_at\":\"2019-11-04T08:13:51.423Z\",\"version\":\"new_version_flag\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/projects/280000002/feature_flags/{{name_}}",
+      "body": "{\"description\":\"drift\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"created_at\":\"2019-11-04T08:13:51.423Z\",\"description\":\"drift\",\"name\":\"{{name_}}\",\"scopes\":[],\"updated_at\":\"2019-11-04T08:13:51.423Z\",\"version\":\"new_version_flag\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/feature_flags/{{name_}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"created_at\":\"2019-11-04T08:13:51.423Z\",\"description\":\"drift\",\"name\":\"{{name_}}\",\"scopes\":[],\"updated_at\":\"2019-11-04T08:13:51.423Z\",\"version\":\"new_version_flag\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/projects/280000002/feature_flags/{{name_}}",
+      "body": "{\"description\":\"b\",\"name\":\"{{name_}}\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"created_at\":\"2019-11-04T08:13:51.423Z\",\"description\":\"b\",\"name\":\"{{name_}}\",\"scopes\":[],\"updated_at\":\"2019-11-04T08:13:51.423Z\",\"version\":\"new_version_flag\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/feature_flags/{{name_}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"created_at\":\"2019-11-04T08:13:51.423Z\",\"description\":\"b\",\"name\":\"{{name_}}\",\"scopes\":[],\"updated_at\":\"2019-11-04T08:13:51.423Z\",\"version\":\"new_version_flag\"}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/projects/280000002/feature_flags/{{name_}}",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/feature_flags/{{name_}}",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

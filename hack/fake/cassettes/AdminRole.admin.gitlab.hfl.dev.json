@@ -1,0 +1,51 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "a": "rehearsal-a",
+    "agent": 280000008,
+    "avatarUser": 280000038,
+    "b": "rehearsal-b",
+    "catalogProject": 280000037,
+    "g": 280000030,
+    "group": 280000001,
+    "key": 280000026,
+    "mr": "rehearsal-mr",
+    "project": 280000002,
+    "runner": 280000028,
+    "sa": 280000031,
+    "schedule": 280000009,
+    "src": 280000027,
+    "sub": 280000036,
+    "user": 280000020
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/admin_member_roles",
+      "body": "{\"name\":\"example-name\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"admin_ai_catalog_item\":false,\"admin_ai_catalog_item_consumer\":false,\"admin_cicd_variables\":false,\"admin_compliance_framework\":false,\"admin_group_member\":false,\"admin_integrations\":false,\"admin_merge_request\":false,\"admin_protected_branch\":false,\"admin_protected_environments\":false,\"admin_push_rules\":false,\"admin_runners\":false,\"admin_security_attributes\":false,\"admin_terraform_state\":false,\"admin_vulnerability\":false,\"admin_web_hook\":false,\"apply_security_scan_profiles\":false,\"archive_project\":false,\"archive_subgroup\":false,\"base_access_level\":40,\"create_security_scan_profiles\":false,\"delete_security_scan_profiles\":false,\"destroy_package\":false,\"group_id\":2,\"id\":270000047,\"manage_deploy_tokens\":false,\"manage_group_access_tokens\":false,\"manage_merge_request_settings\":false,\"manage_project_access_tokens\":false,\"manage_security_policy_link\":false,\"name\":\"example-name\",\"pull_container_image\":false,\"push_container_image\":false,\"read_agent_artifacts\":false,\"read_code\":false,\"read_compliance_dashboard\":false,\"read_crm_contact\":false,\"read_dependency\":false,\"read_runners\":false,\"read_security_attribute\":false,\"read_security_scan_profiles\":false,\"read_virtual_registry\":false,\"read_vulnerability\":false,\"remove_group\":false,\"remove_project\":false,\"update_sec_ai_workflow_settings\":false,\"update_security_scan_profiles\":false}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/admin_member_roles?per_page=100",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "[{\"id\":270000047,\"name\":\"example-name\"}]\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/admin_member_roles/270000047",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/admin_member_roles?per_page=100",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "[]\n"
+    }
+  ]
+}

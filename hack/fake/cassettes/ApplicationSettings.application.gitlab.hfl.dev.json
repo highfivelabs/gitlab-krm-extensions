@@ -1,0 +1,100 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "group": 280000001,
+    "project": 280000002,
+    "user": 280000007
+  },
+  "interactions": [
+    {
+      "method": "GET",
+      "path": "/application/settings",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"container_registry_import_created_before\":\"example-container-registry-import-created-before\",\"container_registry_import_max_retries\":\"example-container-registry-import-max-retries\",\"container_registry_import_max_step_duration\":\"example-container-registry-import-max-step-duration\",\"container_registry_import_max_tags_count\":\"example-container-registry-import-max-tags-count\",\"container_registry_import_start_max_retries\":\"example-container-registry-import-start-max-retries\",\"container_registry_import_target_plan\":\"example-container-registry-import-target-plan\",\"container_registry_import_timeout\":\"example-container-registry-import-timeout\",\"container_registry_pre_import_tags_rate\":\"example-container-registry-pre-import-tags-rate\",\"container_registry_pre_import_timeout\":\"example-container-registry-pre-import-timeout\",\"elasticsearch_index_settings\":[],\"gitlab_product_usage_data_source\":\"example-gitlab-product-usage-data-source\",\"housekeeping_bitmaps_enabled\":\"example-housekeeping-bitmaps-enabled\",\"pre_receive_secret_detection_enabled\":\"{{redacted}}\"}"
+    },
+    {
+      "method": "GET",
+      "path": "/application/settings",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"container_registry_import_created_before\":\"example-container-registry-import-created-before\",\"container_registry_import_max_retries\":\"example-container-registry-import-max-retries\",\"container_registry_import_max_step_duration\":\"example-container-registry-import-max-step-duration\",\"container_registry_import_max_tags_count\":\"example-container-registry-import-max-tags-count\",\"container_registry_import_start_max_retries\":\"example-container-registry-import-start-max-retries\",\"container_registry_import_target_plan\":\"example-container-registry-import-target-plan\",\"container_registry_import_timeout\":\"example-container-registry-import-timeout\",\"container_registry_pre_import_tags_rate\":\"example-container-registry-pre-import-tags-rate\",\"container_registry_pre_import_timeout\":\"example-container-registry-pre-import-timeout\",\"elasticsearch_index_settings\":[],\"gitlab_product_usage_data_source\":\"example-gitlab-product-usage-data-source\",\"housekeeping_bitmaps_enabled\":\"example-housekeeping-bitmaps-enabled\",\"pre_receive_secret_detection_enabled\":\"{{redacted}}\"}"
+    },
+    {
+      "method": "PUT",
+      "path": "/application/settings",
+      "body": "{\"after_sign_up_text\":\"{{name}}\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"after_sign_up_text\":\"{{name}}\",\"container_registry_import_created_before\":\"example-container-registry-import-created-before\",\"container_registry_import_max_retries\":\"example-container-registry-import-max-retries\",\"container_registry_import_max_step_duration\":\"example-container-registry-import-max-step-duration\",\"container_registry_import_max_tags_count\":\"example-container-registry-import-max-tags-count\",\"container_registry_import_start_max_retries\":\"example-container-registry-import-start-max-retries\",\"container_registry_import_target_plan\":\"example-container-registry-import-target-plan\",\"container_registry_import_timeout\":\"example-container-registry-import-timeout\",\"container_registry_pre_import_tags_rate\":\"example-container-registry-pre-import-tags-rate\",\"container_registry_pre_import_timeout\":\"example-container-registry-pre-import-timeout\",\"elasticsearch_index_settings\":[],\"gitlab_product_usage_data_source\":\"example-gitlab-product-usage-data-source\",\"housekeeping_bitmaps_enabled\":\"example-housekeeping-bitmaps-enabled\",\"pre_receive_secret_detection_enabled\":\"{{redacted}}\"}"
+    },
+    {
+      "method": "GET",
+      "path": "/application/settings",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"after_sign_up_text\":\"{{name}}\",\"container_registry_import_created_before\":\"example-container-registry-import-created-before\",\"container_registry_import_max_retries\":\"example-container-registry-import-max-retries\",\"container_registry_import_max_step_duration\":\"example-container-registry-import-max-step-duration\",\"container_registry_import_max_tags_count\":\"example-container-registry-import-max-tags-count\",\"container_registry_import_start_max_retries\":\"example-container-registry-import-start-max-retries\",\"container_registry_import_target_plan\":\"example-container-registry-import-target-plan\",\"container_registry_import_timeout\":\"example-container-registry-import-timeout\",\"container_registry_pre_import_tags_rate\":\"example-container-registry-pre-import-tags-rate\",\"container_registry_pre_import_timeout\":\"example-container-registry-pre-import-timeout\",\"elasticsearch_index_settings\":[],\"gitlab_product_usage_data_source\":\"example-gitlab-product-usage-data-source\",\"housekeeping_bitmaps_enabled\":\"example-housekeeping-bitmaps-enabled\",\"pre_receive_secret_detection_enabled\":\"{{redacted}}\"}"
+    },
+    {
+      "method": "GET",
+      "path": "/application/settings",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"after_sign_up_text\":\"{{name}}\",\"container_registry_import_created_before\":\"example-container-registry-import-created-before\",\"container_registry_import_max_retries\":\"example-container-registry-import-max-retries\",\"container_registry_import_max_step_duration\":\"example-container-registry-import-max-step-duration\",\"container_registry_import_max_tags_count\":\"example-container-registry-import-max-tags-count\",\"container_registry_import_start_max_retries\":\"example-container-registry-import-start-max-retries\",\"container_registry_import_target_plan\":\"example-container-registry-import-target-plan\",\"container_registry_import_timeout\":\"example-container-registry-import-timeout\",\"container_registry_pre_import_tags_rate\":\"example-container-registry-pre-import-tags-rate\",\"container_registry_pre_import_timeout\":\"example-container-registry-pre-import-timeout\",\"elasticsearch_index_settings\":[],\"gitlab_product_usage_data_source\":\"example-gitlab-product-usage-data-source\",\"housekeeping_bitmaps_enabled\":\"example-housekeeping-bitmaps-enabled\",\"pre_receive_secret_detection_enabled\":\"{{redacted}}\"}"
+    },
+    {
+      "method": "PUT",
+      "path": "/application/settings",
+      "body": "{\"after_sign_up_text\":\"{{name}}-2\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"after_sign_up_text\":\"{{name}}-2\",\"container_registry_import_created_before\":\"example-container-registry-import-created-before\",\"container_registry_import_max_retries\":\"example-container-registry-import-max-retries\",\"container_registry_import_max_step_duration\":\"example-container-registry-import-max-step-duration\",\"container_registry_import_max_tags_count\":\"example-container-registry-import-max-tags-count\",\"container_registry_import_start_max_retries\":\"example-container-registry-import-start-max-retries\",\"container_registry_import_target_plan\":\"example-container-registry-import-target-plan\",\"container_registry_import_timeout\":\"example-container-registry-import-timeout\",\"container_registry_pre_import_tags_rate\":\"example-container-registry-pre-import-tags-rate\",\"container_registry_pre_import_timeout\":\"example-container-registry-pre-import-timeout\",\"elasticsearch_index_settings\":[],\"gitlab_product_usage_data_source\":\"example-gitlab-product-usage-data-source\",\"housekeeping_bitmaps_enabled\":\"example-housekeeping-bitmaps-enabled\",\"pre_receive_secret_detection_enabled\":\"{{redacted}}\"}"
+    },
+    {
+      "method": "GET",
+      "path": "/application/settings",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"after_sign_up_text\":\"{{name}}-2\",\"container_registry_import_created_before\":\"example-container-registry-import-created-before\",\"container_registry_import_max_retries\":\"example-container-registry-import-max-retries\",\"container_registry_import_max_step_duration\":\"example-container-registry-import-max-step-duration\",\"container_registry_import_max_tags_count\":\"example-container-registry-import-max-tags-count\",\"container_registry_import_start_max_retries\":\"example-container-registry-import-start-max-retries\",\"container_registry_import_target_plan\":\"example-container-registry-import-target-plan\",\"container_registry_import_timeout\":\"example-container-registry-import-timeout\",\"container_registry_pre_import_tags_rate\":\"example-container-registry-pre-import-tags-rate\",\"container_registry_pre_import_timeout\":\"example-container-registry-pre-import-timeout\",\"elasticsearch_index_settings\":[],\"gitlab_product_usage_data_source\":\"example-gitlab-product-usage-data-source\",\"housekeeping_bitmaps_enabled\":\"example-housekeeping-bitmaps-enabled\",\"pre_receive_secret_detection_enabled\":\"{{redacted}}\"}"
+    },
+    {
+      "method": "PUT",
+      "path": "/application/settings",
+      "body": "{\"after_sign_up_text\":\"drift\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"after_sign_up_text\":\"drift\",\"container_registry_import_created_before\":\"example-container-registry-import-created-before\",\"container_registry_import_max_retries\":\"example-container-registry-import-max-retries\",\"container_registry_import_max_step_duration\":\"example-container-registry-import-max-step-duration\",\"container_registry_import_max_tags_count\":\"example-container-registry-import-max-tags-count\",\"container_registry_import_start_max_retries\":\"example-container-registry-import-start-max-retries\",\"container_registry_import_target_plan\":\"example-container-registry-import-target-plan\",\"container_registry_import_timeout\":\"example-container-registry-import-timeout\",\"container_registry_pre_import_tags_rate\":\"example-container-registry-pre-import-tags-rate\",\"container_registry_pre_import_timeout\":\"example-container-registry-pre-import-timeout\",\"elasticsearch_index_settings\":[],\"gitlab_product_usage_data_source\":\"example-gitlab-product-usage-data-source\",\"housekeeping_bitmaps_enabled\":\"example-housekeeping-bitmaps-enabled\",\"pre_receive_secret_detection_enabled\":\"{{redacted}}\"}"
+    },
+    {
+      "method": "GET",
+      "path": "/application/settings",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"after_sign_up_text\":\"drift\",\"container_registry_import_created_before\":\"example-container-registry-import-created-before\",\"container_registry_import_max_retries\":\"example-container-registry-import-max-retries\",\"container_registry_import_max_step_duration\":\"example-container-registry-import-max-step-duration\",\"container_registry_import_max_tags_count\":\"example-container-registry-import-max-tags-count\",\"container_registry_import_start_max_retries\":\"example-container-registry-import-start-max-retries\",\"container_registry_import_target_plan\":\"example-container-registry-import-target-plan\",\"container_registry_import_timeout\":\"example-container-registry-import-timeout\",\"container_registry_pre_import_tags_rate\":\"example-container-registry-pre-import-tags-rate\",\"container_registry_pre_import_timeout\":\"example-container-registry-pre-import-timeout\",\"elasticsearch_index_settings\":[],\"gitlab_product_usage_data_source\":\"example-gitlab-product-usage-data-source\",\"housekeeping_bitmaps_enabled\":\"example-housekeeping-bitmaps-enabled\",\"pre_receive_secret_detection_enabled\":\"{{redacted}}\"}"
+    },
+    {
+      "method": "PUT",
+      "path": "/application/settings",
+      "body": "{\"after_sign_up_text\":\"{{name}}-2\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"after_sign_up_text\":\"{{name}}-2\",\"container_registry_import_created_before\":\"example-container-registry-import-created-before\",\"container_registry_import_max_retries\":\"example-container-registry-import-max-retries\",\"container_registry_import_max_step_duration\":\"example-container-registry-import-max-step-duration\",\"container_registry_import_max_tags_count\":\"example-container-registry-import-max-tags-count\",\"container_registry_import_start_max_retries\":\"example-container-registry-import-start-max-retries\",\"container_registry_import_target_plan\":\"example-container-registry-import-target-plan\",\"container_registry_import_timeout\":\"example-container-registry-import-timeout\",\"container_registry_pre_import_tags_rate\":\"example-container-registry-pre-import-tags-rate\",\"container_registry_pre_import_timeout\":\"example-container-registry-pre-import-timeout\",\"elasticsearch_index_settings\":[],\"gitlab_product_usage_data_source\":\"example-gitlab-product-usage-data-source\",\"housekeeping_bitmaps_enabled\":\"example-housekeeping-bitmaps-enabled\",\"pre_receive_secret_detection_enabled\":\"{{redacted}}\"}"
+    },
+    {
+      "method": "GET",
+      "path": "/application/settings",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"after_sign_up_text\":\"{{name}}-2\",\"container_registry_import_created_before\":\"example-container-registry-import-created-before\",\"container_registry_import_max_retries\":\"example-container-registry-import-max-retries\",\"container_registry_import_max_step_duration\":\"example-container-registry-import-max-step-duration\",\"container_registry_import_max_tags_count\":\"example-container-registry-import-max-tags-count\",\"container_registry_import_start_max_retries\":\"example-container-registry-import-start-max-retries\",\"container_registry_import_target_plan\":\"example-container-registry-import-target-plan\",\"container_registry_import_timeout\":\"example-container-registry-import-timeout\",\"container_registry_pre_import_tags_rate\":\"example-container-registry-pre-import-tags-rate\",\"container_registry_pre_import_timeout\":\"example-container-registry-pre-import-timeout\",\"elasticsearch_index_settings\":[],\"gitlab_product_usage_data_source\":\"example-gitlab-product-usage-data-source\",\"housekeeping_bitmaps_enabled\":\"example-housekeeping-bitmaps-enabled\",\"pre_receive_secret_detection_enabled\":\"{{redacted}}\"}"
+    },
+    {
+      "method": "PUT",
+      "path": "/application/settings",
+      "body": "{}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"after_sign_up_text\":\"{{name}}-2\",\"container_registry_import_created_before\":\"example-container-registry-import-created-before\",\"container_registry_import_max_retries\":\"example-container-registry-import-max-retries\",\"container_registry_import_max_step_duration\":\"example-container-registry-import-max-step-duration\",\"container_registry_import_max_tags_count\":\"example-container-registry-import-max-tags-count\",\"container_registry_import_start_max_retries\":\"example-container-registry-import-start-max-retries\",\"container_registry_import_target_plan\":\"example-container-registry-import-target-plan\",\"container_registry_import_timeout\":\"example-container-registry-import-timeout\",\"container_registry_pre_import_tags_rate\":\"example-container-registry-pre-import-tags-rate\",\"container_registry_pre_import_timeout\":\"example-container-registry-pre-import-timeout\",\"elasticsearch_index_settings\":[],\"gitlab_product_usage_data_source\":\"example-gitlab-product-usage-data-source\",\"housekeeping_bitmaps_enabled\":\"example-housekeeping-bitmaps-enabled\",\"pre_receive_secret_detection_enabled\":\"{{redacted}}\"}"
+    }
+  ]
+}

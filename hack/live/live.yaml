@@ -1,0 +1,913 @@
+# Copyright 2026 High Five Labs
+# SPDX-License-Identifier: Apache-2.0
+#
+# Live tests (TestEveryKindLive, krm-rest-runtime's kindtest.Live): these
+# kinds, in this order, against a real GitLab. Kinds not listed are not run
+# live. Run: hack/live/gitlab-ce.sh (GitLab CE in Docker, ~4 GB RAM, minutes
+# to boot: an offload VM), or against any GitLab with KRM_LIVE=1 and the
+# secret below. Templates ({{...}}): krm-rest-runtime docs/live.md.
+#
+# A run makes one group and one project named after it
+# (hfl-live-<stamp>-<hex>), puts every kind under them, and deletes them at
+# the end; the sweep deletes older runs' groups, projects, users, topics,
+# system hooks, instance CI variables and the token user's SSH keys. Most
+# kinds need an administrator's token (users, custom attributes, instance
+# settings, impersonation tokens, topics, system hooks, runners).
+#
+# Integrations point only at hosts under hfl-live.example (reserved, never
+# resolves) and mail only @example.com, so nothing a run saves reaches a
+# third-party service. Kinds GitLab sells (Premium, Ultimate) are skip:
+# with the tier; per Open decisions KLIVE3 they run once the sandbox has a
+# self-managed Ultimate trial license.
+secret: krm-live-gitlab         # JSON: {"token": "glpat-...", "baseURL": "https://<host>/api/v4"}
+target: GitLab
+version: {path: /version, field: version}
+
+before:
+- {method: POST, path: /groups, body: {name: "{{run}}", path: "{{run}}", visibility: private}, save: {group: id}}
+- {method: POST, path: /projects, body: {name: "{{run}}", path: "{{run}}", namespace_id: "{{var:group}}", visibility: private, initialize_with_readme: true, default_branch: main}, save: {project: id}}
+after:
+- {method: DELETE, path: "/projects/{{var:project}}", ok: [404]}
+- {method: DELETE, path: "/groups/{{var:group}}", ok: [404]}
+
+sweep:
+- {list: "/projects?search=hfl-live-&simple=true&per_page=100", name: path, id: id, delete: "/projects/{id}"}
+- {list: "/groups?search=hfl-live-&per_page=100", name: path, id: id, delete: "/groups/{id}"}
+- {list: "/users?search=hfl-live-&per_page=100", name: username, id: id, delete: "/users/{id}?hard_delete=true"}
+- {list: "/topics?search=hfl-live-&per_page=100", name: name, id: id, delete: "/topics/{id}"}
+- {list: "/hooks?per_page=100", name: name, id: id, delete: "/hooks/{id}"}
+- {list: "/admin/ci/variables?per_page=100", name: key, id: key, delete: "/admin/ci/variables/{id}"}
+- {list: "/user/keys?per_page=100", name: title, id: id, delete: "/user/keys/{id}"}
+
+kinds:
+- kind: Project
+  replaceSample: true
+  spec: {name: "{{name}}", path: "{{name}}", namespace_id: "{{var:group}}", visibility: private}
+  change: {description: changed}
+  drift: drift
+  stays: GitLab defers a project's deletion (marked_for_deletion_on); a read answers until the delay passes
+
+- kind: Group
+  replaceSample: true
+  spec: {name: "{{name}}", path: "{{name}}", parent_id: "{{var:group}}", visibility: private}
+  change: {description: changed}
+  drift: drift
+  stays: GitLab defers a group's deletion (marked_for_deletion_on); a read answers until the delay passes
+
+- kind: Topic
+  replaceSample: true
+  spec: {name: "{{name}}", title: "{{name}}"}
+  change: {description: changed}
+  drift: drift
+
+- kind: User
+  replaceSample: true
+  spec: {name: "{{name}}", username: "{{name}}", email: "{{name}}@hfl-live.example", force_random_password: true, skip_confirmation: true}
+  change: {name: "{{name}}-2"}
+  drift: "{{name}}-drift"
+  deleteWait: 180s
+
+- kind: RepositoryFile
+  replaceSample: true
+  spec:
+    projectID: "{{var:project}}"
+    filePath: "{{name}}.txt"
+    branch: main
+    commit_message: "live test {{name}}"
+    encoding: base64
+    content: "aGVsbG8tcmVwb3NpdG9yeS1maWxl"
+  change: {content: "dXBkYXRlZC1yZXBvc2l0b3J5LWZpbGU="}
+  drift: "ZHJpZnQtcmVwb3NpdG9yeS1maWxl"
+  driftFull: true
+
+- kind: ProjectLabel
+  replaceSample: true
+  spec: {projectID: "{{var:project}}", name: "{{name}}", color: "#FF0000"}
+  change: {color: "#00FF00"}
+  drift: "#0000FF"
+
+- kind: ProjectVariable
+  replaceSample: true
+  spec: {projectID: "{{var:project}}", key: "{{name_}}", value: a}
+  change: {value: b}
+
+- kind: ProjectMilestone
+  replaceSample: true
+  spec: {projectID: "{{var:project}}", title: "{{name}}"}
+  change: {description: changed}
+
+- kind: ProjectBadge
+  replaceSample: true
+  spec: {projectID: "{{var:project}}", link_url: "https://hfl-live.example/{{name}}", image_url: "https://hfl-live.example/badge.svg"}
+  change: {link_url: "https://hfl-live.example/{{name}}/2"}
+  drift: "https://hfl-live.example/drift"
+
+- kind: ProjectHook
+  replaceSample: true
+  spec: {projectID: "{{var:project}}", url: "https://hfl-live.example/hook/{{name}}"}
+  change: {url: "https://hfl-live.example/hook/{{name}}/2"}
+  drift: "https://hfl-live.example/hook/drift"
+
+- kind: ProjectIssue
+  replaceSample: true
+  spec: {projectID: "{{var:project}}", title: "{{name}}"}
+  change: {description: changed}
+
+- kind: ProjectWikiPage
+  replaceSample: true
+  # GitLab reads a title's hyphens back as spaces (the title is the page's
+  # file name), so the title has none.
+  spec: {projectID: "{{var:project}}", title: "{{name_}}", content: hello}
+  change: {content: changed}
+
+- kind: PipelineTrigger
+  replaceSample: true
+  spec: {projectID: "{{var:project}}", description: "{{name}}"}
+  change: {description: "{{name}}-2"}
+
+- kind: PipelineSchedule
+  replaceSample: true
+  # GitLab reads a branch ref back in full (refs/heads/main).
+  spec: {projectID: "{{var:project}}", description: "{{name}}", ref: refs/heads/main, cron: "0 1 * * *"}
+  change: {description: "{{name}}-2"}
+
+- kind: ProjectEnvironment
+  replaceSample: true
+  spec: {projectID: "{{var:project}}", name: "{{name}}"}
+  change: {external_url: "https://hfl-live.example"}
+  drift: "https://drift.example"
+
+- kind: ProjectFreezePeriod
+  replaceSample: true
+  spec: {projectID: "{{var:project}}", freeze_start: "0 23 * * 5", freeze_end: "0 7 * * 1", cron_timezone: UTC}
+  change: {freeze_end: "0 8 * * 1"}
+  drift: "0 9 * * 1"
+
+- kind: Branch
+  replaceSample: true
+  spec: {projectID: "{{var:project}}", branch: "{{name}}", ref: main}
+
+- kind: ProjectTag
+  replaceSample: true
+  spec: {projectID: "{{var:project}}", tag_name: "{{name}}", ref: main}
+
+- kind: BranchProtection
+  before:
+  - {method: POST, path: "/projects/{{var:project}}/repository/branches", body: {branch: "{{name}}", ref: main}}
+  replaceSample: true
+  spec: {projectID: "{{var:project}}", name: "{{name}}", push_access_level: 40, merge_access_level: 40}
+  change: {allow_force_push: true}
+  drift: false
+
+- kind: TagProtection
+  replaceSample: true
+  spec: {projectID: "{{var:project}}", name: "{{name}}-*", create_access_level: 40}
+
+- kind: Release
+  replaceSample: true
+  spec: {projectID: "{{var:project}}", tag_name: "{{name}}", ref: main, name: "{{name}}", description: first}
+  change: {description: second}
+
+- kind: ProjectDeployToken
+  replaceSample: true
+  spec: {projectID: "{{var:project}}", name: "{{name}}", scopes: [read_repository]}
+
+- kind: ProjectAccessToken
+  replaceSample: true
+  spec: {projectID: "{{var:project}}", name: "{{name}}", scopes: [read_api], access_level: 30, expires_at: "{{date:30}}"}
+  stays: deleting revokes the token; GitLab still answers a read (revoked true)
+
+- kind: DeployKey
+  replaceSample: true
+  spec: {projectID: "{{var:project}}", title: "{{name}}", key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIESnx8zLtMqslb+EKt8MbNMMvHlXBQfdwshxSWiQ3dqa hfl-live"}
+  change: {title: "{{name}}-2"}
+
+- kind: GroupLabel
+  replaceSample: true
+  spec: {groupID: "{{var:group}}", name: "{{name}}", color: "#FF0000"}
+  change: {color: "#00FF00"}
+  drift: "#0000FF"
+
+- kind: GroupVariable
+  replaceSample: true
+  spec: {groupID: "{{var:group}}", key: "{{name_}}", value: a}
+  change: {value: b}
+
+- kind: GroupBadge
+  replaceSample: true
+  spec: {groupID: "{{var:group}}", link_url: "https://hfl-live.example/{{name}}", image_url: "https://hfl-live.example/badge.svg"}
+  change: {link_url: "https://hfl-live.example/{{name}}/2"}
+  drift: "https://hfl-live.example/drift"
+
+- kind: ProjectCustomAttribute
+  replaceSample: true
+  spec: {projectID: "{{var:project}}", key: "{{name_}}", value: a}
+  change: {value: b}
+
+- kind: GroupCustomAttribute
+  replaceSample: true
+  spec: {groupID: "{{var:group}}", key: "{{name_}}", value: a}
+  change: {value: b}
+
+- kind: GroupDeployToken
+  replaceSample: true
+  spec: {groupID: "{{var:group}}", name: "{{name}}", scopes: [read_repository]}
+
+- kind: GroupAccessToken
+  replaceSample: true
+  spec: {groupID: "{{var:group}}", name: "{{name}}", scopes: [read_api], access_level: 30, expires_at: "{{date:30}}"}
+  stays: deleting revokes the token; GitLab still answers a read (revoked true)
+
+- kind: GroupMembership
+  before:
+  - {method: POST, path: /users, body: {name: "{{name}}-u", username: "{{name}}-u", email: "{{name}}-u@hfl-live.example", force_random_password: true, skip_confirmation: true}, save: {user: id}}
+  after:
+  - {method: DELETE, path: "/users/{{var:user}}?hard_delete=true", ok: [404]}
+  replaceSample: true
+  spec: {groupID: "{{var:group}}", user_id: "{{var:user}}", access_level: 30}
+  change: {access_level: 40}
+  drift: 20
+
+- kind: ProjectMembership
+  before:
+  - {method: POST, path: /users, body: {name: "{{name}}-u", username: "{{name}}-u", email: "{{name}}-u@hfl-live.example", force_random_password: true, skip_confirmation: true}, save: {user: id}}
+  after:
+  - {method: DELETE, path: "/users/{{var:user}}?hard_delete=true", ok: [404]}
+  replaceSample: true
+  spec: {projectID: "{{var:project}}", user_id: "{{var:user}}", access_level: 30}
+  change: {access_level: 40}
+  drift: 20
+
+- kind: UserCustomAttribute
+  before:
+  - {method: POST, path: /users, body: {name: "{{name}}-u", username: "{{name}}-u", email: "{{name}}-u@hfl-live.example", force_random_password: true, skip_confirmation: true}, save: {user: id}}
+  after:
+  - {method: DELETE, path: "/users/{{var:user}}?hard_delete=true", ok: [404]}
+  replaceSample: true
+  spec: {userID: "{{var:user}}", key: "{{name_}}", value: a}
+  change: {value: b}
+
+- kind: UserImpersonationToken
+  before:
+  - {method: POST, path: /users, body: {name: "{{name}}-u", username: "{{name}}-u", email: "{{name}}-u@hfl-live.example", force_random_password: true, skip_confirmation: true}, save: {user: id}}
+  after:
+  - {method: DELETE, path: "/users/{{var:user}}?hard_delete=true", ok: [404]}
+  replaceSample: true
+  spec: {userID: "{{var:user}}", name: "{{name}}", scopes: [read_api], expires_at: "{{date:30}}"}
+  stays: deleting revokes the token; GitLab still answers a read (revoked true)
+
+- kind: Application
+  replaceSample: true
+  # scopes are written as a string and read back as an array (compare: splitSpace);
+  # name is write-only (never read back), so the change and drift go to scopes.
+  spec: {name: "{{name}}", redirect_uri: "https://hfl-live.example/{{name}}", scopes: api}
+  change: {scopes: "api read_user"}
+  drift: read_user
+
+- kind: ApplicationAppearance
+  replaceSample: true
+  spec: {title: "{{name}}"}
+  change: {description: changed}
+  drift: drift
+
+- kind: ApplicationSettings
+  replaceSample: true
+  spec: {after_sign_up_text: "{{name}}"}
+  change: {after_sign_up_text: "{{name}}-2"}
+  drift: drift
+
+- kind: ClusterAgent
+  replaceSample: true
+  spec: {projectID: "{{var:project}}", name: "{{name}}"}
+
+- kind: ClusterAgentToken
+  before:
+  - {method: POST, path: "/projects/{{var:project}}/cluster_agents", body: {name: "{{name}}-a"}, save: {agent: id}}
+  after:
+  - {method: DELETE, path: "/projects/{{var:project}}/cluster_agents/{{var:agent}}", ok: [404]}
+  replaceSample: true
+  spec: {projectID: "{{var:project}}", agentID: "{{var:agent}}", name: "{{name}}"}
+  stays: deleting revokes the token; GitLab still answers a read (status revoked)
+
+- kind: PipelineScheduleVariable
+  before:
+  - {method: POST, path: "/projects/{{var:project}}/pipeline_schedules", body: {description: "{{name}}", ref: main, cron: "0 1 * * *"}, save: {schedule: id}}
+  after:
+  - {method: DELETE, path: "/projects/{{var:project}}/pipeline_schedules/{{var:schedule}}", ok: [404]}
+  replaceSample: true
+  spec: {projectID: "{{var:project}}", pipelineScheduleID: "{{var:schedule}}", key: "{{name_}}", value: a}
+  change: {value: b}
+
+- kind: ProjectErrorTrackingSettings
+  # The settings PUT exists only with the integrated_error_tracking feature
+  # flag on (off by default), and a project has no settings until a PUT
+  # makes them: GET answers 404.
+  before:
+  - {method: POST, path: /features/integrated_error_tracking, body: {value: true}}
+  - {method: PUT, path: "/projects/{{var:project}}/error_tracking/settings", body: {active: true, integrated: true}}
+  after:
+  - {method: POST, path: /features/integrated_error_tracking, body: {value: false}}
+  replaceSample: true
+  spec: {projectID: "{{var:project}}", active: true, integrated: true}
+  change: {active: false}
+
+- kind: ProjectJobTokenScope
+  # GitLab enforces the inbound job token scope for the whole instance by
+  # default; a project can turn it off only when the instance allows it.
+  before:
+  - {method: PUT, path: /application/settings, body: {enforce_ci_inbound_job_token_scope_enabled: false}}
+  after:
+  - {method: PUT, path: /application/settings, body: {enforce_ci_inbound_job_token_scope_enabled: true}}
+  replaceSample: true
+  spec: {projectID: "{{var:project}}", enabled: false}
+  change: {enabled: true}
+
+- kind: ProjectFeatureFlag
+  replaceSample: true
+  spec: {projectID: "{{var:project}}", name: "{{name_}}", description: a}
+  change: {description: b}
+  drift: drift
+
+- kind: ProjectFeatureFlagUserList
+  replaceSample: true
+  spec: {projectID: "{{var:project}}", name: "{{name}}", user_xids: "u1,u2"}
+  change: {user_xids: u1}
+
+- kind: ProjectIssueLink
+  before:
+  - {method: POST, path: "/projects/{{var:project}}/issues", body: {title: "{{name}}-a"}, save: {a: iid}}
+  - {method: POST, path: "/projects/{{var:project}}/issues", body: {title: "{{name}}-b"}, save: {b: iid}}
+  replaceSample: true
+  spec: {projectID: "{{var:project}}", issueIid: "{{var:a}}", target_project_id: "{{var:project}}", target_issue_iid: "{{var:b}}"}
+
+- kind: ProjectMergeRequestNote
+  before:
+  - {method: POST, path: "/projects/{{var:project}}/repository/branches", body: {branch: "{{name}}-mr", ref: main}}
+  - {method: POST, path: "/projects/{{var:project}}/merge_requests", body: {source_branch: "{{name}}-mr", target_branch: main, title: "{{name}}"}, save: {mr: iid}}
+  replaceSample: true
+  spec: {projectID: "{{var:project}}", noteableID: "{{var:mr}}", body: hello}
+  change: {body: changed}
+  drift: drift
+
+- kind: ReleaseLink
+  before:
+  - {method: POST, path: "/projects/{{var:project}}/releases", body: {tag_name: "{{name}}-r", ref: main, name: "{{name}}-r"}}
+  replaceSample: true
+  spec: {projectID: "{{var:project}}", tagName: "{{name}}-r", name: "{{name}}", url: "https://hfl-live.example/{{name}}"}
+  change: {url: "https://hfl-live.example/{{name}}/2"}
+  drift: "https://hfl-live.example/drift"
+
+- kind: PagesDomain
+  replaceSample: true
+  spec: {projectID: "{{var:project}}", domain: "{{name}}.hfl-live.example", auto_ssl_enabled: false}
+  change: {auto_ssl_enabled: true}
+
+- kind: ProjectSecureFile
+  replaceSample: true
+  spec: {projectID: "{{var:project}}", name: "{{name}}.txt", file: {name: "{{name}}.txt", content: "hello-secure-file"}}
+
+- kind: GroupHook
+  skip: "GitLab Premium (group webhooks); CE answers 404"
+
+- kind: GroupBranchProtection
+  skip: "GitLab Premium (group protected branches); CE answers 404"
+
+- kind: GroupProtectedEnvironment
+  skip: "GitLab Premium (protected environments); CE answers 404"
+
+- kind: ProjectProtectedEnvironment
+  skip: "GitLab Premium (protected environments); CE answers 404"
+
+- kind: ProjectApprovalRule
+  skip: "GitLab Premium (merge request approval rules); CE answers 404"
+
+- kind: GroupServiceAccount
+  replaceSample: true
+  spec: {groupID: "{{var:group}}", name: "{{name}}"}
+  deleteWait: 300s
+
+- kind: ProjectServiceAccount
+  replaceSample: true
+  spec: {projectID: "{{var:project}}", name: "{{name}}"}
+  deleteWait: 300s
+
+- kind: ProjectSecuritySettings
+  skip: "GitLab Ultimate (secret push protection); CE answers 404"
+
+- kind: GroupSamlLink
+  skip: "GitLab Premium and a SAML provider; CE answers 404"
+
+# Instance and token-user kinds (an administrator's token).
+- kind: InstanceVariable
+  replaceSample: true
+  spec: {key: "{{name_}}", value: a}
+  change: {value: b}
+  drift: drift
+
+- kind: SystemHook
+  replaceSample: true
+  # Every event on the instance is sent to it while it lives; the URL never
+  # resolves.
+  spec: {url: "https://hfl-live.example/system-hook/{{name}}", name: "{{name}}", push_events: false, tag_push_events: false, merge_requests_events: false, repository_update_events: false}
+  change: {url: "https://hfl-live.example/system-hook/{{name}}/2"}
+  drift: "https://hfl-live.example/system-hook/drift"
+
+- kind: InstanceServiceAccount
+  replaceSample: true
+  spec: {name: "{{name}}", username: "{{name}}"}
+  change: {name: "{{name}}-2"}
+  drift: "{{name}}-drift"
+  deleteWait: 180s
+
+- kind: PersonalAccessToken
+  before:
+  - {method: POST, path: /users, body: {name: "{{name}}-u", username: "{{name}}-u", email: "{{name}}-u@hfl-live.example", force_random_password: true, skip_confirmation: true}, save: {user: id}}
+  after:
+  - {method: DELETE, path: "/users/{{var:user}}?hard_delete=true", ok: [404]}
+  replaceSample: true
+  spec: {userID: "{{var:user}}", name: "{{name}}", scopes: [read_api], expires_at: "{{date:30}}"}
+  stays: deleting revokes the token; GitLab still answers a read (revoked true)
+
+- kind: UserSshkey
+  replaceSample: true
+  # The token user's own key (/user/keys). A key is unique on the instance:
+  # this one is used nowhere else in this file.
+  spec: {title: "{{name}}", key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM8XnBs9w12HKE3OUGhBTCwdK6MfrUPukZ3D52noxOTd hfl-live-user-key"}
+
+- kind: UserGpgkey
+  replaceSample: true
+  # The token user's own key (/user/gpg_keys), uid hfl-live <hfl-live@example.com>.
+  # GitLab keeps one copy of a key per instance and lists GPG keys without a
+  # name, so the sweep cannot find a leftover: a run that dies between
+  # create and delete leaves it on the token user until removed by hand.
+  spec:
+    key: |-
+      -----BEGIN PGP PUBLIC KEY BLOCK-----
+
+      mDMEawKJcBYJKwYBBAHaRw8BAQdAnWDs15WcQmSF3E28bECPaSJnmS2P4rxF+IF8
+      bP+aXXa0H2hmbC1saXZlIDxoZmwtbGl2ZUBleGFtcGxlLmNvbT6IkwQTFgoAOxYh
+      BGdbDWXHx/qcZId6TwGtc0ufgInoBQJrAolwAhsDBQsJCAcCAiICBhUKCQgLAgQW
+      AgMBAh4HAheAAAoJEAGtc0ufgInoJWMBAOseADWFr/CXQn73s8BPXxPMKnDFcgG9
+      052hv/NWNIm2AQCj+Akn4rlHLu061cxhPh4mLnXJDxPJOtKm23v7yUzlAw==
+      =Ul/E
+      -----END PGP PUBLIC KEY BLOCK-----
+
+- kind: GlobalLevelNotifications
+  # The token user's own notification level; put back after the run. Every
+  # value tried notifies less than GitLab's default (participating).
+  replaceSample: true
+  spec: {level: mention}
+  change: {level: disabled}
+  drift: mention
+
+- kind: UserRunner
+  replaceSample: true
+  spec: {runner_type: project_type, project_id: "{{var:project}}", description: "{{name}}"}
+  change: {description: "{{name}}-2"}
+  drift: "{{name}}-drift"
+
+# Project kinds.
+- kind: ProjectLevelNotifications
+  replaceSample: true
+  spec: {projectID: "{{var:project}}", level: disabled}
+  change: {level: mention}
+  drift: disabled
+
+- kind: ProjectIssueBoard
+  replaceSample: true
+  # GitLab CE allows one board per project; the run's project has none.
+  spec: {projectID: "{{var:project}}", name: "{{name}}"}
+  change: {name: "{{name}}-2"}
+  drift: "{{name}}-drift"
+
+- kind: ProjectPagesSettings
+  replaceSample: true
+  spec: {projectID: "{{var:project}}", pages_unique_domain_enabled: false}
+  change: {pages_unique_domain_enabled: true}
+  noDrift: "a read names the settings differently (is_unique_domain_enabled, force_https), so every field written is write-only"
+
+- kind: ProjectPushMirror
+  replaceSample: true
+  # Disabled, so GitLab never pushes; the URL never resolves anyway.
+  spec: {projectID: "{{var:project}}", url: "https://hfl-live.example/{{name}}.git", enabled: false, only_protected_branches: false}
+  change: {only_protected_branches: true}
+  drift: false
+
+- kind: ProjectPackageProtectionRule
+  replaceSample: true
+  spec: {projectID: "{{var:project}}", package_name_pattern: "@hfl-live/{{name}}-*", package_type: npm, minimum_access_level_for_push: maintainer}
+  change: {minimum_access_level_for_push: owner}
+  drift: admin
+
+- kind: ProjectErrorTrackingClientKey
+  # As ProjectErrorTrackingSettings: integrated error tracking is behind a
+  # feature flag, off by default.
+  before:
+  - {method: POST, path: /features/integrated_error_tracking, body: {value: true}}
+  - {method: PUT, path: "/projects/{{var:project}}/error_tracking/settings", body: {active: true, integrated: true}}
+  after:
+  - {method: POST, path: /features/integrated_error_tracking, body: {value: false}}
+  replaceSample: true
+  spec: {projectID: "{{var:project}}"}
+
+- kind: ProjectShareGroup
+  before:
+  - {method: POST, path: /groups, body: {name: "{{name}}-g", path: "{{name}}-g", visibility: private}, save: {g: id}}
+  after:
+  - {method: DELETE, path: "/groups/{{var:g}}", ok: [404]}
+  replaceSample: true
+  spec: {projectID: "{{var:project}}", group_id: "{{var:g}}", group_access: 30}
+
+- kind: DeployKeyEnable
+  # The key belongs to a second project; the kind enables it on the run's.
+  before:
+  - {method: POST, path: /projects, body: {name: "{{name}}-src", path: "{{name}}-src", namespace_id: "{{var:group}}", visibility: private}, save: {src: id}}
+  - {method: POST, path: "/projects/{{var:src}}/deploy_keys", body: {title: "{{name}}", key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH4H4laHkqceFUBNdWdZGb4vGnLWm3LianZt61iN8E87 hfl-live-deploy-key-enable"}, save: {key: id}}
+  after:
+  - {method: DELETE, path: "/projects/{{var:src}}/deploy_keys/{{var:key}}", ok: [404]}
+  - {method: DELETE, path: "/projects/{{var:src}}", ok: [404]}
+  replaceSample: true
+  spec: {projectID: "{{var:project}}", keyID: "{{var:key}}", can_push: false}
+  change: {can_push: true}
+  drift: false
+
+- kind: ProjectRunnerEnablement
+  # A project runner of a second project, enabled on the run's.
+  before:
+  - {method: POST, path: /projects, body: {name: "{{name}}-src", path: "{{name}}-src", namespace_id: "{{var:group}}", visibility: private}, save: {src: id}}
+  - {method: POST, path: /user/runners, body: {runner_type: project_type, project_id: "{{var:src}}", description: "{{name}}", locked: false}, save: {runner: id}}
+  after:
+  - {method: DELETE, path: "/runners/{{var:runner}}", ok: [404]}
+  - {method: DELETE, path: "/projects/{{var:src}}", ok: [404]}
+  replaceSample: true
+  spec: {projectID: "{{var:project}}", runner_id: "{{var:runner}}"}
+
+- kind: ProjectServiceAccountAccessToken
+  before:
+  - {method: POST, path: "/projects/{{var:project}}/service_accounts", body: {name: "{{name}}-sa", username: "{{name}}-sa"}, save: {sa: id}}
+  after:
+  - {method: DELETE, path: "/projects/{{var:project}}/service_accounts/{{var:sa}}?hard_delete=true", ok: [404]}
+  replaceSample: true
+  spec: {projectID: "{{var:project}}", userID: "{{var:sa}}", name: "{{name}}", scopes: [read_api], expires_at: "{{date:30}}"}
+  stays: deleting revokes the token; GitLab still lists it (revoked true)
+
+# Group kinds.
+- kind: GroupShareGroup
+  before:
+  - {method: POST, path: /groups, body: {name: "{{name}}-g", path: "{{name}}-g", visibility: private}, save: {g: id}}
+  after:
+  - {method: DELETE, path: "/groups/{{var:g}}", ok: [404]}
+  replaceSample: true
+  spec: {groupID: "{{var:group}}", group_id: "{{var:g}}", group_access: 30}
+
+- kind: GroupServiceAccountAccessToken
+  before:
+  - {method: POST, path: "/groups/{{var:group}}/service_accounts", body: {name: "{{name}}-sa", username: "{{name}}-sa"}, save: {sa: id}}
+  after:
+  - {method: DELETE, path: "/groups/{{var:group}}/service_accounts/{{var:sa}}?hard_delete=true", ok: [404]}
+  replaceSample: true
+  spec: {groupID: "{{var:group}}", userID: "{{var:sa}}", name: "{{name}}", scopes: [read_api], expires_at: "{{date:30}}"}
+  stays: deleting revokes the token; GitLab still lists it (revoked true)
+
+# Integrations. Deleting one turns it off: GitLab keeps it (active false)
+# and still answers a read. The project integrations are on the run's
+# project, one at a time (GitLab allows one external issue tracker at a
+# time); the group ones on a subgroup of their own, with no projects, so
+# GitLab has nothing to propagate them to. Their PUT requires the URL or
+# token, which a read never returns at the top level: the drift step sends
+# the whole object (driftFull).
+- kind: IntegrationSlack
+  replaceSample: true
+  spec: {projectID: "{{var:project}}", webhook: "https://hfl-live.example/slack/{{name}}", push_events: true}
+  change: {push_events: false}
+  drift: true
+  driftFull: true
+  stays: deleting an integration turns it off (active false); GitLab still answers a read
+
+- kind: ProjectIntegrationMattermost
+  replaceSample: true
+  spec: {projectID: "{{var:project}}", webhook: "https://hfl-live.example/mattermost/{{name}}", push_events: true}
+  change: {push_events: false}
+  drift: true
+  driftFull: true
+  stays: deleting an integration turns it off (active false); GitLab still answers a read
+
+- kind: ProjectIntegrationMicrosoftTeams
+  replaceSample: true
+  spec: {projectID: "{{var:project}}", webhook: "https://hfl-live.example/teams/{{name}}", push_events: true}
+  change: {push_events: false}
+  drift: true
+  driftFull: true
+  stays: deleting an integration turns it off (active false); GitLab still answers a read
+
+- kind: ProjectIntegrationGoogleChat
+  replaceSample: true
+  spec: {projectID: "{{var:project}}", webhook: "https://hfl-live.example/chat/{{name}}", push_events: true}
+  change: {push_events: false}
+  drift: true
+  driftFull: true
+  stays: deleting an integration turns it off (active false); GitLab still answers a read
+
+- kind: ProjectIntegrationMatrix
+  replaceSample: true
+  spec: {projectID: "{{var:project}}", hostname: "https://hfl-live.example", token: hfl-live-not-a-token, room: "!hfl-live:hfl-live.example", push_events: true}
+  change: {push_events: false}
+  drift: true
+  driftFull: true
+  stays: deleting an integration turns it off (active false); GitLab still answers a read
+
+- kind: ProjectIntegrationTelegram
+  replaceSample: true
+  spec: {projectID: "{{var:project}}", hostname: "https://hfl-live.example", token: "000000:hfl-live-not-a-token", room: "@hfl_live", push_events: true}
+  change: {push_events: false}
+  drift: true
+  driftFull: true
+  stays: deleting an integration turns it off (active false); GitLab still answers a read
+
+- kind: ProjectIntegrationJenkins
+  replaceSample: true
+  spec: {projectID: "{{var:project}}", jenkins_url: "https://hfl-live.example/jenkins", project_name: "{{name}}", push_events: true}
+  change: {push_events: false}
+  drift: true
+  driftFull: true
+  stays: deleting an integration turns it off (active false); GitLab still answers a read
+
+- kind: ProjectIntegrationDatadog
+  replaceSample: true
+  # api_url replaces the Datadog site, so events would go to hfl-live.example.
+  spec: {projectID: "{{var:project}}", api_key: hfllivenotanapikey0000000000000000, api_url: "https://hfl-live.example", pipeline_events: true}
+  change: {pipeline_events: false}
+  drift: true
+  driftFull: true
+  stays: deleting an integration turns it off (active false); GitLab still answers a read
+
+- kind: ProjectIntegrationEmailsOnPush
+  replaceSample: true
+  spec: {projectID: "{{var:project}}", recipients: "{{name}}@example.com", tag_push_events: true}
+  change: {tag_push_events: false}
+  drift: true
+  driftFull: true
+  stays: deleting an integration turns it off (active false); GitLab still answers a read
+
+- kind: ProjectIntegrationPipelinesEmail
+  replaceSample: true
+  spec: {projectID: "{{var:project}}", recipients: "{{name}}@example.com", pipeline_events: true}
+  change: {pipeline_events: false}
+  drift: true
+  driftFull: true
+  stays: deleting an integration turns it off (active false); GitLab still answers a read
+
+- kind: ProjectIntegrationJira
+  replaceSample: true
+  # On save GitLab asks the Jira URL for its server info (and carries on
+  # when that fails); this one never resolves.
+  spec: {projectID: "{{var:project}}", url: "https://jira.hfl-live.example", username: hfl-live, password: hfl-live-not-a-password, commit_events: true}
+  change: {commit_events: false}
+  drift: true
+  driftFull: true
+  stays: deleting an integration turns it off (active false); GitLab still answers a read
+
+- kind: ProjectIntegrationHarbor
+  replaceSample: true
+  spec: {projectID: "{{var:project}}", url: "https://harbor.hfl-live.example", project_name: "{{name}}", username: hfl-live, password: hfl-live-not-a-password}
+  change: {project_name: "{{name}}-2"}
+  noDrift: "Harbor has no event fields; every field it takes is read back only under properties (write-only)"
+  stays: deleting an integration turns it off (active false); GitLab still answers a read
+
+- kind: ProjectIntegrationExternalWiki
+  replaceSample: true
+  spec: {projectID: "{{var:project}}", external_wiki_url: "https://wiki.hfl-live.example/{{name}}"}
+  change: {external_wiki_url: "https://wiki.hfl-live.example/{{name}}/2"}
+  noDrift: "external_wiki_url is read back only under properties (write-only), and the integration has no other field"
+  stays: deleting an integration turns it off (active false); GitLab still answers a read
+
+- kind: ProjectIntegrationCustomIssueTracker
+  replaceSample: true
+  spec: {projectID: "{{var:project}}", project_url: "https://issues.hfl-live.example/{{name}}", issues_url: "https://issues.hfl-live.example/{{name}}/:id", new_issue_url: "https://issues.hfl-live.example/{{name}}/new"}
+  change: {project_url: "https://issues.hfl-live.example/{{name}}/2"}
+  noDrift: "the URLs are read back only under properties (write-only)"
+  stays: deleting an integration turns it off (active false); GitLab still answers a read
+
+- kind: ProjectIntegrationRedmine
+  replaceSample: true
+  spec: {projectID: "{{var:project}}", project_url: "https://redmine.hfl-live.example/{{name}}", issues_url: "https://redmine.hfl-live.example/issues/:id", new_issue_url: "https://redmine.hfl-live.example/{{name}}/new"}
+  change: {project_url: "https://redmine.hfl-live.example/{{name}}/2"}
+  noDrift: "the URLs are read back only under properties (write-only)"
+  stays: deleting an integration turns it off (active false); GitLab still answers a read
+
+- kind: ProjectIntegrationYoutrack
+  replaceSample: true
+  spec: {projectID: "{{var:project}}", project_url: "https://youtrack.hfl-live.example/{{name}}", issues_url: "https://youtrack.hfl-live.example/issue/:id"}
+  change: {project_url: "https://youtrack.hfl-live.example/{{name}}/2"}
+  noDrift: "the URLs are read back only under properties (write-only)"
+  stays: deleting an integration turns it off (active false); GitLab still answers a read
+
+- kind: GroupIntegrationMattermost
+  before:
+  - {method: POST, path: /groups, body: {name: "{{name}}-g", path: "{{name}}-g", parent_id: "{{var:group}}", visibility: private}, save: {sub: id}}
+  after:
+  - {method: DELETE, path: "/groups/{{var:sub}}", ok: [404]}
+  replaceSample: true
+  spec: {groupID: "{{var:sub}}", webhook: "https://hfl-live.example/mattermost/{{name}}", push_events: true}
+  change: {push_events: false}
+  drift: true
+  driftFull: true
+  stays: deleting an integration turns it off (active false); GitLab still answers a read
+
+- kind: GroupIntegrationMicrosoftTeams
+  before:
+  - {method: POST, path: /groups, body: {name: "{{name}}-g", path: "{{name}}-g", parent_id: "{{var:group}}", visibility: private}, save: {sub: id}}
+  after:
+  - {method: DELETE, path: "/groups/{{var:sub}}", ok: [404]}
+  replaceSample: true
+  spec: {groupID: "{{var:sub}}", webhook: "https://hfl-live.example/teams/{{name}}", push_events: true}
+  change: {push_events: false}
+  drift: true
+  driftFull: true
+  stays: deleting an integration turns it off (active false); GitLab still answers a read
+
+- kind: GroupIntegrationDatadog
+  before:
+  - {method: POST, path: /groups, body: {name: "{{name}}-g", path: "{{name}}-g", parent_id: "{{var:group}}", visibility: private}, save: {sub: id}}
+  after:
+  - {method: DELETE, path: "/groups/{{var:sub}}", ok: [404]}
+  replaceSample: true
+  spec: {groupID: "{{var:sub}}", api_key: hfllivenotanapikey0000000000000000, api_url: "https://hfl-live.example", pipeline_events: true}
+  change: {pipeline_events: false}
+  drift: true
+  driftFull: true
+  stays: deleting an integration turns it off (active false); GitLab still answers a read
+
+- kind: GroupIntegrationJira
+  before:
+  - {method: POST, path: /groups, body: {name: "{{name}}-g", path: "{{name}}-g", parent_id: "{{var:group}}", visibility: private}, save: {sub: id}}
+  after:
+  - {method: DELETE, path: "/groups/{{var:sub}}", ok: [404]}
+  replaceSample: true
+  spec: {groupID: "{{var:sub}}", url: "https://jira.hfl-live.example", username: hfl-live, password: hfl-live-not-a-password, commit_events: true}
+  change: {commit_events: false}
+  drift: true
+  driftFull: true
+  stays: deleting an integration turns it off (active false); GitLab still answers a read
+
+- kind: GroupIntegrationHarbor
+  before:
+  - {method: POST, path: /groups, body: {name: "{{name}}-g", path: "{{name}}-g", parent_id: "{{var:group}}", visibility: private}, save: {sub: id}}
+  after:
+  - {method: DELETE, path: "/groups/{{var:sub}}", ok: [404]}
+  replaceSample: true
+  spec: {groupID: "{{var:sub}}", url: "https://harbor.hfl-live.example", project_name: "{{name}}", username: hfl-live, password: hfl-live-not-a-password}
+  change: {project_name: "{{name}}-2"}
+  noDrift: "Harbor has no event fields; every field it takes is read back only under properties (write-only)"
+  stays: deleting an integration turns it off (active false); GitLab still answers a read
+
+# GraphQL kinds of the free tier.
+# The run's group's dependency proxy settings; the old values are put back.
+- kind: GroupDependencyProxy
+  replaceSample: true
+  spec: {fullPath: "{{run}}", enabled: true}
+  change: {enabled: false}
+  drift: true
+
+- kind: GroupDependencyProxyImageTtlPolicy
+  replaceSample: true
+  spec: {fullPath: "{{run}}", enabled: true, ttl: 30}
+  change: {ttl: 60}
+  drift: 90
+
+# A project made for the kind (with a description and a README), marked as
+# a CI/CD catalog resource.
+- kind: ProjectCicdCatalog
+  before:
+  - {method: POST, path: /projects, body: {name: "{{name}}", path: "{{name}}", namespace_id: "{{var:group}}", visibility: private, description: hfl live test, initialize_with_readme: true}, save: {catalogProject: id}}
+  after:
+  - {method: DELETE, path: "/projects/{{var:catalogProject}}", ok: [404]}
+  replaceSample: true
+  spec: {fullPath: "{{run}}/{{name}}"}
+
+# A saved reply of the token's own user.
+- kind: UserSavedReply
+  replaceSample: true
+  spec: {name: "{{name}}", content: first}
+  change: {content: second}
+  driftFull: true                  # the update needs name and content
+
+# The avatar of a user made for the kind (1x1 PNGs).
+- kind: UserAvatar
+  before:
+  - {method: POST, path: /users, body: {name: "{{name}}-u", username: "{{name}}-u", email: "{{name}}-u@hfl-live.example", force_random_password: true, skip_confirmation: true}, save: {avatarUser: id}}
+  after:
+  - {method: DELETE, path: "/users/{{var:avatarUser}}?hard_delete=true", ok: [404]}
+  replaceSample: true
+  spec: {user_id: "{{var:avatarUser}}", avatar: {name: avatar.png, contentType: image/png, contentBase64: "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAADElEQVR4nGP4z8AAAAMBAQDJ/pLvAAAAAElFTkSuQmCC"}}
+  change: {avatar: {name: avatar.png, contentType: image/png, contentBase64: "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAADElEQVR4nGNgYPgPAAEDAQAIicLsAAAAAElFTkSuQmCC"}}
+  noDrift: the avatar is write-only (a read answers its URL, not the image)
+
+# Not run.
+- kind: AdminRole
+  skip: "GitLab Ultimate (custom admin roles); CE answers 404. KLIVE3: runs with the self-managed Ultimate trial license"
+
+- kind: MemberRole
+  skip: "GitLab Ultimate (custom roles); CE answers 404. KLIVE3: runs with the self-managed Ultimate trial license"
+
+- kind: ProjectExternalStatusCheck
+  skip: "GitLab Ultimate (external status checks); CE answers 404. KLIVE3: runs with the self-managed Ultimate trial license"
+
+- kind: GroupLevelMrApprovals
+  skip: "GitLab Premium (merge request approval settings); CE answers 404. KLIVE3: runs with the self-managed Ultimate trial license"
+
+- kind: ProjectLevelMrApprovals
+  skip: "GitLab Premium (merge request approval settings); CE answers 404. KLIVE3: runs with the self-managed Ultimate trial license"
+
+- kind: ProjectPushRules
+  skip: "GitLab Premium (push rules); CE answers 404. KLIVE3: runs with the self-managed Ultimate trial license"
+
+- kind: ProjectPullMirror
+  skip: "GitLab Premium (pull mirroring); CE answers 404. KLIVE3: runs with the self-managed Ultimate trial license"
+
+- kind: ProjectIntegrationGithub
+  skip: "GitLab Premium (GitHub status checks integration); not in CE. KLIVE3: runs with the self-managed Ultimate trial license"
+
+- kind: GroupIssueBoard
+  skip: "GitLab Premium (group issue boards through the API; the Terraform provider tests them only on EE). KLIVE3: runs with the self-managed Ultimate trial license"
+
+- kind: GroupLdapLink
+  skip: "GitLab Premium (LDAP group sync) and an LDAP server; the CE sandbox has neither. KLIVE3's Ultimate trial license would still need an LDAP server"
+
+- kind: RunnerController
+  skip: "not in GitLab CE (404 on 19.5.5; the Terraform provider tests it only on EE). KLIVE3: try with the self-managed Ultimate trial license on 19.6 or later"
+
+- kind: RunnerControllerToken
+  skip: "not in GitLab CE (404 on 19.5.5; the Terraform provider tests it only on EE). KLIVE3: try with the self-managed Ultimate trial license on 19.6 or later"
+
+- kind: ProjectContainerRepositoryProtection
+  skip: "needs the container registry, which hack/live/gitlab-sandbox.sh does not run (GitLab refuses registry rules without it)"
+
+- kind: ProjectContainerTagProtection
+  skip: "needs the container registry with its metadata database, which hack/live/gitlab-sandbox.sh does not run"
+
+- kind: ProjectCluster
+  skip: "not yet tried: certificate-based clusters are off since GitLab 15.0 (the Terraform provider tests them only before 15.0); whether the certificate_based_clusters feature flag still turns them on in 19.5 is unknown"
+
+- kind: GroupCluster
+  skip: "not yet tried: certificate-based clusters are off since GitLab 15.0 (the Terraform provider tests them only before 15.0); whether the certificate_based_clusters feature flag still turns them on in 19.5 is unknown"
+
+- kind: InstanceCluster
+  skip: "not yet tried: certificate-based clusters are off since GitLab 15.0 (the Terraform provider tests them only before 15.0); whether the certificate_based_clusters feature flag still turns them on in 19.5 is unknown"
+
+- kind: ComplianceFramework
+  skip: "GitLab Premium (compliance frameworks); CE answers that the feature is unavailable. KLIVE3: runs with the self-managed Ultimate trial license"
+
+- kind: ComplianceFrameworkFromTemplate
+  skip: "GitLab Premium (compliance frameworks); CE answers that the feature is unavailable. KLIVE3: runs with the self-managed Ultimate trial license"
+
+- kind: ComplianceRequirement
+  skip: "GitLab Ultimate (compliance requirements); CE has no compliance frameworks. KLIVE3: runs with the self-managed Ultimate trial license"
+
+- kind: ProjectComplianceFrameworks
+  skip: "GitLab Premium (compliance frameworks); CE answers that the feature is unavailable. KLIVE3: runs with the self-managed Ultimate trial license"
+
+- kind: GroupEpicBoard
+  skip: "GitLab Premium (epics and epic boards); not in CE. KLIVE3: runs with the self-managed Ultimate trial license"
+
+- kind: GroupSavedReply
+  skip: "GitLab Premium (group saved replies); not in CE. KLIVE3: runs with the self-managed Ultimate trial license"
+
+- kind: ProjectSavedReply
+  skip: "GitLab Premium (project saved replies); not in CE. KLIVE3: runs with the self-managed Ultimate trial license"
+
+- kind: GroupSecurityPolicyAttachment
+  skip: "GitLab Ultimate (security policies); not in CE. KLIVE3: runs with the self-managed Ultimate trial license"
+
+- kind: ProjectSecurityPolicyAttachment
+  skip: "GitLab Ultimate (security policies); not in CE. KLIVE3: runs with the self-managed Ultimate trial license"
+
+- kind: GroupValueStreamAnalytics
+  skip: "GitLab Premium (custom value streams); not in CE. KLIVE3: runs with the self-managed Ultimate trial license"
+
+- kind: ProjectValueStreamAnalytics
+  skip: "GitLab Premium (custom value streams); not in CE. KLIVE3: runs with the self-managed Ultimate trial license"
+
+- kind: ProjectContainerScanning
+  skip: "GitLab Ultimate (container scanning for registry); also needs the container registry, which hack/live/gitlab-sandbox.sh does not run"
+
+- kind: ProjectPackageDependencyProxy
+  skip: "GitLab Premium (dependency proxy for packages); not in CE. KLIVE3: runs with the self-managed Ultimate trial license"
+
+- kind: ProjectSecretDetectionValidityChecks
+  skip: "GitLab Ultimate (secret detection validity checks); not in CE. KLIVE3: runs with the self-managed Ultimate trial license"
+
+- kind: ProjectTargetBranchRule
+  skip: "GitLab Premium (target branch rules); not in CE. KLIVE3: runs with the self-managed Ultimate trial license"
+
+- kind: GroupProjectFileTemplate
+  skip: "GitLab Premium (group file templates); not in CE. KLIVE3: runs with the self-managed Ultimate trial license"
+
+- kind: RunnerControllerInstanceScope
+  skip: "needs a runner controller (RunnerController is skipped: not in GitLab CE, 404 on 19.5.5). KLIVE3: try with the self-managed Ultimate trial license on 19.6 or later"
+
+- kind: RunnerControllerRunnerScope
+  skip: "needs a runner controller (RunnerController is skipped: not in GitLab CE, 404 on 19.5.5). KLIVE3: try with the self-managed Ultimate trial license on 19.6 or later"
+
+- kind: UserIdentity
+  skip: "not yet tried: an identity names an OmniAuth or LDAP provider configured on the instance (provider and extern_uid); the sandbox configures none"

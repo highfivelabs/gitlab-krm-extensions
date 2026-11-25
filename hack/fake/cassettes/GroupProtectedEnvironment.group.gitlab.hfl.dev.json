@@ -1,0 +1,95 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "a": "rehearsal-a",
+    "agent": 280000008,
+    "b": "rehearsal-b",
+    "group": 280000001,
+    "mr": "rehearsal-mr",
+    "project": 280000002,
+    "schedule": 280000009,
+    "user": 280000007
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/groups/example-id/protected_environments",
+      "body": "{\"deploy_access_levels\":[],\"name\":\"production\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"deploy_access_levels\":[],\"name\":\"production\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/groups/example-id/protected_environments/production",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"deploy_access_levels\":[],\"name\":\"production\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/groups/example-id/protected_environments/production",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"deploy_access_levels\":[],\"name\":\"production\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/groups/example-id/protected_environments/production",
+      "body": "{\"deploy_access_levels\":[],\"name\":\"changed-name\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"deploy_access_levels\":[],\"name\":\"changed-name\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/groups/example-id/protected_environments/production",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"deploy_access_levels\":[],\"name\":\"changed-name\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/groups/example-id/protected_environments/production",
+      "body": "{\"name\":\"hfl-live-drift\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"deploy_access_levels\":[],\"name\":\"hfl-live-drift\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/groups/example-id/protected_environments/production",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"deploy_access_levels\":[],\"name\":\"hfl-live-drift\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/groups/example-id/protected_environments/production",
+      "body": "{\"deploy_access_levels\":[],\"name\":\"changed-name\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"deploy_access_levels\":[],\"name\":\"changed-name\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/groups/example-id/protected_environments/production",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"deploy_access_levels\":[],\"name\":\"changed-name\"}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/groups/example-id/protected_environments/production",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/groups/example-id/protected_environments/production",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

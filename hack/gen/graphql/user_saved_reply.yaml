@@ -1,0 +1,59 @@
+# The authenticated user's own comment template (saved reply): GraphQL only.
+#
+# Sources:
+#   - gitlabhq/terraform-provider-gitlab v19.5.0,
+#     internal/provider/resource_gitlab_user_saved_reply.go: the four
+#     documents below, as Terraform sends them (named here: GraphQL lets an
+#     operation be named; the fake API answers by name).
+#   - GitLab's GraphQL reference, mutations savedReplyCreate,
+#     savedReplyUpdate, savedReplyDestroy and CurrentUser.savedReply:
+#     https://docs.gitlab.com/api/graphql/reference/#mutationsavedreplycreate
+# Written 2026-11-22.
+terraform: [gitlab_user_saved_reply]
+shape: crud
+fields:
+  name:
+    type: string
+    description: The name of the saved reply.
+  content:
+    type: string
+    description: The content of the saved reply.
+required: [name, content]
+sample: {name: example-name, content: example-content}
+create:
+  query: |
+    mutation UserSavedReplyCreate($name: String!, $content: String!) {
+      savedReplyCreate(input: {name: $name, content: $content}) {
+        savedReply { id name content }
+        errors
+      }
+    }
+  variables: {name: "{name}", content: "{content}"}
+  result: savedReplyCreate/savedReply
+read:
+  query: |
+    query UserSavedReply($id: UsersSavedReplyID!) {
+      currentUser {
+        savedReply(id: $id) { id name content }
+      }
+    }
+  variables: {id: "{id}"}
+  result: currentUser/savedReply
+update:
+  query: |
+    mutation UserSavedReplyUpdate($id: UsersSavedReplyID!, $name: String!, $content: String!) {
+      savedReplyUpdate(input: {id: $id, name: $name, content: $content}) {
+        savedReply { id name content }
+        errors
+      }
+    }
+  variables: {id: "{id}", name: "{name}", content: "{content}"}
+  result: savedReplyUpdate/savedReply
+delete:
+  query: |
+    mutation UserSavedReplyDestroy($id: UsersSavedReplyID!) {
+      savedReplyDestroy(input: {id: $id}) {
+        errors
+      }
+    }
+  variables: {id: "{id}"}

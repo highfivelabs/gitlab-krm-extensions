@@ -1,0 +1,54 @@
+# A project listed as a CI/CD Catalog resource. GraphQL only.
+#
+# An upsert kind with no fields of its own: the object is the listing.
+# Making it lists the project (catalogResourcesCreate); deleting it
+# un-lists the project (catalogResourcesDestroy). Terraform's enabled: false
+# and keep_settings_on_destroy (default true: destroying leaves the project
+# listed) have no counterpart: delete the object to un-list. The read
+# answers isCatalogResource either way; false is not found.
+#
+# Sources:
+#   - gitlabhq/terraform-provider-gitlab v19.5.0,
+#     internal/provider/resource_gitlab_project_cicd_catalog.go: the query
+#     project(fullPath) { id isCatalogResource } and the mutations
+#     catalogResourcesCreate(input: {projectPath}) { errors } and
+#     catalogResourcesDestroy(input: {projectPath}) { errors }, as Terraform
+#     sends them (named here: GraphQL lets an operation be named; the fake
+#     API answers by name).
+#   - GitLab's GraphQL reference: mutations catalogResourcesCreate and
+#     catalogResourcesDestroy (projectPath ID!), Project.isCatalogResource:
+#     https://docs.gitlab.com/api/graphql/reference/#mutationcatalogresourcescreate
+# Written 2026-11-22.
+terraform: [gitlab_project_cicd_catalog]
+shape: upsert
+params:
+  fullPath:
+    description: The project's full path (namespace/project).
+sample: {fullPath: example-group/example-project}
+read:
+  query: |
+    query ProjectCatalogResource($fullPath: ID!) {
+      project(fullPath: $fullPath) {
+        id
+        isCatalogResource
+      }
+    }
+  variables: {fullPath: "{fullPath}"}
+  result: project
+  exists: isCatalogResource
+update:
+  query: |
+    mutation CatalogResourcesCreate($projectPath: ID!) {
+      catalogResourcesCreate(input: {projectPath: $projectPath}) {
+        errors
+      }
+    }
+  variables: {projectPath: "{fullPath}"}
+delete:
+  query: |
+    mutation CatalogResourcesDestroy($projectPath: ID!) {
+      catalogResourcesDestroy(input: {projectPath: $projectPath}) {
+        errors
+      }
+    }
+  variables: {projectPath: "{fullPath}"}

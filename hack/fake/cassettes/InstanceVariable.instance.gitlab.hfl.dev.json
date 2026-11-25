@@ -1,0 +1,95 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "a": "rehearsal-a",
+    "agent": 280000008,
+    "b": "rehearsal-b",
+    "group": 280000001,
+    "mr": "rehearsal-mr",
+    "project": 280000002,
+    "schedule": 280000009,
+    "user": 280000007
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/admin/ci/variables",
+      "body": "{\"key\":\"{{name_}}\",\"value\":\"a\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"environment_scope\":\"*\",\"hidden\":true,\"key\":\"{{name_}}\",\"value\":\"a\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/admin/ci/variables/{{name_}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"environment_scope\":\"*\",\"hidden\":true,\"key\":\"{{name_}}\",\"value\":\"a\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/admin/ci/variables/{{name_}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"environment_scope\":\"*\",\"hidden\":true,\"key\":\"{{name_}}\",\"value\":\"a\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/admin/ci/variables/{{name_}}",
+      "body": "{\"key\":\"{{name_}}\",\"value\":\"b\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"environment_scope\":\"*\",\"hidden\":true,\"key\":\"{{name_}}\",\"value\":\"b\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/admin/ci/variables/{{name_}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"environment_scope\":\"*\",\"hidden\":true,\"key\":\"{{name_}}\",\"value\":\"b\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/admin/ci/variables/{{name_}}",
+      "body": "{\"value\":\"drift\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"environment_scope\":\"*\",\"hidden\":true,\"key\":\"{{name_}}\",\"value\":\"drift\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/admin/ci/variables/{{name_}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"environment_scope\":\"*\",\"hidden\":true,\"key\":\"{{name_}}\",\"value\":\"drift\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/admin/ci/variables/{{name_}}",
+      "body": "{\"key\":\"{{name_}}\",\"value\":\"b\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"environment_scope\":\"*\",\"hidden\":true,\"key\":\"{{name_}}\",\"value\":\"b\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/admin/ci/variables/{{name_}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"environment_scope\":\"*\",\"hidden\":true,\"key\":\"{{name_}}\",\"value\":\"b\"}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/admin/ci/variables/{{name_}}",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/admin/ci/variables/{{name_}}",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

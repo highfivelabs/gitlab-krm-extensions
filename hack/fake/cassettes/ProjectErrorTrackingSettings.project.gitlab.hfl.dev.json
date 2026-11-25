@@ -1,0 +1,96 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "agent": 280000008,
+    "group": 280000001,
+    "project": 280000002,
+    "schedule": 280000009,
+    "user": 280000007
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/features/integrated_error_tracking",
+      "body": "{\"value\":true}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"_stub\":\"rehearsal stand-in: the fake API has no such resource\",\"id\":280000010,\"value\":true}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/projects/280000002/error_tracking/settings",
+      "body": "{\"active\":true,\"integrated\":true}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"_stub\":\"rehearsal stand-in: the fake API has no such resource\",\"active\":true,\"id\":280000011,\"integrated\":true}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/error_tracking/settings",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"api_url\":\"https://sentry.io/api/0/projects/myawesomeproject/project\",\"project_name\":\"sample sentry project\",\"sentry_external_url\":\"https://sentry.io/myawesomeproject/project\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/error_tracking/settings",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"api_url\":\"https://sentry.io/api/0/projects/myawesomeproject/project\",\"project_name\":\"sample sentry project\",\"sentry_external_url\":\"https://sentry.io/myawesomeproject/project\"}\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/projects/280000002/error_tracking/settings",
+      "body": "{\"active\":true,\"integrated\":true}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"active\":true,\"api_url\":\"https://sentry.io/api/0/projects/myawesomeproject/project\",\"integrated\":true,\"project_name\":\"sample sentry project\",\"sentry_external_url\":\"https://sentry.io/myawesomeproject/project\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/error_tracking/settings",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"active\":true,\"api_url\":\"https://sentry.io/api/0/projects/myawesomeproject/project\",\"integrated\":true,\"project_name\":\"sample sentry project\",\"sentry_external_url\":\"https://sentry.io/myawesomeproject/project\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/error_tracking/settings",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"active\":true,\"api_url\":\"https://sentry.io/api/0/projects/myawesomeproject/project\",\"integrated\":true,\"project_name\":\"sample sentry project\",\"sentry_external_url\":\"https://sentry.io/myawesomeproject/project\"}\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/projects/280000002/error_tracking/settings",
+      "body": "{\"active\":false,\"integrated\":true}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"active\":false,\"api_url\":\"https://sentry.io/api/0/projects/myawesomeproject/project\",\"integrated\":true,\"project_name\":\"sample sentry project\",\"sentry_external_url\":\"https://sentry.io/myawesomeproject/project\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/error_tracking/settings",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"active\":false,\"api_url\":\"https://sentry.io/api/0/projects/myawesomeproject/project\",\"integrated\":true,\"project_name\":\"sample sentry project\",\"sentry_external_url\":\"https://sentry.io/myawesomeproject/project\"}\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/projects/280000002/error_tracking/settings",
+      "body": "{}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"active\":false,\"api_url\":\"https://sentry.io/api/0/projects/myawesomeproject/project\",\"integrated\":true,\"project_name\":\"sample sentry project\",\"sentry_external_url\":\"https://sentry.io/myawesomeproject/project\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/features/integrated_error_tracking",
+      "body": "{\"value\":false}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"_stub\":\"rehearsal stand-in: the fake API has no such resource\",\"id\":280000012,\"value\":false}\n"
+    }
+  ]
+}

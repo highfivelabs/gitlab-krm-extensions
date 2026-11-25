@@ -1,0 +1,95 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "a": "rehearsal-a",
+    "agent": 280000008,
+    "b": "rehearsal-b",
+    "group": 280000001,
+    "mr": "rehearsal-mr",
+    "project": 280000002,
+    "schedule": 280000009,
+    "user": 280000007
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/groups/example-id/protected_branches",
+      "body": "{\"name\":\"main\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"merge_access_levels\":[],\"name\":\"main\",\"push_access_levels\":[],\"unprotect_access_levels\":[]}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/groups/example-id/protected_branches/main",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"merge_access_levels\":[],\"name\":\"main\",\"push_access_levels\":[],\"unprotect_access_levels\":[]}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/groups/example-id/protected_branches/main",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"merge_access_levels\":[],\"name\":\"main\",\"push_access_levels\":[],\"unprotect_access_levels\":[]}\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/groups/example-id/protected_branches/main",
+      "body": "{\"name\":\"changed-name\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"merge_access_levels\":[],\"name\":\"changed-name\",\"push_access_levels\":[],\"unprotect_access_levels\":[]}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/groups/example-id/protected_branches/main",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"merge_access_levels\":[],\"name\":\"changed-name\",\"push_access_levels\":[],\"unprotect_access_levels\":[]}\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/groups/example-id/protected_branches/main",
+      "body": "{\"name\":\"hfl-live-drift\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"merge_access_levels\":[],\"name\":\"hfl-live-drift\",\"push_access_levels\":[],\"unprotect_access_levels\":[]}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/groups/example-id/protected_branches/main",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"merge_access_levels\":[],\"name\":\"hfl-live-drift\",\"push_access_levels\":[],\"unprotect_access_levels\":[]}\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/groups/example-id/protected_branches/main",
+      "body": "{\"name\":\"changed-name\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"merge_access_levels\":[],\"name\":\"changed-name\",\"push_access_levels\":[],\"unprotect_access_levels\":[]}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/groups/example-id/protected_branches/main",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"merge_access_levels\":[],\"name\":\"changed-name\",\"push_access_levels\":[],\"unprotect_access_levels\":[]}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/groups/example-id/protected_branches/main",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/groups/example-id/protected_branches/main",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+terraform: [gitlab_group_project_file_template]
+shape: upsert
+params:
+  group_id:
+    type: integer
+    placeholder: id
+fields:
+  file_template_project_id:
+    type: integer
+required: [file_template_project_id]
+stays: Deleting the object clears the group's file template project; the group stays.
+sample: {group_id: 7, file_template_project_id: 8}
+read:
+  method: GET
+  path: /groups/{id}
+update:
+  method: PUT
+  path: /groups/{id}
+delete:
+  method: PUT
+  path: /groups/{id}
+  body: {file_template_project_id: null}

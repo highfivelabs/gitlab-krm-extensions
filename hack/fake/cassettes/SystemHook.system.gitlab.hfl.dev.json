@@ -1,0 +1,95 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "a": "rehearsal-a",
+    "agent": 280000008,
+    "b": "rehearsal-b",
+    "group": 280000001,
+    "mr": "rehearsal-mr",
+    "project": 280000002,
+    "schedule": 280000009,
+    "user": 280000007
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/hooks",
+      "body": "{\"merge_requests_events\":false,\"name\":\"{{name}}\",\"push_events\":false,\"repository_update_events\":false,\"tag_push_events\":false,\"url\":\"https://hfl-live.example/system-hook/{{name}}\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"alert_status\":\"executable\",\"created_at\":\"2012-05-28T04:42:42-07:00\",\"disabled_until\":\"2012-05-28T04:42:42-07:00\",\"id\":270000033,\"merge_requests_events\":false,\"name\":\"{{name}}\",\"organization_id\":1,\"push_events\":false,\"repository_update_events\":false,\"signing_token_present\":false,\"tag_push_events\":false,\"token_present\":false,\"url\":\"https://hfl-live.example/system-hook/{{name}}\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/hooks/270000033",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"alert_status\":\"executable\",\"created_at\":\"2012-05-28T04:42:42-07:00\",\"disabled_until\":\"2012-05-28T04:42:42-07:00\",\"id\":270000033,\"merge_requests_events\":false,\"name\":\"{{name}}\",\"organization_id\":1,\"push_events\":false,\"repository_update_events\":false,\"signing_token_present\":false,\"tag_push_events\":false,\"token_present\":false,\"url\":\"https://hfl-live.example/system-hook/{{name}}\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/hooks/270000033",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"alert_status\":\"executable\",\"created_at\":\"2012-05-28T04:42:42-07:00\",\"disabled_until\":\"2012-05-28T04:42:42-07:00\",\"id\":270000033,\"merge_requests_events\":false,\"name\":\"{{name}}\",\"organization_id\":1,\"push_events\":false,\"repository_update_events\":false,\"signing_token_present\":false,\"tag_push_events\":false,\"token_present\":false,\"url\":\"https://hfl-live.example/system-hook/{{name}}\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/hooks/270000033",
+      "body": "{\"merge_requests_events\":false,\"name\":\"{{name}}\",\"push_events\":false,\"repository_update_events\":false,\"tag_push_events\":false,\"url\":\"https://hfl-live.example/system-hook/{{name}}/2\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"alert_status\":\"executable\",\"created_at\":\"2012-05-28T04:42:42-07:00\",\"disabled_until\":\"2012-05-28T04:42:42-07:00\",\"id\":270000033,\"merge_requests_events\":false,\"name\":\"{{name}}\",\"organization_id\":1,\"push_events\":false,\"repository_update_events\":false,\"signing_token_present\":false,\"tag_push_events\":false,\"token_present\":false,\"url\":\"https://hfl-live.example/system-hook/{{name}}/2\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/hooks/270000033",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"alert_status\":\"executable\",\"created_at\":\"2012-05-28T04:42:42-07:00\",\"disabled_until\":\"2012-05-28T04:42:42-07:00\",\"id\":270000033,\"merge_requests_events\":false,\"name\":\"{{name}}\",\"organization_id\":1,\"push_events\":false,\"repository_update_events\":false,\"signing_token_present\":false,\"tag_push_events\":false,\"token_present\":false,\"url\":\"https://hfl-live.example/system-hook/{{name}}/2\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/hooks/270000033",
+      "body": "{\"url\":\"https://hfl-live.example/system-hook/drift\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"alert_status\":\"executable\",\"created_at\":\"2012-05-28T04:42:42-07:00\",\"disabled_until\":\"2012-05-28T04:42:42-07:00\",\"id\":270000033,\"merge_requests_events\":false,\"name\":\"{{name}}\",\"organization_id\":1,\"push_events\":false,\"repository_update_events\":false,\"signing_token_present\":false,\"tag_push_events\":false,\"token_present\":false,\"url\":\"https://hfl-live.example/system-hook/drift\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/hooks/270000033",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"alert_status\":\"executable\",\"created_at\":\"2012-05-28T04:42:42-07:00\",\"disabled_until\":\"2012-05-28T04:42:42-07:00\",\"id\":270000033,\"merge_requests_events\":false,\"name\":\"{{name}}\",\"organization_id\":1,\"push_events\":false,\"repository_update_events\":false,\"signing_token_present\":false,\"tag_push_events\":false,\"token_present\":false,\"url\":\"https://hfl-live.example/system-hook/drift\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/hooks/270000033",
+      "body": "{\"merge_requests_events\":false,\"name\":\"{{name}}\",\"push_events\":false,\"repository_update_events\":false,\"tag_push_events\":false,\"url\":\"https://hfl-live.example/system-hook/{{name}}/2\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"alert_status\":\"executable\",\"created_at\":\"2012-05-28T04:42:42-07:00\",\"disabled_until\":\"2012-05-28T04:42:42-07:00\",\"id\":270000033,\"merge_requests_events\":false,\"name\":\"{{name}}\",\"organization_id\":1,\"push_events\":false,\"repository_update_events\":false,\"signing_token_present\":false,\"tag_push_events\":false,\"token_present\":false,\"url\":\"https://hfl-live.example/system-hook/{{name}}/2\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/hooks/270000033",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"alert_status\":\"executable\",\"created_at\":\"2012-05-28T04:42:42-07:00\",\"disabled_until\":\"2012-05-28T04:42:42-07:00\",\"id\":270000033,\"merge_requests_events\":false,\"name\":\"{{name}}\",\"organization_id\":1,\"push_events\":false,\"repository_update_events\":false,\"signing_token_present\":false,\"tag_push_events\":false,\"token_present\":false,\"url\":\"https://hfl-live.example/system-hook/{{name}}/2\"}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/hooks/270000033",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/hooks/270000033",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

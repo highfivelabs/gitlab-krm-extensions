@@ -1,0 +1,85 @@
+# A requirement of a compliance framework: its name and description.
+# GraphQL only. GitLab Ultimate. The framework's requirements are read in
+# the namespace's framework (its complianceRequirements), where the
+# requirement is found by its global ID.
+#
+# Not covered: Terraform's controls and external_controls. They are
+# written as one list beside the requirement (an internal control's
+# expression a JSON string), read back as a connection of controls with
+# IDs of their own, and an external control's secret token is never read
+# back; a requirement made here has none.
+#
+# Sources:
+#   - gitlabhq/terraform-provider-gitlab v19.5.0,
+#     internal/provider/resource_gitlab_compliance_requirement.go: the
+#     mutations createComplianceRequirement(input:
+#     {complianceFrameworkId, controls, params: {name, description}}) {
+#     requirement { id name description ... } errors },
+#     updateComplianceRequirement(input: {id, controls, params}) and
+#     destroyComplianceRequirement(input: {id}) { errors }, and the query
+#     namespace(fullPath) { complianceFrameworks(id) { nodes {
+#     complianceRequirements { nodes { id name description ... } } } } }.
+#   - GitLab's GraphQL reference: Mutation.createComplianceRequirement
+#     (complianceFrameworkId ComplianceManagementFrameworkID!, controls
+#     [ComplianceRequirementsControlInput!], params
+#     ComplianceRequirementInput!), Mutation.updateComplianceRequirement,
+#     Mutation.destroyComplianceRequirement:
+#     https://docs.gitlab.com/api/graphql/reference/#mutationcreatecompliancerequirement
+# Written 2026-11-22.
+terraform: [gitlab_compliance_requirement]
+shape: crud
+params:
+  namespacePath:
+    description: Full path of the namespace (the top-level group) the framework is in (Terraform's namespace_path).
+  frameworkId:
+    description: "The framework's global ID (gid://gitlab/ComplianceManagement::Framework/<id>; Terraform's framework_id)."
+fields:
+  name:
+    type: string
+    description: Name of the compliance requirement.
+  description:
+    type: string
+    description: Description of the compliance requirement.
+required: [name, description]
+sample: {namespacePath: example-group, frameworkId: "gid://gitlab/ComplianceManagement::Framework/1", name: Example requirement, description: Example description}
+create:
+  query: |
+    mutation CreateComplianceRequirement($input: CreateComplianceRequirementInput!) {
+      createComplianceRequirement(input: $input) {
+        requirement { id name description }
+        errors
+      }
+    }
+  variables:
+    input: {complianceFrameworkId: "{frameworkId}", params: {name: "{name}", description: "{description}"}}
+  result: createComplianceRequirement/requirement
+read:
+  query: |
+    query ComplianceRequirements($fullPath: ID!, $id: ComplianceManagementFrameworkID!) {
+      namespace(fullPath: $fullPath) {
+        complianceFrameworks(id: $id) { nodes { complianceRequirements { nodes { id name description } } } }
+      }
+    }
+  variables: {fullPath: "{namespacePath}", id: "{frameworkId}"}
+  result: namespace/complianceFrameworks/nodes/0/complianceRequirements/nodes
+  find: {field: id}
+update:
+  query: |
+    mutation UpdateComplianceRequirement($input: UpdateComplianceRequirementInput!) {
+      updateComplianceRequirement(input: $input) {
+        requirement { id name description }
+        errors
+      }
+    }
+  variables:
+    input: {id: "{id}", params: {name: "{name}", description: "{description}"}}
+  result: updateComplianceRequirement/requirement
+delete:
+  query: |
+    mutation DestroyComplianceRequirement($input: DestroyComplianceRequirementInput!) {
+      destroyComplianceRequirement(input: $input) {
+        errors
+      }
+    }
+  variables:
+    input: {id: "{id}"}

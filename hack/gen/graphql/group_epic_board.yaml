@@ -1,0 +1,80 @@
+# An epic board of a group. GitLab Premium or Ultimate. Made, changed and
+# destroyed over GraphQL (epicBoardCreate, epicBoardUpdate,
+# destroyEpicBoard: there are no REST writes), read over REST (GET
+# /groups/{id}/epic_boards/{board_id}), as Terraform reads it: a kind of
+# both APIs. The REST read names the board by its number, the GraphQL
+# writes by its global ID, gid://gitlab/Boards::EpicBoard/<number>: the
+# ID is the number inside the global ID the create answers.
+#
+# Terraform's lists (one per label, each made with epicBoardListCreate
+# after the board, and replacing the board when they change) are not
+# covered: they are made one call per list, after the create.
+#
+# Sources:
+#   - gitlabhq/terraform-provider-gitlab v19.5.0,
+#     internal/provider/resource_gitlab_group_epic_board.go:
+#     epicBoardCreate(input: {groupPath, name}) { epicBoard { id ... } },
+#     the board's number from the end of its global ID,
+#     GroupEpicBoards.GetGroupEpicBoard (GET
+#     /groups/:id/epic_boards/:board_id), epicBoardUpdate(input: {id:
+#     "gid://gitlab/Boards::EpicBoard/<n>", name, ...}) and
+#     destroyEpicBoard(input: {id}).
+#   - GitLab's GraphQL reference at the commit specs/gitlab.yaml is pinned
+#     to (doc/api/graphql/reference/mutations.md), mutations
+#     epicBoardCreate (groupPath, name, hideBacklogList, hideClosedList,
+#     ...), epicBoardUpdate (id: BoardsEpicBoardID!, the same fields) and
+#     destroyEpicBoard (id), each answering epicBoard and errors:
+#     https://docs.gitlab.com/api/graphql/reference/#mutationepicboardcreate
+#   - GitLab's REST reference, doc/api/group_epic_boards.md at the same
+#     commit: GET /groups/:id/epic_boards/:board_id answers id, name,
+#     hide_backlog_list, hide_closed_list, group, labels, lists.
+# Written 2026-11-22.
+terraform: [gitlab_group_epic_board]
+shape: crud
+params:
+  groupPath:
+    description: The group's full path (Terraform's group, as a path), which the create names it by and the read finds it at.
+fields:
+  name:
+    type: string
+    description: The name of the board.
+  hide_backlog_list:
+    type: boolean
+    description: Whether the backlog list is hidden.
+  hide_closed_list:
+    type: boolean
+    description: Whether the closed list is hidden.
+required: [name]
+id: {from: id, match: "gid://gitlab/Boards::EpicBoard/{id}"}
+sample: {groupPath: example-group, name: example-name, hide_backlog_list: false, hide_closed_list: false}
+create:
+  query: |
+    mutation EpicBoardCreate($groupPath: ID!, $name: String, $hideBacklogList: Boolean, $hideClosedList: Boolean) {
+      epicBoardCreate(input: {groupPath: $groupPath, name: $name, hideBacklogList: $hideBacklogList, hideClosedList: $hideClosedList}) {
+        epicBoard { id name hideBacklogList hideClosedList }
+        errors
+      }
+    }
+  variables: {groupPath: "{groupPath}", name: "{name}", hideBacklogList: "{hide_backlog_list}", hideClosedList: "{hide_closed_list}"}
+  result: epicBoardCreate/epicBoard
+read:
+  method: GET
+  path: /groups/{groupPath}/epic_boards/{id}
+update:
+  query: |
+    mutation EpicBoardUpdate($id: BoardsEpicBoardID!, $name: String, $hideBacklogList: Boolean, $hideClosedList: Boolean) {
+      epicBoardUpdate(input: {id: $id, name: $name, hideBacklogList: $hideBacklogList, hideClosedList: $hideClosedList}) {
+        epicBoard { id name hideBacklogList hideClosedList }
+        errors
+      }
+    }
+  variables: {id: "gid://gitlab/Boards::EpicBoard/{id}", name: "{name}", hideBacklogList: "{hide_backlog_list}", hideClosedList: "{hide_closed_list}"}
+  result: epicBoardUpdate/epicBoard
+delete:
+  query: |
+    mutation DestroyEpicBoard($id: BoardsEpicBoardID!) {
+      destroyEpicBoard(input: {id: $id}) {
+        errors
+      }
+    }
+  variables: {id: "gid://gitlab/Boards::EpicBoard/{id}"}

@@ -1,0 +1,58 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "a": "rehearsal-a",
+    "agent": 280000008,
+    "avatarUser": 280000038,
+    "b": "rehearsal-b",
+    "catalogProject": 280000037,
+    "g": 280000030,
+    "group": 280000001,
+    "key": 280000026,
+    "mr": "rehearsal-mr",
+    "project": 280000002,
+    "runner": 280000028,
+    "sa": 280000031,
+    "schedule": 280000009,
+    "src": 280000027,
+    "sub": 280000036,
+    "user": 280000020
+  },
+  "interactions": [
+    {
+      "method": "GET",
+      "path": "/projects/example-id/integrations/github",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/projects/example-id/integrations/github",
+      "body": "{\"repository_url\":\"example-repository-url\",\"token\":\"{{redacted}}\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"active\":true,\"alert_events\":true,\"comment_on_event_enabled\":true,\"commit_events\":true,\"confidential_issues_events\":true,\"confidential_note_events\":true,\"created_at\":\"2019-11-20T11:20:25.297Z\",\"deployment_events\":true,\"incident_events\":true,\"inherited\":true,\"issues_events\":true,\"job_events\":true,\"merge_requests_events\":true,\"note_events\":true,\"properties\":{},\"push_events\":true,\"slug\":\"jenkins\",\"tag_push_events\":true,\"title\":\"Jenkins CI\",\"updated_at\":\"2019-11-20T12:24:37.498Z\",\"vulnerability_events\":true,\"wiki_page_events\":true}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/example-id/integrations/github",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"active\":true,\"alert_events\":true,\"comment_on_event_enabled\":true,\"commit_events\":true,\"confidential_issues_events\":true,\"confidential_note_events\":true,\"created_at\":\"2019-11-20T11:20:25.297Z\",\"deployment_events\":true,\"incident_events\":true,\"inherited\":true,\"issues_events\":true,\"job_events\":true,\"merge_requests_events\":true,\"note_events\":true,\"properties\":{},\"push_events\":true,\"slug\":\"jenkins\",\"tag_push_events\":true,\"title\":\"Jenkins CI\",\"updated_at\":\"2019-11-20T12:24:37.498Z\",\"vulnerability_events\":true,\"wiki_page_events\":true}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/projects/example-id/integrations/github",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/projects/example-id/integrations/github",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

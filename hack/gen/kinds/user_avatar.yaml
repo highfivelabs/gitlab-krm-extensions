@@ -1,0 +1,28 @@
+terraform: [gitlab_user_avatar]
+shape: settings
+params:
+  user_id:
+    type: integer
+    placeholder: id
+    description: The ID of the user.
+fields:
+  avatar:
+    type: object
+    properties:
+      name: {type: string}
+      content: {type: string, description: UTF-8 file content.}
+      contentBase64: {type: string}
+      contentType: {type: string}
+required: [avatar]
+writeOnly: [avatar]
+multipart: [avatar]
+serverFields: {avatar_url: "https://gitlab.example.com/uploads/-/system/user/avatar/7/avatar.png"}
+sample:
+  user_id: 7
+  avatar: {name: avatar.png, contentType: image/png, contentBase64: iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==}
+read:
+  method: GET
+  path: /users/{id}
+update:
+  method: PUT
+  path: /users/{id}

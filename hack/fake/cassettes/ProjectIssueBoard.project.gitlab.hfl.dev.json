@@ -1,0 +1,95 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "a": "rehearsal-a",
+    "agent": 280000008,
+    "b": "rehearsal-b",
+    "group": 280000001,
+    "mr": "rehearsal-mr",
+    "project": 280000002,
+    "schedule": 280000009,
+    "user": 280000020
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/projects/280000002/boards",
+      "body": "{\"name\":\"{{name}}\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"assignee\":{},\"group\":{},\"hide_backlog_list\":false,\"hide_closed_list\":false,\"id\":270000039,\"labels\":[],\"lists\":[],\"milestone\":{},\"name\":\"{{name}}\",\"project\":{},\"weight\":0}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/boards/270000039",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"assignee\":{},\"group\":{},\"hide_backlog_list\":false,\"hide_closed_list\":false,\"id\":270000039,\"labels\":[],\"lists\":[],\"milestone\":{},\"name\":\"{{name}}\",\"project\":{},\"weight\":0}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/boards/270000039",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"assignee\":{},\"group\":{},\"hide_backlog_list\":false,\"hide_closed_list\":false,\"id\":270000039,\"labels\":[],\"lists\":[],\"milestone\":{},\"name\":\"{{name}}\",\"project\":{},\"weight\":0}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/projects/280000002/boards/270000039",
+      "body": "{\"name\":\"{{name}}-2\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"assignee\":{},\"group\":{},\"hide_backlog_list\":false,\"hide_closed_list\":false,\"id\":270000039,\"labels\":[],\"lists\":[],\"milestone\":{},\"name\":\"{{name}}-2\",\"project\":{},\"weight\":0}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/boards/270000039",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"assignee\":{},\"group\":{},\"hide_backlog_list\":false,\"hide_closed_list\":false,\"id\":270000039,\"labels\":[],\"lists\":[],\"milestone\":{},\"name\":\"{{name}}-2\",\"project\":{},\"weight\":0}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/projects/280000002/boards/270000039",
+      "body": "{\"name\":\"{{name}}-drift\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"assignee\":{},\"group\":{},\"hide_backlog_list\":false,\"hide_closed_list\":false,\"id\":270000039,\"labels\":[],\"lists\":[],\"milestone\":{},\"name\":\"{{name}}-drift\",\"project\":{},\"weight\":0}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/boards/270000039",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"assignee\":{},\"group\":{},\"hide_backlog_list\":false,\"hide_closed_list\":false,\"id\":270000039,\"labels\":[],\"lists\":[],\"milestone\":{},\"name\":\"{{name}}-drift\",\"project\":{},\"weight\":0}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/projects/280000002/boards/270000039",
+      "body": "{\"name\":\"{{name}}-2\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"assignee\":{},\"group\":{},\"hide_backlog_list\":false,\"hide_closed_list\":false,\"id\":270000039,\"labels\":[],\"lists\":[],\"milestone\":{},\"name\":\"{{name}}-2\",\"project\":{},\"weight\":0}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/boards/270000039",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"assignee\":{},\"group\":{},\"hide_backlog_list\":false,\"hide_closed_list\":false,\"id\":270000039,\"labels\":[],\"lists\":[],\"milestone\":{},\"name\":\"{{name}}-2\",\"project\":{},\"weight\":0}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/projects/280000002/boards/270000039",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/boards/270000039",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "a": "rehearsal-a",
+    "agent": 280000008,
+    "avatarUser": 280000038,
+    "b": "rehearsal-b",
+    "catalogProject": 280000037,
+    "g": 280000030,
+    "group": 280000001,
+    "key": 280000026,
+    "mr": "rehearsal-mr",
+    "project": 280000002,
+    "runner": 280000028,
+    "sa": 280000031,
+    "schedule": 280000009,
+    "src": 280000027,
+    "sub": 280000036,
+    "user": 280000020
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"ProjectDependencyProxyPackagesSetting\",\"query\":\"query ProjectDependencyProxyPackagesSetting($fullPath: ID!) { project(fullPath: $fullPath) { dependencyProxyPackagesSetting { enabled mavenExternalRegistryUrl mavenExternalRegistryUsername } } }\",\"variables\":{\"fullPath\":\"example-group/example-project\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"project\":{\"dependencyProxyPackagesSetting\":{}}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"ProjectDependencyProxyPackagesSetting\",\"query\":\"query ProjectDependencyProxyPackagesSetting($fullPath: ID!) { project(fullPath: $fullPath) { dependencyProxyPackagesSetting { enabled mavenExternalRegistryUrl mavenExternalRegistryUsername } } }\",\"variables\":{\"fullPath\":\"example-group/example-project\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"project\":{\"dependencyProxyPackagesSetting\":{}}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"UpdateDependencyProxyPackagesSettings\",\"query\":\"mutation UpdateDependencyProxyPackagesSettings($input: UpdateDependencyProxyPackagesSettingsInput!) { updateDependencyProxyPackagesSettings(input: $input) { errors dependencyProxyPackagesSetting { enabled mavenExternalRegistryUrl mavenExternalRegistryUsername } } }\",\"variables\":{\"input\":{\"enabled\":true,\"mavenExternalRegistryUrl\":\"https://maven.example.com/repository\",\"projectPath\":\"example-group/example-project\"}}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"updateDependencyProxyPackagesSettings\":{\"dependencyProxyPackagesSetting\":{\"enabled\":true,\"mavenExternalRegistryUrl\":\"https://maven.example.com/repository\"},\"errors\":[]}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"ProjectDependencyProxyPackagesSetting\",\"query\":\"query ProjectDependencyProxyPackagesSetting($fullPath: ID!) { project(fullPath: $fullPath) { dependencyProxyPackagesSetting { enabled mavenExternalRegistryUrl mavenExternalRegistryUsername } } }\",\"variables\":{\"fullPath\":\"example-group/example-project\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"project\":{\"dependencyProxyPackagesSetting\":{\"enabled\":true,\"mavenExternalRegistryUrl\":\"https://maven.example.com/repository\"}}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"ProjectDependencyProxyPackagesSetting\",\"query\":\"query ProjectDependencyProxyPackagesSetting($fullPath: ID!) { project(fullPath: $fullPath) { dependencyProxyPackagesSetting { enabled mavenExternalRegistryUrl mavenExternalRegistryUsername } } }\",\"variables\":{\"fullPath\":\"example-group/example-project\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"project\":{\"dependencyProxyPackagesSetting\":{\"enabled\":true,\"mavenExternalRegistryUrl\":\"https://maven.example.com/repository\"}}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"UpdateDependencyProxyPackagesSettings\",\"query\":\"mutation UpdateDependencyProxyPackagesSettings($input: UpdateDependencyProxyPackagesSettingsInput!) { updateDependencyProxyPackagesSettings(input: $input) { errors dependencyProxyPackagesSetting { enabled mavenExternalRegistryUrl mavenExternalRegistryUsername } } }\",\"variables\":{\"input\":{\"enabled\":true,\"mavenExternalRegistryUrl\":\"changed-mavenExternalRegistryUrl\",\"projectPath\":\"example-group/example-project\"}}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"updateDependencyProxyPackagesSettings\":{\"dependencyProxyPackagesSetting\":{\"enabled\":true,\"mavenExternalRegistryUrl\":\"changed-mavenExternalRegistryUrl\"},\"errors\":[]}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"ProjectDependencyProxyPackagesSetting\",\"query\":\"query ProjectDependencyProxyPackagesSetting($fullPath: ID!) { project(fullPath: $fullPath) { dependencyProxyPackagesSetting { enabled mavenExternalRegistryUrl mavenExternalRegistryUsername } } }\",\"variables\":{\"fullPath\":\"example-group/example-project\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"project\":{\"dependencyProxyPackagesSetting\":{\"enabled\":true,\"mavenExternalRegistryUrl\":\"changed-mavenExternalRegistryUrl\"}}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"UpdateDependencyProxyPackagesSettings\",\"query\":\"mutation UpdateDependencyProxyPackagesSettings($input: UpdateDependencyProxyPackagesSettingsInput!) { updateDependencyProxyPackagesSettings(input: $input) { errors dependencyProxyPackagesSetting { enabled mavenExternalRegistryUrl mavenExternalRegistryUsername } } }\",\"variables\":{\"input\":{\"mavenExternalRegistryUrl\":\"hfl-live-drift\",\"projectPath\":\"example-group/example-project\"}}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"updateDependencyProxyPackagesSettings\":{\"dependencyProxyPackagesSetting\":{\"enabled\":true,\"mavenExternalRegistryUrl\":\"hfl-live-drift\"},\"errors\":[]}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"ProjectDependencyProxyPackagesSetting\",\"query\":\"query ProjectDependencyProxyPackagesSetting($fullPath: ID!) { project(fullPath: $fullPath) { dependencyProxyPackagesSetting { enabled mavenExternalRegistryUrl mavenExternalRegistryUsername } } }\",\"variables\":{\"fullPath\":\"example-group/example-project\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"project\":{\"dependencyProxyPackagesSetting\":{\"enabled\":true,\"mavenExternalRegistryUrl\":\"hfl-live-drift\"}}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"UpdateDependencyProxyPackagesSettings\",\"query\":\"mutation UpdateDependencyProxyPackagesSettings($input: UpdateDependencyProxyPackagesSettingsInput!) { updateDependencyProxyPackagesSettings(input: $input) { errors dependencyProxyPackagesSetting { enabled mavenExternalRegistryUrl mavenExternalRegistryUsername } } }\",\"variables\":{\"input\":{\"enabled\":true,\"mavenExternalRegistryUrl\":\"changed-mavenExternalRegistryUrl\",\"projectPath\":\"example-group/example-project\"}}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"updateDependencyProxyPackagesSettings\":{\"dependencyProxyPackagesSetting\":{\"enabled\":true,\"mavenExternalRegistryUrl\":\"changed-mavenExternalRegistryUrl\"},\"errors\":[]}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"ProjectDependencyProxyPackagesSetting\",\"query\":\"query ProjectDependencyProxyPackagesSetting($fullPath: ID!) { project(fullPath: $fullPath) { dependencyProxyPackagesSetting { enabled mavenExternalRegistryUrl mavenExternalRegistryUsername } } }\",\"variables\":{\"fullPath\":\"example-group/example-project\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"project\":{\"dependencyProxyPackagesSetting\":{\"enabled\":true,\"mavenExternalRegistryUrl\":\"changed-mavenExternalRegistryUrl\"}}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"UpdateDependencyProxyPackagesSettings\",\"query\":\"mutation UpdateDependencyProxyPackagesSettings($input: UpdateDependencyProxyPackagesSettingsInput!) { updateDependencyProxyPackagesSettings(input: $input) { errors dependencyProxyPackagesSetting { enabled mavenExternalRegistryUrl mavenExternalRegistryUsername } } }\",\"variables\":{\"input\":{\"projectPath\":\"example-group/example-project\"}}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"updateDependencyProxyPackagesSettings\":{\"dependencyProxyPackagesSetting\":{\"enabled\":true,\"mavenExternalRegistryUrl\":\"changed-mavenExternalRegistryUrl\"},\"errors\":[]}}}\n"
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "a": "rehearsal-a",
+    "agent": 280000008,
+    "b": "rehearsal-b",
+    "group": 280000001,
+    "mr": "rehearsal-mr",
+    "project": 280000002,
+    "schedule": 280000009,
+    "user": 280000020
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/user/runners",
+      "body": "{\"description\":\"{{name}}\",\"project_id\":280000002,\"runner_type\":\"project_type\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"active\":true,\"architecture\":\"example-architecture\",\"contacted_at\":\"example-contacted-at\",\"created_at\":\"2025-05-03T00:00:00.000Z\",\"created_by\":{},\"description\":\"{{name}}\",\"groups\":[],\"id\":270000038,\"ip_address\":\"127.0.0.1\",\"is_shared\":true,\"job_execution_status\":\"idle\",\"name\":\"test\",\"online\":true,\"platform\":\"example-platform\",\"projects\":[],\"revision\":\"example-revision\",\"runner_type\":\"project_type\",\"status\":\"online\",\"uuid\":\"01966aa0-f383-7a6b-b694-cd4f2f96cca1\",\"version\":\"example-version\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/runners/270000038",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"active\":true,\"architecture\":\"example-architecture\",\"contacted_at\":\"example-contacted-at\",\"created_at\":\"2025-05-03T00:00:00.000Z\",\"created_by\":{},\"description\":\"{{name}}\",\"groups\":[],\"id\":270000038,\"ip_address\":\"127.0.0.1\",\"is_shared\":true,\"job_execution_status\":\"idle\",\"name\":\"test\",\"online\":true,\"platform\":\"example-platform\",\"projects\":[],\"revision\":\"example-revision\",\"runner_type\":\"project_type\",\"status\":\"online\",\"uuid\":\"01966aa0-f383-7a6b-b694-cd4f2f96cca1\",\"version\":\"example-version\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/runners/270000038",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"active\":true,\"architecture\":\"example-architecture\",\"contacted_at\":\"example-contacted-at\",\"created_at\":\"2025-05-03T00:00:00.000Z\",\"created_by\":{},\"description\":\"{{name}}\",\"groups\":[],\"id\":270000038,\"ip_address\":\"127.0.0.1\",\"is_shared\":true,\"job_execution_status\":\"idle\",\"name\":\"test\",\"online\":true,\"platform\":\"example-platform\",\"projects\":[],\"revision\":\"example-revision\",\"runner_type\":\"project_type\",\"status\":\"online\",\"uuid\":\"01966aa0-f383-7a6b-b694-cd4f2f96cca1\",\"version\":\"example-version\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/runners/270000038",
+      "body": "{\"description\":\"{{name}}-2\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"active\":true,\"architecture\":\"example-architecture\",\"contacted_at\":\"example-contacted-at\",\"created_at\":\"2025-05-03T00:00:00.000Z\",\"created_by\":{},\"description\":\"{{name}}-2\",\"groups\":[],\"id\":270000038,\"ip_address\":\"127.0.0.1\",\"is_shared\":true,\"job_execution_status\":\"idle\",\"name\":\"test\",\"online\":true,\"platform\":\"example-platform\",\"projects\":[],\"revision\":\"example-revision\",\"runner_type\":\"project_type\",\"status\":\"online\",\"uuid\":\"01966aa0-f383-7a6b-b694-cd4f2f96cca1\",\"version\":\"example-version\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/runners/270000038",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"active\":true,\"architecture\":\"example-architecture\",\"contacted_at\":\"example-contacted-at\",\"created_at\":\"2025-05-03T00:00:00.000Z\",\"created_by\":{},\"description\":\"{{name}}-2\",\"groups\":[],\"id\":270000038,\"ip_address\":\"127.0.0.1\",\"is_shared\":true,\"job_execution_status\":\"idle\",\"name\":\"test\",\"online\":true,\"platform\":\"example-platform\",\"projects\":[],\"revision\":\"example-revision\",\"runner_type\":\"project_type\",\"status\":\"online\",\"uuid\":\"01966aa0-f383-7a6b-b694-cd4f2f96cca1\",\"version\":\"example-version\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/runners/270000038",
+      "body": "{\"description\":\"{{name}}-drift\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"active\":true,\"architecture\":\"example-architecture\",\"contacted_at\":\"example-contacted-at\",\"created_at\":\"2025-05-03T00:00:00.000Z\",\"created_by\":{},\"description\":\"{{name}}-drift\",\"groups\":[],\"id\":270000038,\"ip_address\":\"127.0.0.1\",\"is_shared\":true,\"job_execution_status\":\"idle\",\"name\":\"test\",\"online\":true,\"platform\":\"example-platform\",\"projects\":[],\"revision\":\"example-revision\",\"runner_type\":\"project_type\",\"status\":\"online\",\"uuid\":\"01966aa0-f383-7a6b-b694-cd4f2f96cca1\",\"version\":\"example-version\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/runners/270000038",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"active\":true,\"architecture\":\"example-architecture\",\"contacted_at\":\"example-contacted-at\",\"created_at\":\"2025-05-03T00:00:00.000Z\",\"created_by\":{},\"description\":\"{{name}}-drift\",\"groups\":[],\"id\":270000038,\"ip_address\":\"127.0.0.1\",\"is_shared\":true,\"job_execution_status\":\"idle\",\"name\":\"test\",\"online\":true,\"platform\":\"example-platform\",\"projects\":[],\"revision\":\"example-revision\",\"runner_type\":\"project_type\",\"status\":\"online\",\"uuid\":\"01966aa0-f383-7a6b-b694-cd4f2f96cca1\",\"version\":\"example-version\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/runners/270000038",
+      "body": "{\"description\":\"{{name}}-2\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"active\":true,\"architecture\":\"example-architecture\",\"contacted_at\":\"example-contacted-at\",\"created_at\":\"2025-05-03T00:00:00.000Z\",\"created_by\":{},\"description\":\"{{name}}-2\",\"groups\":[],\"id\":270000038,\"ip_address\":\"127.0.0.1\",\"is_shared\":true,\"job_execution_status\":\"idle\",\"name\":\"test\",\"online\":true,\"platform\":\"example-platform\",\"projects\":[],\"revision\":\"example-revision\",\"runner_type\":\"project_type\",\"status\":\"online\",\"uuid\":\"01966aa0-f383-7a6b-b694-cd4f2f96cca1\",\"version\":\"example-version\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/runners/270000038",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"active\":true,\"architecture\":\"example-architecture\",\"contacted_at\":\"example-contacted-at\",\"created_at\":\"2025-05-03T00:00:00.000Z\",\"created_by\":{},\"description\":\"{{name}}-2\",\"groups\":[],\"id\":270000038,\"ip_address\":\"127.0.0.1\",\"is_shared\":true,\"job_execution_status\":\"idle\",\"name\":\"test\",\"online\":true,\"platform\":\"example-platform\",\"projects\":[],\"revision\":\"example-revision\",\"runner_type\":\"project_type\",\"status\":\"online\",\"uuid\":\"01966aa0-f383-7a6b-b694-cd4f2f96cca1\",\"version\":\"example-version\"}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/runners/270000038",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/runners/270000038",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

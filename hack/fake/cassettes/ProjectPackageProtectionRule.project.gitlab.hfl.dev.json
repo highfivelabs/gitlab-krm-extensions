@@ -1,0 +1,95 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "a": "rehearsal-a",
+    "agent": 280000008,
+    "b": "rehearsal-b",
+    "group": 280000001,
+    "mr": "rehearsal-mr",
+    "project": 280000002,
+    "schedule": 280000009,
+    "user": 280000020
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/projects/280000002/packages/protection/rules",
+      "body": "{\"minimum_access_level_for_push\":\"maintainer\",\"package_name_pattern\":\"@hfl-live/{{name}}-*\",\"package_type\":\"npm\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"id\":270000041,\"minimum_access_level_for_push\":\"maintainer\",\"package_name_pattern\":\"@hfl-live/{{name}}-*\",\"package_type\":\"npm\",\"project_id\":1}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/packages/protection/rules?per_page=100",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "[{\"id\":270000041,\"minimum_access_level_for_push\":\"maintainer\",\"package_name_pattern\":\"@hfl-live/{{name}}-*\",\"package_type\":\"npm\"}]\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/packages/protection/rules?per_page=100",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "[{\"id\":270000041,\"minimum_access_level_for_push\":\"maintainer\",\"package_name_pattern\":\"@hfl-live/{{name}}-*\",\"package_type\":\"npm\"}]\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/projects/280000002/packages/protection/rules/270000041",
+      "body": "{\"minimum_access_level_for_push\":\"owner\",\"package_name_pattern\":\"@hfl-live/{{name}}-*\",\"package_type\":\"npm\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"id\":270000041,\"minimum_access_level_for_push\":\"owner\",\"package_name_pattern\":\"@hfl-live/{{name}}-*\",\"package_type\":\"npm\",\"project_id\":1}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/packages/protection/rules?per_page=100",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "[{\"id\":270000041,\"minimum_access_level_for_push\":\"owner\",\"package_name_pattern\":\"@hfl-live/{{name}}-*\",\"package_type\":\"npm\"}]\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/projects/280000002/packages/protection/rules/270000041",
+      "body": "{\"minimum_access_level_for_push\":\"admin\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"id\":270000041,\"minimum_access_level_for_push\":\"admin\",\"package_name_pattern\":\"@hfl-live/{{name}}-*\",\"package_type\":\"npm\",\"project_id\":1}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/packages/protection/rules?per_page=100",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "[{\"id\":270000041,\"minimum_access_level_for_push\":\"admin\",\"package_name_pattern\":\"@hfl-live/{{name}}-*\",\"package_type\":\"npm\"}]\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/projects/280000002/packages/protection/rules/270000041",
+      "body": "{\"minimum_access_level_for_push\":\"owner\",\"package_name_pattern\":\"@hfl-live/{{name}}-*\",\"package_type\":\"npm\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"id\":270000041,\"minimum_access_level_for_push\":\"owner\",\"package_name_pattern\":\"@hfl-live/{{name}}-*\",\"package_type\":\"npm\",\"project_id\":1}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/packages/protection/rules?per_page=100",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "[{\"id\":270000041,\"minimum_access_level_for_push\":\"owner\",\"package_name_pattern\":\"@hfl-live/{{name}}-*\",\"package_type\":\"npm\"}]\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/projects/280000002/packages/protection/rules/270000041",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/packages/protection/rules?per_page=100",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "[]\n"
+    }
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "group": 280000001,
+    "project": 280000002,
+    "user": 280000004
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/users",
+      "body": "{\"email\":\"{{name}}-u@hfl-live.example\",\"force_random_password\":true,\"name\":\"{{name}}-u\",\"skip_confirmation\":true,\"username\":\"{{name}}-u\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"_stub\":\"rehearsal stand-in: the fake API has no such resource\",\"email\":\"{{name}}-u@hfl-live.example\",\"force_random_password\":true,\"id\":280000004,\"name\":\"{{name}}-u\",\"skip_confirmation\":true,\"username\":\"{{name}}-u\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/groups/280000001/members",
+      "body": "{\"access_level\":30,\"user_id\":280000004}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"access_level\":30,\"avatar_path\":\"/user/avatar/28/The-Big-Lebowski-400-400.png\",\"avatar_url\":\"https://gravatar.com/avatar/1\",\"created_at\":\"example-created-at\",\"created_by\":{},\"custom_attributes\":[],\"email\":\"example-email\",\"group_saml_identity\":{},\"group_scim_identity\":{},\"id\":280000004,\"is_using_seat\":\"example-is-using-seat\",\"locked\":true,\"member_role\":{},\"membership_state\":\"example-membership-state\",\"name\":\"Administrator\",\"override\":\"example-override\",\"public_email\":\"john@example.com\",\"state\":\"active\",\"two_factor_enabled\":true,\"web_url\":\"https://gitlab.example.com/root\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/groups/280000001/members/280000004",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"access_level\":30,\"avatar_path\":\"/user/avatar/28/The-Big-Lebowski-400-400.png\",\"avatar_url\":\"https://gravatar.com/avatar/1\",\"created_at\":\"example-created-at\",\"created_by\":{},\"custom_attributes\":[],\"email\":\"example-email\",\"group_saml_identity\":{},\"group_scim_identity\":{},\"id\":280000004,\"is_using_seat\":\"example-is-using-seat\",\"locked\":true,\"member_role\":{},\"membership_state\":\"example-membership-state\",\"name\":\"Administrator\",\"override\":\"example-override\",\"public_email\":\"john@example.com\",\"state\":\"active\",\"two_factor_enabled\":true,\"web_url\":\"https://gitlab.example.com/root\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/groups/280000001/members/280000004",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"access_level\":30,\"avatar_path\":\"/user/avatar/28/The-Big-Lebowski-400-400.png\",\"avatar_url\":\"https://gravatar.com/avatar/1\",\"created_at\":\"example-created-at\",\"created_by\":{},\"custom_attributes\":[],\"email\":\"example-email\",\"group_saml_identity\":{},\"group_scim_identity\":{},\"id\":280000004,\"is_using_seat\":\"example-is-using-seat\",\"locked\":true,\"member_role\":{},\"membership_state\":\"example-membership-state\",\"name\":\"Administrator\",\"override\":\"example-override\",\"public_email\":\"john@example.com\",\"state\":\"active\",\"two_factor_enabled\":true,\"web_url\":\"https://gitlab.example.com/root\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/groups/280000001/members/280000004",
+      "body": "{\"access_level\":40,\"user_id\":280000004}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"access_level\":40,\"avatar_path\":\"/user/avatar/28/The-Big-Lebowski-400-400.png\",\"avatar_url\":\"https://gravatar.com/avatar/1\",\"created_at\":\"example-created-at\",\"created_by\":{},\"custom_attributes\":[],\"email\":\"example-email\",\"group_saml_identity\":{},\"group_scim_identity\":{},\"id\":280000004,\"is_using_seat\":\"example-is-using-seat\",\"locked\":true,\"member_role\":{},\"membership_state\":\"example-membership-state\",\"name\":\"Administrator\",\"override\":\"example-override\",\"public_email\":\"john@example.com\",\"state\":\"active\",\"two_factor_enabled\":true,\"web_url\":\"https://gitlab.example.com/root\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/groups/280000001/members/280000004",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"access_level\":40,\"avatar_path\":\"/user/avatar/28/The-Big-Lebowski-400-400.png\",\"avatar_url\":\"https://gravatar.com/avatar/1\",\"created_at\":\"example-created-at\",\"created_by\":{},\"custom_attributes\":[],\"email\":\"example-email\",\"group_saml_identity\":{},\"group_scim_identity\":{},\"id\":280000004,\"is_using_seat\":\"example-is-using-seat\",\"locked\":true,\"member_role\":{},\"membership_state\":\"example-membership-state\",\"name\":\"Administrator\",\"override\":\"example-override\",\"public_email\":\"john@example.com\",\"state\":\"active\",\"two_factor_enabled\":true,\"web_url\":\"https://gitlab.example.com/root\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/groups/280000001/members/280000004",
+      "body": "{\"access_level\":20}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"access_level\":20,\"avatar_path\":\"/user/avatar/28/The-Big-Lebowski-400-400.png\",\"avatar_url\":\"https://gravatar.com/avatar/1\",\"created_at\":\"example-created-at\",\"created_by\":{},\"custom_attributes\":[],\"email\":\"example-email\",\"group_saml_identity\":{},\"group_scim_identity\":{},\"id\":280000004,\"is_using_seat\":\"example-is-using-seat\",\"locked\":true,\"member_role\":{},\"membership_state\":\"example-membership-state\",\"name\":\"Administrator\",\"override\":\"example-override\",\"public_email\":\"john@example.com\",\"state\":\"active\",\"two_factor_enabled\":true,\"web_url\":\"https://gitlab.example.com/root\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/groups/280000001/members/280000004",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"access_level\":20,\"avatar_path\":\"/user/avatar/28/The-Big-Lebowski-400-400.png\",\"avatar_url\":\"https://gravatar.com/avatar/1\",\"created_at\":\"example-created-at\",\"created_by\":{},\"custom_attributes\":[],\"email\":\"example-email\",\"group_saml_identity\":{},\"group_scim_identity\":{},\"id\":280000004,\"is_using_seat\":\"example-is-using-seat\",\"locked\":true,\"member_role\":{},\"membership_state\":\"example-membership-state\",\"name\":\"Administrator\",\"override\":\"example-override\",\"public_email\":\"john@example.com\",\"state\":\"active\",\"two_factor_enabled\":true,\"web_url\":\"https://gitlab.example.com/root\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/groups/280000001/members/280000004",
+      "body": "{\"access_level\":40,\"user_id\":280000004}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"access_level\":40,\"avatar_path\":\"/user/avatar/28/The-Big-Lebowski-400-400.png\",\"avatar_url\":\"https://gravatar.com/avatar/1\",\"created_at\":\"example-created-at\",\"created_by\":{},\"custom_attributes\":[],\"email\":\"example-email\",\"group_saml_identity\":{},\"group_scim_identity\":{},\"id\":280000004,\"is_using_seat\":\"example-is-using-seat\",\"locked\":true,\"member_role\":{},\"membership_state\":\"example-membership-state\",\"name\":\"Administrator\",\"override\":\"example-override\",\"public_email\":\"john@example.com\",\"state\":\"active\",\"two_factor_enabled\":true,\"web_url\":\"https://gitlab.example.com/root\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/groups/280000001/members/280000004",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"access_level\":40,\"avatar_path\":\"/user/avatar/28/The-Big-Lebowski-400-400.png\",\"avatar_url\":\"https://gravatar.com/avatar/1\",\"created_at\":\"example-created-at\",\"created_by\":{},\"custom_attributes\":[],\"email\":\"example-email\",\"group_saml_identity\":{},\"group_scim_identity\":{},\"id\":280000004,\"is_using_seat\":\"example-is-using-seat\",\"locked\":true,\"member_role\":{},\"membership_state\":\"example-membership-state\",\"name\":\"Administrator\",\"override\":\"example-override\",\"public_email\":\"john@example.com\",\"state\":\"active\",\"two_factor_enabled\":true,\"web_url\":\"https://gitlab.example.com/root\"}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/groups/280000001/members/280000004",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/groups/280000001/members/280000004",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/users/280000004?hard_delete=true",
+      "status": 204
+    }
+  ]
+}

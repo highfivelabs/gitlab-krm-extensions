@@ -1,0 +1,49 @@
+# How long a group's dependency proxy keeps cached images. GraphQL only.
+#
+# A settings kind: the group always has one. Deleting the object leaves it
+# as it is (Terraform puts back what it found).
+#
+# Sources:
+#   - gitlabhq/terraform-provider-gitlab v19.5.0,
+#     internal/provider/resource_gitlab_group_dependency_proxy_image_ttl_policy.go:
+#     the two documents below, as Terraform sends them but named, and the
+#     mutation's three variables given as its input object.
+#   - GitLab's GraphQL reference: mutation
+#     updateDependencyProxyImageTtlGroupPolicy (input type
+#     UpdateDependencyProxyImageTtlGroupPolicyInput: groupPath ID!, enabled,
+#     ttl), object DependencyProxyImageTtlGroupPolicy:
+#     https://docs.gitlab.com/api/graphql/reference/#mutationupdatedependencyproxyimagettlgrouppolicy
+# Written 2026-11-22.
+terraform: [gitlab_group_dependency_proxy_image_ttl_policy]
+shape: settings
+params:
+  fullPath:
+    description: The group's full path.
+fields:
+  enabled:
+    type: boolean
+    description: Indicates whether the policy is enabled or disabled.
+  ttl:
+    type: integer
+    description: Number of days to retain a cached image file.
+sample: {fullPath: example-group, enabled: true, ttl: 30}
+read:
+  query: |
+    query GroupDependencyProxyImageTtlPolicy($fullPath: ID!) {
+      group(fullPath: $fullPath) {
+        dependencyProxyImageTtlPolicy { enabled ttl }
+      }
+    }
+  variables: {fullPath: "{fullPath}"}
+  result: group/dependencyProxyImageTtlPolicy
+update:
+  query: |
+    mutation UpdateDependencyProxyImageTtlGroupPolicy($input: UpdateDependencyProxyImageTtlGroupPolicyInput!) {
+      updateDependencyProxyImageTtlGroupPolicy(input: $input) {
+        errors
+        dependencyProxyImageTtlPolicy { enabled ttl }
+      }
+    }
+  variables:
+    input: {groupPath: "{fullPath}", enabled: "{enabled}", ttl: "{ttl}"}
+  result: updateDependencyProxyImageTtlGroupPolicy/dependencyProxyImageTtlPolicy

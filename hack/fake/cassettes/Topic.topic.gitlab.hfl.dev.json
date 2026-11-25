@@ -1,0 +1,89 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "group": 280000001,
+    "project": 280000002
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/topics",
+      "body": "{\"name\":\"{{name}}\",\"title\":\"{{name}}\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"avatar_url\":\"http://gitlab.example.com/uploads/topic/avatar/1/avatar.png\",\"id\":270000003,\"name\":\"{{name}}\",\"title\":\"{{name}}\",\"total_projects_count\":1}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/topics/270000003",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"avatar_url\":\"http://gitlab.example.com/uploads/topic/avatar/1/avatar.png\",\"id\":270000003,\"name\":\"{{name}}\",\"title\":\"{{name}}\",\"total_projects_count\":1}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/topics/270000003",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"avatar_url\":\"http://gitlab.example.com/uploads/topic/avatar/1/avatar.png\",\"id\":270000003,\"name\":\"{{name}}\",\"title\":\"{{name}}\",\"total_projects_count\":1}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/topics/270000003",
+      "body": "{\"description\":\"changed\",\"name\":\"{{name}}\",\"title\":\"{{name}}\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"avatar_url\":\"http://gitlab.example.com/uploads/topic/avatar/1/avatar.png\",\"description\":\"changed\",\"id\":270000003,\"name\":\"{{name}}\",\"title\":\"{{name}}\",\"total_projects_count\":1}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/topics/270000003",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"avatar_url\":\"http://gitlab.example.com/uploads/topic/avatar/1/avatar.png\",\"description\":\"changed\",\"id\":270000003,\"name\":\"{{name}}\",\"title\":\"{{name}}\",\"total_projects_count\":1}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/topics/270000003",
+      "body": "{\"description\":\"drift\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"avatar_url\":\"http://gitlab.example.com/uploads/topic/avatar/1/avatar.png\",\"description\":\"drift\",\"id\":270000003,\"name\":\"{{name}}\",\"title\":\"{{name}}\",\"total_projects_count\":1}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/topics/270000003",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"avatar_url\":\"http://gitlab.example.com/uploads/topic/avatar/1/avatar.png\",\"description\":\"drift\",\"id\":270000003,\"name\":\"{{name}}\",\"title\":\"{{name}}\",\"total_projects_count\":1}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/topics/270000003",
+      "body": "{\"description\":\"changed\",\"name\":\"{{name}}\",\"title\":\"{{name}}\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"avatar_url\":\"http://gitlab.example.com/uploads/topic/avatar/1/avatar.png\",\"description\":\"changed\",\"id\":270000003,\"name\":\"{{name}}\",\"title\":\"{{name}}\",\"total_projects_count\":1}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/topics/270000003",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"avatar_url\":\"http://gitlab.example.com/uploads/topic/avatar/1/avatar.png\",\"description\":\"changed\",\"id\":270000003,\"name\":\"{{name}}\",\"title\":\"{{name}}\",\"total_projects_count\":1}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/topics/270000003",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/topics/270000003",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

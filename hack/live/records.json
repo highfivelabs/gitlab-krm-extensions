@@ -1,0 +1,817 @@
+{
+  "Application.application.gitlab.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611170145-4330",
+    "date": "2026-11-17T01:46:21Z",
+    "target": "GitLab 19.5.5",
+    "lastPass": "2026-11-17T01:46:21Z"
+  },
+  "ApplicationAppearance.application.gitlab.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete"
+    ],
+    "run": "hfl-live-2611170145-4330",
+    "date": "2026-11-17T01:46:22Z",
+    "target": "GitLab 19.5.5",
+    "lastPass": "2026-11-17T01:46:22Z"
+  },
+  "ApplicationSettings.application.gitlab.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete"
+    ],
+    "run": "hfl-live-2611170145-4330",
+    "date": "2026-11-17T01:46:22Z",
+    "target": "GitLab 19.5.5",
+    "lastPass": "2026-11-17T01:46:22Z"
+  },
+  "Branch.branch.gitlab.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611170145-4330",
+    "date": "2026-11-17T01:46:13Z",
+    "target": "GitLab 19.5.5",
+    "lastPass": "2026-11-17T01:46:13Z"
+  },
+  "BranchProtection.branch.gitlab.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611170145-4330",
+    "date": "2026-11-17T01:46:14Z",
+    "target": "GitLab 19.5.5",
+    "lastPass": "2026-11-17T01:46:14Z"
+  },
+  "ClusterAgent.cluster.gitlab.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611170145-4330",
+    "date": "2026-11-17T01:46:22Z",
+    "target": "GitLab 19.5.5",
+    "lastPass": "2026-11-17T01:46:22Z"
+  },
+  "ClusterAgentToken.cluster.gitlab.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "delete"
+    ],
+    "run": "hfl-live-2611170145-4330",
+    "date": "2026-11-17T01:46:23Z",
+    "target": "GitLab 19.5.5",
+    "lastPass": "2026-11-17T01:46:23Z"
+  },
+  "DeployKey.deploy.gitlab.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611170145-4330",
+    "date": "2026-11-17T01:46:16Z",
+    "target": "GitLab 19.5.5",
+    "lastPass": "2026-11-17T01:46:16Z"
+  },
+  "Group.group.gitlab.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete"
+    ],
+    "run": "hfl-live-2611170145-4330",
+    "date": "2026-11-17T01:45:53Z",
+    "target": "GitLab 19.5.5",
+    "lastPass": "2026-11-17T01:45:53Z"
+  },
+  "GroupAccessToken.group.gitlab.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "delete"
+    ],
+    "run": "hfl-live-2611170145-4330",
+    "date": "2026-11-17T01:46:18Z",
+    "target": "GitLab 19.5.5",
+    "lastPass": "2026-11-17T01:46:18Z"
+  },
+  "GroupBadge.group.gitlab.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611170145-4330",
+    "date": "2026-11-17T01:46:17Z",
+    "target": "GitLab 19.5.5",
+    "lastPass": "2026-11-17T01:46:17Z"
+  },
+  "GroupBranchProtection.group.gitlab.hfl.dev": {
+    "result": "fail",
+    "steps": [],
+    "reason": "create: reconcile: create: not found (SyncFailed: create: not found)",
+    "run": "hfl-live-2611151732-41d8",
+    "date": "2026-11-15T17:37:14Z",
+    "target": "GitLab 19.5.5"
+  },
+  "GroupCustomAttribute.group.gitlab.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611170145-4330",
+    "date": "2026-11-17T01:46:17Z",
+    "target": "GitLab 19.5.5",
+    "lastPass": "2026-11-17T01:46:17Z"
+  },
+  "GroupDeployToken.group.gitlab.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611170145-4330",
+    "date": "2026-11-17T01:46:18Z",
+    "target": "GitLab 19.5.5",
+    "lastPass": "2026-11-17T01:46:18Z"
+  },
+  "GroupHook.group.gitlab.hfl.dev": {
+    "result": "fail",
+    "steps": [],
+    "reason": "create: reconcile: create: not found (SyncFailed: create: not found)",
+    "run": "hfl-live-2611151732-41d8",
+    "date": "2026-11-15T17:37:14Z",
+    "target": "GitLab 19.5.5"
+  },
+  "GroupLabel.group.gitlab.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611170145-4330",
+    "date": "2026-11-17T01:46:16Z",
+    "target": "GitLab 19.5.5",
+    "lastPass": "2026-11-17T01:46:16Z"
+  },
+  "GroupMembership.group.gitlab.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611170145-4330",
+    "date": "2026-11-17T01:46:19Z",
+    "target": "GitLab 19.5.5",
+    "lastPass": "2026-11-17T01:46:19Z"
+  },
+  "GroupProtectedEnvironment.group.gitlab.hfl.dev": {
+    "result": "fail",
+    "steps": [],
+    "reason": "create: reconcile: create: not found (SyncFailed: create: not found)",
+    "run": "hfl-live-2611151732-41d8",
+    "date": "2026-11-15T17:37:14Z",
+    "target": "GitLab 19.5.5"
+  },
+  "GroupSamlLink.group.gitlab.hfl.dev": {
+    "result": "fail",
+    "steps": [],
+    "reason": "create: reconcile: create: not found (SyncFailed: create: not found)",
+    "run": "hfl-live-2611151732-41d8",
+    "date": "2026-11-15T17:39:12Z",
+    "target": "GitLab 19.5.5"
+  },
+  "GroupServiceAccount.group.gitlab.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611170145-4330",
+    "date": "2026-11-17T01:48:04Z",
+    "target": "GitLab 19.5.5",
+    "lastPass": "2026-11-17T01:48:04Z"
+  },
+  "GroupVariable.group.gitlab.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611170145-4330",
+    "date": "2026-11-17T01:46:17Z",
+    "target": "GitLab 19.5.5",
+    "lastPass": "2026-11-17T01:46:17Z"
+  },
+  "PagesDomain.pages.gitlab.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611170145-4330",
+    "date": "2026-11-17T01:46:27Z",
+    "target": "GitLab 19.5.5",
+    "lastPass": "2026-11-17T01:46:27Z"
+  },
+  "PipelineSchedule.pipeline.gitlab.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611170145-4330",
+    "date": "2026-11-17T01:46:12Z",
+    "target": "GitLab 19.5.5",
+    "lastPass": "2026-11-17T01:46:12Z"
+  },
+  "PipelineScheduleVariable.pipeline.gitlab.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611170145-4330",
+    "date": "2026-11-17T01:46:24Z",
+    "target": "GitLab 19.5.5",
+    "lastPass": "2026-11-17T01:46:24Z"
+  },
+  "PipelineTrigger.pipeline.gitlab.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611170145-4330",
+    "date": "2026-11-17T01:46:12Z",
+    "target": "GitLab 19.5.5",
+    "lastPass": "2026-11-17T01:46:12Z"
+  },
+  "Project.project.gitlab.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete"
+    ],
+    "run": "hfl-live-2611170145-4330",
+    "date": "2026-11-17T01:45:52Z",
+    "target": "GitLab 19.5.5",
+    "lastPass": "2026-11-17T01:45:52Z"
+  },
+  "ProjectAccessToken.project.gitlab.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "delete"
+    ],
+    "run": "hfl-live-2611170145-4330",
+    "date": "2026-11-17T01:46:16Z",
+    "target": "GitLab 19.5.5",
+    "lastPass": "2026-11-17T01:46:16Z"
+  },
+  "ProjectApprovalRule.project.gitlab.hfl.dev": {
+    "result": "fail",
+    "steps": [],
+    "reason": "create: reconcile: create: not found (SyncFailed: create: not found)",
+    "run": "hfl-live-2611151732-41d8",
+    "date": "2026-11-15T17:37:15Z",
+    "target": "GitLab 19.5.5"
+  },
+  "ProjectBadge.project.gitlab.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611170145-4330",
+    "date": "2026-11-17T01:46:08Z",
+    "target": "GitLab 19.5.5",
+    "lastPass": "2026-11-17T01:46:08Z"
+  },
+  "ProjectCustomAttribute.project.gitlab.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611170145-4330",
+    "date": "2026-11-17T01:46:17Z",
+    "target": "GitLab 19.5.5",
+    "lastPass": "2026-11-17T01:46:17Z"
+  },
+  "ProjectDeployToken.project.gitlab.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611170145-4330",
+    "date": "2026-11-17T01:46:15Z",
+    "target": "GitLab 19.5.5",
+    "lastPass": "2026-11-17T01:46:15Z"
+  },
+  "ProjectEnvironment.project.gitlab.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611170145-4330",
+    "date": "2026-11-17T01:46:13Z",
+    "target": "GitLab 19.5.5",
+    "lastPass": "2026-11-17T01:46:13Z"
+  },
+  "ProjectErrorTrackingSettings.project.gitlab.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "delete"
+    ],
+    "run": "hfl-live-2611170145-4330",
+    "date": "2026-11-17T01:46:24Z",
+    "target": "GitLab 19.5.5",
+    "lastPass": "2026-11-17T01:46:24Z"
+  },
+  "ProjectFeatureFlag.project.gitlab.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611170145-4330",
+    "date": "2026-11-17T01:46:25Z",
+    "target": "GitLab 19.5.5",
+    "lastPass": "2026-11-17T01:46:25Z"
+  },
+  "ProjectFeatureFlagUserList.project.gitlab.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611170145-4330",
+    "date": "2026-11-17T01:46:25Z",
+    "target": "GitLab 19.5.5",
+    "lastPass": "2026-11-17T01:46:25Z"
+  },
+  "ProjectFreezePeriod.project.gitlab.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611170145-4330",
+    "date": "2026-11-17T01:46:13Z",
+    "target": "GitLab 19.5.5",
+    "lastPass": "2026-11-17T01:46:13Z"
+  },
+  "ProjectHook.project.gitlab.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611170145-4330",
+    "date": "2026-11-17T01:46:09Z",
+    "target": "GitLab 19.5.5",
+    "lastPass": "2026-11-17T01:46:09Z"
+  },
+  "ProjectIssue.project.gitlab.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611170145-4330",
+    "date": "2026-11-17T01:46:10Z",
+    "target": "GitLab 19.5.5",
+    "lastPass": "2026-11-17T01:46:10Z"
+  },
+  "ProjectIssueLink.project.gitlab.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611170145-4330",
+    "date": "2026-11-17T01:46:26Z",
+    "target": "GitLab 19.5.5",
+    "lastPass": "2026-11-17T01:46:26Z"
+  },
+  "ProjectJobTokenScope.project.gitlab.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "delete"
+    ],
+    "run": "hfl-live-2611170145-4330",
+    "date": "2026-11-17T01:46:24Z",
+    "target": "GitLab 19.5.5",
+    "lastPass": "2026-11-17T01:46:24Z"
+  },
+  "ProjectLabel.project.gitlab.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611170145-4330",
+    "date": "2026-11-17T01:46:07Z",
+    "target": "GitLab 19.5.5",
+    "lastPass": "2026-11-17T01:46:07Z"
+  },
+  "ProjectMembership.project.gitlab.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611170145-4330",
+    "date": "2026-11-17T01:46:20Z",
+    "target": "GitLab 19.5.5",
+    "lastPass": "2026-11-17T01:46:20Z"
+  },
+  "ProjectMergeRequestNote.project.gitlab.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611170145-4330",
+    "date": "2026-11-17T01:46:27Z",
+    "target": "GitLab 19.5.5",
+    "lastPass": "2026-11-17T01:46:27Z"
+  },
+  "ProjectMilestone.project.gitlab.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611170145-4330",
+    "date": "2026-11-17T01:46:08Z",
+    "target": "GitLab 19.5.5",
+    "lastPass": "2026-11-17T01:46:08Z"
+  },
+  "ProjectProtectedEnvironment.project.gitlab.hfl.dev": {
+    "result": "fail",
+    "steps": [],
+    "reason": "create: reconcile: create: not found (SyncFailed: create: not found)",
+    "run": "hfl-live-2611151732-41d8",
+    "date": "2026-11-15T17:37:15Z",
+    "target": "GitLab 19.5.5"
+  },
+  "ProjectSecureFile.project.gitlab.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611170145-4330",
+    "date": "2026-11-17T01:46:27Z",
+    "target": "GitLab 19.5.5",
+    "lastPass": "2026-11-17T01:46:27Z"
+  },
+  "ProjectSecuritySettings.project.gitlab.hfl.dev": {
+    "result": "fail",
+    "steps": [],
+    "reason": "settings: reading the current settings to restore them later: not found",
+    "run": "hfl-live-2611151732-41d8",
+    "date": "2026-11-15T17:39:12Z",
+    "target": "GitLab 19.5.5"
+  },
+  "ProjectServiceAccount.project.gitlab.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611170145-4330",
+    "date": "2026-11-17T01:50:06Z",
+    "target": "GitLab 19.5.5",
+    "lastPass": "2026-11-17T01:50:06Z"
+  },
+  "ProjectTag.project.gitlab.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611170145-4330",
+    "date": "2026-11-17T01:46:14Z",
+    "target": "GitLab 19.5.5",
+    "lastPass": "2026-11-17T01:46:14Z"
+  },
+  "ProjectVariable.project.gitlab.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611170145-4330",
+    "date": "2026-11-17T01:46:07Z",
+    "target": "GitLab 19.5.5",
+    "lastPass": "2026-11-17T01:46:07Z"
+  },
+  "ProjectWikiPage.project.gitlab.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611170145-4330",
+    "date": "2026-11-17T01:46:11Z",
+    "target": "GitLab 19.5.5",
+    "lastPass": "2026-11-17T01:46:11Z"
+  },
+  "Release.release.gitlab.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611170145-4330",
+    "date": "2026-11-17T01:46:15Z",
+    "target": "GitLab 19.5.5",
+    "lastPass": "2026-11-17T01:46:15Z"
+  },
+  "ReleaseLink.release.gitlab.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611170145-4330",
+    "date": "2026-11-17T01:46:27Z",
+    "target": "GitLab 19.5.5",
+    "lastPass": "2026-11-17T01:46:27Z"
+  },
+  "RepositoryFile.repository.gitlab.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611170145-4330",
+    "date": "2026-11-17T01:46:06Z",
+    "target": "GitLab 19.5.5",
+    "lastPass": "2026-11-17T01:46:06Z"
+  },
+  "RunnerController.runner.gitlab.hfl.dev": {
+    "result": "fail",
+    "steps": [],
+    "reason": "create: reconcile: create: not found (SyncFailed: create: not found)",
+    "run": "hfl-live-2611151732-41d8",
+    "date": "2026-11-15T17:37:14Z",
+    "target": "GitLab 19.5.5"
+  },
+  "RunnerControllerToken.runner.gitlab.hfl.dev": {
+    "result": "fail",
+    "steps": [],
+    "reason": "before POST /runner_controllers: not found",
+    "run": "hfl-live-2611151732-41d8",
+    "date": "2026-11-15T17:37:14Z",
+    "target": "GitLab 19.5.5"
+  },
+  "TagProtection.tag.gitlab.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611170145-4330",
+    "date": "2026-11-17T01:46:15Z",
+    "target": "GitLab 19.5.5",
+    "lastPass": "2026-11-17T01:46:15Z"
+  },
+  "Topic.topic.gitlab.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611170145-4330",
+    "date": "2026-11-17T01:45:53Z",
+    "target": "GitLab 19.5.5",
+    "lastPass": "2026-11-17T01:45:53Z"
+  },
+  "User.user.gitlab.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611170145-4330",
+    "date": "2026-11-17T01:46:04Z",
+    "target": "GitLab 19.5.5",
+    "lastPass": "2026-11-17T01:46:04Z"
+  },
+  "UserCustomAttribute.user.gitlab.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611170145-4330",
+    "date": "2026-11-17T01:46:21Z",
+    "target": "GitLab 19.5.5",
+    "lastPass": "2026-11-17T01:46:21Z"
+  },
+  "UserImpersonationToken.user.gitlab.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "delete"
+    ],
+    "run": "hfl-live-2611170145-4330",
+    "date": "2026-11-17T01:46:21Z",
+    "target": "GitLab 19.5.5",
+    "lastPass": "2026-11-17T01:46:21Z"
+  }
+}

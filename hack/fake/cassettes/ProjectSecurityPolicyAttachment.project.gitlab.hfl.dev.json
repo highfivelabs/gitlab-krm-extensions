@@ -1,0 +1,144 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "a": "rehearsal-a",
+    "agent": 280000008,
+    "avatarUser": 280000038,
+    "b": "rehearsal-b",
+    "catalogProject": 280000037,
+    "g": 280000030,
+    "group": 280000001,
+    "key": 280000026,
+    "mr": "rehearsal-mr",
+    "project": 280000002,
+    "runner": 280000028,
+    "sa": 280000031,
+    "schedule": 280000009,
+    "src": 280000027,
+    "sub": 280000036,
+    "user": 280000020
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"ProjectSecurityPolicyProject\",\"query\":\"query ProjectSecurityPolicyProject($fullPath: ID!) { project(fullPath: $fullPath) { id securityPolicyProjectId: securityPolicyProject { id } } }\",\"variables\":{\"fullPath\":\"example-group/example-project\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"project\":null}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"ProjectSecurityPolicyProjectAssign\",\"query\":\"mutation ProjectSecurityPolicyProjectAssign($input: SecurityPolicyProjectAssignInput!) { securityPolicyProjectAssign(input: $input) { errors } }\",\"variables\":{\"input\":{\"fullPath\":\"example-group/example-project\",\"securityPolicyProjectId\":\"gid://gitlab/Project/9\"}}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"securityPolicyProjectAssign\":{\"errors\":[]}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"ProjectSecurityPolicyProject\",\"query\":\"query ProjectSecurityPolicyProject($fullPath: ID!) { project(fullPath: $fullPath) { id securityPolicyProjectId: securityPolicyProject { id } } }\",\"variables\":{\"fullPath\":\"example-group/example-project\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"project\":{\"securityPolicyProjectId\":{\"id\":\"1\",\"slug\":\"gid://gitlab/Project/9\"}}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"ProjectSecurityPolicyProject\",\"query\":\"query ProjectSecurityPolicyProject($fullPath: ID!) { project(fullPath: $fullPath) { id securityPolicyProjectId: securityPolicyProject { id } } }\",\"variables\":{\"fullPath\":\"example-group/example-project\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"project\":{\"securityPolicyProjectId\":{\"id\":\"1\",\"slug\":\"gid://gitlab/Project/9\"}}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"ProjectSecurityPolicyProject\",\"query\":\"query ProjectSecurityPolicyProject($fullPath: ID!) { project(fullPath: $fullPath) { id securityPolicyProjectId: securityPolicyProject { id } } }\",\"variables\":{\"fullPath\":\"example-group/example-project\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"project\":{\"securityPolicyProjectId\":{\"id\":\"1\",\"slug\":\"gid://gitlab/Project/9\"}}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"ProjectSecurityPolicyProjectAssign\",\"query\":\"mutation ProjectSecurityPolicyProjectAssign($input: SecurityPolicyProjectAssignInput!) { securityPolicyProjectAssign(input: $input) { errors } }\",\"variables\":{\"input\":{\"fullPath\":\"example-group/example-project\",\"securityPolicyProjectId\":\"changed-securityPolicyProjectId\"}}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"securityPolicyProjectAssign\":{\"errors\":[]}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"ProjectSecurityPolicyProject\",\"query\":\"query ProjectSecurityPolicyProject($fullPath: ID!) { project(fullPath: $fullPath) { id securityPolicyProjectId: securityPolicyProject { id } } }\",\"variables\":{\"fullPath\":\"example-group/example-project\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"project\":{\"securityPolicyProjectId\":{\"id\":\"1\",\"slug\":\"changed-securityPolicyProjectId\"}}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"ProjectSecurityPolicyProject\",\"query\":\"query ProjectSecurityPolicyProject($fullPath: ID!) { project(fullPath: $fullPath) { id securityPolicyProjectId: securityPolicyProject { id } } }\",\"variables\":{\"fullPath\":\"example-group/example-project\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"project\":{\"securityPolicyProjectId\":{\"id\":\"1\",\"slug\":\"changed-securityPolicyProjectId\"}}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"ProjectSecurityPolicyProjectAssign\",\"query\":\"mutation ProjectSecurityPolicyProjectAssign($input: SecurityPolicyProjectAssignInput!) { securityPolicyProjectAssign(input: $input) { errors } }\",\"variables\":{\"input\":{\"fullPath\":\"example-group/example-project\",\"securityPolicyProjectId\":\"hfl-live-drift\"}}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"securityPolicyProjectAssign\":{\"errors\":[]}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"ProjectSecurityPolicyProject\",\"query\":\"query ProjectSecurityPolicyProject($fullPath: ID!) { project(fullPath: $fullPath) { id securityPolicyProjectId: securityPolicyProject { id } } }\",\"variables\":{\"fullPath\":\"example-group/example-project\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"project\":{\"securityPolicyProjectId\":{\"id\":\"1\",\"slug\":\"hfl-live-drift\"}}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"ProjectSecurityPolicyProjectAssign\",\"query\":\"mutation ProjectSecurityPolicyProjectAssign($input: SecurityPolicyProjectAssignInput!) { securityPolicyProjectAssign(input: $input) { errors } }\",\"variables\":{\"input\":{\"fullPath\":\"example-group/example-project\",\"securityPolicyProjectId\":\"changed-securityPolicyProjectId\"}}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"securityPolicyProjectAssign\":{\"errors\":[]}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"ProjectSecurityPolicyProject\",\"query\":\"query ProjectSecurityPolicyProject($fullPath: ID!) { project(fullPath: $fullPath) { id securityPolicyProjectId: securityPolicyProject { id } } }\",\"variables\":{\"fullPath\":\"example-group/example-project\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"project\":{\"securityPolicyProjectId\":{\"id\":\"1\",\"slug\":\"changed-securityPolicyProjectId\"}}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"ProjectSecurityPolicyProject\",\"query\":\"query ProjectSecurityPolicyProject($fullPath: ID!) { project(fullPath: $fullPath) { id securityPolicyProjectId: securityPolicyProject { id } } }\",\"variables\":{\"fullPath\":\"example-group/example-project\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"project\":{\"securityPolicyProjectId\":{\"id\":\"1\",\"slug\":\"changed-securityPolicyProjectId\"}}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"ProjectSecurityPolicyProjectUnassign\",\"query\":\"mutation ProjectSecurityPolicyProjectUnassign($input: SecurityPolicyProjectUnassignInput!) { securityPolicyProjectUnassign(input: $input) { errors } }\",\"variables\":{\"input\":{\"fullPath\":\"example-group/example-project\"}}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"securityPolicyProjectUnassign\":{\"errors\":[]}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"ProjectSecurityPolicyProject\",\"query\":\"query ProjectSecurityPolicyProject($fullPath: ID!) { project(fullPath: $fullPath) { id securityPolicyProjectId: securityPolicyProject { id } } }\",\"variables\":{\"fullPath\":\"example-group/example-project\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"project\":null}}\n"
+    }
+  ]
+}

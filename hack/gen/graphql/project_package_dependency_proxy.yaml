@@ -1,0 +1,68 @@
+# A project's dependency proxy for packages (Maven): on or off, and the
+# external registry it proxies. GraphQL only. GitLab Premium or Ultimate.
+#
+# A settings kind: the project always has them. Deleting the object leaves
+# them as they are (Terraform turns the proxy off and clears the
+# credentials).
+#
+# Sources:
+#   - gitlabhq/terraform-provider-gitlab v19.5.0,
+#     internal/provider/resource_gitlab_project_package_dependency_proxy.go:
+#     the mutation updateDependencyProxyPackagesSettings (projectPath,
+#     enabled, mavenExternalRegistryUrl, mavenExternalRegistryUsername,
+#     mavenExternalRegistryPassword; it selects errors and
+#     dependencyProxyPackagesSetting { enabled mavenExternalRegistryUrl
+#     mavenExternalRegistryUsername }) and the query project(fullPath) {
+#     dependencyProxyPackagesSetting { ... } }. Terraform writes the values
+#     into the document; here they are variables, the input as one object.
+#   - GitLab's GraphQL reference: mutation
+#     updateDependencyProxyPackagesSettings (input type
+#     UpdateDependencyProxyPackagesSettingsInput), object
+#     DependencyProxyPackagesSetting (no password: write-only):
+#     https://docs.gitlab.com/api/graphql/reference/#mutationupdatedependencyproxypackagessettings
+# Written 2026-11-22.
+terraform: [gitlab_project_package_dependency_proxy]
+shape: settings
+params:
+  fullPath:
+    description: The project's full path (namespace/project).
+fields:
+  enabled:
+    type: boolean
+    description: Indicates whether the dependency proxy for packages is enabled for the project.
+  mavenExternalRegistryUrl:
+    type: string
+    description: URL for the external Maven packages registry.
+  mavenExternalRegistryUsername:
+    type: string
+    description: Username for the external Maven packages registry.
+  mavenExternalRegistryPassword:
+    type: string
+    description: Password for the external Maven packages registry. Never read back; set it from a Secret (spec.secretRefs.mavenExternalRegistryPassword).
+writeOnly: [mavenExternalRegistryPassword]
+sample: {fullPath: example-group/example-project, enabled: true, mavenExternalRegistryUrl: "https://maven.example.com/repository"}
+read:
+  query: |
+    query ProjectDependencyProxyPackagesSetting($fullPath: ID!) {
+      project(fullPath: $fullPath) {
+        dependencyProxyPackagesSetting { enabled mavenExternalRegistryUrl mavenExternalRegistryUsername }
+      }
+    }
+  variables: {fullPath: "{fullPath}"}
+  result: project/dependencyProxyPackagesSetting
+update:
+  query: |
+    mutation UpdateDependencyProxyPackagesSettings($input: UpdateDependencyProxyPackagesSettingsInput!) {
+      updateDependencyProxyPackagesSettings(input: $input) {
+        errors
+        dependencyProxyPackagesSetting { enabled mavenExternalRegistryUrl mavenExternalRegistryUsername }
+      }
+    }
+  variables:
+    input:
+      projectPath: "{fullPath}"
+      enabled: "{enabled}"
+      mavenExternalRegistryUrl: "{mavenExternalRegistryUrl}"
+      mavenExternalRegistryUsername: "{mavenExternalRegistryUsername}"
+      mavenExternalRegistryPassword: "{mavenExternalRegistryPassword}"
+  result: updateDependencyProxyPackagesSettings/dependencyProxyPackagesSetting

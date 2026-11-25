@@ -1,0 +1,222 @@
+# Inputs to krm-rest-runtime/gen/krmgen.py. Specs are pinned to the commit in each url;
+# hack/gen/fetch-specs.sh downloads them. overrides: map (Terraform type -> API item path),
+# exclude (Terraform types), excludePaths (API item paths).
+vendor: gitlab
+title: GitLab
+groupSuffix: gitlab.hfl.dev
+connectionKind: Connection
+credentialKeys:
+- token
+baseURLHelp: 'GitLab API base URL; default https://gitlab.com/api/v4 (self-managed: https://<host>/api/v4).'
+terraform:
+  provider: gitlabhq/gitlab
+  prefix: gitlab
+  gaps: terraform-gaps.json
+specs:
+- file: specs/gitlab.yaml
+  strip: /api/v4
+  url: https://gitlab.com/gitlab-org/gitlab/-/raw/35ad75ae9e9a16a5bebda796afdf0679ba6ace40/doc/api/openapi/openapi_v3.yaml
+# Hand-made supplements (sources at the top of each).
+- file: supplement/integrations.yaml
+  strip: /api/v4
+- file: supplement/settings.yaml
+  strip: /api/v4
+- file: supplement/accounts.yaml
+  strip: /api/v4
+- file: supplement/deploy_keys.yaml
+  strip: /api/v4
+envelope: {}
+# Resources GitLab manages only through GraphQL (compliance frameworks,
+# saved replies, dependency proxy settings, ...): one hand-written file each
+# in graphql/, citing its sources. The endpoint takes the place of the
+# Connection's /api/v4 (vendor.go's RESTPath).
+graphql:
+  endpoint: /api/graphql
+# REST resources whose calls no OpenAPI path pairing finds as one resource
+# (a user's identity: written by the user's update, read from the user,
+# deleted on its own path; one field of a group, at the Group kind's own
+# path): one hand-written file each in kinds/, citing its sources.
+handwritten:
+  dir: kinds
+# Grape takes JSON for every write; the spec describes some only as a form
+# (Project, Group, Topic, User, RepositoryFile, ...: they also accept uploads).
+formBodiesAsJSON: true
+overrides:
+  map:
+    gitlab_branch_protection: /projects/{id}/protected_branches/{name}
+    gitlab_group_membership: /groups/{id}/members/{user_id}
+    gitlab_project_membership: /projects/{id}/members/{user_id}
+    gitlab_branch: /projects/{id}/repository/branches/{branch}
+    gitlab_pipeline_trigger: /projects/{id}/triggers/{trigger_id}
+    gitlab_project_tag: /projects/{id}/repository/tags/{tag_name}
+    gitlab_tag_protection: /projects/{id}/protected_tags/{name}
+    gitlab_project_wiki_page: /projects/{id}/wikis/{slug}
+    # Instance-level ("admin") objects: Terraform says instance or system.
+    gitlab_instance_variable: /admin/ci/variables/{key}
+    gitlab_system_hook: /hooks/{hook_id}
+    gitlab_instance_cluster: /admin/clusters/{cluster_id}
+    gitlab_project_push_mirror: /projects/{id}/remote_mirrors/{mirror_id}
+    gitlab_project_push_rules: /projects/{id}/push_rule
+    gitlab_group_issue_board: /groups/{id}/boards/{board_id}
+    gitlab_project_issue_board: /projects/{id}/boards/{board_id}
+    gitlab_global_level_notifications: /notification_settings
+    gitlab_project_level_notifications: /projects/{id}/notification_settings
+    gitlab_group_level_mr_approvals: /groups/{id}/merge_request_approval_setting
+    # Terraform writes these through POST /projects/{id}/approvals, which
+    # the runtime cannot read as settings (a POST updates it); this is the
+    # same configuration under its newer endpoint, in its own field names
+    # (allow_author_approval for merge_requests_author_approval, ...).
+    gitlab_project_level_mr_approvals: /projects/{id}/merge_request_approval_setting
+    # Terraform's user_id is optional: without it, the current user's key.
+    gitlab_user_gpgkey: /user/gpg_keys/{key_id}
+    gitlab_user_sshkey: /user/keys/{key_id}
+    gitlab_personal_access_token: /personal_access_tokens/{id}
+    gitlab_member_role: /member_roles/{member_role_id}
+    gitlab_admin_role: /admin_member_roles/{member_role_id}
+    # Google Chat's slug is its old name, Hangouts Chat.
+    gitlab_project_integration_google_chat: /projects/{id}/integrations/hangouts-chat
+    gitlab_integration_slack: /projects/{id}/integrations/slack
+    gitlab_project_pages_settings: /projects/{id}/pages
+    gitlab_project_pull_mirror: /projects/{id}/mirror/pull
+    # Supplement paths, named apart from the User kind's /users/{id}
+    # and the legacy runner registration's /runners/{id}.
+    gitlab_instance_service_account: /users/{user_id}
+    gitlab_user_runner: /runners/{runner_id}
+    gitlab_project_container_repository_protection: /projects/{id}/registry/protection/repository/rules/{protection_rule_id}
+    gitlab_project_container_tag_protection: /projects/{id}/registry/protection/tag/rules/{protection_rule_id}
+    gitlab_project_runner_enablement: /projects/{id}/runners/{runner_id}
+    gitlab_group_service_account_access_token: /groups/{id}/service_accounts/{user_id}/personal_access_tokens/{token_id}
+    gitlab_project_service_account_access_token: /projects/{id}/service_accounts/{user_id}/personal_access_tokens/{token_id}
+    gitlab_group_share_group: /groups/{id}/share/{group_id}
+    gitlab_project_share_group: /projects/{id}/share/{group_id}
+    # Supplement (deploy_keys.yaml): GitLab's own item path, named apart
+    # from the DeployKey kind's.
+    gitlab_deploy_key_enable: /projects/{id}/deploy_keys/{enabled_key_id}
+  kindNames:
+    /projects/{id}/deploy_keys/{enabled_key_id}: DeployKeyEnable
+  idFrom:
+    /projects/{id}/feature_flags/{feature_flag_name}: name
+    # A share is named by the group it is shared with: the spec's group_id.
+    /groups/{id}/share/{group_id}: "{group_id}"
+    /projects/{id}/share/{group_id}: "{group_id}"
+  # GitLab answers 403 to deleting an environment that is not stopped.
+  beforeDelete:
+    /projects/{id}/environments/{environment_id}:
+    - {method: POST, path: "/projects/{id}/environments/{environment_id}/stop"}
+  # An application's scopes are written as "api read_user" and read back as
+  # ["api", "read_user"].
+  compare:
+    /user/applications/{id}:
+      scopes: splitSpace
+  # GitLab reads each approval setting back as {value, locked,
+  # inherited_from} (the spec says a boolean): written, not compared.
+  writeOnly:
+    /groups/{id}/merge_request_approval_setting: &mrApprovalSettings
+    - allow_author_approval
+    - allow_committer_approval
+    - allow_overrides_to_approver_list_per_merge_request
+    - retain_approvals_on_push
+    - selective_code_owner_removals
+    - require_password_to_approve
+    - require_reauthentication_to_approve
+    /projects/{id}/merge_request_approval_setting: *mrApprovalSettings
+  # PUT /runners/{id} takes none of these.
+  createOnly:
+    /runners/{runner_id}: [runner_type, group_id, project_id, token_expires_at, token_rotation_deadline]
+  multipart:
+  - /projects/{id}/secure_files/{secure_file_id}
+  creates:
+    /projects/{id}/repository/files/{file_path}: /projects/{id}/repository/files/{file_path}
+    # POST makes the push rule, PUT changes it.
+    /projects/{id}/push_rule: /projects/{id}/push_rule
+    # Certificate-based clusters are added on .../clusters/user (instance:
+    # /admin/clusters/add) and read, edited and removed by ID.
+    /groups/{id}/clusters/{cluster_id}: /groups/{id}/clusters/user
+    /projects/{id}/clusters/{cluster_id}: /projects/{id}/clusters/user
+    /admin/clusters/{cluster_id}: /admin/clusters/add
+    # Supplement (accounts.yaml): made on one path, then a user or runner.
+    /users/{user_id}: /service_accounts
+    /runners/{runner_id}: /user/runners
+    # An existing deploy key is enabled for a project, then read, changed
+    # and removed from it by its ID (deploy_keys.yaml).
+    /projects/{id}/deploy_keys/{enabled_key_id}: /projects/{id}/deploy_keys/{key_id}/enable
+    # An admin makes a user's token; it is read and revoked by its ID.
+    /personal_access_tokens/{id}: /users/{user_id}/personal_access_tokens
+  # Listed, not got: read finds the item in its collection (100 a page, the
+  # most GitLab returns; the runtime reads only the first page). These
+  # kinds have no update (the API has none, or Terraform replaces on every
+  # change: container tag rules), and a changed spec is reported as drift.
+  listReads:
+    /projects/{id}/error_tracking/client_keys: {field: id}
+    /projects/{id}/registry/protection/tag/rules: {field: id}
+    /projects/{id}/runners: {field: id}
+    /groups/{id}/service_accounts/{user_id}/personal_access_tokens: {field: id}
+    /projects/{id}/service_accounts/{user_id}/personal_access_tokens: {field: id}
+    # Custom roles (Ultimate). Terraform uses GraphQL, which also updates
+    # them; over REST a role is made and deleted only. Instance-level
+    # (self-managed); on GitLab.com roles belong to a top-level group.
+    /member_roles: {field: id}
+    /admin_member_roles: {field: id}
+  # Written and deleted by ID, never got one at a time: read from a list.
+  # Unlike listReads, the item's PUT/PATCH updates them.
+  readFrom:
+    /projects/{id}/external_status_checks/{check_id}: {path: "/projects/{id}/external_status_checks", field: id}
+    /projects/{id}/registry/protection/repository/rules/{protection_rule_id}: {path: "/projects/{id}/registry/protection/repository/rules", field: id}
+    /projects/{id}/packages/protection/rules/{package_protection_rule_id}: {path: "/projects/{id}/packages/protection/rules", field: id}
+    # A share (POST .../share, DELETE .../share/{group_id}) is read, as
+    # Terraform reads it, from the shared_with_groups of the group or
+    # project it shares.
+    /groups/{id}/share/{group_id}: {path: "/groups/{id}", list: shared_with_groups, field: group_id}
+    /projects/{id}/share/{group_id}: {path: "/projects/{id}", list: shared_with_groups, field: group_id}
+  # LDAP group links have no ID: POST adds one, the list shows it, and
+  # DELETE on the collection with the same cn (or filter) and provider
+  # removes it.
+  assocs:
+  - create: /groups/{id}/ldap_group_links
+    read: /groups/{id}/ldap_group_links
+    delete: /groups/{id}/ldap_group_links
+    deleteMethod: delete
+  readQuery:
+    # Terraform reads a group's shares without its projects. The project
+    # read asks for the default (no statistics): with a query of its own,
+    # the fake API tells it apart from the Project kind's read.
+    /groups/{id}/share/{group_id}: {with_projects: false}
+    /projects/{id}/share/{group_id}: {statistics: false}
+    /projects/{id}/repository/files/{file_path}:
+      ref: "{branch}"
+    /projects/{id}/error_tracking/client_keys/{key_id}: {per_page: 100}
+    /projects/{id}/external_status_checks/{check_id}: {per_page: 100}
+    /projects/{id}/registry/protection/repository/rules/{protection_rule_id}: {per_page: 100}
+    /projects/{id}/registry/protection/tag/rules/{protection_rule_id}: {per_page: 100}
+    /projects/{id}/packages/protection/rules/{package_protection_rule_id}: {per_page: 100}
+    /projects/{id}/runners/{runner_id}: {per_page: 100}
+    /groups/{id}/service_accounts/{user_id}/personal_access_tokens/{token_id}: {per_page: 100}
+    /projects/{id}/service_accounts/{user_id}/personal_access_tokens/{token_id}: {per_page: 100}
+    /member_roles/{member_role_id}: {per_page: 100}
+    /admin_member_roles/{member_role_id}: {per_page: 100}
+  deleteQuery:
+    /projects/{id}/repository/files/{file_path}:
+      branch: "{branch}"
+      commit_message: "{commit_message}"
+  extraFields:
+    # Enabling takes no body; Terraform then sets can_push with the
+    # deploy key's update (PUT), as an update here does.
+    /projects/{id}/deploy_keys/{enabled_key_id}:
+      can_push:
+        type: boolean
+    /projects/{id}/repository/files/{file_path}:
+      branch:
+        type: string
+        description: Name of the branch to commit into.
+        required: true
+      commit_message:
+        type: string
+        description: Commit message.
+        required: true
+      content:
+        type: string
+        required: true
+      encoding:
+        type: string
+  excludePaths:
+  - /projects/{id}/wiki_pages/{noteable_id}/notes/{note_id}

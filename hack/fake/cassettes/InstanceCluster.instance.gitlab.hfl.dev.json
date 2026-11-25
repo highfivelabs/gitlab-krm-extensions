@@ -1,0 +1,103 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "a": "rehearsal-a",
+    "agent": 280000008,
+    "avatarUser": 280000038,
+    "b": "rehearsal-b",
+    "catalogProject": 280000037,
+    "g": 280000030,
+    "group": 280000001,
+    "key": 280000026,
+    "mr": "rehearsal-mr",
+    "project": 280000002,
+    "runner": 280000028,
+    "sa": 280000031,
+    "schedule": 280000009,
+    "src": 280000027,
+    "sub": 280000036,
+    "user": 280000020
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/admin/clusters/add",
+      "body": "{\"name\":\"example-name\",\"platform_kubernetes_attributes\":{\"api_url\":\"example-api-url\",\"token\":\"{{redacted}}\"}}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"cluster_type\":\"example-cluster-type\",\"created_at\":\"example-created-at\",\"id\":270000057,\"management_project\":{},\"name\":\"example-name\",\"platform_kubernetes\":{},\"platform_type\":\"example-platform-type\",\"provider_gcp\":{},\"provider_type\":\"example-provider-type\",\"user\":{}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/admin/clusters/270000057",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"cluster_type\":\"example-cluster-type\",\"created_at\":\"example-created-at\",\"id\":270000057,\"management_project\":{},\"name\":\"example-name\",\"platform_kubernetes\":{},\"platform_type\":\"example-platform-type\",\"provider_gcp\":{},\"provider_type\":\"example-provider-type\",\"user\":{}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/admin/clusters/270000057",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"cluster_type\":\"example-cluster-type\",\"created_at\":\"example-created-at\",\"id\":270000057,\"management_project\":{},\"name\":\"example-name\",\"platform_kubernetes\":{},\"platform_type\":\"example-platform-type\",\"provider_gcp\":{},\"provider_type\":\"example-provider-type\",\"user\":{}}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/admin/clusters/270000057",
+      "body": "{\"name\":\"changed-name\",\"platform_kubernetes_attributes\":{\"api_url\":\"example-api-url\",\"token\":\"{{redacted}}\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"cluster_type\":\"example-cluster-type\",\"created_at\":\"example-created-at\",\"id\":270000057,\"management_project\":{},\"name\":\"changed-name\",\"platform_kubernetes\":{},\"platform_type\":\"example-platform-type\",\"provider_gcp\":{},\"provider_type\":\"example-provider-type\",\"user\":{}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/admin/clusters/270000057",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"cluster_type\":\"example-cluster-type\",\"created_at\":\"example-created-at\",\"id\":270000057,\"management_project\":{},\"name\":\"changed-name\",\"platform_kubernetes\":{},\"platform_type\":\"example-platform-type\",\"provider_gcp\":{},\"provider_type\":\"example-provider-type\",\"user\":{}}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/admin/clusters/270000057",
+      "body": "{\"name\":\"hfl-live-drift\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"cluster_type\":\"example-cluster-type\",\"created_at\":\"example-created-at\",\"id\":270000057,\"management_project\":{},\"name\":\"hfl-live-drift\",\"platform_kubernetes\":{},\"platform_type\":\"example-platform-type\",\"provider_gcp\":{},\"provider_type\":\"example-provider-type\",\"user\":{}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/admin/clusters/270000057",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"cluster_type\":\"example-cluster-type\",\"created_at\":\"example-created-at\",\"id\":270000057,\"management_project\":{},\"name\":\"hfl-live-drift\",\"platform_kubernetes\":{},\"platform_type\":\"example-platform-type\",\"provider_gcp\":{},\"provider_type\":\"example-provider-type\",\"user\":{}}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/admin/clusters/270000057",
+      "body": "{\"name\":\"changed-name\",\"platform_kubernetes_attributes\":{\"api_url\":\"example-api-url\",\"token\":\"{{redacted}}\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"cluster_type\":\"example-cluster-type\",\"created_at\":\"example-created-at\",\"id\":270000057,\"management_project\":{},\"name\":\"changed-name\",\"platform_kubernetes\":{},\"platform_type\":\"example-platform-type\",\"provider_gcp\":{},\"provider_type\":\"example-provider-type\",\"user\":{}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/admin/clusters/270000057",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"cluster_type\":\"example-cluster-type\",\"created_at\":\"example-created-at\",\"id\":270000057,\"management_project\":{},\"name\":\"changed-name\",\"platform_kubernetes\":{},\"platform_type\":\"example-platform-type\",\"provider_gcp\":{},\"provider_type\":\"example-provider-type\",\"user\":{}}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/admin/clusters/270000057",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/admin/clusters/270000057",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "group": 280000001,
+    "project": 280000002,
+    "user": 280000007
+  },
+  "interactions": [
+    {
+      "method": "GET",
+      "path": "/application/appearance",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"favicon\":\"/uploads/-/system/appearance/favicon/1/favicon.png\",\"header_logo\":\"/uploads/-/system/appearance/header_logo/1/header.png\",\"logo\":\"/uploads/-/system/appearance/logo/1/logo.png\",\"pwa_icon\":\"/uploads/-/system/appearance/pwa_icon/1/icon.png\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/application/appearance",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"favicon\":\"/uploads/-/system/appearance/favicon/1/favicon.png\",\"header_logo\":\"/uploads/-/system/appearance/header_logo/1/header.png\",\"logo\":\"/uploads/-/system/appearance/logo/1/logo.png\",\"pwa_icon\":\"/uploads/-/system/appearance/pwa_icon/1/icon.png\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/application/appearance",
+      "body": "{\"title\":\"{{name}}\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"favicon\":\"/uploads/-/system/appearance/favicon/1/favicon.png\",\"header_logo\":\"/uploads/-/system/appearance/header_logo/1/header.png\",\"logo\":\"/uploads/-/system/appearance/logo/1/logo.png\",\"pwa_icon\":\"/uploads/-/system/appearance/pwa_icon/1/icon.png\",\"title\":\"{{name}}\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/application/appearance",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"favicon\":\"/uploads/-/system/appearance/favicon/1/favicon.png\",\"header_logo\":\"/uploads/-/system/appearance/header_logo/1/header.png\",\"logo\":\"/uploads/-/system/appearance/logo/1/logo.png\",\"pwa_icon\":\"/uploads/-/system/appearance/pwa_icon/1/icon.png\",\"title\":\"{{name}}\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/application/appearance",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"favicon\":\"/uploads/-/system/appearance/favicon/1/favicon.png\",\"header_logo\":\"/uploads/-/system/appearance/header_logo/1/header.png\",\"logo\":\"/uploads/-/system/appearance/logo/1/logo.png\",\"pwa_icon\":\"/uploads/-/system/appearance/pwa_icon/1/icon.png\",\"title\":\"{{name}}\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/application/appearance",
+      "body": "{\"description\":\"changed\",\"title\":\"{{name}}\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"description\":\"changed\",\"favicon\":\"/uploads/-/system/appearance/favicon/1/favicon.png\",\"header_logo\":\"/uploads/-/system/appearance/header_logo/1/header.png\",\"logo\":\"/uploads/-/system/appearance/logo/1/logo.png\",\"pwa_icon\":\"/uploads/-/system/appearance/pwa_icon/1/icon.png\",\"title\":\"{{name}}\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/application/appearance",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"description\":\"changed\",\"favicon\":\"/uploads/-/system/appearance/favicon/1/favicon.png\",\"header_logo\":\"/uploads/-/system/appearance/header_logo/1/header.png\",\"logo\":\"/uploads/-/system/appearance/logo/1/logo.png\",\"pwa_icon\":\"/uploads/-/system/appearance/pwa_icon/1/icon.png\",\"title\":\"{{name}}\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/application/appearance",
+      "body": "{\"description\":\"drift\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"description\":\"drift\",\"favicon\":\"/uploads/-/system/appearance/favicon/1/favicon.png\",\"header_logo\":\"/uploads/-/system/appearance/header_logo/1/header.png\",\"logo\":\"/uploads/-/system/appearance/logo/1/logo.png\",\"pwa_icon\":\"/uploads/-/system/appearance/pwa_icon/1/icon.png\",\"title\":\"{{name}}\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/application/appearance",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"description\":\"drift\",\"favicon\":\"/uploads/-/system/appearance/favicon/1/favicon.png\",\"header_logo\":\"/uploads/-/system/appearance/header_logo/1/header.png\",\"logo\":\"/uploads/-/system/appearance/logo/1/logo.png\",\"pwa_icon\":\"/uploads/-/system/appearance/pwa_icon/1/icon.png\",\"title\":\"{{name}}\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/application/appearance",
+      "body": "{\"description\":\"changed\",\"title\":\"{{name}}\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"description\":\"changed\",\"favicon\":\"/uploads/-/system/appearance/favicon/1/favicon.png\",\"header_logo\":\"/uploads/-/system/appearance/header_logo/1/header.png\",\"logo\":\"/uploads/-/system/appearance/logo/1/logo.png\",\"pwa_icon\":\"/uploads/-/system/appearance/pwa_icon/1/icon.png\",\"title\":\"{{name}}\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/application/appearance",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"description\":\"changed\",\"favicon\":\"/uploads/-/system/appearance/favicon/1/favicon.png\",\"header_logo\":\"/uploads/-/system/appearance/header_logo/1/header.png\",\"logo\":\"/uploads/-/system/appearance/logo/1/logo.png\",\"pwa_icon\":\"/uploads/-/system/appearance/pwa_icon/1/icon.png\",\"title\":\"{{name}}\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/application/appearance",
+      "body": "{}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"description\":\"changed\",\"favicon\":\"/uploads/-/system/appearance/favicon/1/favicon.png\",\"header_logo\":\"/uploads/-/system/appearance/header_logo/1/header.png\",\"logo\":\"/uploads/-/system/appearance/logo/1/logo.png\",\"pwa_icon\":\"/uploads/-/system/appearance/pwa_icon/1/icon.png\",\"title\":\"{{name}}\"}\n"
+    }
+  ]
+}

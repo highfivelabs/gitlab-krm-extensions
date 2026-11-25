@@ -1,0 +1,89 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "group": 280000001,
+    "project": 280000002
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/projects/280000002/issues",
+      "body": "{\"title\":\"{{name}}\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"_links\":{},\"assignee\":{},\"assignees\":[],\"author\":{},\"blocking_issues_count\":2,\"closed_at\":\"2022-11-15T08:30:55.232Z\",\"closed_by\":{},\"downvotes\":1,\"epic\":{},\"has_tasks\":true,\"health_status\":\"example-health-status\",\"iid\":270000008,\"imported\":false,\"imported_from\":\"github\",\"iteration\":{},\"merge_requests_count\":1,\"moved_to_id\":1,\"project_id\":4,\"references\":{},\"service_desk_reply_to\":\"user@example.com\",\"state\":\"closed\",\"subscribed\":false,\"task_completion_status\":{},\"task_status\":\"2 of 4 tasks completed\",\"time_stats\":{},\"title\":\"{{name}}\",\"type\":\"ISSUE\",\"updated_at\":\"2022-11-14T17:22:01.470Z\",\"upvotes\":1,\"user_notes_count\":1,\"web_url\":\"http://example.com/example/example/issues/14\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/issues/270000008",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"_links\":{},\"assignee\":{},\"assignees\":[],\"author\":{},\"blocking_issues_count\":2,\"closed_at\":\"2022-11-15T08:30:55.232Z\",\"closed_by\":{},\"downvotes\":1,\"epic\":{},\"has_tasks\":true,\"health_status\":\"example-health-status\",\"iid\":270000008,\"imported\":false,\"imported_from\":\"github\",\"iteration\":{},\"merge_requests_count\":1,\"moved_to_id\":1,\"project_id\":4,\"references\":{},\"service_desk_reply_to\":\"user@example.com\",\"state\":\"closed\",\"subscribed\":false,\"task_completion_status\":{},\"task_status\":\"2 of 4 tasks completed\",\"time_stats\":{},\"title\":\"{{name}}\",\"type\":\"ISSUE\",\"updated_at\":\"2022-11-14T17:22:01.470Z\",\"upvotes\":1,\"user_notes_count\":1,\"web_url\":\"http://example.com/example/example/issues/14\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/issues/270000008",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"_links\":{},\"assignee\":{},\"assignees\":[],\"author\":{},\"blocking_issues_count\":2,\"closed_at\":\"2022-11-15T08:30:55.232Z\",\"closed_by\":{},\"downvotes\":1,\"epic\":{},\"has_tasks\":true,\"health_status\":\"example-health-status\",\"iid\":270000008,\"imported\":false,\"imported_from\":\"github\",\"iteration\":{},\"merge_requests_count\":1,\"moved_to_id\":1,\"project_id\":4,\"references\":{},\"service_desk_reply_to\":\"user@example.com\",\"state\":\"closed\",\"subscribed\":false,\"task_completion_status\":{},\"task_status\":\"2 of 4 tasks completed\",\"time_stats\":{},\"title\":\"{{name}}\",\"type\":\"ISSUE\",\"updated_at\":\"2022-11-14T17:22:01.470Z\",\"upvotes\":1,\"user_notes_count\":1,\"web_url\":\"http://example.com/example/example/issues/14\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/projects/280000002/issues/270000008",
+      "body": "{\"description\":\"changed\",\"title\":\"{{name}}\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"_links\":{},\"assignee\":{},\"assignees\":[],\"author\":{},\"blocking_issues_count\":2,\"closed_at\":\"2022-11-15T08:30:55.232Z\",\"closed_by\":{},\"description\":\"changed\",\"downvotes\":1,\"epic\":{},\"has_tasks\":true,\"health_status\":\"example-health-status\",\"iid\":270000008,\"imported\":false,\"imported_from\":\"github\",\"iteration\":{},\"merge_requests_count\":1,\"moved_to_id\":1,\"project_id\":4,\"references\":{},\"service_desk_reply_to\":\"user@example.com\",\"state\":\"closed\",\"subscribed\":false,\"task_completion_status\":{},\"task_status\":\"2 of 4 tasks completed\",\"time_stats\":{},\"title\":\"{{name}}\",\"type\":\"ISSUE\",\"updated_at\":\"2022-11-14T17:22:01.470Z\",\"upvotes\":1,\"user_notes_count\":1,\"web_url\":\"http://example.com/example/example/issues/14\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/issues/270000008",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"_links\":{},\"assignee\":{},\"assignees\":[],\"author\":{},\"blocking_issues_count\":2,\"closed_at\":\"2022-11-15T08:30:55.232Z\",\"closed_by\":{},\"description\":\"changed\",\"downvotes\":1,\"epic\":{},\"has_tasks\":true,\"health_status\":\"example-health-status\",\"iid\":270000008,\"imported\":false,\"imported_from\":\"github\",\"iteration\":{},\"merge_requests_count\":1,\"moved_to_id\":1,\"project_id\":4,\"references\":{},\"service_desk_reply_to\":\"user@example.com\",\"state\":\"closed\",\"subscribed\":false,\"task_completion_status\":{},\"task_status\":\"2 of 4 tasks completed\",\"time_stats\":{},\"title\":\"{{name}}\",\"type\":\"ISSUE\",\"updated_at\":\"2022-11-14T17:22:01.470Z\",\"upvotes\":1,\"user_notes_count\":1,\"web_url\":\"http://example.com/example/example/issues/14\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/projects/280000002/issues/270000008",
+      "body": "{\"description\":\"hfl-live-drift\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"_links\":{},\"assignee\":{},\"assignees\":[],\"author\":{},\"blocking_issues_count\":2,\"closed_at\":\"2022-11-15T08:30:55.232Z\",\"closed_by\":{},\"description\":\"hfl-live-drift\",\"downvotes\":1,\"epic\":{},\"has_tasks\":true,\"health_status\":\"example-health-status\",\"iid\":270000008,\"imported\":false,\"imported_from\":\"github\",\"iteration\":{},\"merge_requests_count\":1,\"moved_to_id\":1,\"project_id\":4,\"references\":{},\"service_desk_reply_to\":\"user@example.com\",\"state\":\"closed\",\"subscribed\":false,\"task_completion_status\":{},\"task_status\":\"2 of 4 tasks completed\",\"time_stats\":{},\"title\":\"{{name}}\",\"type\":\"ISSUE\",\"updated_at\":\"2022-11-14T17:22:01.470Z\",\"upvotes\":1,\"user_notes_count\":1,\"web_url\":\"http://example.com/example/example/issues/14\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/issues/270000008",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"_links\":{},\"assignee\":{},\"assignees\":[],\"author\":{},\"blocking_issues_count\":2,\"closed_at\":\"2022-11-15T08:30:55.232Z\",\"closed_by\":{},\"description\":\"hfl-live-drift\",\"downvotes\":1,\"epic\":{},\"has_tasks\":true,\"health_status\":\"example-health-status\",\"iid\":270000008,\"imported\":false,\"imported_from\":\"github\",\"iteration\":{},\"merge_requests_count\":1,\"moved_to_id\":1,\"project_id\":4,\"references\":{},\"service_desk_reply_to\":\"user@example.com\",\"state\":\"closed\",\"subscribed\":false,\"task_completion_status\":{},\"task_status\":\"2 of 4 tasks completed\",\"time_stats\":{},\"title\":\"{{name}}\",\"type\":\"ISSUE\",\"updated_at\":\"2022-11-14T17:22:01.470Z\",\"upvotes\":1,\"user_notes_count\":1,\"web_url\":\"http://example.com/example/example/issues/14\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/projects/280000002/issues/270000008",
+      "body": "{\"description\":\"changed\",\"title\":\"{{name}}\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"_links\":{},\"assignee\":{},\"assignees\":[],\"author\":{},\"blocking_issues_count\":2,\"closed_at\":\"2022-11-15T08:30:55.232Z\",\"closed_by\":{},\"description\":\"changed\",\"downvotes\":1,\"epic\":{},\"has_tasks\":true,\"health_status\":\"example-health-status\",\"iid\":270000008,\"imported\":false,\"imported_from\":\"github\",\"iteration\":{},\"merge_requests_count\":1,\"moved_to_id\":1,\"project_id\":4,\"references\":{},\"service_desk_reply_to\":\"user@example.com\",\"state\":\"closed\",\"subscribed\":false,\"task_completion_status\":{},\"task_status\":\"2 of 4 tasks completed\",\"time_stats\":{},\"title\":\"{{name}}\",\"type\":\"ISSUE\",\"updated_at\":\"2022-11-14T17:22:01.470Z\",\"upvotes\":1,\"user_notes_count\":1,\"web_url\":\"http://example.com/example/example/issues/14\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/issues/270000008",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"_links\":{},\"assignee\":{},\"assignees\":[],\"author\":{},\"blocking_issues_count\":2,\"closed_at\":\"2022-11-15T08:30:55.232Z\",\"closed_by\":{},\"description\":\"changed\",\"downvotes\":1,\"epic\":{},\"has_tasks\":true,\"health_status\":\"example-health-status\",\"iid\":270000008,\"imported\":false,\"imported_from\":\"github\",\"iteration\":{},\"merge_requests_count\":1,\"moved_to_id\":1,\"project_id\":4,\"references\":{},\"service_desk_reply_to\":\"user@example.com\",\"state\":\"closed\",\"subscribed\":false,\"task_completion_status\":{},\"task_status\":\"2 of 4 tasks completed\",\"time_stats\":{},\"title\":\"{{name}}\",\"type\":\"ISSUE\",\"updated_at\":\"2022-11-14T17:22:01.470Z\",\"upvotes\":1,\"user_notes_count\":1,\"web_url\":\"http://example.com/example/example/issues/14\"}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/projects/280000002/issues/270000008",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/issues/270000008",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

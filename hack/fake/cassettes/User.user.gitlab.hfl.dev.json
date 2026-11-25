@@ -1,0 +1,89 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "group": 280000001,
+    "project": 280000002
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/users",
+      "body": "{\"email\":\"{{name}}@hfl-live.example\",\"force_random_password\":true,\"name\":\"{{name}}\",\"skip_confirmation\":true,\"username\":\"{{name}}\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"avatar_path\":\"/user/avatar/28/The-Big-Lebowski-400-400.png\",\"avatar_url\":\"https://gravatar.com/avatar/1\",\"bio_html\":\"My \\u003cem\\u003ebio\\u003c/em\\u003e.\",\"bot\":true,\"created_at\":\"example-created-at\",\"custom_attributes\":[],\"followers\":\"example-followers\",\"following\":\"example-following\",\"id\":270000004,\"is_followed\":\"example-is-followed\",\"job_title\":\"example-job-title\",\"local_time\":\"example-local-time\",\"locked\":true,\"name\":\"{{name}}\",\"state\":\"active\",\"username\":\"{{name}}\",\"web_url\":\"https://gitlab.example.com/root\",\"work_information\":\"example-work-information\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/users/270000004",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"avatar_path\":\"/user/avatar/28/The-Big-Lebowski-400-400.png\",\"avatar_url\":\"https://gravatar.com/avatar/1\",\"bio_html\":\"My \\u003cem\\u003ebio\\u003c/em\\u003e.\",\"bot\":true,\"created_at\":\"example-created-at\",\"custom_attributes\":[],\"followers\":\"example-followers\",\"following\":\"example-following\",\"id\":270000004,\"is_followed\":\"example-is-followed\",\"job_title\":\"example-job-title\",\"local_time\":\"example-local-time\",\"locked\":true,\"name\":\"{{name}}\",\"state\":\"active\",\"username\":\"{{name}}\",\"web_url\":\"https://gitlab.example.com/root\",\"work_information\":\"example-work-information\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/users/270000004",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"avatar_path\":\"/user/avatar/28/The-Big-Lebowski-400-400.png\",\"avatar_url\":\"https://gravatar.com/avatar/1\",\"bio_html\":\"My \\u003cem\\u003ebio\\u003c/em\\u003e.\",\"bot\":true,\"created_at\":\"example-created-at\",\"custom_attributes\":[],\"followers\":\"example-followers\",\"following\":\"example-following\",\"id\":270000004,\"is_followed\":\"example-is-followed\",\"job_title\":\"example-job-title\",\"local_time\":\"example-local-time\",\"locked\":true,\"name\":\"{{name}}\",\"state\":\"active\",\"username\":\"{{name}}\",\"web_url\":\"https://gitlab.example.com/root\",\"work_information\":\"example-work-information\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/users/270000004",
+      "body": "{\"email\":\"{{name}}@hfl-live.example\",\"force_random_password\":true,\"name\":\"{{name}}-2\",\"skip_confirmation\":true,\"username\":\"{{name}}\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"avatar_path\":\"/user/avatar/28/The-Big-Lebowski-400-400.png\",\"avatar_url\":\"https://gravatar.com/avatar/1\",\"bio_html\":\"My \\u003cem\\u003ebio\\u003c/em\\u003e.\",\"bot\":true,\"created_at\":\"example-created-at\",\"custom_attributes\":[],\"followers\":\"example-followers\",\"following\":\"example-following\",\"id\":270000004,\"is_followed\":\"example-is-followed\",\"job_title\":\"example-job-title\",\"local_time\":\"example-local-time\",\"locked\":true,\"name\":\"{{name}}-2\",\"state\":\"active\",\"username\":\"{{name}}\",\"web_url\":\"https://gitlab.example.com/root\",\"work_information\":\"example-work-information\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/users/270000004",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"avatar_path\":\"/user/avatar/28/The-Big-Lebowski-400-400.png\",\"avatar_url\":\"https://gravatar.com/avatar/1\",\"bio_html\":\"My \\u003cem\\u003ebio\\u003c/em\\u003e.\",\"bot\":true,\"created_at\":\"example-created-at\",\"custom_attributes\":[],\"followers\":\"example-followers\",\"following\":\"example-following\",\"id\":270000004,\"is_followed\":\"example-is-followed\",\"job_title\":\"example-job-title\",\"local_time\":\"example-local-time\",\"locked\":true,\"name\":\"{{name}}-2\",\"state\":\"active\",\"username\":\"{{name}}\",\"web_url\":\"https://gitlab.example.com/root\",\"work_information\":\"example-work-information\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/users/270000004",
+      "body": "{\"name\":\"{{name}}-drift\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"avatar_path\":\"/user/avatar/28/The-Big-Lebowski-400-400.png\",\"avatar_url\":\"https://gravatar.com/avatar/1\",\"bio_html\":\"My \\u003cem\\u003ebio\\u003c/em\\u003e.\",\"bot\":true,\"created_at\":\"example-created-at\",\"custom_attributes\":[],\"followers\":\"example-followers\",\"following\":\"example-following\",\"id\":270000004,\"is_followed\":\"example-is-followed\",\"job_title\":\"example-job-title\",\"local_time\":\"example-local-time\",\"locked\":true,\"name\":\"{{name}}-drift\",\"state\":\"active\",\"username\":\"{{name}}\",\"web_url\":\"https://gitlab.example.com/root\",\"work_information\":\"example-work-information\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/users/270000004",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"avatar_path\":\"/user/avatar/28/The-Big-Lebowski-400-400.png\",\"avatar_url\":\"https://gravatar.com/avatar/1\",\"bio_html\":\"My \\u003cem\\u003ebio\\u003c/em\\u003e.\",\"bot\":true,\"created_at\":\"example-created-at\",\"custom_attributes\":[],\"followers\":\"example-followers\",\"following\":\"example-following\",\"id\":270000004,\"is_followed\":\"example-is-followed\",\"job_title\":\"example-job-title\",\"local_time\":\"example-local-time\",\"locked\":true,\"name\":\"{{name}}-drift\",\"state\":\"active\",\"username\":\"{{name}}\",\"web_url\":\"https://gitlab.example.com/root\",\"work_information\":\"example-work-information\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/users/270000004",
+      "body": "{\"email\":\"{{name}}@hfl-live.example\",\"force_random_password\":true,\"name\":\"{{name}}-2\",\"skip_confirmation\":true,\"username\":\"{{name}}\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"avatar_path\":\"/user/avatar/28/The-Big-Lebowski-400-400.png\",\"avatar_url\":\"https://gravatar.com/avatar/1\",\"bio_html\":\"My \\u003cem\\u003ebio\\u003c/em\\u003e.\",\"bot\":true,\"created_at\":\"example-created-at\",\"custom_attributes\":[],\"followers\":\"example-followers\",\"following\":\"example-following\",\"id\":270000004,\"is_followed\":\"example-is-followed\",\"job_title\":\"example-job-title\",\"local_time\":\"example-local-time\",\"locked\":true,\"name\":\"{{name}}-2\",\"state\":\"active\",\"username\":\"{{name}}\",\"web_url\":\"https://gitlab.example.com/root\",\"work_information\":\"example-work-information\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/users/270000004",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"avatar_path\":\"/user/avatar/28/The-Big-Lebowski-400-400.png\",\"avatar_url\":\"https://gravatar.com/avatar/1\",\"bio_html\":\"My \\u003cem\\u003ebio\\u003c/em\\u003e.\",\"bot\":true,\"created_at\":\"example-created-at\",\"custom_attributes\":[],\"followers\":\"example-followers\",\"following\":\"example-following\",\"id\":270000004,\"is_followed\":\"example-is-followed\",\"job_title\":\"example-job-title\",\"local_time\":\"example-local-time\",\"locked\":true,\"name\":\"{{name}}-2\",\"state\":\"active\",\"username\":\"{{name}}\",\"web_url\":\"https://gitlab.example.com/root\",\"work_information\":\"example-work-information\"}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/users/270000004",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/users/270000004",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

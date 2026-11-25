@@ -1,0 +1,92 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "agent": 280000008,
+    "group": 280000001,
+    "project": 280000002,
+    "schedule": 280000009,
+    "user": 280000007
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/projects/280000002/feature_flags_user_lists",
+      "body": "{\"name\":\"{{name}}\",\"user_xids\":\"u1,u2\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"created_at\":\"2020-02-04T08:13:10.507Z\",\"edit_path\":\"example-edit-path\",\"iid\":270000024,\"name\":\"{{name}}\",\"path\":\"example-path\",\"project_id\":2,\"updated_at\":\"2020-02-04T08:13:10.507Z\",\"user_xids\":\"u1,u2\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/feature_flags_user_lists/270000024",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"created_at\":\"2020-02-04T08:13:10.507Z\",\"edit_path\":\"example-edit-path\",\"iid\":270000024,\"name\":\"{{name}}\",\"path\":\"example-path\",\"project_id\":2,\"updated_at\":\"2020-02-04T08:13:10.507Z\",\"user_xids\":\"u1,u2\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/feature_flags_user_lists/270000024",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"created_at\":\"2020-02-04T08:13:10.507Z\",\"edit_path\":\"example-edit-path\",\"iid\":270000024,\"name\":\"{{name}}\",\"path\":\"example-path\",\"project_id\":2,\"updated_at\":\"2020-02-04T08:13:10.507Z\",\"user_xids\":\"u1,u2\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/projects/280000002/feature_flags_user_lists/270000024",
+      "body": "{\"name\":\"{{name}}\",\"user_xids\":\"u1\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"created_at\":\"2020-02-04T08:13:10.507Z\",\"edit_path\":\"example-edit-path\",\"iid\":270000024,\"name\":\"{{name}}\",\"path\":\"example-path\",\"project_id\":2,\"updated_at\":\"2020-02-04T08:13:10.507Z\",\"user_xids\":\"u1\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/feature_flags_user_lists/270000024",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"created_at\":\"2020-02-04T08:13:10.507Z\",\"edit_path\":\"example-edit-path\",\"iid\":270000024,\"name\":\"{{name}}\",\"path\":\"example-path\",\"project_id\":2,\"updated_at\":\"2020-02-04T08:13:10.507Z\",\"user_xids\":\"u1\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/projects/280000002/feature_flags_user_lists/270000024",
+      "body": "{\"user_xids\":\"hfl-live-drift\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"created_at\":\"2020-02-04T08:13:10.507Z\",\"edit_path\":\"example-edit-path\",\"iid\":270000024,\"name\":\"{{name}}\",\"path\":\"example-path\",\"project_id\":2,\"updated_at\":\"2020-02-04T08:13:10.507Z\",\"user_xids\":\"hfl-live-drift\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/feature_flags_user_lists/270000024",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"created_at\":\"2020-02-04T08:13:10.507Z\",\"edit_path\":\"example-edit-path\",\"iid\":270000024,\"name\":\"{{name}}\",\"path\":\"example-path\",\"project_id\":2,\"updated_at\":\"2020-02-04T08:13:10.507Z\",\"user_xids\":\"hfl-live-drift\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/projects/280000002/feature_flags_user_lists/270000024",
+      "body": "{\"name\":\"{{name}}\",\"user_xids\":\"u1\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"created_at\":\"2020-02-04T08:13:10.507Z\",\"edit_path\":\"example-edit-path\",\"iid\":270000024,\"name\":\"{{name}}\",\"path\":\"example-path\",\"project_id\":2,\"updated_at\":\"2020-02-04T08:13:10.507Z\",\"user_xids\":\"u1\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/feature_flags_user_lists/270000024",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"created_at\":\"2020-02-04T08:13:10.507Z\",\"edit_path\":\"example-edit-path\",\"iid\":270000024,\"name\":\"{{name}}\",\"path\":\"example-path\",\"project_id\":2,\"updated_at\":\"2020-02-04T08:13:10.507Z\",\"user_xids\":\"u1\"}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/projects/280000002/feature_flags_user_lists/270000024",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/feature_flags_user_lists/270000024",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

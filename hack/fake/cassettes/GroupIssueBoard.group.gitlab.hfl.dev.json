@@ -1,0 +1,103 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "a": "rehearsal-a",
+    "agent": 280000008,
+    "avatarUser": 280000038,
+    "b": "rehearsal-b",
+    "catalogProject": 280000037,
+    "g": 280000030,
+    "group": 280000001,
+    "key": 280000026,
+    "mr": "rehearsal-mr",
+    "project": 280000002,
+    "runner": 280000028,
+    "sa": 280000031,
+    "schedule": 280000009,
+    "src": 280000027,
+    "sub": 280000036,
+    "user": 280000020
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/groups/example-id/boards",
+      "body": "{\"name\":\"example-name\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"assignee\":{},\"group\":{},\"hide_backlog_list\":false,\"hide_closed_list\":false,\"id\":270000050,\"labels\":[],\"lists\":[],\"milestone\":{},\"name\":\"example-name\",\"project\":{},\"weight\":0}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/groups/example-id/boards/270000050",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"assignee\":{},\"group\":{},\"hide_backlog_list\":false,\"hide_closed_list\":false,\"id\":270000050,\"labels\":[],\"lists\":[],\"milestone\":{},\"name\":\"example-name\",\"project\":{},\"weight\":0}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/groups/example-id/boards/270000050",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"assignee\":{},\"group\":{},\"hide_backlog_list\":false,\"hide_closed_list\":false,\"id\":270000050,\"labels\":[],\"lists\":[],\"milestone\":{},\"name\":\"example-name\",\"project\":{},\"weight\":0}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/groups/example-id/boards/270000050",
+      "body": "{\"name\":\"changed-name\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"assignee\":{},\"group\":{},\"hide_backlog_list\":false,\"hide_closed_list\":false,\"id\":270000050,\"labels\":[],\"lists\":[],\"milestone\":{},\"name\":\"changed-name\",\"project\":{},\"weight\":0}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/groups/example-id/boards/270000050",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"assignee\":{},\"group\":{},\"hide_backlog_list\":false,\"hide_closed_list\":false,\"id\":270000050,\"labels\":[],\"lists\":[],\"milestone\":{},\"name\":\"changed-name\",\"project\":{},\"weight\":0}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/groups/example-id/boards/270000050",
+      "body": "{\"name\":\"hfl-live-drift\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"assignee\":{},\"group\":{},\"hide_backlog_list\":false,\"hide_closed_list\":false,\"id\":270000050,\"labels\":[],\"lists\":[],\"milestone\":{},\"name\":\"hfl-live-drift\",\"project\":{},\"weight\":0}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/groups/example-id/boards/270000050",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"assignee\":{},\"group\":{},\"hide_backlog_list\":false,\"hide_closed_list\":false,\"id\":270000050,\"labels\":[],\"lists\":[],\"milestone\":{},\"name\":\"hfl-live-drift\",\"project\":{},\"weight\":0}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/groups/example-id/boards/270000050",
+      "body": "{\"name\":\"changed-name\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"assignee\":{},\"group\":{},\"hide_backlog_list\":false,\"hide_closed_list\":false,\"id\":270000050,\"labels\":[],\"lists\":[],\"milestone\":{},\"name\":\"changed-name\",\"project\":{},\"weight\":0}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/groups/example-id/boards/270000050",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"assignee\":{},\"group\":{},\"hide_backlog_list\":false,\"hide_closed_list\":false,\"id\":270000050,\"labels\":[],\"lists\":[],\"milestone\":{},\"name\":\"changed-name\",\"project\":{},\"weight\":0}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/groups/example-id/boards/270000050",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/groups/example-id/boards/270000050",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

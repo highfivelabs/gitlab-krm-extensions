@@ -1,0 +1,51 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "a": "rehearsal-a",
+    "agent": 280000008,
+    "avatarUser": 280000038,
+    "b": "rehearsal-b",
+    "catalogProject": 280000037,
+    "g": 280000030,
+    "group": 280000001,
+    "key": 280000026,
+    "mr": "rehearsal-mr",
+    "project": 280000002,
+    "runner": 280000028,
+    "sa": 280000031,
+    "schedule": 280000009,
+    "src": 280000027,
+    "sub": 280000036,
+    "user": 280000020
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/member_roles",
+      "body": "{\"base_access_level\":10,\"name\":\"example-name\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"base_access_level\":10,\"group_id\":2,\"id\":270000048,\"name\":\"example-name\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/member_roles?per_page=100",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "[{\"base_access_level\":10,\"id\":270000048,\"name\":\"example-name\"}]\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/member_roles/270000048",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/member_roles?per_page=100",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "[]\n"
+    }
+  ]
+}

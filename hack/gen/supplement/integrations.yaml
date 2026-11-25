@@ -1,0 +1,3382 @@
+openapi: 3.0.0
+info:
+  title: 'GitLab REST API: integration supplement'
+  version: '19.6'
+paths:
+  /api/v4/projects/{id}/integrations/custom-issue-tracker:
+    get:
+      operationId: getApiV4ProjectsIdIntegrationsCustomIssueTracker
+      summary: Retrieve integration settings (custom-issue-tracker)
+      tags:
+      - Integrations
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the project.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+        example: 1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIEntitiesIntegration'
+        '404':
+          description: Not found
+    put:
+      operationId: putApiV4ProjectsIdIntegrationsCustomIssueTracker
+      summary: Create or update the Custom Issue Tracker integration
+      description: Creates or updates the Custom Issue Tracker integration.
+      tags:
+      - Integrations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIEntitiesIntegrationBasic'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+        '422':
+          description: Unprocessable entity
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the project.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+        example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/putApiV4ProjectsIdIntegrationsCustomIssueTrackerRequest'
+    delete:
+      operationId: deleteApiV4ProjectsIdIntegrationsCustomIssueTracker
+      summary: Disable an integration (custom-issue-tracker)
+      tags:
+      - Integrations
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the project.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+        example: 1
+      responses:
+        '204':
+          description: No Content
+        '404':
+          description: Not found
+  /api/v4/projects/{id}/integrations/datadog:
+    get:
+      operationId: getApiV4ProjectsIdIntegrationsDatadog
+      summary: Retrieve integration settings (datadog)
+      tags:
+      - Integrations
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the project.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+        example: 1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIEntitiesIntegration'
+        '404':
+          description: Not found
+    put:
+      operationId: putApiV4ProjectsIdIntegrationsDatadog
+      summary: Create or update the Datadog integration
+      description: Creates or updates the Datadog integration.
+      tags:
+      - Integrations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIEntitiesIntegrationBasic'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+        '422':
+          description: Unprocessable entity
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the project.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+        example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/putApiV4ProjectsIdIntegrationsDatadogRequest'
+    delete:
+      operationId: deleteApiV4ProjectsIdIntegrationsDatadog
+      summary: Disable an integration (datadog)
+      tags:
+      - Integrations
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the project.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+        example: 1
+      responses:
+        '204':
+          description: No Content
+        '404':
+          description: Not found
+  /api/v4/projects/{id}/integrations/emails-on-push:
+    get:
+      operationId: getApiV4ProjectsIdIntegrationsEmailsOnPush
+      summary: Retrieve integration settings (emails-on-push)
+      tags:
+      - Integrations
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the project.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+        example: 1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIEntitiesIntegration'
+        '404':
+          description: Not found
+    put:
+      operationId: putApiV4ProjectsIdIntegrationsEmailsOnPush
+      summary: Create or update the Emails On Push integration
+      description: Creates or updates the Emails On Push integration.
+      tags:
+      - Integrations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIEntitiesIntegrationBasic'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+        '422':
+          description: Unprocessable entity
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the project.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+        example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/putApiV4ProjectsIdIntegrationsEmailsOnPushRequest'
+    delete:
+      operationId: deleteApiV4ProjectsIdIntegrationsEmailsOnPush
+      summary: Disable an integration (emails-on-push)
+      tags:
+      - Integrations
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the project.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+        example: 1
+      responses:
+        '204':
+          description: No Content
+        '404':
+          description: Not found
+  /api/v4/projects/{id}/integrations/external-wiki:
+    get:
+      operationId: getApiV4ProjectsIdIntegrationsExternalWiki
+      summary: Retrieve integration settings (external-wiki)
+      tags:
+      - Integrations
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the project.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+        example: 1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIEntitiesIntegration'
+        '404':
+          description: Not found
+    put:
+      operationId: putApiV4ProjectsIdIntegrationsExternalWiki
+      summary: Create or update the External Wiki integration
+      description: Creates or updates the External Wiki integration.
+      tags:
+      - Integrations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIEntitiesIntegrationBasic'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+        '422':
+          description: Unprocessable entity
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the project.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+        example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/putApiV4ProjectsIdIntegrationsExternalWikiRequest'
+    delete:
+      operationId: deleteApiV4ProjectsIdIntegrationsExternalWiki
+      summary: Disable an integration (external-wiki)
+      tags:
+      - Integrations
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the project.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+        example: 1
+      responses:
+        '204':
+          description: No Content
+        '404':
+          description: Not found
+  /api/v4/projects/{id}/integrations/github:
+    get:
+      operationId: getApiV4ProjectsIdIntegrationsGithub
+      summary: Retrieve integration settings (github)
+      tags:
+      - Integrations
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the project.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+        example: 1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIEntitiesIntegration'
+        '404':
+          description: Not found
+    put:
+      operationId: putApiV4ProjectsIdIntegrationsGithub
+      summary: Create or update the Github integration
+      description: Creates or updates the Github integration.
+      tags:
+      - Integrations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIEntitiesIntegrationBasic'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+        '422':
+          description: Unprocessable entity
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the project.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+        example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/putApiV4ProjectsIdIntegrationsGithubRequest'
+      x-gitlab-tier: premium
+    delete:
+      operationId: deleteApiV4ProjectsIdIntegrationsGithub
+      summary: Disable an integration (github)
+      tags:
+      - Integrations
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the project.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+        example: 1
+      responses:
+        '204':
+          description: No Content
+        '404':
+          description: Not found
+  /api/v4/projects/{id}/integrations/hangouts-chat:
+    get:
+      operationId: getApiV4ProjectsIdIntegrationsHangoutsChat
+      summary: Retrieve integration settings (hangouts-chat)
+      tags:
+      - Integrations
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the project.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+        example: 1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIEntitiesIntegration'
+        '404':
+          description: Not found
+    put:
+      operationId: putApiV4ProjectsIdIntegrationsHangoutsChat
+      summary: Create or update the Hangouts Chat integration
+      description: Creates or updates the Hangouts Chat integration.
+      tags:
+      - Integrations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIEntitiesIntegrationBasic'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+        '422':
+          description: Unprocessable entity
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the project.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+        example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/putApiV4ProjectsIdIntegrationsHangoutsChatRequest'
+    delete:
+      operationId: deleteApiV4ProjectsIdIntegrationsHangoutsChat
+      summary: Disable an integration (hangouts-chat)
+      tags:
+      - Integrations
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the project.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+        example: 1
+      responses:
+        '204':
+          description: No Content
+        '404':
+          description: Not found
+  /api/v4/projects/{id}/integrations/harbor:
+    get:
+      operationId: getApiV4ProjectsIdIntegrationsHarbor
+      summary: Retrieve integration settings (harbor)
+      tags:
+      - Integrations
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the project.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+        example: 1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIEntitiesIntegration'
+        '404':
+          description: Not found
+    put:
+      operationId: putApiV4ProjectsIdIntegrationsHarbor
+      summary: Create or update the Harbor integration
+      description: Creates or updates the Harbor integration.
+      tags:
+      - Integrations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIEntitiesIntegrationBasic'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+        '422':
+          description: Unprocessable entity
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the project.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+        example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/putApiV4ProjectsIdIntegrationsHarborRequest'
+    delete:
+      operationId: deleteApiV4ProjectsIdIntegrationsHarbor
+      summary: Disable an integration (harbor)
+      tags:
+      - Integrations
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the project.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+        example: 1
+      responses:
+        '204':
+          description: No Content
+        '404':
+          description: Not found
+  /api/v4/projects/{id}/integrations/jenkins:
+    get:
+      operationId: getApiV4ProjectsIdIntegrationsJenkins
+      summary: Retrieve integration settings (jenkins)
+      tags:
+      - Integrations
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the project.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+        example: 1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIEntitiesIntegration'
+        '404':
+          description: Not found
+    put:
+      operationId: putApiV4ProjectsIdIntegrationsJenkins
+      summary: Create or update the Jenkins integration
+      description: Creates or updates the Jenkins integration.
+      tags:
+      - Integrations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIEntitiesIntegrationBasic'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+        '422':
+          description: Unprocessable entity
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the project.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+        example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/putApiV4ProjectsIdIntegrationsJenkinsRequest'
+    delete:
+      operationId: deleteApiV4ProjectsIdIntegrationsJenkins
+      summary: Disable an integration (jenkins)
+      tags:
+      - Integrations
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the project.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+        example: 1
+      responses:
+        '204':
+          description: No Content
+        '404':
+          description: Not found
+  /api/v4/projects/{id}/integrations/jira:
+    get:
+      operationId: getApiV4ProjectsIdIntegrationsJira
+      summary: Retrieve integration settings (jira)
+      tags:
+      - Integrations
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the project.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+        example: 1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIEntitiesIntegration'
+        '404':
+          description: Not found
+    put:
+      operationId: putApiV4ProjectsIdIntegrationsJira
+      summary: Create or update the Jira integration
+      description: Creates or updates the Jira integration.
+      tags:
+      - Integrations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIEntitiesIntegrationBasic'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+        '422':
+          description: Unprocessable entity
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the project.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+        example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/putApiV4ProjectsIdIntegrationsJiraRequest'
+    delete:
+      operationId: deleteApiV4ProjectsIdIntegrationsJira
+      summary: Disable an integration (jira)
+      tags:
+      - Integrations
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the project.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+        example: 1
+      responses:
+        '204':
+          description: No Content
+        '404':
+          description: Not found
+  /api/v4/projects/{id}/integrations/matrix:
+    get:
+      operationId: getApiV4ProjectsIdIntegrationsMatrix
+      summary: Retrieve integration settings (matrix)
+      tags:
+      - Integrations
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the project.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+        example: 1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIEntitiesIntegration'
+        '404':
+          description: Not found
+    put:
+      operationId: putApiV4ProjectsIdIntegrationsMatrix
+      summary: Create or update the Matrix integration
+      description: Creates or updates the Matrix integration.
+      tags:
+      - Integrations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIEntitiesIntegrationBasic'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+        '422':
+          description: Unprocessable entity
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the project.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+        example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/putApiV4ProjectsIdIntegrationsMatrixRequest'
+    delete:
+      operationId: deleteApiV4ProjectsIdIntegrationsMatrix
+      summary: Disable an integration (matrix)
+      tags:
+      - Integrations
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the project.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+        example: 1
+      responses:
+        '204':
+          description: No Content
+        '404':
+          description: Not found
+  /api/v4/projects/{id}/integrations/mattermost:
+    get:
+      operationId: getApiV4ProjectsIdIntegrationsMattermost
+      summary: Retrieve integration settings (mattermost)
+      tags:
+      - Integrations
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the project.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+        example: 1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIEntitiesIntegration'
+        '404':
+          description: Not found
+    put:
+      operationId: putApiV4ProjectsIdIntegrationsMattermost
+      summary: Create or update the Mattermost integration
+      description: Creates or updates the Mattermost integration.
+      tags:
+      - Integrations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIEntitiesIntegrationBasic'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+        '422':
+          description: Unprocessable entity
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the project.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+        example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/putApiV4ProjectsIdIntegrationsMattermostRequest'
+    delete:
+      operationId: deleteApiV4ProjectsIdIntegrationsMattermost
+      summary: Disable an integration (mattermost)
+      tags:
+      - Integrations
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the project.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+        example: 1
+      responses:
+        '204':
+          description: No Content
+        '404':
+          description: Not found
+  /api/v4/projects/{id}/integrations/microsoft-teams:
+    get:
+      operationId: getApiV4ProjectsIdIntegrationsMicrosoftTeams
+      summary: Retrieve integration settings (microsoft-teams)
+      tags:
+      - Integrations
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the project.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+        example: 1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIEntitiesIntegration'
+        '404':
+          description: Not found
+    put:
+      operationId: putApiV4ProjectsIdIntegrationsMicrosoftTeams
+      summary: Create or update the Microsoft Teams integration
+      description: Creates or updates the Microsoft Teams integration.
+      tags:
+      - Integrations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIEntitiesIntegrationBasic'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+        '422':
+          description: Unprocessable entity
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the project.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+        example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/putApiV4ProjectsIdIntegrationsMicrosoftTeamsRequest'
+    delete:
+      operationId: deleteApiV4ProjectsIdIntegrationsMicrosoftTeams
+      summary: Disable an integration (microsoft-teams)
+      tags:
+      - Integrations
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the project.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+        example: 1
+      responses:
+        '204':
+          description: No Content
+        '404':
+          description: Not found
+  /api/v4/projects/{id}/integrations/pipelines-email:
+    get:
+      operationId: getApiV4ProjectsIdIntegrationsPipelinesEmail
+      summary: Retrieve integration settings (pipelines-email)
+      tags:
+      - Integrations
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the project.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+        example: 1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIEntitiesIntegration'
+        '404':
+          description: Not found
+    put:
+      operationId: putApiV4ProjectsIdIntegrationsPipelinesEmail
+      summary: Create or update the Pipelines Email integration
+      description: Creates or updates the Pipelines Email integration.
+      tags:
+      - Integrations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIEntitiesIntegrationBasic'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+        '422':
+          description: Unprocessable entity
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the project.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+        example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/putApiV4ProjectsIdIntegrationsPipelinesEmailRequest'
+    delete:
+      operationId: deleteApiV4ProjectsIdIntegrationsPipelinesEmail
+      summary: Disable an integration (pipelines-email)
+      tags:
+      - Integrations
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the project.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+        example: 1
+      responses:
+        '204':
+          description: No Content
+        '404':
+          description: Not found
+  /api/v4/projects/{id}/integrations/redmine:
+    get:
+      operationId: getApiV4ProjectsIdIntegrationsRedmine
+      summary: Retrieve integration settings (redmine)
+      tags:
+      - Integrations
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the project.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+        example: 1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIEntitiesIntegration'
+        '404':
+          description: Not found
+    put:
+      operationId: putApiV4ProjectsIdIntegrationsRedmine
+      summary: Create or update the Redmine integration
+      description: Creates or updates the Redmine integration.
+      tags:
+      - Integrations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIEntitiesIntegrationBasic'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+        '422':
+          description: Unprocessable entity
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the project.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+        example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/putApiV4ProjectsIdIntegrationsRedmineRequest'
+    delete:
+      operationId: deleteApiV4ProjectsIdIntegrationsRedmine
+      summary: Disable an integration (redmine)
+      tags:
+      - Integrations
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the project.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+        example: 1
+      responses:
+        '204':
+          description: No Content
+        '404':
+          description: Not found
+  /api/v4/projects/{id}/integrations/slack:
+    get:
+      operationId: getApiV4ProjectsIdIntegrationsSlack
+      summary: Retrieve integration settings (slack)
+      tags:
+      - Integrations
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the project.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+        example: 1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIEntitiesIntegration'
+        '404':
+          description: Not found
+    put:
+      operationId: putApiV4ProjectsIdIntegrationsSlack
+      summary: Create or update the Slack integration
+      description: Creates or updates the Slack integration.
+      tags:
+      - Integrations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIEntitiesIntegrationBasic'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+        '422':
+          description: Unprocessable entity
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the project.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+        example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/putApiV4ProjectsIdIntegrationsSlackRequest'
+    delete:
+      operationId: deleteApiV4ProjectsIdIntegrationsSlack
+      summary: Disable an integration (slack)
+      tags:
+      - Integrations
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the project.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+        example: 1
+      responses:
+        '204':
+          description: No Content
+        '404':
+          description: Not found
+  /api/v4/projects/{id}/integrations/telegram:
+    get:
+      operationId: getApiV4ProjectsIdIntegrationsTelegram
+      summary: Retrieve integration settings (telegram)
+      tags:
+      - Integrations
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the project.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+        example: 1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIEntitiesIntegration'
+        '404':
+          description: Not found
+    put:
+      operationId: putApiV4ProjectsIdIntegrationsTelegram
+      summary: Create or update the Telegram integration
+      description: Creates or updates the Telegram integration.
+      tags:
+      - Integrations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIEntitiesIntegrationBasic'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+        '422':
+          description: Unprocessable entity
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the project.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+        example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/putApiV4ProjectsIdIntegrationsTelegramRequest'
+    delete:
+      operationId: deleteApiV4ProjectsIdIntegrationsTelegram
+      summary: Disable an integration (telegram)
+      tags:
+      - Integrations
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the project.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+        example: 1
+      responses:
+        '204':
+          description: No Content
+        '404':
+          description: Not found
+  /api/v4/projects/{id}/integrations/youtrack:
+    get:
+      operationId: getApiV4ProjectsIdIntegrationsYoutrack
+      summary: Retrieve integration settings (youtrack)
+      tags:
+      - Integrations
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the project.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+        example: 1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIEntitiesIntegration'
+        '404':
+          description: Not found
+    put:
+      operationId: putApiV4ProjectsIdIntegrationsYoutrack
+      summary: Create or update the Youtrack integration
+      description: Creates or updates the Youtrack integration.
+      tags:
+      - Integrations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIEntitiesIntegrationBasic'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+        '422':
+          description: Unprocessable entity
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the project.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+        example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/putApiV4ProjectsIdIntegrationsYoutrackRequest'
+    delete:
+      operationId: deleteApiV4ProjectsIdIntegrationsYoutrack
+      summary: Disable an integration (youtrack)
+      tags:
+      - Integrations
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the project.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+        example: 1
+      responses:
+        '204':
+          description: No Content
+        '404':
+          description: Not found
+  /api/v4/groups/{id}/integrations/datadog:
+    get:
+      operationId: getApiV4GroupsIdIntegrationsDatadog
+      summary: Retrieve integration settings (datadog)
+      tags:
+      - Integrations
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the group.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIEntitiesIntegration'
+        '404':
+          description: Not found
+    put:
+      operationId: putApiV4GroupsIdIntegrationsDatadog
+      summary: Create or update the Datadog integration
+      description: Creates or updates the Datadog integration.
+      tags:
+      - Integrations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIEntitiesIntegrationBasic'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+        '422':
+          description: Unprocessable entity
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the group.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/putApiV4GroupsIdIntegrationsDatadogRequest'
+    delete:
+      operationId: deleteApiV4GroupsIdIntegrationsDatadog
+      summary: Disable an integration (datadog)
+      tags:
+      - Integrations
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the group.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+      responses:
+        '204':
+          description: No Content
+        '404':
+          description: Not found
+  /api/v4/groups/{id}/integrations/harbor:
+    get:
+      operationId: getApiV4GroupsIdIntegrationsHarbor
+      summary: Retrieve integration settings (harbor)
+      tags:
+      - Integrations
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the group.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIEntitiesIntegration'
+        '404':
+          description: Not found
+    put:
+      operationId: putApiV4GroupsIdIntegrationsHarbor
+      summary: Create or update the Harbor integration
+      description: Creates or updates the Harbor integration.
+      tags:
+      - Integrations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIEntitiesIntegrationBasic'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+        '422':
+          description: Unprocessable entity
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the group.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/putApiV4GroupsIdIntegrationsHarborRequest'
+    delete:
+      operationId: deleteApiV4GroupsIdIntegrationsHarbor
+      summary: Disable an integration (harbor)
+      tags:
+      - Integrations
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the group.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+      responses:
+        '204':
+          description: No Content
+        '404':
+          description: Not found
+  /api/v4/groups/{id}/integrations/jira:
+    get:
+      operationId: getApiV4GroupsIdIntegrationsJira
+      summary: Retrieve integration settings (jira)
+      tags:
+      - Integrations
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the group.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIEntitiesIntegration'
+        '404':
+          description: Not found
+    put:
+      operationId: putApiV4GroupsIdIntegrationsJira
+      summary: Create or update the Jira integration
+      description: Creates or updates the Jira integration.
+      tags:
+      - Integrations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIEntitiesIntegrationBasic'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+        '422':
+          description: Unprocessable entity
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the group.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/putApiV4GroupsIdIntegrationsJiraRequest'
+    delete:
+      operationId: deleteApiV4GroupsIdIntegrationsJira
+      summary: Disable an integration (jira)
+      tags:
+      - Integrations
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the group.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+      responses:
+        '204':
+          description: No Content
+        '404':
+          description: Not found
+  /api/v4/groups/{id}/integrations/mattermost:
+    get:
+      operationId: getApiV4GroupsIdIntegrationsMattermost
+      summary: Retrieve integration settings (mattermost)
+      tags:
+      - Integrations
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the group.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIEntitiesIntegration'
+        '404':
+          description: Not found
+    put:
+      operationId: putApiV4GroupsIdIntegrationsMattermost
+      summary: Create or update the Mattermost integration
+      description: Creates or updates the Mattermost integration.
+      tags:
+      - Integrations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIEntitiesIntegrationBasic'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+        '422':
+          description: Unprocessable entity
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the group.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/putApiV4GroupsIdIntegrationsMattermostRequest'
+    delete:
+      operationId: deleteApiV4GroupsIdIntegrationsMattermost
+      summary: Disable an integration (mattermost)
+      tags:
+      - Integrations
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the group.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+      responses:
+        '204':
+          description: No Content
+        '404':
+          description: Not found
+  /api/v4/groups/{id}/integrations/microsoft-teams:
+    get:
+      operationId: getApiV4GroupsIdIntegrationsMicrosoftTeams
+      summary: Retrieve integration settings (microsoft-teams)
+      tags:
+      - Integrations
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the group.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIEntitiesIntegration'
+        '404':
+          description: Not found
+    put:
+      operationId: putApiV4GroupsIdIntegrationsMicrosoftTeams
+      summary: Create or update the Microsoft Teams integration
+      description: Creates or updates the Microsoft Teams integration.
+      tags:
+      - Integrations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIEntitiesIntegrationBasic'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+        '422':
+          description: Unprocessable entity
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the group.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/putApiV4GroupsIdIntegrationsMicrosoftTeamsRequest'
+    delete:
+      operationId: deleteApiV4GroupsIdIntegrationsMicrosoftTeams
+      summary: Disable an integration (microsoft-teams)
+      tags:
+      - Integrations
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the group.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+      responses:
+        '204':
+          description: No Content
+        '404':
+          description: Not found
+components:
+  schemas:
+    APIEntitiesIntegration:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 75
+        title:
+          type: string
+          example: Jenkins CI
+        slug:
+          type: string
+          example: jenkins
+        created_at:
+          type: string
+          format: date-time
+          example: '2019-11-20T11:20:25.297Z'
+        updated_at:
+          type: string
+          format: date-time
+          example: '2019-11-20T12:24:37.498Z'
+        active:
+          type: boolean
+        commit_events:
+          type: boolean
+        push_events:
+          type: boolean
+        issues_events:
+          type: boolean
+        incident_events:
+          type: boolean
+        alert_events:
+          type: boolean
+        confidential_issues_events:
+          type: boolean
+        merge_requests_events:
+          type: boolean
+        tag_push_events:
+          type: boolean
+        deployment_events:
+          type: boolean
+        note_events:
+          type: boolean
+        confidential_note_events:
+          type: boolean
+        pipeline_events:
+          type: boolean
+        wiki_page_events:
+          type: boolean
+        job_events:
+          type: boolean
+        comment_on_event_enabled:
+          type: boolean
+        inherited:
+          type: boolean
+        vulnerability_events:
+          type: boolean
+        properties:
+          type: object
+          example:
+            token: secr3t
+    APIEntitiesIntegrationBasic:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 75
+        title:
+          type: string
+          example: Jenkins CI
+        slug:
+          type: string
+          example: jenkins
+        created_at:
+          type: string
+          format: date-time
+          example: '2019-11-20T11:20:25.297Z'
+        updated_at:
+          type: string
+          format: date-time
+          example: '2019-11-20T12:24:37.498Z'
+        active:
+          type: boolean
+        commit_events:
+          type: boolean
+        push_events:
+          type: boolean
+        issues_events:
+          type: boolean
+        incident_events:
+          type: boolean
+        alert_events:
+          type: boolean
+        confidential_issues_events:
+          type: boolean
+        merge_requests_events:
+          type: boolean
+        tag_push_events:
+          type: boolean
+        deployment_events:
+          type: boolean
+        note_events:
+          type: boolean
+        confidential_note_events:
+          type: boolean
+        pipeline_events:
+          type: boolean
+        wiki_page_events:
+          type: boolean
+        job_events:
+          type: boolean
+        comment_on_event_enabled:
+          type: boolean
+        inherited:
+          type: boolean
+        vulnerability_events:
+          type: boolean
+    putApiV4GroupsIdIntegrationsDatadogRequest:
+      type: object
+      properties:
+        datadog_site:
+          type: string
+          description: Datadog site to send data to. Learn more about Datadog sites in the <a target="_blank" rel="noopener
+            noreferrer" href="https://docs.datadoghq.com/getting_started/site/">documentation</a>.
+          nullable: true
+        api_url:
+          type: string
+          description: Full URL of your Datadog site. Only required if you do not use a standard Datadog site.
+          nullable: true
+        api_key:
+          type: string
+          description: <a target="_blank" rel="noopener noreferrer" href="https://docs.datadoghq.com/account_management/api-app-keys/">API
+            key</a> used for authentication with Datadog.
+          nullable: true
+        datadog_ci_visibility:
+          type: boolean
+          description: Enable CI Visibility
+          nullable: true
+        archive_trace_events:
+          type: boolean
+          description: When enabled, job logs are collected by Datadog and displayed along with pipeline execution traces.
+          nullable: true
+        datadog_service:
+          type: string
+          description: Tag all pipeline data from this GitLab instance in Datadog. Can be used when managing several self-managed
+            deployments.
+          nullable: true
+        datadog_env:
+          type: string
+          description: For self-managed deployments, `env` tag for all the data sent to Datadog.
+          nullable: true
+        datadog_tags:
+          type: string
+          description: Custom tags in Datadog. Specify one tag per line in the format `key:value\nkey2:value2`.
+          nullable: true
+        pipeline_events:
+          type: boolean
+          description: Trigger event when a pipeline status changes.
+          nullable: true
+        build_events:
+          type: boolean
+          description: Trigger event when a build is created.
+          nullable: true
+        push_events:
+          type: boolean
+          description: Trigger event for pushes to the repository.
+          nullable: true
+        merge_requests_events:
+          type: boolean
+          description: Trigger event when a merge request is created, updated, or merged.
+          nullable: true
+        note_events:
+          type: boolean
+          description: Trigger event for new comments.
+          nullable: true
+        tag_push_events:
+          type: boolean
+          description: Trigger event for new tags pushed to the repository.
+          nullable: true
+        subgroup_events:
+          type: boolean
+          nullable: true
+        project_events:
+          type: boolean
+          nullable: true
+        use_inherited_settings:
+          type: boolean
+          description: Indicates whether to inherit the default settings. Defaults to `false`.
+          nullable: true
+      required:
+      - api_key
+    putApiV4GroupsIdIntegrationsHarborRequest:
+      type: object
+      properties:
+        url:
+          type: string
+          description: The base URL to the Harbor instance linked to the GitLab project. For example, `https://demo.goharbor.io`.
+          nullable: true
+        project_name:
+          type: string
+          description: The name of the project in the Harbor instance. For example, `testproject`.
+          nullable: true
+        username:
+          type: string
+          description: The username created in the Harbor interface.
+          nullable: true
+        password:
+          type: string
+          description: The password of the user.
+          nullable: true
+        use_inherited_settings:
+          type: boolean
+          description: Indicates whether to inherit the default settings. Defaults to `false`.
+          nullable: true
+      required:
+      - url
+      - project_name
+      - username
+      - password
+    putApiV4GroupsIdIntegrationsJiraRequest:
+      type: object
+      properties:
+        url:
+          type: string
+          description: The URL to the Jira project which is being linked to this GitLab project (for example, `https://jira.example.com`).
+          nullable: true
+        api_url:
+          type: string
+          description: The base URL to the Jira instance API. Web URL value is used if not set (for example, `https://jira-api.example.com`).
+          nullable: true
+        jira_auth_type:
+          type: integer
+          description: The authentication method to use with Jira. Use `0` for basic authentication, `1` for Jira personal
+            access token, and `2` for Jira Cloud service accounts. Defaults to `0`.
+          nullable: true
+        username:
+          type: string
+          description: The email or username to use with Jira. Use an email for Jira Cloud, and a username for Jira Data Center
+            and Jira Server. Required when using basic authentication (`jira_auth_type` is `0`).
+          nullable: true
+        password:
+          type: string
+          description: The Jira API token, password, or personal access token to use with Jira. When using Basic Authentication
+            (`jira_auth_type` is `0`), use an API token for Jira Cloud, and a password for Jira Data Center or Jira Server.
+            For a Jira personal access token (`jira_auth_type` is `1`), use the personal access token.
+          nullable: true
+        jira_issue_regex:
+          type: string
+          description: Regular expression to match Jira issue keys.
+          nullable: true
+        jira_issue_prefix:
+          type: string
+          description: Prefix to match Jira issue keys.
+          nullable: true
+        jira_issue_transition_id:
+          type: string
+          description: The ID of one or more transitions for [custom issue transitions](../integration/jira/issues.md#custom-issue-transitions).Ignored
+            when `jira_issue_transition_automatic` is enabled. Defaults to a blank string,which disables custom transitions.
+          nullable: true
+        issues_enabled:
+          type: string
+          description: Enable viewing Jira issues in GitLab.
+          nullable: true
+        project_keys:
+          type: array
+          items:
+            type: string
+          description: Keys of Jira projects to display. When `issues_enabled` is `true`, this setting filters which Jira
+            projects are shown in GitLab. It does not restrict the API token's access.
+          nullable: true
+        vulnerabilities_enabled:
+          type: boolean
+          description: Turn on Jira issue creation for GitLab vulnerabilities.
+          nullable: true
+        vulnerabilities_issuetype:
+          type: string
+          description: Jira issue type to use when creating issues from vulnerabilities.
+          nullable: true
+        project_key:
+          type: string
+          description: Key of the project to use when creating issues from vulnerabilities.This parameter is required if using
+            the integration to create Jira issues from vulnerabilities.
+          nullable: true
+        customize_jira_issue_enabled:
+          type: boolean
+          description: When set to `true`, opens a prefilled form on the Jira instancewhen creating a Jira issue from a vulnerability.
+          nullable: true
+        jira_check_enabled:
+          type: boolean
+          description: Verify Jira issues referenced in commit messages exist before allowing the push.
+          nullable: true
+        jira_exists_check_enabled:
+          type: boolean
+          description: Verify the Jira issues referenced in commit messages exist in Jira.
+          nullable: true
+        jira_assignee_check_enabled:
+          type: boolean
+          description: Verify the committer is the assignee of the Jira issues referenced in commit messages.
+          nullable: true
+        jira_status_check_enabled:
+          type: boolean
+          description: Verify the status of Jira issues referenced in commit messages.
+          nullable: true
+        jira_allowed_statuses_as_string:
+          type: string
+          description: Comma-separated list of allowed Jira issue statuses.
+          nullable: true
+        comment_on_event_enabled:
+          type: boolean
+          description: Enable comments inside Jira issues on each GitLab event (commit / merge request)
+          nullable: true
+        commit_events:
+          type: boolean
+          description: Trigger event when a commit is created or updated.
+          nullable: true
+        merge_requests_events:
+          type: boolean
+          description: Trigger event when a merge request is created, updated, or merged.
+          nullable: true
+        use_inherited_settings:
+          type: boolean
+          description: Indicates whether to inherit the default settings. Defaults to `false`.
+          nullable: true
+      required:
+      - url
+      - password
+    putApiV4GroupsIdIntegrationsMattermostRequest:
+      type: object
+      properties:
+        webhook:
+          type: string
+          description: Mattermost notifications webhook (for example, `http://mattermost.example.com/hooks/...`).
+          nullable: true
+        username:
+          type: string
+          description: Mattermost notifications username.
+          nullable: true
+        channel:
+          type: string
+          description: Default channel to use if no other channel is configured.
+          nullable: true
+        notify_only_broken_pipelines:
+          type: boolean
+          description: Send notifications for broken pipelines.
+          nullable: true
+        notify_only_when_pipeline_status_changes:
+          type: boolean
+          description: Send notifications only when the pipeline status changes.
+          nullable: true
+        branches_to_be_notified:
+          type: string
+          description: Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`.
+            The default value is `default`.
+          nullable: true
+        labels_to_be_notified:
+          type: string
+          description: Labels to send notifications for. Leave blank to receive notifications for all events.
+          nullable: true
+        labels_to_be_notified_behavior:
+          type: string
+          description: Labels to be notified for. Valid options are `match_any` and `match_all`. The default value is `match_any`.
+          nullable: true
+        push_channel:
+          type: string
+          description: The name of the channel to receive push_events notifications
+          nullable: true
+        issue_channel:
+          type: string
+          description: The name of the channel to receive issues_events notifications
+          nullable: true
+        incident_channel:
+          type: string
+          description: The name of the channel to receive incident_events notifications
+          nullable: true
+        alert_channel:
+          type: string
+          description: The name of the channel to receive alert_events notifications
+          nullable: true
+        confidential_issue_channel:
+          type: string
+          description: The name of the channel to receive confidential_issues_events notifications
+          nullable: true
+        merge_request_channel:
+          type: string
+          description: The name of the channel to receive merge_requests_events notifications
+          nullable: true
+        note_channel:
+          type: string
+          description: The name of the channel to receive note_events notifications
+          nullable: true
+        confidential_note_channel:
+          type: string
+          description: The name of the channel to receive confidential_note_events notifications
+          nullable: true
+        tag_push_channel:
+          type: string
+          description: The name of the channel to receive tag_push_events notifications
+          nullable: true
+        deployment_channel:
+          type: string
+          description: The name of the channel to receive deployment_events notifications
+          nullable: true
+        pipeline_channel:
+          type: string
+          description: The name of the channel to receive pipeline_events notifications
+          nullable: true
+        wiki_page_channel:
+          type: string
+          description: The name of the channel to receive wiki_page_events notifications
+          nullable: true
+        vulnerability_channel:
+          type: string
+          description: The name of the channel to receive vulnerability_events notifications
+          nullable: true
+        push_events:
+          type: boolean
+          description: Trigger event for pushes to the repository.
+          nullable: true
+        issues_events:
+          type: boolean
+          description: Trigger event when a work item is created, updated, or closed.
+          nullable: true
+        confidential_issues_events:
+          type: boolean
+          description: Trigger event when a confidential work item is created, updated, or closed.
+          nullable: true
+        merge_requests_events:
+          type: boolean
+          description: Trigger event when a merge request is created, updated, or merged.
+          nullable: true
+        note_events:
+          type: boolean
+          description: Trigger event for new comments.
+          nullable: true
+        confidential_note_events:
+          type: boolean
+          description: Trigger event for new comments on confidential work items.
+          nullable: true
+        tag_push_events:
+          type: boolean
+          description: Trigger event for new tags pushed to the repository.
+          nullable: true
+        pipeline_events:
+          type: boolean
+          description: Trigger event when a pipeline status changes.
+          nullable: true
+        wiki_page_events:
+          type: boolean
+          description: Trigger event when a wiki page is created or updated.
+          nullable: true
+        deployment_events:
+          type: boolean
+          description: Trigger event when a deployment starts or finishes.
+          nullable: true
+        incident_events:
+          type: boolean
+          description: Trigger event when an incident is created.
+          nullable: true
+        work_item_events:
+          type: boolean
+          nullable: true
+        confidential_work_item_events:
+          type: boolean
+          nullable: true
+        vulnerability_events:
+          type: boolean
+          nullable: true
+        use_inherited_settings:
+          type: boolean
+          description: Indicates whether to inherit the default settings. Defaults to `false`.
+          nullable: true
+      required:
+      - webhook
+    putApiV4GroupsIdIntegrationsMicrosoftTeamsRequest:
+      type: object
+      properties:
+        webhook:
+          type: string
+          description: The Microsoft Teams webhook (for example, `https://outlook.office.com/webhook/...`).
+          nullable: true
+        notify_only_broken_pipelines:
+          type: boolean
+          description: Send notifications for broken pipelines.
+          nullable: true
+        notify_only_when_pipeline_status_changes:
+          type: boolean
+          description: Send notifications only when the pipeline status changes.
+          nullable: true
+        branches_to_be_notified:
+          type: string
+          description: Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`.
+            The default value is `default`.
+          nullable: true
+        push_events:
+          type: boolean
+          description: Trigger event for pushes to the repository.
+          nullable: true
+        issues_events:
+          type: boolean
+          description: Trigger event when a work item is created, updated, or closed.
+          nullable: true
+        confidential_issues_events:
+          type: boolean
+          description: Trigger event when a confidential work item is created, updated, or closed.
+          nullable: true
+        work_item_events:
+          type: boolean
+          nullable: true
+        confidential_work_item_events:
+          type: boolean
+          nullable: true
+        merge_requests_events:
+          type: boolean
+          description: Trigger event when a merge request is created, updated, or merged.
+          nullable: true
+        note_events:
+          type: boolean
+          description: Trigger event for new comments.
+          nullable: true
+        confidential_note_events:
+          type: boolean
+          description: Trigger event for new comments on confidential work items.
+          nullable: true
+        tag_push_events:
+          type: boolean
+          description: Trigger event for new tags pushed to the repository.
+          nullable: true
+        pipeline_events:
+          type: boolean
+          description: Trigger event when a pipeline status changes.
+          nullable: true
+        wiki_page_events:
+          type: boolean
+          description: Trigger event when a wiki page is created or updated.
+          nullable: true
+        use_inherited_settings:
+          type: boolean
+          description: Indicates whether to inherit the default settings. Defaults to `false`.
+          nullable: true
+      required:
+      - webhook
+    putApiV4ProjectsIdIntegrationsCustomIssueTrackerRequest:
+      type: object
+      properties:
+        project_url:
+          type: string
+          description: URL of the project.
+          nullable: true
+        issues_url:
+          type: string
+          description: URL of the issue.
+          nullable: true
+        new_issue_url:
+          type: string
+          description: URL of the new issue.
+          nullable: true
+        push_events:
+          type: boolean
+          description: Trigger event for pushes to the repository.
+          nullable: true
+        use_inherited_settings:
+          type: boolean
+          description: Indicates whether to inherit the default settings. Defaults to `false`.
+          nullable: true
+      required:
+      - project_url
+      - issues_url
+      - new_issue_url
+    putApiV4ProjectsIdIntegrationsDatadogRequest:
+      type: object
+      properties:
+        datadog_site:
+          type: string
+          description: Datadog site to send data to. Learn more about Datadog sites in the <a target="_blank" rel="noopener
+            noreferrer" href="https://docs.datadoghq.com/getting_started/site/">documentation</a>.
+          nullable: true
+        api_url:
+          type: string
+          description: Full URL of your Datadog site. Only required if you do not use a standard Datadog site.
+          nullable: true
+        api_key:
+          type: string
+          description: <a target="_blank" rel="noopener noreferrer" href="https://docs.datadoghq.com/account_management/api-app-keys/">API
+            key</a> used for authentication with Datadog.
+          nullable: true
+        datadog_ci_visibility:
+          type: boolean
+          description: Enable CI Visibility
+          nullable: true
+        archive_trace_events:
+          type: boolean
+          description: When enabled, job logs are collected by Datadog and displayed along with pipeline execution traces.
+          nullable: true
+        datadog_service:
+          type: string
+          description: Tag all pipeline data from this GitLab instance in Datadog. Can be used when managing several self-managed
+            deployments.
+          nullable: true
+        datadog_env:
+          type: string
+          description: For self-managed deployments, `env` tag for all the data sent to Datadog.
+          nullable: true
+        datadog_tags:
+          type: string
+          description: Custom tags in Datadog. Specify one tag per line in the format `key:value\nkey2:value2`.
+          nullable: true
+        pipeline_events:
+          type: boolean
+          description: Trigger event when a pipeline status changes.
+          nullable: true
+        build_events:
+          type: boolean
+          description: Trigger event when a build is created.
+          nullable: true
+        push_events:
+          type: boolean
+          description: Trigger event for pushes to the repository.
+          nullable: true
+        merge_requests_events:
+          type: boolean
+          description: Trigger event when a merge request is created, updated, or merged.
+          nullable: true
+        note_events:
+          type: boolean
+          description: Trigger event for new comments.
+          nullable: true
+        tag_push_events:
+          type: boolean
+          description: Trigger event for new tags pushed to the repository.
+          nullable: true
+        subgroup_events:
+          type: boolean
+          nullable: true
+        project_events:
+          type: boolean
+          nullable: true
+        use_inherited_settings:
+          type: boolean
+          description: Indicates whether to inherit the default settings. Defaults to `false`.
+          nullable: true
+      required:
+      - api_key
+    putApiV4ProjectsIdIntegrationsEmailsOnPushRequest:
+      type: object
+      properties:
+        send_from_committer_email:
+          type: boolean
+          description: Send from committer
+          nullable: true
+        disable_diffs:
+          type: boolean
+          description: Disable code diffs
+          nullable: true
+        branches_to_be_notified:
+          type: string
+          description: Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`.
+            The default value is `default`.
+          nullable: true
+        recipients:
+          type: string
+          nullable: true
+        push_events:
+          type: boolean
+          description: Trigger event for pushes to the repository.
+          nullable: true
+        tag_push_events:
+          type: boolean
+          description: Trigger event for new tags pushed to the repository.
+          nullable: true
+        use_inherited_settings:
+          type: boolean
+          description: Indicates whether to inherit the default settings. Defaults to `false`.
+          nullable: true
+      required:
+      - recipients
+    putApiV4ProjectsIdIntegrationsExternalWikiRequest:
+      type: object
+      properties:
+        external_wiki_url:
+          type: string
+          description: URL of the external wiki.
+          nullable: true
+        use_inherited_settings:
+          type: boolean
+          description: Indicates whether to inherit the default settings. Defaults to `false`.
+          nullable: true
+      required:
+      - external_wiki_url
+    putApiV4ProjectsIdIntegrationsGithubRequest:
+      type: object
+      properties:
+        token:
+          type: string
+          description: GitHub API token with `repo:status` OAuth scope.
+          nullable: true
+        repository_url:
+          type: string
+          description: GitHub repository URL.
+          nullable: true
+        static_context:
+          type: boolean
+          description: Append the hostname of your GitLab instance to the status check name.
+          nullable: true
+        pipeline_events:
+          type: boolean
+          description: Trigger event when a pipeline status changes.
+          nullable: true
+        use_inherited_settings:
+          type: boolean
+          description: Indicates whether to inherit the default settings. Defaults to `false`.
+          nullable: true
+      required:
+      - token
+      - repository_url
+    putApiV4ProjectsIdIntegrationsHangoutsChatRequest:
+      type: object
+      properties:
+        webhook:
+          type: string
+          description: The Hangouts Chat webhook (for example, `https://chat.googleapis.com/v1/spaces...`).
+          nullable: true
+        notify_only_broken_pipelines:
+          type: boolean
+          description: Send notifications for broken pipelines.
+          nullable: true
+        notify_only_when_pipeline_status_changes:
+          type: boolean
+          description: Send notifications only when the pipeline status changes.
+          nullable: true
+        branches_to_be_notified:
+          type: string
+          description: Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`.
+            The default value is `default`.
+          nullable: true
+        push_events:
+          type: boolean
+          description: Trigger event for pushes to the repository.
+          nullable: true
+        issues_events:
+          type: boolean
+          description: Trigger event when a work item is created, updated, or closed.
+          nullable: true
+        confidential_issues_events:
+          type: boolean
+          description: Trigger event when a confidential work item is created, updated, or closed.
+          nullable: true
+        work_item_events:
+          type: boolean
+          nullable: true
+        confidential_work_item_events:
+          type: boolean
+          nullable: true
+        merge_requests_events:
+          type: boolean
+          description: Trigger event when a merge request is created, updated, or merged.
+          nullable: true
+        note_events:
+          type: boolean
+          description: Trigger event for new comments.
+          nullable: true
+        confidential_note_events:
+          type: boolean
+          description: Trigger event for new comments on confidential work items.
+          nullable: true
+        tag_push_events:
+          type: boolean
+          description: Trigger event for new tags pushed to the repository.
+          nullable: true
+        pipeline_events:
+          type: boolean
+          description: Trigger event when a pipeline status changes.
+          nullable: true
+        wiki_page_events:
+          type: boolean
+          description: Trigger event when a wiki page is created or updated.
+          nullable: true
+        use_inherited_settings:
+          type: boolean
+          description: Indicates whether to inherit the default settings. Defaults to `false`.
+          nullable: true
+      required:
+      - webhook
+    putApiV4ProjectsIdIntegrationsHarborRequest:
+      type: object
+      properties:
+        url:
+          type: string
+          description: The base URL to the Harbor instance linked to the GitLab project. For example, `https://demo.goharbor.io`.
+          nullable: true
+        project_name:
+          type: string
+          description: The name of the project in the Harbor instance. For example, `testproject`.
+          nullable: true
+        username:
+          type: string
+          description: The username created in the Harbor interface.
+          nullable: true
+        password:
+          type: string
+          description: The password of the user.
+          nullable: true
+        use_inherited_settings:
+          type: boolean
+          description: Indicates whether to inherit the default settings. Defaults to `false`.
+          nullable: true
+      required:
+      - url
+      - project_name
+      - username
+      - password
+    putApiV4ProjectsIdIntegrationsJenkinsRequest:
+      type: object
+      properties:
+        enable_ssl_verification:
+          type: boolean
+          description: Enable SSL verification. Defaults to `true` (enabled).
+          nullable: true
+        jenkins_url:
+          type: string
+          description: URL of the Jenkins server.
+          nullable: true
+        project_name:
+          type: string
+          description: Name of the Jenkins project.
+          nullable: true
+        username:
+          type: string
+          description: Username of the Jenkins server.
+          nullable: true
+        password:
+          type: string
+          description: Password of the Jenkins server.
+          nullable: true
+        push_events:
+          type: boolean
+          description: Trigger event for pushes to the repository.
+          nullable: true
+        merge_requests_events:
+          type: boolean
+          description: Trigger event when a merge request is created, updated, or merged.
+          nullable: true
+        tag_push_events:
+          type: boolean
+          description: Trigger event for new tags pushed to the repository.
+          nullable: true
+        use_inherited_settings:
+          type: boolean
+          description: Indicates whether to inherit the default settings. Defaults to `false`.
+          nullable: true
+      required:
+      - jenkins_url
+      - project_name
+    putApiV4ProjectsIdIntegrationsJiraRequest:
+      type: object
+      properties:
+        url:
+          type: string
+          description: The URL to the Jira project which is being linked to this GitLab project (for example, `https://jira.example.com`).
+          nullable: true
+        api_url:
+          type: string
+          description: The base URL to the Jira instance API. Web URL value is used if not set (for example, `https://jira-api.example.com`).
+          nullable: true
+        jira_auth_type:
+          type: integer
+          description: The authentication method to use with Jira. Use `0` for basic authentication, `1` for Jira personal
+            access token, and `2` for Jira Cloud service accounts. Defaults to `0`.
+          nullable: true
+        username:
+          type: string
+          description: The email or username to use with Jira. Use an email for Jira Cloud, and a username for Jira Data Center
+            and Jira Server. Required when using basic authentication (`jira_auth_type` is `0`).
+          nullable: true
+        password:
+          type: string
+          description: The Jira API token, password, or personal access token to use with Jira. When using Basic Authentication
+            (`jira_auth_type` is `0`), use an API token for Jira Cloud, and a password for Jira Data Center or Jira Server.
+            For a Jira personal access token (`jira_auth_type` is `1`), use the personal access token.
+          nullable: true
+        jira_issue_regex:
+          type: string
+          description: Regular expression to match Jira issue keys.
+          nullable: true
+        jira_issue_prefix:
+          type: string
+          description: Prefix to match Jira issue keys.
+          nullable: true
+        jira_issue_transition_id:
+          type: string
+          description: The ID of one or more transitions for [custom issue transitions](../integration/jira/issues.md#custom-issue-transitions).Ignored
+            when `jira_issue_transition_automatic` is enabled. Defaults to a blank string,which disables custom transitions.
+          nullable: true
+        issues_enabled:
+          type: string
+          description: Enable viewing Jira issues in GitLab.
+          nullable: true
+        project_keys:
+          type: array
+          items:
+            type: string
+          description: Keys of Jira projects to display. When `issues_enabled` is `true`, this setting filters which Jira
+            projects are shown in GitLab. It does not restrict the API token's access.
+          nullable: true
+        vulnerabilities_enabled:
+          type: boolean
+          description: Turn on Jira issue creation for GitLab vulnerabilities.
+          nullable: true
+        vulnerabilities_issuetype:
+          type: string
+          description: Jira issue type to use when creating issues from vulnerabilities.
+          nullable: true
+        project_key:
+          type: string
+          description: Key of the project to use when creating issues from vulnerabilities.This parameter is required if using
+            the integration to create Jira issues from vulnerabilities.
+          nullable: true
+        customize_jira_issue_enabled:
+          type: boolean
+          description: When set to `true`, opens a prefilled form on the Jira instancewhen creating a Jira issue from a vulnerability.
+          nullable: true
+        jira_check_enabled:
+          type: boolean
+          description: Verify Jira issues referenced in commit messages exist before allowing the push.
+          nullable: true
+        jira_exists_check_enabled:
+          type: boolean
+          description: Verify the Jira issues referenced in commit messages exist in Jira.
+          nullable: true
+        jira_assignee_check_enabled:
+          type: boolean
+          description: Verify the committer is the assignee of the Jira issues referenced in commit messages.
+          nullable: true
+        jira_status_check_enabled:
+          type: boolean
+          description: Verify the status of Jira issues referenced in commit messages.
+          nullable: true
+        jira_allowed_statuses_as_string:
+          type: string
+          description: Comma-separated list of allowed Jira issue statuses.
+          nullable: true
+        comment_on_event_enabled:
+          type: boolean
+          description: Enable comments inside Jira issues on each GitLab event (commit / merge request)
+          nullable: true
+        commit_events:
+          type: boolean
+          description: Trigger event when a commit is created or updated.
+          nullable: true
+        merge_requests_events:
+          type: boolean
+          description: Trigger event when a merge request is created, updated, or merged.
+          nullable: true
+        use_inherited_settings:
+          type: boolean
+          description: Indicates whether to inherit the default settings. Defaults to `false`.
+          nullable: true
+      required:
+      - url
+      - password
+    putApiV4ProjectsIdIntegrationsMatrixRequest:
+      type: object
+      properties:
+        hostname:
+          type: string
+          description: URL of the Matrix server, including `http://` or `https://`. The default value is `https://matrix-client.matrix.org`.
+          nullable: true
+        token:
+          type: string
+          description: The Matrix access token (for example, `syt-zyx57W2v1u123ew11`).
+          nullable: true
+        room:
+          type: string
+          description: Unique identifier for the target room (in the format `!qPKKM111FFKKsfoCVy:matrix.org`).
+          nullable: true
+        notify_only_broken_pipelines:
+          type: boolean
+          description: Send notifications for broken pipelines.
+          nullable: true
+        notify_only_when_pipeline_status_changes:
+          type: boolean
+          description: Send notifications only when the pipeline status changes.
+          nullable: true
+        branches_to_be_notified:
+          type: string
+          description: Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`.
+            The default value is `default`.
+          nullable: true
+        push_events:
+          type: boolean
+          description: Trigger event for pushes to the repository.
+          nullable: true
+        issues_events:
+          type: boolean
+          description: Trigger event when a work item is created, updated, or closed.
+          nullable: true
+        confidential_issues_events:
+          type: boolean
+          description: Trigger event when a confidential work item is created, updated, or closed.
+          nullable: true
+        merge_requests_events:
+          type: boolean
+          description: Trigger event when a merge request is created, updated, or merged.
+          nullable: true
+        note_events:
+          type: boolean
+          description: Trigger event for new comments.
+          nullable: true
+        confidential_note_events:
+          type: boolean
+          description: Trigger event for new comments on confidential work items.
+          nullable: true
+        tag_push_events:
+          type: boolean
+          description: Trigger event for new tags pushed to the repository.
+          nullable: true
+        pipeline_events:
+          type: boolean
+          description: Trigger event when a pipeline status changes.
+          nullable: true
+        wiki_page_events:
+          type: boolean
+          description: Trigger event when a wiki page is created or updated.
+          nullable: true
+        incident_events:
+          type: boolean
+          description: Trigger event when an incident is created.
+          nullable: true
+        work_item_events:
+          type: boolean
+          nullable: true
+        confidential_work_item_events:
+          type: boolean
+          nullable: true
+        vulnerability_events:
+          type: boolean
+          nullable: true
+        use_inherited_settings:
+          type: boolean
+          description: Indicates whether to inherit the default settings. Defaults to `false`.
+          nullable: true
+      required:
+      - token
+      - room
+    putApiV4ProjectsIdIntegrationsMattermostRequest:
+      type: object
+      properties:
+        webhook:
+          type: string
+          description: Mattermost notifications webhook (for example, `http://mattermost.example.com/hooks/...`).
+          nullable: true
+        username:
+          type: string
+          description: Mattermost notifications username.
+          nullable: true
+        channel:
+          type: string
+          description: Default channel to use if no other channel is configured.
+          nullable: true
+        notify_only_broken_pipelines:
+          type: boolean
+          description: Send notifications for broken pipelines.
+          nullable: true
+        notify_only_when_pipeline_status_changes:
+          type: boolean
+          description: Send notifications only when the pipeline status changes.
+          nullable: true
+        branches_to_be_notified:
+          type: string
+          description: Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`.
+            The default value is `default`.
+          nullable: true
+        labels_to_be_notified:
+          type: string
+          description: Labels to send notifications for. Leave blank to receive notifications for all events.
+          nullable: true
+        labels_to_be_notified_behavior:
+          type: string
+          description: Labels to be notified for. Valid options are `match_any` and `match_all`. The default value is `match_any`.
+          nullable: true
+        push_channel:
+          type: string
+          description: The name of the channel to receive push_events notifications
+          nullable: true
+        issue_channel:
+          type: string
+          description: The name of the channel to receive issues_events notifications
+          nullable: true
+        incident_channel:
+          type: string
+          description: The name of the channel to receive incident_events notifications
+          nullable: true
+        alert_channel:
+          type: string
+          description: The name of the channel to receive alert_events notifications
+          nullable: true
+        confidential_issue_channel:
+          type: string
+          description: The name of the channel to receive confidential_issues_events notifications
+          nullable: true
+        merge_request_channel:
+          type: string
+          description: The name of the channel to receive merge_requests_events notifications
+          nullable: true
+        note_channel:
+          type: string
+          description: The name of the channel to receive note_events notifications
+          nullable: true
+        confidential_note_channel:
+          type: string
+          description: The name of the channel to receive confidential_note_events notifications
+          nullable: true
+        tag_push_channel:
+          type: string
+          description: The name of the channel to receive tag_push_events notifications
+          nullable: true
+        deployment_channel:
+          type: string
+          description: The name of the channel to receive deployment_events notifications
+          nullable: true
+        pipeline_channel:
+          type: string
+          description: The name of the channel to receive pipeline_events notifications
+          nullable: true
+        wiki_page_channel:
+          type: string
+          description: The name of the channel to receive wiki_page_events notifications
+          nullable: true
+        vulnerability_channel:
+          type: string
+          description: The name of the channel to receive vulnerability_events notifications
+          nullable: true
+        push_events:
+          type: boolean
+          description: Trigger event for pushes to the repository.
+          nullable: true
+        issues_events:
+          type: boolean
+          description: Trigger event when a work item is created, updated, or closed.
+          nullable: true
+        confidential_issues_events:
+          type: boolean
+          description: Trigger event when a confidential work item is created, updated, or closed.
+          nullable: true
+        merge_requests_events:
+          type: boolean
+          description: Trigger event when a merge request is created, updated, or merged.
+          nullable: true
+        note_events:
+          type: boolean
+          description: Trigger event for new comments.
+          nullable: true
+        confidential_note_events:
+          type: boolean
+          description: Trigger event for new comments on confidential work items.
+          nullable: true
+        tag_push_events:
+          type: boolean
+          description: Trigger event for new tags pushed to the repository.
+          nullable: true
+        pipeline_events:
+          type: boolean
+          description: Trigger event when a pipeline status changes.
+          nullable: true
+        wiki_page_events:
+          type: boolean
+          description: Trigger event when a wiki page is created or updated.
+          nullable: true
+        deployment_events:
+          type: boolean
+          description: Trigger event when a deployment starts or finishes.
+          nullable: true
+        incident_events:
+          type: boolean
+          description: Trigger event when an incident is created.
+          nullable: true
+        work_item_events:
+          type: boolean
+          nullable: true
+        confidential_work_item_events:
+          type: boolean
+          nullable: true
+        vulnerability_events:
+          type: boolean
+          nullable: true
+        use_inherited_settings:
+          type: boolean
+          description: Indicates whether to inherit the default settings. Defaults to `false`.
+          nullable: true
+      required:
+      - webhook
+    putApiV4ProjectsIdIntegrationsMicrosoftTeamsRequest:
+      type: object
+      properties:
+        webhook:
+          type: string
+          description: The Microsoft Teams webhook (for example, `https://outlook.office.com/webhook/...`).
+          nullable: true
+        notify_only_broken_pipelines:
+          type: boolean
+          description: Send notifications for broken pipelines.
+          nullable: true
+        notify_only_when_pipeline_status_changes:
+          type: boolean
+          description: Send notifications only when the pipeline status changes.
+          nullable: true
+        branches_to_be_notified:
+          type: string
+          description: Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`.
+            The default value is `default`.
+          nullable: true
+        push_events:
+          type: boolean
+          description: Trigger event for pushes to the repository.
+          nullable: true
+        issues_events:
+          type: boolean
+          description: Trigger event when a work item is created, updated, or closed.
+          nullable: true
+        confidential_issues_events:
+          type: boolean
+          description: Trigger event when a confidential work item is created, updated, or closed.
+          nullable: true
+        work_item_events:
+          type: boolean
+          nullable: true
+        confidential_work_item_events:
+          type: boolean
+          nullable: true
+        merge_requests_events:
+          type: boolean
+          description: Trigger event when a merge request is created, updated, or merged.
+          nullable: true
+        note_events:
+          type: boolean
+          description: Trigger event for new comments.
+          nullable: true
+        confidential_note_events:
+          type: boolean
+          description: Trigger event for new comments on confidential work items.
+          nullable: true
+        tag_push_events:
+          type: boolean
+          description: Trigger event for new tags pushed to the repository.
+          nullable: true
+        pipeline_events:
+          type: boolean
+          description: Trigger event when a pipeline status changes.
+          nullable: true
+        wiki_page_events:
+          type: boolean
+          description: Trigger event when a wiki page is created or updated.
+          nullable: true
+        use_inherited_settings:
+          type: boolean
+          description: Indicates whether to inherit the default settings. Defaults to `false`.
+          nullable: true
+      required:
+      - webhook
+    putApiV4ProjectsIdIntegrationsPipelinesEmailRequest:
+      type: object
+      properties:
+        recipients:
+          type: string
+          description: Comma-separated list of recipient email addresses.
+          nullable: true
+        notify_only_broken_pipelines:
+          type: boolean
+          description: Send notifications for broken pipelines.
+          nullable: true
+        notify_only_when_pipeline_status_changes:
+          type: boolean
+          description: Send notifications only when the pipeline status changes.
+          nullable: true
+        notify_only_default_branch:
+          type: boolean
+          description: Send notifications for the default branch.
+          nullable: true
+        branches_to_be_notified:
+          type: string
+          description: Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`.
+            The default value is `default`.
+          nullable: true
+        notify_child_pipelines:
+          type: boolean
+          description: Send notifications for child pipelines.
+          nullable: true
+        pipeline_events:
+          type: boolean
+          description: Trigger event when a pipeline status changes.
+          nullable: true
+        use_inherited_settings:
+          type: boolean
+          description: Indicates whether to inherit the default settings. Defaults to `false`.
+          nullable: true
+      required:
+      - recipients
+    putApiV4ProjectsIdIntegrationsRedmineRequest:
+      type: object
+      properties:
+        project_url:
+          type: string
+          description: URL of the project.
+          nullable: true
+        issues_url:
+          type: string
+          description: URL of the issue.
+          nullable: true
+        new_issue_url:
+          type: string
+          description: URL of the new issue.
+          nullable: true
+        push_events:
+          type: boolean
+          description: Trigger event for pushes to the repository.
+          nullable: true
+        use_inherited_settings:
+          type: boolean
+          description: Indicates whether to inherit the default settings. Defaults to `false`.
+          nullable: true
+      required:
+      - project_url
+      - issues_url
+      - new_issue_url
+    putApiV4ProjectsIdIntegrationsSlackRequest:
+      type: object
+      properties:
+        webhook:
+          type: string
+          description: Slack notifications webhook (for example, `https://hooks.slack.com/services/...`).
+          nullable: true
+        username:
+          type: string
+          description: Slack notifications username.
+          nullable: true
+        channel:
+          type: string
+          description: Default channel to use if no other channel is configured.
+          nullable: true
+        notify_only_broken_pipelines:
+          type: boolean
+          description: Send notifications for broken pipelines.
+          nullable: true
+        notify_only_when_pipeline_status_changes:
+          type: boolean
+          description: Send notifications only when the pipeline status changes.
+          nullable: true
+        branches_to_be_notified:
+          type: string
+          description: Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`.
+            The default value is `default`.
+          nullable: true
+        labels_to_be_notified:
+          type: string
+          description: Labels to send notifications for. Leave blank to receive notifications for all events.
+          nullable: true
+        labels_to_be_notified_behavior:
+          type: string
+          description: Labels to be notified for. Valid options are `match_any` and `match_all`. The default value is `match_any`.
+          nullable: true
+        push_channel:
+          type: string
+          description: The name of the channel to receive push_events notifications
+          nullable: true
+        issue_channel:
+          type: string
+          description: The name of the channel to receive issues_events notifications
+          nullable: true
+        incident_channel:
+          type: string
+          description: The name of the channel to receive incident_events notifications
+          nullable: true
+        alert_channel:
+          type: string
+          description: The name of the channel to receive alert_events notifications
+          nullable: true
+        confidential_issue_channel:
+          type: string
+          description: The name of the channel to receive confidential_issues_events notifications
+          nullable: true
+        merge_request_channel:
+          type: string
+          description: The name of the channel to receive merge_requests_events notifications
+          nullable: true
+        note_channel:
+          type: string
+          description: The name of the channel to receive note_events notifications
+          nullable: true
+        confidential_note_channel:
+          type: string
+          description: The name of the channel to receive confidential_note_events notifications
+          nullable: true
+        tag_push_channel:
+          type: string
+          description: The name of the channel to receive tag_push_events notifications
+          nullable: true
+        deployment_channel:
+          type: string
+          description: The name of the channel to receive deployment_events notifications
+          nullable: true
+        pipeline_channel:
+          type: string
+          description: The name of the channel to receive pipeline_events notifications
+          nullable: true
+        wiki_page_channel:
+          type: string
+          description: The name of the channel to receive wiki_page_events notifications
+          nullable: true
+        vulnerability_channel:
+          type: string
+          description: The name of the channel to receive vulnerability_events notifications
+          nullable: true
+        push_events:
+          type: boolean
+          description: Trigger event for pushes to the repository.
+          nullable: true
+        issues_events:
+          type: boolean
+          description: Trigger event when a work item is created, updated, or closed.
+          nullable: true
+        confidential_issues_events:
+          type: boolean
+          description: Trigger event when a confidential work item is created, updated, or closed.
+          nullable: true
+        merge_requests_events:
+          type: boolean
+          description: Trigger event when a merge request is created, updated, or merged.
+          nullable: true
+        note_events:
+          type: boolean
+          description: Trigger event for new comments.
+          nullable: true
+        confidential_note_events:
+          type: boolean
+          description: Trigger event for new comments on confidential work items.
+          nullable: true
+        tag_push_events:
+          type: boolean
+          description: Trigger event for new tags pushed to the repository.
+          nullable: true
+        pipeline_events:
+          type: boolean
+          description: Trigger event when a pipeline status changes.
+          nullable: true
+        wiki_page_events:
+          type: boolean
+          description: Trigger event when a wiki page is created or updated.
+          nullable: true
+        deployment_events:
+          type: boolean
+          description: Trigger event when a deployment starts or finishes.
+          nullable: true
+        incident_events:
+          type: boolean
+          description: Trigger event when an incident is created.
+          nullable: true
+        work_item_events:
+          type: boolean
+          nullable: true
+        confidential_work_item_events:
+          type: boolean
+          nullable: true
+        vulnerability_events:
+          type: boolean
+          nullable: true
+        alert_events:
+          type: boolean
+          description: Trigger event when a new, unique alert is recorded.
+          nullable: true
+        use_inherited_settings:
+          type: boolean
+          description: Indicates whether to inherit the default settings. Defaults to `false`.
+          nullable: true
+      required:
+      - webhook
+    putApiV4ProjectsIdIntegrationsTelegramRequest:
+      type: object
+      properties:
+        hostname:
+          type: string
+          description: URL of the Telegram API server, including `http://` or `https://`. The default value is `https://api.telegram.org`.
+          nullable: true
+        token:
+          type: string
+          description: The Telegram bot token (for example, `123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11`).
+          nullable: true
+        room:
+          type: string
+          description: Unique identifier for the target chat or the username of the target channel (in the format `@channelusername`).
+          nullable: true
+        thread:
+          type: string
+          description: Unique identifier for the target message thread (topic in a forum supergroup).
+          nullable: true
+        notify_only_broken_pipelines:
+          type: boolean
+          description: Send notifications for broken pipelines.
+          nullable: true
+        notify_only_when_pipeline_status_changes:
+          type: boolean
+          description: Send notifications only when the pipeline status changes.
+          nullable: true
+        branches_to_be_notified:
+          type: string
+          description: Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`.
+            The default value is `default`.
+          nullable: true
+        push_events:
+          type: boolean
+          description: Trigger event for pushes to the repository.
+          nullable: true
+        issues_events:
+          type: boolean
+          description: Trigger event when a work item is created, updated, or closed.
+          nullable: true
+        confidential_issues_events:
+          type: boolean
+          description: Trigger event when a confidential work item is created, updated, or closed.
+          nullable: true
+        merge_requests_events:
+          type: boolean
+          description: Trigger event when a merge request is created, updated, or merged.
+          nullable: true
+        note_events:
+          type: boolean
+          description: Trigger event for new comments.
+          nullable: true
+        confidential_note_events:
+          type: boolean
+          description: Trigger event for new comments on confidential work items.
+          nullable: true
+        tag_push_events:
+          type: boolean
+          description: Trigger event for new tags pushed to the repository.
+          nullable: true
+        pipeline_events:
+          type: boolean
+          description: Trigger event when a pipeline status changes.
+          nullable: true
+        wiki_page_events:
+          type: boolean
+          description: Trigger event when a wiki page is created or updated.
+          nullable: true
+        incident_events:
+          type: boolean
+          description: Trigger event when an incident is created.
+          nullable: true
+        work_item_events:
+          type: boolean
+          nullable: true
+        confidential_work_item_events:
+          type: boolean
+          nullable: true
+        vulnerability_events:
+          type: boolean
+          nullable: true
+        use_inherited_settings:
+          type: boolean
+          description: Indicates whether to inherit the default settings. Defaults to `false`.
+          nullable: true
+      required:
+      - token
+      - room
+    putApiV4ProjectsIdIntegrationsYoutrackRequest:
+      type: object
+      properties:
+        project_url:
+          type: string
+          description: URL of the project.
+          nullable: true
+        issues_url:
+          type: string
+          description: URL of the issue.
+          nullable: true
+        push_events:
+          type: boolean
+          description: Trigger event for pushes to the repository.
+          nullable: true
+        use_inherited_settings:
+          type: boolean
+          description: Indicates whether to inherit the default settings. Defaults to `false`.
+          nullable: true
+      required:
+      - project_url
+      - issues_url

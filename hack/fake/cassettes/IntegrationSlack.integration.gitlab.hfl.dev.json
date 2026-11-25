@@ -1,0 +1,107 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "a": "rehearsal-a",
+    "agent": 280000008,
+    "b": "rehearsal-b",
+    "g": 280000030,
+    "group": 280000001,
+    "key": 280000026,
+    "mr": "rehearsal-mr",
+    "project": 280000002,
+    "runner": 280000028,
+    "sa": 280000031,
+    "schedule": 280000009,
+    "src": 280000027,
+    "user": 280000020
+  },
+  "interactions": [
+    {
+      "method": "GET",
+      "path": "/projects/280000002/integrations/slack",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/projects/280000002/integrations/slack",
+      "body": "{\"push_events\":true,\"webhook\":\"https://hfl-live.example/slack/{{name}}\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"active\":true,\"comment_on_event_enabled\":true,\"commit_events\":true,\"created_at\":\"2019-11-20T11:20:25.297Z\",\"inherited\":true,\"job_events\":true,\"properties\":{},\"push_events\":true,\"slug\":\"jenkins\",\"title\":\"Jenkins CI\",\"updated_at\":\"2019-11-20T12:24:37.498Z\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/integrations/slack",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"active\":true,\"comment_on_event_enabled\":true,\"commit_events\":true,\"created_at\":\"2019-11-20T11:20:25.297Z\",\"inherited\":true,\"job_events\":true,\"properties\":{},\"push_events\":true,\"slug\":\"jenkins\",\"title\":\"Jenkins CI\",\"updated_at\":\"2019-11-20T12:24:37.498Z\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/integrations/slack",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"active\":true,\"comment_on_event_enabled\":true,\"commit_events\":true,\"created_at\":\"2019-11-20T11:20:25.297Z\",\"inherited\":true,\"job_events\":true,\"properties\":{},\"push_events\":true,\"slug\":\"jenkins\",\"title\":\"Jenkins CI\",\"updated_at\":\"2019-11-20T12:24:37.498Z\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/projects/280000002/integrations/slack",
+      "body": "{\"push_events\":false,\"webhook\":\"https://hfl-live.example/slack/{{name}}\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"active\":true,\"comment_on_event_enabled\":true,\"commit_events\":true,\"created_at\":\"2019-11-20T11:20:25.297Z\",\"inherited\":true,\"job_events\":true,\"properties\":{},\"push_events\":false,\"slug\":\"jenkins\",\"title\":\"Jenkins CI\",\"updated_at\":\"2019-11-20T12:24:37.498Z\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/integrations/slack",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"active\":true,\"comment_on_event_enabled\":true,\"commit_events\":true,\"created_at\":\"2019-11-20T11:20:25.297Z\",\"inherited\":true,\"job_events\":true,\"properties\":{},\"push_events\":false,\"slug\":\"jenkins\",\"title\":\"Jenkins CI\",\"updated_at\":\"2019-11-20T12:24:37.498Z\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/integrations/slack",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"active\":true,\"comment_on_event_enabled\":true,\"commit_events\":true,\"created_at\":\"2019-11-20T11:20:25.297Z\",\"inherited\":true,\"job_events\":true,\"properties\":{},\"push_events\":false,\"slug\":\"jenkins\",\"title\":\"Jenkins CI\",\"updated_at\":\"2019-11-20T12:24:37.498Z\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/projects/280000002/integrations/slack",
+      "body": "{\"active\":true,\"comment_on_event_enabled\":true,\"commit_events\":true,\"created_at\":\"2019-11-20T11:20:25.297Z\",\"inherited\":true,\"job_events\":true,\"properties\":{},\"push_events\":true,\"slug\":\"jenkins\",\"title\":\"Jenkins CI\",\"updated_at\":\"2019-11-20T12:24:37.498Z\",\"webhook\":\"https://hfl-live.example/slack/{{name}}\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"active\":true,\"comment_on_event_enabled\":true,\"commit_events\":true,\"created_at\":\"2019-11-20T11:20:25.297Z\",\"inherited\":true,\"job_events\":true,\"properties\":{},\"push_events\":true,\"slug\":\"jenkins\",\"title\":\"Jenkins CI\",\"updated_at\":\"2019-11-20T12:24:37.498Z\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/integrations/slack",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"active\":true,\"comment_on_event_enabled\":true,\"commit_events\":true,\"created_at\":\"2019-11-20T11:20:25.297Z\",\"inherited\":true,\"job_events\":true,\"properties\":{},\"push_events\":true,\"slug\":\"jenkins\",\"title\":\"Jenkins CI\",\"updated_at\":\"2019-11-20T12:24:37.498Z\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/projects/280000002/integrations/slack",
+      "body": "{\"push_events\":false,\"webhook\":\"https://hfl-live.example/slack/{{name}}\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"active\":true,\"comment_on_event_enabled\":true,\"commit_events\":true,\"created_at\":\"2019-11-20T11:20:25.297Z\",\"inherited\":true,\"job_events\":true,\"properties\":{},\"push_events\":false,\"slug\":\"jenkins\",\"title\":\"Jenkins CI\",\"updated_at\":\"2019-11-20T12:24:37.498Z\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/integrations/slack",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"active\":true,\"comment_on_event_enabled\":true,\"commit_events\":true,\"created_at\":\"2019-11-20T11:20:25.297Z\",\"inherited\":true,\"job_events\":true,\"properties\":{},\"push_events\":false,\"slug\":\"jenkins\",\"title\":\"Jenkins CI\",\"updated_at\":\"2019-11-20T12:24:37.498Z\"}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/projects/280000002/integrations/slack",
+      "status": 204
+    }
+  ]
+}

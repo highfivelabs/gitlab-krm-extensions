@@ -1,0 +1,118 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "a": "rehearsal-a",
+    "agent": 280000008,
+    "b": "rehearsal-b",
+    "g": 280000030,
+    "group": 280000001,
+    "key": 280000026,
+    "mr": "rehearsal-mr",
+    "project": 280000002,
+    "runner": 280000028,
+    "sa": 280000031,
+    "schedule": 280000009,
+    "src": 280000027,
+    "sub": 280000036,
+    "user": 280000020
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"GroupDependencyProxyImageTtlPolicy\",\"query\":\"query GroupDependencyProxyImageTtlPolicy($fullPath: ID!) { group(fullPath: $fullPath) { dependencyProxyImageTtlPolicy { enabled ttl } } }\",\"variables\":{\"fullPath\":\"{{run}}\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"group\":{\"dependencyProxyImageTtlPolicy\":{}}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"GroupDependencyProxyImageTtlPolicy\",\"query\":\"query GroupDependencyProxyImageTtlPolicy($fullPath: ID!) { group(fullPath: $fullPath) { dependencyProxyImageTtlPolicy { enabled ttl } } }\",\"variables\":{\"fullPath\":\"{{run}}\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"group\":{\"dependencyProxyImageTtlPolicy\":{}}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"UpdateDependencyProxyImageTtlGroupPolicy\",\"query\":\"mutation UpdateDependencyProxyImageTtlGroupPolicy($input: UpdateDependencyProxyImageTtlGroupPolicyInput!) { updateDependencyProxyImageTtlGroupPolicy(input: $input) { errors dependencyProxyImageTtlPolicy { enabled ttl } } }\",\"variables\":{\"input\":{\"enabled\":true,\"groupPath\":\"{{run}}\",\"ttl\":30}}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"updateDependencyProxyImageTtlGroupPolicy\":{\"dependencyProxyImageTtlPolicy\":{\"enabled\":true,\"ttl\":30},\"errors\":[]}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"GroupDependencyProxyImageTtlPolicy\",\"query\":\"query GroupDependencyProxyImageTtlPolicy($fullPath: ID!) { group(fullPath: $fullPath) { dependencyProxyImageTtlPolicy { enabled ttl } } }\",\"variables\":{\"fullPath\":\"{{run}}\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"group\":{\"dependencyProxyImageTtlPolicy\":{\"enabled\":true,\"ttl\":30}}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"GroupDependencyProxyImageTtlPolicy\",\"query\":\"query GroupDependencyProxyImageTtlPolicy($fullPath: ID!) { group(fullPath: $fullPath) { dependencyProxyImageTtlPolicy { enabled ttl } } }\",\"variables\":{\"fullPath\":\"{{run}}\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"group\":{\"dependencyProxyImageTtlPolicy\":{\"enabled\":true,\"ttl\":30}}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"UpdateDependencyProxyImageTtlGroupPolicy\",\"query\":\"mutation UpdateDependencyProxyImageTtlGroupPolicy($input: UpdateDependencyProxyImageTtlGroupPolicyInput!) { updateDependencyProxyImageTtlGroupPolicy(input: $input) { errors dependencyProxyImageTtlPolicy { enabled ttl } } }\",\"variables\":{\"input\":{\"enabled\":true,\"groupPath\":\"{{run}}\",\"ttl\":60}}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"updateDependencyProxyImageTtlGroupPolicy\":{\"dependencyProxyImageTtlPolicy\":{\"enabled\":true,\"ttl\":60},\"errors\":[]}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"GroupDependencyProxyImageTtlPolicy\",\"query\":\"query GroupDependencyProxyImageTtlPolicy($fullPath: ID!) { group(fullPath: $fullPath) { dependencyProxyImageTtlPolicy { enabled ttl } } }\",\"variables\":{\"fullPath\":\"{{run}}\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"group\":{\"dependencyProxyImageTtlPolicy\":{\"enabled\":true,\"ttl\":60}}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"UpdateDependencyProxyImageTtlGroupPolicy\",\"query\":\"mutation UpdateDependencyProxyImageTtlGroupPolicy($input: UpdateDependencyProxyImageTtlGroupPolicyInput!) { updateDependencyProxyImageTtlGroupPolicy(input: $input) { errors dependencyProxyImageTtlPolicy { enabled ttl } } }\",\"variables\":{\"input\":{\"groupPath\":\"{{run}}\",\"ttl\":90}}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"updateDependencyProxyImageTtlGroupPolicy\":{\"dependencyProxyImageTtlPolicy\":{\"enabled\":true,\"ttl\":90},\"errors\":[]}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"GroupDependencyProxyImageTtlPolicy\",\"query\":\"query GroupDependencyProxyImageTtlPolicy($fullPath: ID!) { group(fullPath: $fullPath) { dependencyProxyImageTtlPolicy { enabled ttl } } }\",\"variables\":{\"fullPath\":\"{{run}}\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"group\":{\"dependencyProxyImageTtlPolicy\":{\"enabled\":true,\"ttl\":90}}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"UpdateDependencyProxyImageTtlGroupPolicy\",\"query\":\"mutation UpdateDependencyProxyImageTtlGroupPolicy($input: UpdateDependencyProxyImageTtlGroupPolicyInput!) { updateDependencyProxyImageTtlGroupPolicy(input: $input) { errors dependencyProxyImageTtlPolicy { enabled ttl } } }\",\"variables\":{\"input\":{\"enabled\":true,\"groupPath\":\"{{run}}\",\"ttl\":60}}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"updateDependencyProxyImageTtlGroupPolicy\":{\"dependencyProxyImageTtlPolicy\":{\"enabled\":true,\"ttl\":60},\"errors\":[]}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"GroupDependencyProxyImageTtlPolicy\",\"query\":\"query GroupDependencyProxyImageTtlPolicy($fullPath: ID!) { group(fullPath: $fullPath) { dependencyProxyImageTtlPolicy { enabled ttl } } }\",\"variables\":{\"fullPath\":\"{{run}}\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"group\":{\"dependencyProxyImageTtlPolicy\":{\"enabled\":true,\"ttl\":60}}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"UpdateDependencyProxyImageTtlGroupPolicy\",\"query\":\"mutation UpdateDependencyProxyImageTtlGroupPolicy($input: UpdateDependencyProxyImageTtlGroupPolicyInput!) { updateDependencyProxyImageTtlGroupPolicy(input: $input) { errors dependencyProxyImageTtlPolicy { enabled ttl } } }\",\"variables\":{\"input\":{\"groupPath\":\"{{run}}\"}}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"updateDependencyProxyImageTtlGroupPolicy\":{\"dependencyProxyImageTtlPolicy\":{\"enabled\":true,\"ttl\":60},\"errors\":[]}}}\n"
+    }
+  ]
+}

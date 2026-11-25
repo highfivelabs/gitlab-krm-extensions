@@ -1,0 +1,95 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "a": "rehearsal-a",
+    "agent": 280000008,
+    "b": "rehearsal-b",
+    "group": 280000001,
+    "mr": "rehearsal-mr",
+    "project": 280000002,
+    "schedule": 280000009,
+    "user": 280000020
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/projects/280000002/remote_mirrors",
+      "body": "{\"enabled\":false,\"only_protected_branches\":false,\"url\":\"https://hfl-live.example/{{name}}.git\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"enabled\":false,\"id\":270000040,\"last_error\":\"The remote mirror URL is invalid.\",\"last_successful_update_at\":\"2020-01-06T17:31:55.864Z\",\"last_update_at\":\"2020-01-06T17:32:02.823Z\",\"last_update_started_at\":\"2020-01-06T17:32:02.823Z\",\"only_protected_branches\":false,\"update_status\":\"finished\",\"url\":\"https://hfl-live.example/{{name}}.git\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/remote_mirrors/270000040",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"enabled\":false,\"id\":270000040,\"last_error\":\"The remote mirror URL is invalid.\",\"last_successful_update_at\":\"2020-01-06T17:31:55.864Z\",\"last_update_at\":\"2020-01-06T17:32:02.823Z\",\"last_update_started_at\":\"2020-01-06T17:32:02.823Z\",\"only_protected_branches\":false,\"update_status\":\"finished\",\"url\":\"https://hfl-live.example/{{name}}.git\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/remote_mirrors/270000040",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"enabled\":false,\"id\":270000040,\"last_error\":\"The remote mirror URL is invalid.\",\"last_successful_update_at\":\"2020-01-06T17:31:55.864Z\",\"last_update_at\":\"2020-01-06T17:32:02.823Z\",\"last_update_started_at\":\"2020-01-06T17:32:02.823Z\",\"only_protected_branches\":false,\"update_status\":\"finished\",\"url\":\"https://hfl-live.example/{{name}}.git\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/projects/280000002/remote_mirrors/270000040",
+      "body": "{\"enabled\":false,\"only_protected_branches\":true,\"url\":\"https://hfl-live.example/{{name}}.git\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"enabled\":false,\"id\":270000040,\"last_error\":\"The remote mirror URL is invalid.\",\"last_successful_update_at\":\"2020-01-06T17:31:55.864Z\",\"last_update_at\":\"2020-01-06T17:32:02.823Z\",\"last_update_started_at\":\"2020-01-06T17:32:02.823Z\",\"only_protected_branches\":true,\"update_status\":\"finished\",\"url\":\"https://hfl-live.example/{{name}}.git\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/remote_mirrors/270000040",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"enabled\":false,\"id\":270000040,\"last_error\":\"The remote mirror URL is invalid.\",\"last_successful_update_at\":\"2020-01-06T17:31:55.864Z\",\"last_update_at\":\"2020-01-06T17:32:02.823Z\",\"last_update_started_at\":\"2020-01-06T17:32:02.823Z\",\"only_protected_branches\":true,\"update_status\":\"finished\",\"url\":\"https://hfl-live.example/{{name}}.git\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/projects/280000002/remote_mirrors/270000040",
+      "body": "{\"only_protected_branches\":false}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"enabled\":false,\"id\":270000040,\"last_error\":\"The remote mirror URL is invalid.\",\"last_successful_update_at\":\"2020-01-06T17:31:55.864Z\",\"last_update_at\":\"2020-01-06T17:32:02.823Z\",\"last_update_started_at\":\"2020-01-06T17:32:02.823Z\",\"only_protected_branches\":false,\"update_status\":\"finished\",\"url\":\"https://hfl-live.example/{{name}}.git\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/remote_mirrors/270000040",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"enabled\":false,\"id\":270000040,\"last_error\":\"The remote mirror URL is invalid.\",\"last_successful_update_at\":\"2020-01-06T17:31:55.864Z\",\"last_update_at\":\"2020-01-06T17:32:02.823Z\",\"last_update_started_at\":\"2020-01-06T17:32:02.823Z\",\"only_protected_branches\":false,\"update_status\":\"finished\",\"url\":\"https://hfl-live.example/{{name}}.git\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/projects/280000002/remote_mirrors/270000040",
+      "body": "{\"enabled\":false,\"only_protected_branches\":true,\"url\":\"https://hfl-live.example/{{name}}.git\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"enabled\":false,\"id\":270000040,\"last_error\":\"The remote mirror URL is invalid.\",\"last_successful_update_at\":\"2020-01-06T17:31:55.864Z\",\"last_update_at\":\"2020-01-06T17:32:02.823Z\",\"last_update_started_at\":\"2020-01-06T17:32:02.823Z\",\"only_protected_branches\":true,\"update_status\":\"finished\",\"url\":\"https://hfl-live.example/{{name}}.git\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/remote_mirrors/270000040",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"enabled\":false,\"id\":270000040,\"last_error\":\"The remote mirror URL is invalid.\",\"last_successful_update_at\":\"2020-01-06T17:31:55.864Z\",\"last_update_at\":\"2020-01-06T17:32:02.823Z\",\"last_update_started_at\":\"2020-01-06T17:32:02.823Z\",\"only_protected_branches\":true,\"update_status\":\"finished\",\"url\":\"https://hfl-live.example/{{name}}.git\"}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/projects/280000002/remote_mirrors/270000040",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/remote_mirrors/270000040",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

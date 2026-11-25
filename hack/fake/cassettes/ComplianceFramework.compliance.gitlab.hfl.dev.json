@@ -1,0 +1,112 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "a": "rehearsal-a",
+    "agent": 280000008,
+    "avatarUser": 280000038,
+    "b": "rehearsal-b",
+    "catalogProject": 280000037,
+    "g": 280000030,
+    "group": 280000001,
+    "key": 280000026,
+    "mr": "rehearsal-mr",
+    "project": 280000002,
+    "runner": 280000028,
+    "sa": 280000031,
+    "schedule": 280000009,
+    "src": 280000027,
+    "sub": 280000036,
+    "user": 280000020
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"CreateComplianceFramework\",\"query\":\"mutation CreateComplianceFramework($namespacePath: ID!, $params: ComplianceFrameworkInput!) { createComplianceFramework(input: {params: $params, namespacePath: $namespacePath}) { framework { id, name, description, color, default, pipelineConfigurationFullPath } errors } }\",\"variables\":{\"namespacePath\":\"example-group\",\"params\":{\"color\":\"#FCA121\",\"description\":\"example-description\",\"name\":\"example-name\"}}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"createComplianceFramework\":{\"errors\":[],\"framework\":{\"color\":\"#FCA121\",\"description\":\"example-description\",\"id\":\"gid://fake/ComplianceFramework/270000058\",\"name\":\"example-name\"}}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"ComplianceFramework\",\"query\":\"query ComplianceFramework($fullPath: ID!, $id: ComplianceManagementFrameworkID!) { namespace(fullPath: $fullPath) { fullPath, complianceFrameworks(id: $id) { nodes { id, name, description, color, default, pipelineConfigurationFullPath } } } }\",\"variables\":{\"fullPath\":\"example-group\",\"id\":\"gid://fake/ComplianceFramework/270000058\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"namespace\":{\"complianceFrameworks\":{\"nodes\":[{\"color\":\"#FCA121\",\"description\":\"example-description\",\"id\":\"gid://fake/ComplianceFramework/270000058\",\"name\":\"example-name\"}]}}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"ComplianceFramework\",\"query\":\"query ComplianceFramework($fullPath: ID!, $id: ComplianceManagementFrameworkID!) { namespace(fullPath: $fullPath) { fullPath, complianceFrameworks(id: $id) { nodes { id, name, description, color, default, pipelineConfigurationFullPath } } } }\",\"variables\":{\"fullPath\":\"example-group\",\"id\":\"gid://fake/ComplianceFramework/270000058\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"namespace\":{\"complianceFrameworks\":{\"nodes\":[{\"color\":\"#FCA121\",\"description\":\"example-description\",\"id\":\"gid://fake/ComplianceFramework/270000058\",\"name\":\"example-name\"}]}}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"UpdateComplianceFramework\",\"query\":\"mutation UpdateComplianceFramework($id: ComplianceManagementFrameworkID!, $params: ComplianceFrameworkInput!) { updateComplianceFramework(input: {params: $params, id: $id}) { complianceFramework { id, name, description, color, default, pipelineConfigurationFullPath } errors } }\",\"variables\":{\"id\":\"gid://fake/ComplianceFramework/270000058\",\"params\":{\"color\":\"changed-color\",\"description\":\"example-description\",\"name\":\"example-name\"}}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"updateComplianceFramework\":{\"complianceFramework\":{\"color\":\"changed-color\",\"description\":\"example-description\",\"id\":\"gid://fake/ComplianceFramework/270000058\",\"name\":\"example-name\"},\"errors\":[]}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"ComplianceFramework\",\"query\":\"query ComplianceFramework($fullPath: ID!, $id: ComplianceManagementFrameworkID!) { namespace(fullPath: $fullPath) { fullPath, complianceFrameworks(id: $id) { nodes { id, name, description, color, default, pipelineConfigurationFullPath } } } }\",\"variables\":{\"fullPath\":\"example-group\",\"id\":\"gid://fake/ComplianceFramework/270000058\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"namespace\":{\"complianceFrameworks\":{\"nodes\":[{\"color\":\"changed-color\",\"description\":\"example-description\",\"id\":\"gid://fake/ComplianceFramework/270000058\",\"name\":\"example-name\"}]}}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"UpdateComplianceFramework\",\"query\":\"mutation UpdateComplianceFramework($id: ComplianceManagementFrameworkID!, $params: ComplianceFrameworkInput!) { updateComplianceFramework(input: {params: $params, id: $id}) { complianceFramework { id, name, description, color, default, pipelineConfigurationFullPath } errors } }\",\"variables\":{\"id\":\"gid://fake/ComplianceFramework/270000058\",\"params\":{\"color\":\"hfl-live-drift\"}}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"updateComplianceFramework\":{\"complianceFramework\":{\"color\":\"hfl-live-drift\",\"description\":\"example-description\",\"id\":\"gid://fake/ComplianceFramework/270000058\",\"name\":\"example-name\"},\"errors\":[]}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"ComplianceFramework\",\"query\":\"query ComplianceFramework($fullPath: ID!, $id: ComplianceManagementFrameworkID!) { namespace(fullPath: $fullPath) { fullPath, complianceFrameworks(id: $id) { nodes { id, name, description, color, default, pipelineConfigurationFullPath } } } }\",\"variables\":{\"fullPath\":\"example-group\",\"id\":\"gid://fake/ComplianceFramework/270000058\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"namespace\":{\"complianceFrameworks\":{\"nodes\":[{\"color\":\"hfl-live-drift\",\"description\":\"example-description\",\"id\":\"gid://fake/ComplianceFramework/270000058\",\"name\":\"example-name\"}]}}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"UpdateComplianceFramework\",\"query\":\"mutation UpdateComplianceFramework($id: ComplianceManagementFrameworkID!, $params: ComplianceFrameworkInput!) { updateComplianceFramework(input: {params: $params, id: $id}) { complianceFramework { id, name, description, color, default, pipelineConfigurationFullPath } errors } }\",\"variables\":{\"id\":\"gid://fake/ComplianceFramework/270000058\",\"params\":{\"color\":\"changed-color\",\"description\":\"example-description\",\"name\":\"example-name\"}}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"updateComplianceFramework\":{\"complianceFramework\":{\"color\":\"changed-color\",\"description\":\"example-description\",\"id\":\"gid://fake/ComplianceFramework/270000058\",\"name\":\"example-name\"},\"errors\":[]}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"ComplianceFramework\",\"query\":\"query ComplianceFramework($fullPath: ID!, $id: ComplianceManagementFrameworkID!) { namespace(fullPath: $fullPath) { fullPath, complianceFrameworks(id: $id) { nodes { id, name, description, color, default, pipelineConfigurationFullPath } } } }\",\"variables\":{\"fullPath\":\"example-group\",\"id\":\"gid://fake/ComplianceFramework/270000058\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"namespace\":{\"complianceFrameworks\":{\"nodes\":[{\"color\":\"changed-color\",\"description\":\"example-description\",\"id\":\"gid://fake/ComplianceFramework/270000058\",\"name\":\"example-name\"}]}}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"DestroyComplianceFramework\",\"query\":\"mutation DestroyComplianceFramework($id: ComplianceManagementFrameworkID!) { destroyComplianceFramework(input: {id: $id}) { errors } }\",\"variables\":{\"id\":\"gid://fake/ComplianceFramework/270000058\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"destroyComplianceFramework\":{\"errors\":[]}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"ComplianceFramework\",\"query\":\"query ComplianceFramework($fullPath: ID!, $id: ComplianceManagementFrameworkID!) { namespace(fullPath: $fullPath) { fullPath, complianceFrameworks(id: $id) { nodes { id, name, description, color, default, pipelineConfigurationFullPath } } } }\",\"variables\":{\"fullPath\":\"example-group\",\"id\":\"gid://fake/ComplianceFramework/270000058\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"namespace\":{\"complianceFrameworks\":{\"nodes\":[]}}}}\n"
+    }
+  ]
+}

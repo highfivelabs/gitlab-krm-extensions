@@ -1,0 +1,89 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "group": 280000001,
+    "project": 280000002
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/projects/280000002/pipeline_schedules",
+      "body": "{\"cron\":\"0 1 * * *\",\"description\":\"{{name}}\",\"ref\":\"refs/heads/main\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"created_at\":\"2017-05-19T13:31:08.849Z\",\"cron\":\"0 1 * * *\",\"description\":\"{{name}}\",\"id\":270000011,\"last_pipeline\":{},\"next_run_at\":\"2017-05-19T13:41:00.000Z\",\"owner\":{},\"ref\":\"refs/heads/main\",\"updated_at\":\"2017-05-19T13:40:17.727Z\",\"variables\":[]}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/pipeline_schedules/270000011",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"created_at\":\"2017-05-19T13:31:08.849Z\",\"cron\":\"0 1 * * *\",\"description\":\"{{name}}\",\"id\":270000011,\"last_pipeline\":{},\"next_run_at\":\"2017-05-19T13:41:00.000Z\",\"owner\":{},\"ref\":\"refs/heads/main\",\"updated_at\":\"2017-05-19T13:40:17.727Z\",\"variables\":[]}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/pipeline_schedules/270000011",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"created_at\":\"2017-05-19T13:31:08.849Z\",\"cron\":\"0 1 * * *\",\"description\":\"{{name}}\",\"id\":270000011,\"last_pipeline\":{},\"next_run_at\":\"2017-05-19T13:41:00.000Z\",\"owner\":{},\"ref\":\"refs/heads/main\",\"updated_at\":\"2017-05-19T13:40:17.727Z\",\"variables\":[]}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/projects/280000002/pipeline_schedules/270000011",
+      "body": "{\"cron\":\"0 1 * * *\",\"description\":\"{{name}}-2\",\"ref\":\"refs/heads/main\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"created_at\":\"2017-05-19T13:31:08.849Z\",\"cron\":\"0 1 * * *\",\"description\":\"{{name}}-2\",\"id\":270000011,\"last_pipeline\":{},\"next_run_at\":\"2017-05-19T13:41:00.000Z\",\"owner\":{},\"ref\":\"refs/heads/main\",\"updated_at\":\"2017-05-19T13:40:17.727Z\",\"variables\":[]}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/pipeline_schedules/270000011",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"created_at\":\"2017-05-19T13:31:08.849Z\",\"cron\":\"0 1 * * *\",\"description\":\"{{name}}-2\",\"id\":270000011,\"last_pipeline\":{},\"next_run_at\":\"2017-05-19T13:41:00.000Z\",\"owner\":{},\"ref\":\"refs/heads/main\",\"updated_at\":\"2017-05-19T13:40:17.727Z\",\"variables\":[]}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/projects/280000002/pipeline_schedules/270000011",
+      "body": "{\"description\":\"hfl-live-drift\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"created_at\":\"2017-05-19T13:31:08.849Z\",\"cron\":\"0 1 * * *\",\"description\":\"hfl-live-drift\",\"id\":270000011,\"last_pipeline\":{},\"next_run_at\":\"2017-05-19T13:41:00.000Z\",\"owner\":{},\"ref\":\"refs/heads/main\",\"updated_at\":\"2017-05-19T13:40:17.727Z\",\"variables\":[]}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/pipeline_schedules/270000011",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"created_at\":\"2017-05-19T13:31:08.849Z\",\"cron\":\"0 1 * * *\",\"description\":\"hfl-live-drift\",\"id\":270000011,\"last_pipeline\":{},\"next_run_at\":\"2017-05-19T13:41:00.000Z\",\"owner\":{},\"ref\":\"refs/heads/main\",\"updated_at\":\"2017-05-19T13:40:17.727Z\",\"variables\":[]}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/projects/280000002/pipeline_schedules/270000011",
+      "body": "{\"cron\":\"0 1 * * *\",\"description\":\"{{name}}-2\",\"ref\":\"refs/heads/main\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"created_at\":\"2017-05-19T13:31:08.849Z\",\"cron\":\"0 1 * * *\",\"description\":\"{{name}}-2\",\"id\":270000011,\"last_pipeline\":{},\"next_run_at\":\"2017-05-19T13:41:00.000Z\",\"owner\":{},\"ref\":\"refs/heads/main\",\"updated_at\":\"2017-05-19T13:40:17.727Z\",\"variables\":[]}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/pipeline_schedules/270000011",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"created_at\":\"2017-05-19T13:31:08.849Z\",\"cron\":\"0 1 * * *\",\"description\":\"{{name}}-2\",\"id\":270000011,\"last_pipeline\":{},\"next_run_at\":\"2017-05-19T13:41:00.000Z\",\"owner\":{},\"ref\":\"refs/heads/main\",\"updated_at\":\"2017-05-19T13:40:17.727Z\",\"variables\":[]}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/projects/280000002/pipeline_schedules/270000011",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/pipeline_schedules/270000011",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

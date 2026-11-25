@@ -1,0 +1,97 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "group": 280000001,
+    "project": 280000002
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/projects/280000002/repository/branches",
+      "body": "{\"branch\":\"{{name}}\",\"ref\":\"main\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"_stub\":\"rehearsal stand-in: the fake API has no such resource\",\"branch\":\"{{name}}\",\"id\":280000003,\"ref\":\"main\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/projects/280000002/protected_branches",
+      "body": "{\"merge_access_level\":40,\"name\":\"{{name}}\",\"push_access_level\":40}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"inherited\":true,\"merge_access_levels\":[],\"name\":\"{{name}}\",\"push_access_levels\":[],\"unprotect_access_levels\":[]}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/protected_branches/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"inherited\":true,\"merge_access_levels\":[],\"name\":\"{{name}}\",\"push_access_levels\":[],\"unprotect_access_levels\":[]}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/protected_branches/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"inherited\":true,\"merge_access_levels\":[],\"name\":\"{{name}}\",\"push_access_levels\":[],\"unprotect_access_levels\":[]}\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/projects/280000002/protected_branches/{{name}}",
+      "body": "{\"allow_force_push\":true,\"merge_access_level\":40,\"name\":\"{{name}}\",\"push_access_level\":40}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"allow_force_push\":true,\"inherited\":true,\"merge_access_levels\":[],\"name\":\"{{name}}\",\"push_access_levels\":[],\"unprotect_access_levels\":[]}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/protected_branches/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"allow_force_push\":true,\"inherited\":true,\"merge_access_levels\":[],\"name\":\"{{name}}\",\"push_access_levels\":[],\"unprotect_access_levels\":[]}\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/projects/280000002/protected_branches/{{name}}",
+      "body": "{\"allow_force_push\":false}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"allow_force_push\":false,\"inherited\":true,\"merge_access_levels\":[],\"name\":\"{{name}}\",\"push_access_levels\":[],\"unprotect_access_levels\":[]}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/protected_branches/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"allow_force_push\":false,\"inherited\":true,\"merge_access_levels\":[],\"name\":\"{{name}}\",\"push_access_levels\":[],\"unprotect_access_levels\":[]}\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/projects/280000002/protected_branches/{{name}}",
+      "body": "{\"allow_force_push\":true,\"merge_access_level\":40,\"name\":\"{{name}}\",\"push_access_level\":40}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"allow_force_push\":true,\"inherited\":true,\"merge_access_levels\":[],\"name\":\"{{name}}\",\"push_access_levels\":[],\"unprotect_access_levels\":[]}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/protected_branches/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"allow_force_push\":true,\"inherited\":true,\"merge_access_levels\":[],\"name\":\"{{name}}\",\"push_access_levels\":[],\"unprotect_access_levels\":[]}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/projects/280000002/protected_branches/{{name}}",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/protected_branches/{{name}}",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

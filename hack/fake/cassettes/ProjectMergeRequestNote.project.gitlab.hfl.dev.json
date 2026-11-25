@@ -1,0 +1,111 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "a": "rehearsal-a",
+    "agent": 280000008,
+    "b": "rehearsal-b",
+    "group": 280000001,
+    "mr": "rehearsal-mr",
+    "project": 280000002,
+    "schedule": 280000009,
+    "user": 280000007
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/projects/280000002/repository/branches",
+      "body": "{\"branch\":\"{{name}}-mr\",\"ref\":\"main\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"_stub\":\"rehearsal stand-in: the fake API has no such resource\",\"branch\":\"{{name}}-mr\",\"id\":280000017,\"ref\":\"main\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/projects/280000002/merge_requests",
+      "body": "{\"source_branch\":\"{{name}}-mr\",\"target_branch\":\"main\",\"title\":\"{{name}}\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"_stub\":\"rehearsal stand-in: the fake API has no such resource\",\"id\":280000018,\"source_branch\":\"{{name}}-mr\",\"target_branch\":\"main\",\"title\":\"{{name}}\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/projects/280000002/merge_requests/rehearsal-mr/notes",
+      "body": "{\"body\":\"hello\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"author\":{},\"body\":\"hello\",\"commands_changes\":{},\"commit_id\":\"7b09ce7e6f80347baf0316c8c94cdba9a0a7e91d\",\"id\":270000026,\"imported\":false,\"imported_from\":\"github\",\"noteable_id\":1,\"noteable_iid\":1,\"noteable_type\":\"Issue\",\"position\":{},\"project_id\":1,\"resolvable\":false,\"resolved\":false,\"resolved_at\":\"2022-01-31T15:10:44.988Z\",\"resolved_by\":{},\"suggestions\":[],\"system\":false,\"type\":\"DiscussionNote\",\"updated_at\":\"2022-01-31T15:10:44.988Z\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/merge_requests/rehearsal-mr/notes/270000026",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"author\":{},\"body\":\"hello\",\"commands_changes\":{},\"commit_id\":\"7b09ce7e6f80347baf0316c8c94cdba9a0a7e91d\",\"id\":270000026,\"imported\":false,\"imported_from\":\"github\",\"noteable_id\":1,\"noteable_iid\":1,\"noteable_type\":\"Issue\",\"position\":{},\"project_id\":1,\"resolvable\":false,\"resolved\":false,\"resolved_at\":\"2022-01-31T15:10:44.988Z\",\"resolved_by\":{},\"suggestions\":[],\"system\":false,\"type\":\"DiscussionNote\",\"updated_at\":\"2022-01-31T15:10:44.988Z\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/merge_requests/rehearsal-mr/notes/270000026",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"author\":{},\"body\":\"hello\",\"commands_changes\":{},\"commit_id\":\"7b09ce7e6f80347baf0316c8c94cdba9a0a7e91d\",\"id\":270000026,\"imported\":false,\"imported_from\":\"github\",\"noteable_id\":1,\"noteable_iid\":1,\"noteable_type\":\"Issue\",\"position\":{},\"project_id\":1,\"resolvable\":false,\"resolved\":false,\"resolved_at\":\"2022-01-31T15:10:44.988Z\",\"resolved_by\":{},\"suggestions\":[],\"system\":false,\"type\":\"DiscussionNote\",\"updated_at\":\"2022-01-31T15:10:44.988Z\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/projects/280000002/merge_requests/rehearsal-mr/notes/270000026",
+      "body": "{\"body\":\"changed\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"author\":{},\"body\":\"changed\",\"commands_changes\":{},\"commit_id\":\"7b09ce7e6f80347baf0316c8c94cdba9a0a7e91d\",\"id\":270000026,\"imported\":false,\"imported_from\":\"github\",\"noteable_id\":1,\"noteable_iid\":1,\"noteable_type\":\"Issue\",\"position\":{},\"project_id\":1,\"resolvable\":false,\"resolved\":false,\"resolved_at\":\"2022-01-31T15:10:44.988Z\",\"resolved_by\":{},\"suggestions\":[],\"system\":false,\"type\":\"DiscussionNote\",\"updated_at\":\"2022-01-31T15:10:44.988Z\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/merge_requests/rehearsal-mr/notes/270000026",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"author\":{},\"body\":\"changed\",\"commands_changes\":{},\"commit_id\":\"7b09ce7e6f80347baf0316c8c94cdba9a0a7e91d\",\"id\":270000026,\"imported\":false,\"imported_from\":\"github\",\"noteable_id\":1,\"noteable_iid\":1,\"noteable_type\":\"Issue\",\"position\":{},\"project_id\":1,\"resolvable\":false,\"resolved\":false,\"resolved_at\":\"2022-01-31T15:10:44.988Z\",\"resolved_by\":{},\"suggestions\":[],\"system\":false,\"type\":\"DiscussionNote\",\"updated_at\":\"2022-01-31T15:10:44.988Z\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/projects/280000002/merge_requests/rehearsal-mr/notes/270000026",
+      "body": "{\"body\":\"drift\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"author\":{},\"body\":\"drift\",\"commands_changes\":{},\"commit_id\":\"7b09ce7e6f80347baf0316c8c94cdba9a0a7e91d\",\"id\":270000026,\"imported\":false,\"imported_from\":\"github\",\"noteable_id\":1,\"noteable_iid\":1,\"noteable_type\":\"Issue\",\"position\":{},\"project_id\":1,\"resolvable\":false,\"resolved\":false,\"resolved_at\":\"2022-01-31T15:10:44.988Z\",\"resolved_by\":{},\"suggestions\":[],\"system\":false,\"type\":\"DiscussionNote\",\"updated_at\":\"2022-01-31T15:10:44.988Z\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/merge_requests/rehearsal-mr/notes/270000026",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"author\":{},\"body\":\"drift\",\"commands_changes\":{},\"commit_id\":\"7b09ce7e6f80347baf0316c8c94cdba9a0a7e91d\",\"id\":270000026,\"imported\":false,\"imported_from\":\"github\",\"noteable_id\":1,\"noteable_iid\":1,\"noteable_type\":\"Issue\",\"position\":{},\"project_id\":1,\"resolvable\":false,\"resolved\":false,\"resolved_at\":\"2022-01-31T15:10:44.988Z\",\"resolved_by\":{},\"suggestions\":[],\"system\":false,\"type\":\"DiscussionNote\",\"updated_at\":\"2022-01-31T15:10:44.988Z\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/projects/280000002/merge_requests/rehearsal-mr/notes/270000026",
+      "body": "{\"body\":\"changed\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"author\":{},\"body\":\"changed\",\"commands_changes\":{},\"commit_id\":\"7b09ce7e6f80347baf0316c8c94cdba9a0a7e91d\",\"id\":270000026,\"imported\":false,\"imported_from\":\"github\",\"noteable_id\":1,\"noteable_iid\":1,\"noteable_type\":\"Issue\",\"position\":{},\"project_id\":1,\"resolvable\":false,\"resolved\":false,\"resolved_at\":\"2022-01-31T15:10:44.988Z\",\"resolved_by\":{},\"suggestions\":[],\"system\":false,\"type\":\"DiscussionNote\",\"updated_at\":\"2022-01-31T15:10:44.988Z\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/merge_requests/rehearsal-mr/notes/270000026",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"author\":{},\"body\":\"changed\",\"commands_changes\":{},\"commit_id\":\"7b09ce7e6f80347baf0316c8c94cdba9a0a7e91d\",\"id\":270000026,\"imported\":false,\"imported_from\":\"github\",\"noteable_id\":1,\"noteable_iid\":1,\"noteable_type\":\"Issue\",\"position\":{},\"project_id\":1,\"resolvable\":false,\"resolved\":false,\"resolved_at\":\"2022-01-31T15:10:44.988Z\",\"resolved_by\":{},\"suggestions\":[],\"system\":false,\"type\":\"DiscussionNote\",\"updated_at\":\"2022-01-31T15:10:44.988Z\"}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/projects/280000002/merge_requests/rehearsal-mr/notes/270000026",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/merge_requests/rehearsal-mr/notes/270000026",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

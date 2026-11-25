@@ -1,0 +1,52 @@
+# Container scanning for a project's container registry: on or off.
+# GraphQL only. GitLab Ultimate.
+#
+# A settings kind: deleting the object leaves the setting as it is
+# (Terraform puts back what it found unless keep_settings_on_destroy).
+# The reads and the mutation alias containerScanningForRegistryEnabled as
+# enable, the mutation's input name, so that the API answers the spec's
+# own field.
+#
+# Sources:
+#   - gitlabhq/terraform-provider-gitlab v19.5.0,
+#     internal/provider/resource_gitlab_project_container_scanning.go: the
+#     query GetContainerScanningForRegistry(fullPath) and the mutation
+#     SetContainerScanningForRegistry($input: SetContainerScanningForRegistryInput!)
+#     with input {namespacePath, enable}, as Terraform sends them.
+#   - GitLab's GraphQL reference: mutation setContainerScanningForRegistry
+#     (enable Boolean!, namespacePath ID!; answers
+#     containerScanningForRegistryEnabled and errors), and
+#     Project.containerScanningForRegistryEnabled:
+#     https://docs.gitlab.com/api/graphql/reference/#mutationsetcontainerscanningforregistry
+# Written 2026-11-22.
+terraform: [gitlab_project_container_scanning]
+shape: settings
+params:
+  fullPath:
+    description: The project's full path (namespace/project).
+fields:
+  enable:
+    type: boolean
+    description: Whether container scanning for registry is enabled for the project.
+required: [enable]
+sample: {fullPath: example-group/example-project, enable: true}
+read:
+  query: |
+    query GetContainerScanningForRegistry($fullPath: ID!) {
+      project(fullPath: $fullPath) {
+        enable: containerScanningForRegistryEnabled
+      }
+    }
+  variables: {fullPath: "{fullPath}"}
+  result: project
+update:
+  query: |
+    mutation SetContainerScanningForRegistry($input: SetContainerScanningForRegistryInput!) {
+      setContainerScanningForRegistry(input: $input) {
+        enable: containerScanningForRegistryEnabled
+        errors
+      }
+    }
+  variables:
+    input: {namespacePath: "{fullPath}", enable: "{enable}"}
+  result: setContainerScanningForRegistry

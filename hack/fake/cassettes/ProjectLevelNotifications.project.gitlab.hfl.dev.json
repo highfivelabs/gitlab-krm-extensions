@@ -1,0 +1,105 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "a": "rehearsal-a",
+    "agent": 280000008,
+    "b": "rehearsal-b",
+    "group": 280000001,
+    "mr": "rehearsal-mr",
+    "project": 280000002,
+    "schedule": 280000009,
+    "user": 280000020
+  },
+  "interactions": [
+    {
+      "method": "GET",
+      "path": "/projects/280000002/notification_settings",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"events\":\"example-events\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/notification_settings",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"events\":\"example-events\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/projects/280000002/notification_settings",
+      "body": "{\"level\":\"disabled\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"events\":\"example-events\",\"level\":\"disabled\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/notification_settings",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"events\":\"example-events\",\"level\":\"disabled\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/notification_settings",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"events\":\"example-events\",\"level\":\"disabled\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/projects/280000002/notification_settings",
+      "body": "{\"level\":\"mention\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"events\":\"example-events\",\"level\":\"mention\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/notification_settings",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"events\":\"example-events\",\"level\":\"mention\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/projects/280000002/notification_settings",
+      "body": "{\"level\":\"disabled\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"events\":\"example-events\",\"level\":\"disabled\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/notification_settings",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"events\":\"example-events\",\"level\":\"disabled\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/projects/280000002/notification_settings",
+      "body": "{\"level\":\"mention\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"events\":\"example-events\",\"level\":\"mention\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/notification_settings",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"events\":\"example-events\",\"level\":\"mention\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/projects/280000002/notification_settings",
+      "body": "{}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"events\":\"example-events\",\"level\":\"mention\"}\n"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+terraform: [gitlab_user_identity]
+shape: upsert
+params:
+  user_id:
+    type: integer
+    placeholder: id
+    description: The ID of the user.
+  provider:
+    inBody: true
+fields:
+  extern_uid:
+    type: string
+required: [extern_uid]
+sample: {user_id: 7, provider: example-provider, extern_uid: example-uid}
+read:
+  method: GET
+  path: /users/{id}
+  find: {list: identities, field: provider, param: provider}
+update:
+  method: PUT
+  path: /users/{id}
+delete:
+  method: DELETE
+  path: /users/{id}/identities/{provider}

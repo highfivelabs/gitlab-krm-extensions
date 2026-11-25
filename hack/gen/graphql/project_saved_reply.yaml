@@ -1,0 +1,73 @@
+# A comment template (saved reply) shared across a project: GraphQL only.
+# GitLab Premium or Ultimate.
+#
+# The create names the project by its global ID (gid://gitlab/Project/<id>,
+# from projectId, the project's numeric ID); the read by its full path
+# (fullPath). Terraform's project attribute takes either, and looks the
+# other up first (a REST GET of the project); here the spec gives both.
+#
+# Sources:
+#   - gitlabhq/terraform-provider-gitlab v19.5.0,
+#     internal/provider/resource_gitlab_project_saved_reply.go: the four
+#     documents below, as Terraform sends them (named here: GraphQL lets an
+#     operation be named; the fake API answers by name), and
+#     internal/provider/api/graphql_helper.go (GetProjectGIDFromID: the
+#     project's ID from project(fullPath) { id }).
+#   - GitLab's GraphQL reference, mutations projectSavedReplyCreate,
+#     projectSavedReplyUpdate, projectSavedReplyDestroy and
+#     Project.savedReply:
+#     https://docs.gitlab.com/api/graphql/reference/#mutationprojectsavedreplycreate
+# Written 2026-11-22.
+terraform: [gitlab_project_saved_reply]
+shape: crud
+params:
+  projectId:
+    description: The project's numeric ID; the create names the project as gid://gitlab/Project/<projectId>.
+  fullPath:
+    description: The project's full path (namespace/project), which the read names it by.
+fields:
+  name:
+    type: string
+    description: The name of the saved reply.
+  content:
+    type: string
+    description: The content of the saved reply.
+required: [name, content]
+sample: {projectId: "7", fullPath: example-group/example-project, name: example-name, content: example-content}
+create:
+  query: |
+    mutation ProjectSavedReplyCreate($projectId: ProjectID!, $name: String!, $content: String!) {
+      projectSavedReplyCreate(input: {projectId: $projectId, name: $name, content: $content}) {
+        savedReply { id name content }
+        errors
+      }
+    }
+  variables: {projectId: "gid://gitlab/Project/{projectId}", name: "{name}", content: "{content}"}
+  result: projectSavedReplyCreate/savedReply
+read:
+  query: |
+    query ProjectSavedReply($fullPath: ID!, $id: ProjectsSavedReplyID!) {
+      project(fullPath: $fullPath) {
+        savedReply(id: $id) { id name content }
+      }
+    }
+  variables: {fullPath: "{fullPath}", id: "{id}"}
+  result: project/savedReply
+update:
+  query: |
+    mutation ProjectSavedReplyUpdate($id: ProjectsSavedReplyID!, $name: String!, $content: String!) {
+      projectSavedReplyUpdate(input: {id: $id, name: $name, content: $content}) {
+        savedReply { id name content }
+        errors
+      }
+    }
+  variables: {id: "{id}", name: "{name}", content: "{content}"}
+  result: projectSavedReplyUpdate/savedReply
+delete:
+  query: |
+    mutation ProjectSavedReplyDestroy($id: ProjectsSavedReplyID!) {
+      projectSavedReplyDestroy(input: {id: $id}) {
+        errors
+      }
+    }
+  variables: {id: "{id}"}

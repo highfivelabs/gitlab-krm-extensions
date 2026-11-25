@@ -1,0 +1,103 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "a": "rehearsal-a",
+    "agent": 280000008,
+    "avatarUser": 280000038,
+    "b": "rehearsal-b",
+    "catalogProject": 280000037,
+    "g": 280000030,
+    "group": 280000001,
+    "key": 280000026,
+    "mr": "rehearsal-mr",
+    "project": 280000002,
+    "runner": 280000028,
+    "sa": 280000031,
+    "schedule": 280000009,
+    "src": 280000027,
+    "sub": 280000036,
+    "user": 280000020
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/projects/example-id/external_status_checks",
+      "body": "{\"external_url\":\"https://www.example.com\",\"name\":\"QA\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"external_url\":\"https://www.example.com\",\"hmac\":true,\"id\":270000049,\"name\":\"QA\",\"project_id\":1,\"protected_branches\":[]}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/example-id/external_status_checks?per_page=100",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "[{\"external_url\":\"https://www.example.com\",\"id\":270000049,\"name\":\"QA\"}]\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/example-id/external_status_checks?per_page=100",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "[{\"external_url\":\"https://www.example.com\",\"id\":270000049,\"name\":\"QA\"}]\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/projects/example-id/external_status_checks/270000049",
+      "body": "{\"external_url\":\"changed-external_url\",\"name\":\"QA\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"external_url\":\"changed-external_url\",\"hmac\":true,\"id\":270000049,\"name\":\"QA\",\"project_id\":1,\"protected_branches\":[]}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/example-id/external_status_checks?per_page=100",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "[{\"external_url\":\"changed-external_url\",\"id\":270000049,\"name\":\"QA\"}]\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/projects/example-id/external_status_checks/270000049",
+      "body": "{\"external_url\":\"hfl-live-drift\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"external_url\":\"hfl-live-drift\",\"hmac\":true,\"id\":270000049,\"name\":\"QA\",\"project_id\":1,\"protected_branches\":[]}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/example-id/external_status_checks?per_page=100",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "[{\"external_url\":\"hfl-live-drift\",\"id\":270000049,\"name\":\"QA\"}]\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/projects/example-id/external_status_checks/270000049",
+      "body": "{\"external_url\":\"changed-external_url\",\"name\":\"QA\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"external_url\":\"changed-external_url\",\"hmac\":true,\"id\":270000049,\"name\":\"QA\",\"project_id\":1,\"protected_branches\":[]}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/example-id/external_status_checks?per_page=100",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "[{\"external_url\":\"changed-external_url\",\"id\":270000049,\"name\":\"QA\"}]\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/projects/example-id/external_status_checks/270000049",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/projects/example-id/external_status_checks?per_page=100",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "[]\n"
+    }
+  ]
+}

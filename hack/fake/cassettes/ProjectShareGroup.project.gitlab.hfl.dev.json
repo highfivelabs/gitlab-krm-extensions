@@ -1,0 +1,57 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "a": "rehearsal-a",
+    "agent": 280000008,
+    "b": "rehearsal-b",
+    "g": 280000024,
+    "group": 280000001,
+    "mr": "rehearsal-mr",
+    "project": 280000002,
+    "schedule": 280000009,
+    "user": 280000020
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/groups",
+      "body": "{\"name\":\"{{name}}-g\",\"path\":\"{{name}}-g\",\"visibility\":\"private\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"_stub\":\"rehearsal stand-in: the fake API has no such resource\",\"id\":280000024,\"name\":\"{{name}}-g\",\"path\":\"{{name}}-g\",\"visibility\":\"private\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/projects/280000002/share",
+      "body": "{\"group_access\":30,\"group_id\":280000024}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"group_access\":30,\"group_id\":280000024}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002?statistics=false",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"shared_with_groups\":[{\"group_access\":30,\"group_id\":280000024}]}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/projects/280000002/share/280000024",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002?statistics=false",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/groups/280000024",
+      "status": 204
+    }
+  ]
+}

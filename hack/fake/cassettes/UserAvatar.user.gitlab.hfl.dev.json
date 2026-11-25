@@ -1,0 +1,96 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "a": "rehearsal-a",
+    "agent": 280000008,
+    "avatarUser": 280000038,
+    "b": "rehearsal-b",
+    "catalogProject": 280000037,
+    "g": 280000030,
+    "group": 280000001,
+    "key": 280000026,
+    "mr": "rehearsal-mr",
+    "project": 280000002,
+    "runner": 280000028,
+    "sa": 280000031,
+    "schedule": 280000009,
+    "src": 280000027,
+    "sub": 280000036,
+    "user": 280000020
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/users",
+      "body": "{\"email\":\"{{name}}-u@hfl-live.example\",\"force_random_password\":true,\"name\":\"{{name}}-u\",\"skip_confirmation\":true,\"username\":\"{{name}}-u\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"_stub\":\"rehearsal stand-in: the fake API has no such resource\",\"email\":\"{{name}}-u@hfl-live.example\",\"force_random_password\":true,\"id\":280000038,\"name\":\"{{name}}-u\",\"skip_confirmation\":true,\"username\":\"{{name}}-u\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/users/280000038",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"avatar_url\":\"https://gitlab.example.com/uploads/-/system/user/avatar/7/avatar.png\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/users/280000038",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"avatar_url\":\"https://gitlab.example.com/uploads/-/system/user/avatar/7/avatar.png\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/users/280000038",
+      "multipart": true,
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"avatar_url\":\"https://gitlab.example.com/uploads/-/system/user/avatar/7/avatar.png\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/users/280000038",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"avatar_url\":\"https://gitlab.example.com/uploads/-/system/user/avatar/7/avatar.png\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/users/280000038",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"avatar_url\":\"https://gitlab.example.com/uploads/-/system/user/avatar/7/avatar.png\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/users/280000038",
+      "multipart": true,
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"avatar_url\":\"https://gitlab.example.com/uploads/-/system/user/avatar/7/avatar.png\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/users/280000038",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"avatar_url\":\"https://gitlab.example.com/uploads/-/system/user/avatar/7/avatar.png\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/users/280000038",
+      "multipart": true,
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"avatar_url\":\"https://gitlab.example.com/uploads/-/system/user/avatar/7/avatar.png\"}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/users/280000038?hard_delete=true",
+      "status": 204
+    }
+  ]
+}

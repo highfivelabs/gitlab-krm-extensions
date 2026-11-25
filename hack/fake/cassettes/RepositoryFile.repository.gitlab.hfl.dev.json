@@ -1,0 +1,103 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "group": 280000001,
+    "project": 280000002
+  },
+  "interactions": [
+    {
+      "method": "GET",
+      "path": "/projects/280000002/repository/files/{{name}}.txt?ref=main",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/projects/280000002/repository/files/{{name}}.txt",
+      "body": "{\"branch\":\"main\",\"commit_message\":\"live test {{name}}\",\"content\":\"aGVsbG8tcmVwb3NpdG9yeS1maWxl\",\"encoding\":\"base64\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"branch\":\"main\",\"commit_message\":\"live test {{name}}\",\"content\":\"aGVsbG8tcmVwb3NpdG9yeS1maWxl\",\"encoding\":\"base64\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/repository/files/{{name}}.txt?ref=main",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"branch\":\"main\",\"commit_message\":\"live test {{name}}\",\"content\":\"aGVsbG8tcmVwb3NpdG9yeS1maWxl\",\"encoding\":\"base64\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/repository/files/{{name}}.txt?ref=main",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"branch\":\"main\",\"commit_message\":\"live test {{name}}\",\"content\":\"aGVsbG8tcmVwb3NpdG9yeS1maWxl\",\"encoding\":\"base64\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/projects/280000002/repository/files/{{name}}.txt",
+      "body": "{\"branch\":\"main\",\"commit_message\":\"live test {{name}}\",\"content\":\"dXBkYXRlZC1yZXBvc2l0b3J5LWZpbGU=\",\"encoding\":\"base64\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"branch\":\"main\",\"commit_message\":\"live test {{name}}\",\"content\":\"dXBkYXRlZC1yZXBvc2l0b3J5LWZpbGU=\",\"encoding\":\"base64\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/repository/files/{{name}}.txt?ref=main",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"branch\":\"main\",\"commit_message\":\"live test {{name}}\",\"content\":\"dXBkYXRlZC1yZXBvc2l0b3J5LWZpbGU=\",\"encoding\":\"base64\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/repository/files/{{name}}.txt?ref=main",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"branch\":\"main\",\"commit_message\":\"live test {{name}}\",\"content\":\"dXBkYXRlZC1yZXBvc2l0b3J5LWZpbGU=\",\"encoding\":\"base64\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/projects/280000002/repository/files/{{name}}.txt",
+      "body": "{\"branch\":\"main\",\"commit_message\":\"live test {{name}}\",\"content\":\"ZHJpZnQtcmVwb3NpdG9yeS1maWxl\",\"encoding\":\"base64\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"branch\":\"main\",\"commit_message\":\"live test {{name}}\",\"content\":\"ZHJpZnQtcmVwb3NpdG9yeS1maWxl\",\"encoding\":\"base64\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/repository/files/{{name}}.txt?ref=main",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"branch\":\"main\",\"commit_message\":\"live test {{name}}\",\"content\":\"ZHJpZnQtcmVwb3NpdG9yeS1maWxl\",\"encoding\":\"base64\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/projects/280000002/repository/files/{{name}}.txt",
+      "body": "{\"branch\":\"main\",\"commit_message\":\"live test {{name}}\",\"content\":\"dXBkYXRlZC1yZXBvc2l0b3J5LWZpbGU=\",\"encoding\":\"base64\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"branch\":\"main\",\"commit_message\":\"live test {{name}}\",\"content\":\"dXBkYXRlZC1yZXBvc2l0b3J5LWZpbGU=\",\"encoding\":\"base64\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/repository/files/{{name}}.txt?ref=main",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"branch\":\"main\",\"commit_message\":\"live test {{name}}\",\"content\":\"dXBkYXRlZC1yZXBvc2l0b3J5LWZpbGU=\",\"encoding\":\"base64\"}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/projects/280000002/repository/files/{{name}}.txt?branch=main\u0026commit_message=live+test+{{name}}",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/repository/files/{{name}}.txt?ref=main",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

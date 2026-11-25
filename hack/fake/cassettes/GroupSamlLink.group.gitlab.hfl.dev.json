@@ -1,0 +1,43 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "a": "rehearsal-a",
+    "agent": 280000008,
+    "b": "rehearsal-b",
+    "group": 280000001,
+    "mr": "rehearsal-mr",
+    "project": 280000002,
+    "schedule": 280000009,
+    "user": 280000007
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/groups/example-id/saml_group_links",
+      "body": "{\"access_level\":5,\"saml_group_name\":\"example-saml-group-name\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"access_level\":5,\"name\":\"saml-group-1\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/groups/example-id/saml_group_links/example-saml-group-name",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"access_level\":5,\"name\":\"saml-group-1\"}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/groups/example-id/saml_group_links/example-saml-group-name",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/groups/example-id/saml_group_links/example-saml-group-name",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

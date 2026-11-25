@@ -1,0 +1,90 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "group": 280000001,
+    "project": 280000002,
+    "user": 280000007
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/user/applications",
+      "body": "{\"name\":\"{{name}}\",\"redirect_uri\":\"https://hfl-live.example/{{name}}\",\"scopes\":\"api\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"application_id\":\"5832fc6e14300a0d962240a8144466eef4ee93ef0d218477e55f11cf12fc3737\",\"application_name\":\"MyApplication\",\"callback_url\":\"https://redirect.uri\",\"granular_scopes\":[],\"id\":270000021,\"scopes\":[\"api\"]}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/user/applications/270000021",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"application_id\":\"5832fc6e14300a0d962240a8144466eef4ee93ef0d218477e55f11cf12fc3737\",\"application_name\":\"MyApplication\",\"callback_url\":\"https://redirect.uri\",\"granular_scopes\":[],\"id\":270000021,\"scopes\":[\"api\"]}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/user/applications/270000021",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"application_id\":\"5832fc6e14300a0d962240a8144466eef4ee93ef0d218477e55f11cf12fc3737\",\"application_name\":\"MyApplication\",\"callback_url\":\"https://redirect.uri\",\"granular_scopes\":[],\"id\":270000021,\"scopes\":[\"api\"]}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/user/applications/270000021",
+      "body": "{\"name\":\"{{name}}\",\"redirect_uri\":\"https://hfl-live.example/{{name}}\",\"scopes\":\"api read_user\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"application_id\":\"5832fc6e14300a0d962240a8144466eef4ee93ef0d218477e55f11cf12fc3737\",\"application_name\":\"MyApplication\",\"callback_url\":\"https://redirect.uri\",\"granular_scopes\":[],\"id\":270000021,\"scopes\":[\"api\",\"read_user\"]}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/user/applications/270000021",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"application_id\":\"5832fc6e14300a0d962240a8144466eef4ee93ef0d218477e55f11cf12fc3737\",\"application_name\":\"MyApplication\",\"callback_url\":\"https://redirect.uri\",\"granular_scopes\":[],\"id\":270000021,\"scopes\":[\"api\",\"read_user\"]}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/user/applications/270000021",
+      "body": "{\"scopes\":\"read_user\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"application_id\":\"5832fc6e14300a0d962240a8144466eef4ee93ef0d218477e55f11cf12fc3737\",\"application_name\":\"MyApplication\",\"callback_url\":\"https://redirect.uri\",\"granular_scopes\":[],\"id\":270000021,\"scopes\":[\"read_user\"]}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/user/applications/270000021",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"application_id\":\"5832fc6e14300a0d962240a8144466eef4ee93ef0d218477e55f11cf12fc3737\",\"application_name\":\"MyApplication\",\"callback_url\":\"https://redirect.uri\",\"granular_scopes\":[],\"id\":270000021,\"scopes\":[\"read_user\"]}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/user/applications/270000021",
+      "body": "{\"name\":\"{{name}}\",\"redirect_uri\":\"https://hfl-live.example/{{name}}\",\"scopes\":\"api read_user\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"application_id\":\"5832fc6e14300a0d962240a8144466eef4ee93ef0d218477e55f11cf12fc3737\",\"application_name\":\"MyApplication\",\"callback_url\":\"https://redirect.uri\",\"granular_scopes\":[],\"id\":270000021,\"scopes\":[\"api\",\"read_user\"]}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/user/applications/270000021",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"application_id\":\"5832fc6e14300a0d962240a8144466eef4ee93ef0d218477e55f11cf12fc3737\",\"application_name\":\"MyApplication\",\"callback_url\":\"https://redirect.uri\",\"granular_scopes\":[],\"id\":270000021,\"scopes\":[\"api\",\"read_user\"]}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/user/applications/270000021",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/user/applications/270000021",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

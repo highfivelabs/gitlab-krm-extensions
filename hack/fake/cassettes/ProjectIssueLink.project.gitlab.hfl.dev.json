@@ -1,0 +1,58 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "a": "rehearsal-a",
+    "agent": 280000008,
+    "b": "rehearsal-b",
+    "group": 280000001,
+    "project": 280000002,
+    "schedule": 280000009,
+    "user": 280000007
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/projects/280000002/issues",
+      "body": "{\"title\":\"{{name}}-a\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"_stub\":\"rehearsal stand-in: the fake API has no such resource\",\"id\":280000015,\"title\":\"{{name}}-a\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/projects/280000002/issues",
+      "body": "{\"title\":\"{{name}}-b\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"_stub\":\"rehearsal stand-in: the fake API has no such resource\",\"id\":280000016,\"title\":\"{{name}}-b\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/projects/280000002/issues/rehearsal-a/links",
+      "body": "{\"target_issue_iid\":\"rehearsal-b\",\"target_project_id\":280000002}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"id\":270000025,\"source_issue\":{},\"target_issue\":{}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/issues/rehearsal-a/links/270000025",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"id\":270000025,\"source_issue\":{},\"target_issue\":{}}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/projects/280000002/issues/rehearsal-a/links/270000025",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/issues/rehearsal-a/links/270000025",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

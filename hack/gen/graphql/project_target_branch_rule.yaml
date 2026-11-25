@@ -1,0 +1,72 @@
+# A project's default target branch for merge requests from branches
+# matching a pattern. GraphQL only. GitLab Premium or Ultimate.
+#
+# GitLab has no update for a rule: a change to name or targetBranch is
+# reported as drift (delete and recreate the object), as Terraform replaces
+# the rule. The create names the project by its global ID
+# (gid://gitlab/Project/<id>, from projectId); the read lists the project's
+# rules by its full path (fullPath) and finds the one with the rule's ID.
+#
+# Sources:
+#   - gitlabhq/terraform-provider-gitlab v19.5.0,
+#     internal/provider/resource_gitlab_project_target_branch_rule.go: the
+#     mutations projectTargetBranchRuleCreate(input: {projectId, name,
+#     targetBranch}) { errors targetBranchRule { id name } } and
+#     projectTargetBranchRuleDestroy(input: {id}) { errors }, and the query
+#     project(fullPath) { targetBranchRules { nodes { id name targetBranch }
+#     } }. Terraform writes the values into the documents (and a constant
+#     clientMutationId, left out here); here they are variables, each
+#     mutation's input as one object.
+#   - GitLab's GraphQL reference: mutations projectTargetBranchRuleCreate
+#     (input type ProjectTargetBranchRuleCreateInput: name String!,
+#     projectId ProjectID!, targetBranch String!) and
+#     projectTargetBranchRuleDestroy (ProjectTargetBranchRuleDestroyInput:
+#     id ProjectsTargetBranchRuleID!):
+#     https://docs.gitlab.com/api/graphql/reference/#mutationprojecttargetbranchrulecreate
+# Written 2026-11-22.
+terraform: [gitlab_project_target_branch_rule]
+shape: crud
+params:
+  projectId:
+    description: The project's numeric ID; the create names the project as gid://gitlab/Project/<projectId>.
+  fullPath:
+    description: The project's full path (namespace/project), which the read names it by.
+fields:
+  name:
+    type: string
+    description: A pattern matching the branch name for which the merge request should have a default target branch configured (Terraform's source_branch_pattern).
+  targetBranch:
+    type: string
+    description: The name of the branch to which the merge request should be addressed (Terraform's target_branch_name).
+required: [name, targetBranch]
+sample: {projectId: "7", fullPath: example-group/example-project, name: "feature/*", targetBranch: develop}
+create:
+  query: |
+    mutation ProjectTargetBranchRuleCreate($input: ProjectTargetBranchRuleCreateInput!) {
+      projectTargetBranchRuleCreate(input: $input) {
+        errors
+        targetBranchRule { id name }
+      }
+    }
+  variables:
+    input: {projectId: "gid://gitlab/Project/{projectId}", name: "{name}", targetBranch: "{targetBranch}"}
+  result: projectTargetBranchRuleCreate/targetBranchRule
+read:
+  query: |
+    query ProjectTargetBranchRules($fullPath: ID!) {
+      project(fullPath: $fullPath) {
+        targetBranchRules { nodes { id name targetBranch } }
+      }
+    }
+  variables: {fullPath: "{fullPath}"}
+  result: project/targetBranchRules/nodes
+  find: {field: id}
+delete:
+  query: |
+    mutation ProjectTargetBranchRuleDestroy($input: ProjectTargetBranchRuleDestroyInput!) {
+      projectTargetBranchRuleDestroy(input: $input) {
+        errors
+      }
+    }
+  variables:
+    input: {id: "{id}"}

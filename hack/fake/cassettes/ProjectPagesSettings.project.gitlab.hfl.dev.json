@@ -1,0 +1,75 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "a": "rehearsal-a",
+    "agent": 280000008,
+    "b": "rehearsal-b",
+    "group": 280000001,
+    "mr": "rehearsal-mr",
+    "project": 280000002,
+    "schedule": 280000009,
+    "user": 280000020
+  },
+  "interactions": [
+    {
+      "method": "GET",
+      "path": "/projects/280000002/pages",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"deployments\":[],\"force_https\":true,\"is_unique_domain_enabled\":true,\"primary_domain\":\"example-primary-domain\",\"url\":\"example-url\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/pages",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"deployments\":[],\"force_https\":true,\"is_unique_domain_enabled\":true,\"primary_domain\":\"example-primary-domain\",\"url\":\"example-url\"}\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/projects/280000002/pages",
+      "body": "{\"pages_unique_domain_enabled\":false}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"deployments\":[],\"force_https\":true,\"is_unique_domain_enabled\":true,\"primary_domain\":\"example-primary-domain\",\"url\":\"example-url\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/pages",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"deployments\":[],\"force_https\":true,\"is_unique_domain_enabled\":true,\"primary_domain\":\"example-primary-domain\",\"url\":\"example-url\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/pages",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"deployments\":[],\"force_https\":true,\"is_unique_domain_enabled\":true,\"primary_domain\":\"example-primary-domain\",\"url\":\"example-url\"}\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/projects/280000002/pages",
+      "body": "{\"pages_unique_domain_enabled\":true}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"deployments\":[],\"force_https\":true,\"is_unique_domain_enabled\":true,\"primary_domain\":\"example-primary-domain\",\"url\":\"example-url\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/pages",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"deployments\":[],\"force_https\":true,\"is_unique_domain_enabled\":true,\"primary_domain\":\"example-primary-domain\",\"url\":\"example-url\"}\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/projects/280000002/pages",
+      "body": "{}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"deployments\":[],\"force_https\":true,\"is_unique_domain_enabled\":true,\"primary_domain\":\"example-primary-domain\",\"url\":\"example-url\"}\n"
+    }
+  ]
+}

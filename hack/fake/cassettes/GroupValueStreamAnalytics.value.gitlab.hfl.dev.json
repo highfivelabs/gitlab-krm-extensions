@@ -1,0 +1,56 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "a": "rehearsal-a",
+    "agent": 280000008,
+    "avatarUser": 280000038,
+    "b": "rehearsal-b",
+    "catalogProject": 280000037,
+    "g": 280000030,
+    "group": 280000001,
+    "key": 280000026,
+    "mr": "rehearsal-mr",
+    "project": 280000002,
+    "runner": 280000028,
+    "sa": 280000031,
+    "schedule": 280000009,
+    "src": 280000027,
+    "sub": 280000036,
+    "user": 280000020
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"GroupValueStreamCreate\",\"query\":\"mutation GroupValueStreamCreate($input: ValueStreamCreateInput!) { valueStreamCreate(input: $input) { valueStream { id name stages { name custom hidden startEventIdentifier endEventIdentifier startEventLabelId: startEventLabel { id } endEventLabelId: endEventLabel { id } } } errors } }\",\"variables\":{\"input\":{\"name\":\"example-value-stream\",\"namespacePath\":\"example-group\",\"stages\":[{\"custom\":true,\"endEventIdentifier\":\"MERGE_REQUEST_MERGED\",\"name\":\"Code\",\"startEventIdentifier\":\"ISSUE_LABEL_ADDED\",\"startEventLabelId\":\"gid://gitlab/GroupLabel/1\"}]}}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"valueStreamCreate\":{\"errors\":[],\"valueStream\":{\"id\":\"gid://fake/GroupValueStreamAnalytics/270000064\",\"name\":\"example-value-stream\",\"stages\":[{\"custom\":true,\"endEventIdentifier\":\"MERGE_REQUEST_MERGED\",\"name\":\"Code\",\"startEventIdentifier\":\"ISSUE_LABEL_ADDED\",\"startEventLabelId\":{\"id\":\"1\",\"slug\":\"gid://gitlab/GroupLabel/1\"}}]}}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"GroupValueStream\",\"query\":\"query GroupValueStream($fullPath: ID!, $id: ID) { group(fullPath: $fullPath) { valueStreams(id: $id) { nodes { id name stages { name custom hidden startEventIdentifier endEventIdentifier startEventLabelId: startEventLabel { id } endEventLabelId: endEventLabel { id } } } } } }\",\"variables\":{\"fullPath\":\"example-group\",\"id\":\"gid://fake/GroupValueStreamAnalytics/270000064\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"group\":{\"valueStreams\":{\"nodes\":[{\"id\":\"gid://fake/GroupValueStreamAnalytics/270000064\",\"name\":\"example-value-stream\",\"stages\":[{\"custom\":true,\"endEventIdentifier\":\"MERGE_REQUEST_MERGED\",\"name\":\"Code\",\"startEventIdentifier\":\"ISSUE_LABEL_ADDED\",\"startEventLabelId\":{\"id\":\"1\",\"slug\":\"gid://gitlab/GroupLabel/1\"}}]}]}}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"GroupValueStreamDestroy\",\"query\":\"mutation GroupValueStreamDestroy($input: ValueStreamDestroyInput!) { valueStreamDestroy(input: $input) { errors } }\",\"variables\":{\"input\":{\"id\":\"gid://fake/GroupValueStreamAnalytics/270000064\"}}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"valueStreamDestroy\":{\"errors\":[]}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"GroupValueStream\",\"query\":\"query GroupValueStream($fullPath: ID!, $id: ID) { group(fullPath: $fullPath) { valueStreams(id: $id) { nodes { id name stages { name custom hidden startEventIdentifier endEventIdentifier startEventLabelId: startEventLabel { id } endEventLabelId: endEventLabel { id } } } } } }\",\"variables\":{\"fullPath\":\"example-group\",\"id\":\"gid://fake/GroupValueStreamAnalytics/270000064\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"group\":{\"valueStreams\":{\"nodes\":[]}}}}\n"
+    }
+  ]
+}

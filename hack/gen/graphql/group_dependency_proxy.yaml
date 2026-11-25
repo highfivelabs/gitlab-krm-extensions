@@ -1,0 +1,58 @@
+# A group's dependency proxy for container images: on or off, and the
+# Docker Hub credentials it pulls with. GraphQL only.
+#
+# A settings kind: the group always has them. Deleting the object leaves
+# them as they are (Terraform turns the proxy off and clears the
+# credentials).
+#
+# Sources:
+#   - gitlabhq/terraform-provider-gitlab v19.5.0,
+#     internal/provider/resource_gitlab_group_dependency_proxy.go: the
+#     mutation updateDependencyProxySettings (groupPath, enabled, identity,
+#     secret; it selects errors and dependencyProxySetting { enabled,
+#     identity }) and the query group(fullPath) { dependencyProxySetting {
+#     enabled, identity } }. Terraform writes the values into the document;
+#     here they are variables, the mutation's input as one object.
+#   - GitLab's GraphQL reference: mutation updateDependencyProxySettings
+#     (input type UpdateDependencyProxySettingsInput: groupPath ID!,
+#     enabled, identity, secret), object DependencyProxySetting (enabled,
+#     identity; no secret: write-only):
+#     https://docs.gitlab.com/api/graphql/reference/#mutationupdatedependencyproxysettings
+# Written 2026-11-22.
+terraform: [gitlab_group_dependency_proxy]
+shape: settings
+params:
+  fullPath:
+    description: The group's full path.
+fields:
+  enabled:
+    type: boolean
+    description: Indicates whether the dependency proxy is enabled for the group.
+  identity:
+    type: string
+    description: Identity credential used to authenticate with Docker Hub when pulling images. Can be a username (for password or personal access token (PAT)) or organization name (for organization access token (OAT)).
+  secret:
+    type: string
+    description: Secret credential used to authenticate with Docker Hub when pulling images. Can be a password, personal access token (PAT), or organization access token (OAT). Never read back; set it from a Secret (spec.secretRefs.secret).
+writeOnly: [secret]
+sample: {fullPath: example-group, enabled: true, identity: example-identity}
+read:
+  query: |
+    query GroupDependencyProxySetting($fullPath: ID!) {
+      group(fullPath: $fullPath) {
+        dependencyProxySetting { enabled identity }
+      }
+    }
+  variables: {fullPath: "{fullPath}"}
+  result: group/dependencyProxySetting
+update:
+  query: |
+    mutation UpdateDependencyProxySettings($input: UpdateDependencyProxySettingsInput!) {
+      updateDependencyProxySettings(input: $input) {
+        errors
+        dependencyProxySetting { enabled identity }
+      }
+    }
+  variables:
+    input: {groupPath: "{fullPath}", enabled: "{enabled}", identity: "{identity}", secret: "{secret}"}
+  result: updateDependencyProxySettings/dependencyProxySetting

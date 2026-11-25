@@ -1,0 +1,124 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "a": "rehearsal-a",
+    "agent": 280000008,
+    "b": "rehearsal-b",
+    "g": 280000024,
+    "group": 280000001,
+    "key": 280000026,
+    "mr": "rehearsal-mr",
+    "project": 280000002,
+    "schedule": 280000009,
+    "src": 280000025,
+    "user": 280000020
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/projects",
+      "body": "{\"name\":\"{{name}}-src\",\"namespace_id\":280000001,\"path\":\"{{name}}-src\",\"visibility\":\"private\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"_stub\":\"rehearsal stand-in: the fake API has no such resource\",\"id\":280000025,\"name\":\"{{name}}-src\",\"namespace_id\":280000001,\"path\":\"{{name}}-src\",\"visibility\":\"private\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/projects/280000025/deploy_keys",
+      "body": "{\"key\":\"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH4H4laHkqceFUBNdWdZGb4vGnLWm3LianZt61iN8E87 hfl-live-deploy-key-enable\",\"title\":\"{{name}}\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"_stub\":\"rehearsal stand-in: the fake API has no such resource\",\"id\":280000026,\"key\":\"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH4H4laHkqceFUBNdWdZGb4vGnLWm3LianZt61iN8E87 hfl-live-deploy-key-enable\",\"title\":\"{{name}}\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/projects/280000002/deploy_keys/280000026/enable",
+      "body": "{\"can_push\":false}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"can_push\":false,\"created_at\":\"2015-09-03T07:24:44.627Z\",\"expires_at\":\"2020-09-03T07:24:44.627Z\",\"fingerprint\":\"4a:9d:64:15:ed:3a:e6:07:6e:89:36:b3:3b:03:05:d9\",\"fingerprint_sha256\":\"Jrs3LD1Ji30xNLtTVf9NDCj7kkBgPBb2pjvTZ3HfIgU\",\"id\":270000043,\"key\":\"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgQDNJAkI3Wdf0r13c8a5pEExB2YowPWCSVzfZV22pNBc1CuEbyYLHpUyaD0GwpGvFdx2aP7lMEk35k6Rz3ccBF6jRaVJyhsn5VNnW92PMpBJ/P1UebhXwsFHdQf5rTt082cSxWuk61kGWRQtk4ozt/J2DF/dIUVaLvc+z4HomT41fQ==\",\"last_used_at\":\"2020-09-03T07:24:44.627Z\",\"projects_with_readonly_access\":[],\"projects_with_write_access\":[],\"title\":\"Sample key 25\",\"usage_type\":\"auth\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/deploy_keys/270000043",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"can_push\":false,\"created_at\":\"2015-09-03T07:24:44.627Z\",\"expires_at\":\"2020-09-03T07:24:44.627Z\",\"fingerprint\":\"4a:9d:64:15:ed:3a:e6:07:6e:89:36:b3:3b:03:05:d9\",\"fingerprint_sha256\":\"Jrs3LD1Ji30xNLtTVf9NDCj7kkBgPBb2pjvTZ3HfIgU\",\"id\":270000043,\"key\":\"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgQDNJAkI3Wdf0r13c8a5pEExB2YowPWCSVzfZV22pNBc1CuEbyYLHpUyaD0GwpGvFdx2aP7lMEk35k6Rz3ccBF6jRaVJyhsn5VNnW92PMpBJ/P1UebhXwsFHdQf5rTt082cSxWuk61kGWRQtk4ozt/J2DF/dIUVaLvc+z4HomT41fQ==\",\"last_used_at\":\"2020-09-03T07:24:44.627Z\",\"projects_with_readonly_access\":[],\"projects_with_write_access\":[],\"title\":\"Sample key 25\",\"usage_type\":\"auth\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/deploy_keys/270000043",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"can_push\":false,\"created_at\":\"2015-09-03T07:24:44.627Z\",\"expires_at\":\"2020-09-03T07:24:44.627Z\",\"fingerprint\":\"4a:9d:64:15:ed:3a:e6:07:6e:89:36:b3:3b:03:05:d9\",\"fingerprint_sha256\":\"Jrs3LD1Ji30xNLtTVf9NDCj7kkBgPBb2pjvTZ3HfIgU\",\"id\":270000043,\"key\":\"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgQDNJAkI3Wdf0r13c8a5pEExB2YowPWCSVzfZV22pNBc1CuEbyYLHpUyaD0GwpGvFdx2aP7lMEk35k6Rz3ccBF6jRaVJyhsn5VNnW92PMpBJ/P1UebhXwsFHdQf5rTt082cSxWuk61kGWRQtk4ozt/J2DF/dIUVaLvc+z4HomT41fQ==\",\"last_used_at\":\"2020-09-03T07:24:44.627Z\",\"projects_with_readonly_access\":[],\"projects_with_write_access\":[],\"title\":\"Sample key 25\",\"usage_type\":\"auth\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/projects/280000002/deploy_keys/270000043",
+      "body": "{\"can_push\":true}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"can_push\":true,\"created_at\":\"2015-09-03T07:24:44.627Z\",\"expires_at\":\"2020-09-03T07:24:44.627Z\",\"fingerprint\":\"4a:9d:64:15:ed:3a:e6:07:6e:89:36:b3:3b:03:05:d9\",\"fingerprint_sha256\":\"Jrs3LD1Ji30xNLtTVf9NDCj7kkBgPBb2pjvTZ3HfIgU\",\"id\":270000043,\"key\":\"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgQDNJAkI3Wdf0r13c8a5pEExB2YowPWCSVzfZV22pNBc1CuEbyYLHpUyaD0GwpGvFdx2aP7lMEk35k6Rz3ccBF6jRaVJyhsn5VNnW92PMpBJ/P1UebhXwsFHdQf5rTt082cSxWuk61kGWRQtk4ozt/J2DF/dIUVaLvc+z4HomT41fQ==\",\"last_used_at\":\"2020-09-03T07:24:44.627Z\",\"projects_with_readonly_access\":[],\"projects_with_write_access\":[],\"title\":\"Sample key 25\",\"usage_type\":\"auth\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/deploy_keys/270000043",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"can_push\":true,\"created_at\":\"2015-09-03T07:24:44.627Z\",\"expires_at\":\"2020-09-03T07:24:44.627Z\",\"fingerprint\":\"4a:9d:64:15:ed:3a:e6:07:6e:89:36:b3:3b:03:05:d9\",\"fingerprint_sha256\":\"Jrs3LD1Ji30xNLtTVf9NDCj7kkBgPBb2pjvTZ3HfIgU\",\"id\":270000043,\"key\":\"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgQDNJAkI3Wdf0r13c8a5pEExB2YowPWCSVzfZV22pNBc1CuEbyYLHpUyaD0GwpGvFdx2aP7lMEk35k6Rz3ccBF6jRaVJyhsn5VNnW92PMpBJ/P1UebhXwsFHdQf5rTt082cSxWuk61kGWRQtk4ozt/J2DF/dIUVaLvc+z4HomT41fQ==\",\"last_used_at\":\"2020-09-03T07:24:44.627Z\",\"projects_with_readonly_access\":[],\"projects_with_write_access\":[],\"title\":\"Sample key 25\",\"usage_type\":\"auth\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/projects/280000002/deploy_keys/270000043",
+      "body": "{\"can_push\":false}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"can_push\":false,\"created_at\":\"2015-09-03T07:24:44.627Z\",\"expires_at\":\"2020-09-03T07:24:44.627Z\",\"fingerprint\":\"4a:9d:64:15:ed:3a:e6:07:6e:89:36:b3:3b:03:05:d9\",\"fingerprint_sha256\":\"Jrs3LD1Ji30xNLtTVf9NDCj7kkBgPBb2pjvTZ3HfIgU\",\"id\":270000043,\"key\":\"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgQDNJAkI3Wdf0r13c8a5pEExB2YowPWCSVzfZV22pNBc1CuEbyYLHpUyaD0GwpGvFdx2aP7lMEk35k6Rz3ccBF6jRaVJyhsn5VNnW92PMpBJ/P1UebhXwsFHdQf5rTt082cSxWuk61kGWRQtk4ozt/J2DF/dIUVaLvc+z4HomT41fQ==\",\"last_used_at\":\"2020-09-03T07:24:44.627Z\",\"projects_with_readonly_access\":[],\"projects_with_write_access\":[],\"title\":\"Sample key 25\",\"usage_type\":\"auth\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/deploy_keys/270000043",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"can_push\":false,\"created_at\":\"2015-09-03T07:24:44.627Z\",\"expires_at\":\"2020-09-03T07:24:44.627Z\",\"fingerprint\":\"4a:9d:64:15:ed:3a:e6:07:6e:89:36:b3:3b:03:05:d9\",\"fingerprint_sha256\":\"Jrs3LD1Ji30xNLtTVf9NDCj7kkBgPBb2pjvTZ3HfIgU\",\"id\":270000043,\"key\":\"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgQDNJAkI3Wdf0r13c8a5pEExB2YowPWCSVzfZV22pNBc1CuEbyYLHpUyaD0GwpGvFdx2aP7lMEk35k6Rz3ccBF6jRaVJyhsn5VNnW92PMpBJ/P1UebhXwsFHdQf5rTt082cSxWuk61kGWRQtk4ozt/J2DF/dIUVaLvc+z4HomT41fQ==\",\"last_used_at\":\"2020-09-03T07:24:44.627Z\",\"projects_with_readonly_access\":[],\"projects_with_write_access\":[],\"title\":\"Sample key 25\",\"usage_type\":\"auth\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/projects/280000002/deploy_keys/270000043",
+      "body": "{\"can_push\":true}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"can_push\":true,\"created_at\":\"2015-09-03T07:24:44.627Z\",\"expires_at\":\"2020-09-03T07:24:44.627Z\",\"fingerprint\":\"4a:9d:64:15:ed:3a:e6:07:6e:89:36:b3:3b:03:05:d9\",\"fingerprint_sha256\":\"Jrs3LD1Ji30xNLtTVf9NDCj7kkBgPBb2pjvTZ3HfIgU\",\"id\":270000043,\"key\":\"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgQDNJAkI3Wdf0r13c8a5pEExB2YowPWCSVzfZV22pNBc1CuEbyYLHpUyaD0GwpGvFdx2aP7lMEk35k6Rz3ccBF6jRaVJyhsn5VNnW92PMpBJ/P1UebhXwsFHdQf5rTt082cSxWuk61kGWRQtk4ozt/J2DF/dIUVaLvc+z4HomT41fQ==\",\"last_used_at\":\"2020-09-03T07:24:44.627Z\",\"projects_with_readonly_access\":[],\"projects_with_write_access\":[],\"title\":\"Sample key 25\",\"usage_type\":\"auth\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/deploy_keys/270000043",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"can_push\":true,\"created_at\":\"2015-09-03T07:24:44.627Z\",\"expires_at\":\"2020-09-03T07:24:44.627Z\",\"fingerprint\":\"4a:9d:64:15:ed:3a:e6:07:6e:89:36:b3:3b:03:05:d9\",\"fingerprint_sha256\":\"Jrs3LD1Ji30xNLtTVf9NDCj7kkBgPBb2pjvTZ3HfIgU\",\"id\":270000043,\"key\":\"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgQDNJAkI3Wdf0r13c8a5pEExB2YowPWCSVzfZV22pNBc1CuEbyYLHpUyaD0GwpGvFdx2aP7lMEk35k6Rz3ccBF6jRaVJyhsn5VNnW92PMpBJ/P1UebhXwsFHdQf5rTt082cSxWuk61kGWRQtk4ozt/J2DF/dIUVaLvc+z4HomT41fQ==\",\"last_used_at\":\"2020-09-03T07:24:44.627Z\",\"projects_with_readonly_access\":[],\"projects_with_write_access\":[],\"title\":\"Sample key 25\",\"usage_type\":\"auth\"}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/projects/280000002/deploy_keys/270000043",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/deploy_keys/270000043",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/projects/280000025/deploy_keys/280000026",
+      "status": 204
+    },
+    {
+      "method": "DELETE",
+      "path": "/projects/280000025",
+      "status": 204
+    }
+  ]
+}

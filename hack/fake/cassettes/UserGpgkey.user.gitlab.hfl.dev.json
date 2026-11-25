@@ -1,0 +1,43 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "a": "rehearsal-a",
+    "agent": 280000008,
+    "b": "rehearsal-b",
+    "group": 280000001,
+    "mr": "rehearsal-mr",
+    "project": 280000002,
+    "schedule": 280000009,
+    "user": 280000020
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/user/gpg_keys",
+      "body": "{\"key\":\"-----BEGIN PGP PUBLIC KEY BLOCK-----\\n\\nmDMEawKJcBYJKwYBBAHaRw8BAQdAnWDs15WcQmSF3E28bECPaSJnmS2P4rxF+IF8\\nbP+aXXa0H2hmbC1saXZlIDxoZmwtbGl2ZUBleGFtcGxlLmNvbT6IkwQTFgoAOxYh\\nBGdbDWXHx/qcZId6TwGtc0ufgInoBQJrAolwAhsDBQsJCAcCAiICBhUKCQgLAgQW\\nAgMBAh4HAheAAAoJEAGtc0ufgInoJWMBAOseADWFr/CXQn73s8BPXxPMKnDFcgG9\\n052hv/NWNIm2AQCj+Akn4rlHLu061cxhPh4mLnXJDxPJOtKm23v7yUzlAw==\\n=Ul/E\\n-----END PGP PUBLIC KEY BLOCK-----\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"created_at\":\"2017-09-05T09:17:46.264Z\",\"id\":270000037,\"key\":\"-----BEGIN PGP PUBLIC KEY BLOCK-----\\n\\nmDMEawKJcBYJKwYBBAHaRw8BAQdAnWDs15WcQmSF3E28bECPaSJnmS2P4rxF+IF8\\nbP+aXXa0H2hmbC1saXZlIDxoZmwtbGl2ZUBleGFtcGxlLmNvbT6IkwQTFgoAOxYh\\nBGdbDWXHx/qcZId6TwGtc0ufgInoBQJrAolwAhsDBQsJCAcCAiICBhUKCQgLAgQW\\nAgMBAh4HAheAAAoJEAGtc0ufgInoJWMBAOseADWFr/CXQn73s8BPXxPMKnDFcgG9\\n052hv/NWNIm2AQCj+Akn4rlHLu061cxhPh4mLnXJDxPJOtKm23v7yUzlAw==\\n=Ul/E\\n-----END PGP PUBLIC KEY BLOCK-----\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/user/gpg_keys/270000037",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"created_at\":\"2017-09-05T09:17:46.264Z\",\"id\":270000037,\"key\":\"-----BEGIN PGP PUBLIC KEY BLOCK-----\\n\\nmDMEawKJcBYJKwYBBAHaRw8BAQdAnWDs15WcQmSF3E28bECPaSJnmS2P4rxF+IF8\\nbP+aXXa0H2hmbC1saXZlIDxoZmwtbGl2ZUBleGFtcGxlLmNvbT6IkwQTFgoAOxYh\\nBGdbDWXHx/qcZId6TwGtc0ufgInoBQJrAolwAhsDBQsJCAcCAiICBhUKCQgLAgQW\\nAgMBAh4HAheAAAoJEAGtc0ufgInoJWMBAOseADWFr/CXQn73s8BPXxPMKnDFcgG9\\n052hv/NWNIm2AQCj+Akn4rlHLu061cxhPh4mLnXJDxPJOtKm23v7yUzlAw==\\n=Ul/E\\n-----END PGP PUBLIC KEY BLOCK-----\"}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/user/gpg_keys/270000037",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/user/gpg_keys/270000037",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "a": "rehearsal-a",
+    "agent": 280000008,
+    "b": "rehearsal-b",
+    "group": 280000001,
+    "mr": "rehearsal-mr",
+    "project": 280000002,
+    "schedule": 280000009,
+    "user": 280000007
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/projects/280000002/pages/domains",
+      "body": "{\"auto_ssl_enabled\":false,\"domain\":\"{{name}}.hfl-live.example\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"auto_ssl_enabled\":false,\"domain\":\"{{name}}.hfl-live.example\",\"enabled_until\":\"example-enabled-until\",\"url\":\"example-url\",\"verification_code\":\"example-verification-code\",\"verified\":\"example-verified\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/pages/domains/{{name}}.hfl-live.example",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"auto_ssl_enabled\":false,\"domain\":\"{{name}}.hfl-live.example\",\"enabled_until\":\"example-enabled-until\",\"url\":\"example-url\",\"verification_code\":\"example-verification-code\",\"verified\":\"example-verified\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/pages/domains/{{name}}.hfl-live.example",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"auto_ssl_enabled\":false,\"domain\":\"{{name}}.hfl-live.example\",\"enabled_until\":\"example-enabled-until\",\"url\":\"example-url\",\"verification_code\":\"example-verification-code\",\"verified\":\"example-verified\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/projects/280000002/pages/domains/{{name}}.hfl-live.example",
+      "body": "{\"auto_ssl_enabled\":true,\"domain\":\"{{name}}.hfl-live.example\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"auto_ssl_enabled\":true,\"domain\":\"{{name}}.hfl-live.example\",\"enabled_until\":\"example-enabled-until\",\"url\":\"example-url\",\"verification_code\":\"example-verification-code\",\"verified\":\"example-verified\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/pages/domains/{{name}}.hfl-live.example",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"auto_ssl_enabled\":true,\"domain\":\"{{name}}.hfl-live.example\",\"enabled_until\":\"example-enabled-until\",\"url\":\"example-url\",\"verification_code\":\"example-verification-code\",\"verified\":\"example-verified\"}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/projects/280000002/pages/domains/{{name}}.hfl-live.example",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/pages/domains/{{name}}.hfl-live.example",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

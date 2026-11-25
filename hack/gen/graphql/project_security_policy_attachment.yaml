@@ -1,0 +1,65 @@
+# Links a security policy project to a project: the project is then subject to
+# the policies stored in that project. GraphQL only. GitLab Ultimate.
+#
+# An upsert kind: the project has one policy project or none. The read
+# aliases securityPolicyProject as securityPolicyProjectId (the assign's
+# input name), so that the API answers the spec's own field, as the
+# project it names ({"id": ...}). Deleting the object unassigns it; a
+# policy project that is already gone is taken as unassigned, as Terraform
+# does.
+#
+# Sources:
+#   - gitlabhq/terraform-provider-gitlab v19.5.0,
+#     internal/provider/resource_gitlab_project_security_policy_attachment.go:
+#     the mutations securityPolicyProjectAssign(input: {fullPath,
+#     securityPolicyProjectId}) { errors } and securityPolicyProjectUnassign(input:
+#     {fullPath}) { errors }, and the query project(fullPath) { id,
+#     securityPolicyProject {id} }. Terraform writes the values into the
+#     documents; here they are variables, each mutation's input as one
+#     object.
+#   - GitLab's GraphQL reference: mutations securityPolicyProjectAssign
+#     (input type SecurityPolicyProjectAssignInput: fullPath String,
+#     securityPolicyProjectId ProjectID!) and securityPolicyProjectUnassign
+#     (SecurityPolicyProjectUnassignInput: fullPath String):
+#     https://docs.gitlab.com/api/graphql/reference/#mutationsecuritypolicyprojectassign
+# Written 2026-11-22.
+terraform: [gitlab_project_security_policy_attachment]
+shape: upsert
+params:
+  fullPath:
+    description: The full path of the project the security policy project is assigned to.
+fields:
+  securityPolicyProjectId:
+    type: string
+    description: The global ID of the security policy project (gid://gitlab/Project/<id>).
+required: [securityPolicyProjectId]
+compare: {securityPolicyProjectId: slugObject}
+sample: {fullPath: example-group/example-project, securityPolicyProjectId: "gid://gitlab/Project/9"}
+read:
+  query: |
+    query ProjectSecurityPolicyProject($fullPath: ID!) {
+      project(fullPath: $fullPath) {
+        id
+        securityPolicyProjectId: securityPolicyProject { id }
+      }
+    }
+  variables: {fullPath: "{fullPath}"}
+  result: project
+update:
+  query: |
+    mutation ProjectSecurityPolicyProjectAssign($input: SecurityPolicyProjectAssignInput!) {
+      securityPolicyProjectAssign(input: $input) {
+        errors
+      }
+    }
+  variables:
+    input: {fullPath: "{fullPath}", securityPolicyProjectId: "{securityPolicyProjectId}"}
+delete:
+  query: |
+    mutation ProjectSecurityPolicyProjectUnassign($input: SecurityPolicyProjectUnassignInput!) {
+      securityPolicyProjectUnassign(input: $input) {
+        errors
+      }
+    }
+  variables:
+    input: {fullPath: "{fullPath}"}

@@ -1,0 +1,96 @@
+# A value stream of a project (value stream analytics: its stages, each
+# from a start event to an end event). GraphQL only. GitLab Premium or
+# Ultimate. Terraform's gitlab_value_stream_analytics takes a group's or a
+# project's full path; this kind is the project's (GroupValueStreamAnalytics
+# the other's).
+#
+# GitLab has no update for a value stream here: a change is reported as
+# drift (delete and recreate the object), as Terraform replaces it. A
+# stage's labels are written as label global IDs (startEventLabelId,
+# endEventLabelId) and read back as the labels (startEventLabel { id }):
+# the read aliases them to the written names, and each element of stages
+# compares its label ID with the label's id (compare: slugObject inside
+# the list's elements).
+#
+# Sources:
+#   - gitlabhq/terraform-provider-gitlab v19.5.0,
+#     internal/provider/resource_gitlab_value_stream_analytics.go: the
+#     mutations valueStreamCreate(input: {stages, name, namespacePath}) {
+#     valueStream { id name namespace { fullPath } stages { id name custom
+#     hidden startEventIdentifier startEventLabel { id } endEventIdentifier
+#     endEventLabel { id } } } errors } and valueStreamDestroy(input: {id})
+#     { errors }, and the query project(fullPath) { valueStreams(id) { nodes {
+#     ... } } } (one node, the value stream). Terraform writes the values
+#     into the documents; here they are variables.
+#   - GitLab's GraphQL reference: Mutation.valueStreamCreate
+#     (ValueStreamCreateInput: name String!, namespacePath ID!, stages
+#     [CreateValueStreamStageInput!]), CreateValueStreamStageInput (name
+#     String!, custom, hidden Boolean, startEventIdentifier and
+#     endEventIdentifier ValueStreamStageEvent, startEventLabelId and
+#     endEventLabelId LabelID), Mutation.valueStreamDestroy (id
+#     AnalyticsCycleAnalyticsValueStreamID!), Project.valueStreams (id: ID):
+#     https://docs.gitlab.com/api/graphql/reference/#mutationvaluestreamcreate
+# Written 2026-11-22.
+terraform: [gitlab_value_stream_analytics]
+kind: ProjectValueStreamAnalytics
+shape: crud
+params:
+  projectFullPath:
+    description: The project's full path, the namespace the value stream is in (Terraform's project_full_path).
+fields:
+  name:
+    type: string
+    description: The name of the value stream.
+  stages:
+    type: array
+    description: Stages of the value stream.
+    items:
+      type: object
+      required: [name]
+      properties:
+        name: {type: string, description: The name of the value stream stage.}
+        custom: {type: boolean, description: Boolean whether the stage is customized. If false, it assigns a built-in default stage by name.}
+        hidden: {type: boolean, description: Boolean whether the stage is hidden.}
+        startEventIdentifier: {type: string, description: "Start event identifier (a ValueStreamStageEvent: MERGE_REQUEST_CREATED, ISSUE_LABEL_ADDED, ...)."}
+        endEventIdentifier: {type: string, description: "End event identifier (a ValueStreamStageEvent: MERGE_REQUEST_MERGED, ISSUE_LABEL_REMOVED, ...)."}
+        startEventLabelId: {type: string, description: "Label global ID (gid://gitlab/GroupLabel/<id>) associated with the start event identifier."}
+        endEventLabelId: {type: string, description: "Label global ID (gid://gitlab/GroupLabel/<id>) associated with the end event identifier."}
+required: [name, stages]
+compare:
+  stages[].startEventLabelId: slugObject
+  stages[].endEventLabelId: slugObject
+sample:
+  projectFullPath: example-group/example-project
+  name: example-value-stream
+  stages:
+  - {name: Code, custom: true, startEventIdentifier: ISSUE_LABEL_ADDED, startEventLabelId: "gid://gitlab/GroupLabel/1", endEventIdentifier: MERGE_REQUEST_MERGED}
+create:
+  query: |
+    mutation ProjectValueStreamCreate($input: ValueStreamCreateInput!) {
+      valueStreamCreate(input: $input) {
+        valueStream { id name stages { name custom hidden startEventIdentifier endEventIdentifier startEventLabelId: startEventLabel { id } endEventLabelId: endEventLabel { id } } }
+        errors
+      }
+    }
+  variables:
+    input: {namespacePath: "{projectFullPath}", name: "{name}", stages: "{stages}"}
+  result: valueStreamCreate/valueStream
+read:
+  query: |
+    query ProjectValueStream($fullPath: ID!, $id: ID) {
+      project(fullPath: $fullPath) {
+        valueStreams(id: $id) { nodes { id name stages { name custom hidden startEventIdentifier endEventIdentifier startEventLabelId: startEventLabel { id } endEventLabelId: endEventLabel { id } } } }
+      }
+    }
+  variables: {fullPath: "{projectFullPath}", id: "{id}"}
+  result: project/valueStreams/nodes
+  find: {field: id}
+delete:
+  query: |
+    mutation ProjectValueStreamDestroy($input: ValueStreamDestroyInput!) {
+      valueStreamDestroy(input: $input) {
+        errors
+      }
+    }
+  variables:
+    input: {id: "{id}"}

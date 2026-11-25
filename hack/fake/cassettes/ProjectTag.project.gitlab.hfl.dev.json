@@ -1,0 +1,37 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "group": 280000001,
+    "project": 280000002
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/projects/280000002/repository/tags",
+      "body": "{\"ref\":\"main\",\"tag_name\":\"{{name}}\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"commit\":{},\"created_at\":\"2023-10-12T02:16:52.000Z\",\"name\":\"v1.0.0\",\"protected\":true,\"release\":{},\"target\":\"2695effb5807a22ff3d138d593fd856244e155e7\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/repository/tags/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"commit\":{},\"created_at\":\"2023-10-12T02:16:52.000Z\",\"name\":\"v1.0.0\",\"protected\":true,\"release\":{},\"target\":\"2695effb5807a22ff3d138d593fd856244e155e7\"}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/projects/280000002/repository/tags/{{name}}",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/repository/tags/{{name}}",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

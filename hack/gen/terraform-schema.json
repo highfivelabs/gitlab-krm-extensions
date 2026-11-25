@@ -1,0 +1,7 @@
+{
+ "provider": "gitlabhq/gitlab",
+ "resources": {},
+ "source": "terraform providers schema -json (terraform 1.17.2); descriptions it lacks from https://registry.terraform.io/providers/gitlabhq/gitlab/19.5.0/docs",
+ "terraform": "1.17.2",
+ "version": "19.5.0"
+}

@@ -1,0 +1,118 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "a": "rehearsal-a",
+    "agent": 280000008,
+    "b": "rehearsal-b",
+    "g": 280000030,
+    "group": 280000001,
+    "key": 280000026,
+    "mr": "rehearsal-mr",
+    "project": 280000002,
+    "runner": 280000028,
+    "sa": 280000031,
+    "schedule": 280000009,
+    "src": 280000027,
+    "sub": 280000036,
+    "user": 280000020
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"GroupDependencyProxySetting\",\"query\":\"query GroupDependencyProxySetting($fullPath: ID!) { group(fullPath: $fullPath) { dependencyProxySetting { enabled identity } } }\",\"variables\":{\"fullPath\":\"{{run}}\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"group\":{\"dependencyProxySetting\":{}}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"GroupDependencyProxySetting\",\"query\":\"query GroupDependencyProxySetting($fullPath: ID!) { group(fullPath: $fullPath) { dependencyProxySetting { enabled identity } } }\",\"variables\":{\"fullPath\":\"{{run}}\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"group\":{\"dependencyProxySetting\":{}}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"UpdateDependencyProxySettings\",\"query\":\"mutation UpdateDependencyProxySettings($input: UpdateDependencyProxySettingsInput!) { updateDependencyProxySettings(input: $input) { errors dependencyProxySetting { enabled identity } } }\",\"variables\":{\"input\":{\"enabled\":true,\"groupPath\":\"{{run}}\"}}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"updateDependencyProxySettings\":{\"dependencyProxySetting\":{\"enabled\":true},\"errors\":[]}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"GroupDependencyProxySetting\",\"query\":\"query GroupDependencyProxySetting($fullPath: ID!) { group(fullPath: $fullPath) { dependencyProxySetting { enabled identity } } }\",\"variables\":{\"fullPath\":\"{{run}}\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"group\":{\"dependencyProxySetting\":{\"enabled\":true}}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"GroupDependencyProxySetting\",\"query\":\"query GroupDependencyProxySetting($fullPath: ID!) { group(fullPath: $fullPath) { dependencyProxySetting { enabled identity } } }\",\"variables\":{\"fullPath\":\"{{run}}\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"group\":{\"dependencyProxySetting\":{\"enabled\":true}}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"UpdateDependencyProxySettings\",\"query\":\"mutation UpdateDependencyProxySettings($input: UpdateDependencyProxySettingsInput!) { updateDependencyProxySettings(input: $input) { errors dependencyProxySetting { enabled identity } } }\",\"variables\":{\"input\":{\"enabled\":false,\"groupPath\":\"{{run}}\"}}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"updateDependencyProxySettings\":{\"dependencyProxySetting\":{\"enabled\":false},\"errors\":[]}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"GroupDependencyProxySetting\",\"query\":\"query GroupDependencyProxySetting($fullPath: ID!) { group(fullPath: $fullPath) { dependencyProxySetting { enabled identity } } }\",\"variables\":{\"fullPath\":\"{{run}}\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"group\":{\"dependencyProxySetting\":{\"enabled\":false}}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"UpdateDependencyProxySettings\",\"query\":\"mutation UpdateDependencyProxySettings($input: UpdateDependencyProxySettingsInput!) { updateDependencyProxySettings(input: $input) { errors dependencyProxySetting { enabled identity } } }\",\"variables\":{\"input\":{\"enabled\":true,\"groupPath\":\"{{run}}\"}}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"updateDependencyProxySettings\":{\"dependencyProxySetting\":{\"enabled\":true},\"errors\":[]}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"GroupDependencyProxySetting\",\"query\":\"query GroupDependencyProxySetting($fullPath: ID!) { group(fullPath: $fullPath) { dependencyProxySetting { enabled identity } } }\",\"variables\":{\"fullPath\":\"{{run}}\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"group\":{\"dependencyProxySetting\":{\"enabled\":true}}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"UpdateDependencyProxySettings\",\"query\":\"mutation UpdateDependencyProxySettings($input: UpdateDependencyProxySettingsInput!) { updateDependencyProxySettings(input: $input) { errors dependencyProxySetting { enabled identity } } }\",\"variables\":{\"input\":{\"enabled\":false,\"groupPath\":\"{{run}}\"}}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"updateDependencyProxySettings\":{\"dependencyProxySetting\":{\"enabled\":false},\"errors\":[]}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"GroupDependencyProxySetting\",\"query\":\"query GroupDependencyProxySetting($fullPath: ID!) { group(fullPath: $fullPath) { dependencyProxySetting { enabled identity } } }\",\"variables\":{\"fullPath\":\"{{run}}\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"group\":{\"dependencyProxySetting\":{\"enabled\":false}}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"UpdateDependencyProxySettings\",\"query\":\"mutation UpdateDependencyProxySettings($input: UpdateDependencyProxySettingsInput!) { updateDependencyProxySettings(input: $input) { errors dependencyProxySetting { enabled identity } } }\",\"variables\":{\"input\":{\"groupPath\":\"{{run}}\"}}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"updateDependencyProxySettings\":{\"dependencyProxySetting\":{\"enabled\":false},\"errors\":[]}}}\n"
+    }
+  ]
+}

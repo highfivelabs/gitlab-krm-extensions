@@ -1,0 +1,49 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "a": "rehearsal-a",
+    "agent": 280000008,
+    "b": "rehearsal-b",
+    "group": 280000001,
+    "mr": "rehearsal-mr",
+    "project": 280000002,
+    "schedule": 280000009,
+    "user": 280000020
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/users",
+      "body": "{\"email\":\"{{name}}-u@hfl-live.example\",\"force_random_password\":true,\"name\":\"{{name}}-u\",\"skip_confirmation\":true,\"username\":\"{{name}}-u\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"_stub\":\"rehearsal stand-in: the fake API has no such resource\",\"email\":\"{{name}}-u@hfl-live.example\",\"force_random_password\":true,\"id\":280000020,\"name\":\"{{name}}-u\",\"skip_confirmation\":true,\"username\":\"{{name}}-u\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/users/280000020/personal_access_tokens",
+      "body": "{\"expires_at\":\"2000-01-31\",\"name\":\"{{name}}\",\"scopes\":[\"read_api\"]}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"active\":true,\"created_at\":\"2000-01-01T00:00:00Z\",\"expires_at\":\"2000-01-31\",\"granular\":true,\"id\":270000035,\"last_used_at\":\"2020-08-31T15:53:00.073Z\",\"last_used_ips\":[],\"name\":\"{{name}}\",\"revoked\":true,\"scopes\":[\"read_api\"],\"user_id\":3}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/personal_access_tokens/270000035",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"active\":true,\"created_at\":\"2000-01-01T00:00:00Z\",\"expires_at\":\"2000-01-31\",\"granular\":true,\"id\":270000035,\"last_used_at\":\"2020-08-31T15:53:00.073Z\",\"last_used_ips\":[],\"name\":\"{{name}}\",\"revoked\":true,\"scopes\":[\"read_api\"],\"user_id\":3}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/personal_access_tokens/270000035",
+      "status": 204
+    },
+    {
+      "method": "DELETE",
+      "path": "/users/280000020?hard_delete=true",
+      "status": 204
+    }
+  ]
+}

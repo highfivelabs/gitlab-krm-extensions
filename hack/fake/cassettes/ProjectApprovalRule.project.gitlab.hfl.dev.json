@@ -1,0 +1,95 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "a": "rehearsal-a",
+    "agent": 280000008,
+    "b": "rehearsal-b",
+    "group": 280000001,
+    "mr": "rehearsal-mr",
+    "project": 280000002,
+    "schedule": 280000009,
+    "user": 280000007
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/projects/example-id/approval_rules",
+      "body": "{\"approvals_required\":1,\"name\":\"example-name\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"approvals_required\":1,\"contains_hidden_groups\":true,\"eligible_approvers\":[],\"id\":270000030,\"name\":\"example-name\",\"protected_branches\":[]}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/example-id/approval_rules/270000030",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"approvals_required\":1,\"contains_hidden_groups\":true,\"eligible_approvers\":[],\"id\":270000030,\"name\":\"example-name\",\"protected_branches\":[]}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/example-id/approval_rules/270000030",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"approvals_required\":1,\"contains_hidden_groups\":true,\"eligible_approvers\":[],\"id\":270000030,\"name\":\"example-name\",\"protected_branches\":[]}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/projects/example-id/approval_rules/270000030",
+      "body": "{\"approvals_required\":1,\"name\":\"changed-name\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"approvals_required\":1,\"contains_hidden_groups\":true,\"eligible_approvers\":[],\"id\":270000030,\"name\":\"changed-name\",\"protected_branches\":[]}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/example-id/approval_rules/270000030",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"approvals_required\":1,\"contains_hidden_groups\":true,\"eligible_approvers\":[],\"id\":270000030,\"name\":\"changed-name\",\"protected_branches\":[]}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/projects/example-id/approval_rules/270000030",
+      "body": "{\"name\":\"hfl-live-drift\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"approvals_required\":1,\"contains_hidden_groups\":true,\"eligible_approvers\":[],\"id\":270000030,\"name\":\"hfl-live-drift\",\"protected_branches\":[]}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/example-id/approval_rules/270000030",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"approvals_required\":1,\"contains_hidden_groups\":true,\"eligible_approvers\":[],\"id\":270000030,\"name\":\"hfl-live-drift\",\"protected_branches\":[]}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/projects/example-id/approval_rules/270000030",
+      "body": "{\"approvals_required\":1,\"name\":\"changed-name\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"approvals_required\":1,\"contains_hidden_groups\":true,\"eligible_approvers\":[],\"id\":270000030,\"name\":\"changed-name\",\"protected_branches\":[]}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/example-id/approval_rules/270000030",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"approvals_required\":1,\"contains_hidden_groups\":true,\"eligible_approvers\":[],\"id\":270000030,\"name\":\"changed-name\",\"protected_branches\":[]}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/projects/example-id/approval_rules/270000030",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/projects/example-id/approval_rules/270000030",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

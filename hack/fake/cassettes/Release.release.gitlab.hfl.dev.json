@@ -1,0 +1,89 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "group": 280000001,
+    "project": 280000002
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/projects/280000002/releases",
+      "body": "{\"description\":\"first\",\"name\":\"{{name}}\",\"ref\":\"main\",\"tag_name\":\"{{name}}\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"_links\":{},\"author\":{},\"commit\":{},\"commit_path\":\"/root/app/commit/588440f66559714280628a4f9799f0c4eb880a4a\",\"created_at\":\"2019-01-03T01:56:19.539Z\",\"description\":\"first\",\"description_html\":\"example-description-html\",\"evidences\":[],\"name\":\"{{name}}\",\"tag_name\":\"{{name}}\",\"tag_path\":\"/root/app/-/tags/v1.0\",\"upcoming_release\":true,\"warnings\":[]}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/releases/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"_links\":{},\"author\":{},\"commit\":{},\"commit_path\":\"/root/app/commit/588440f66559714280628a4f9799f0c4eb880a4a\",\"created_at\":\"2019-01-03T01:56:19.539Z\",\"description\":\"first\",\"description_html\":\"example-description-html\",\"evidences\":[],\"name\":\"{{name}}\",\"tag_name\":\"{{name}}\",\"tag_path\":\"/root/app/-/tags/v1.0\",\"upcoming_release\":true,\"warnings\":[]}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/releases/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"_links\":{},\"author\":{},\"commit\":{},\"commit_path\":\"/root/app/commit/588440f66559714280628a4f9799f0c4eb880a4a\",\"created_at\":\"2019-01-03T01:56:19.539Z\",\"description\":\"first\",\"description_html\":\"example-description-html\",\"evidences\":[],\"name\":\"{{name}}\",\"tag_name\":\"{{name}}\",\"tag_path\":\"/root/app/-/tags/v1.0\",\"upcoming_release\":true,\"warnings\":[]}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/projects/280000002/releases/{{name}}",
+      "body": "{\"description\":\"second\",\"name\":\"{{name}}\",\"ref\":\"main\",\"tag_name\":\"{{name}}\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"_links\":{},\"author\":{},\"commit\":{},\"commit_path\":\"/root/app/commit/588440f66559714280628a4f9799f0c4eb880a4a\",\"created_at\":\"2019-01-03T01:56:19.539Z\",\"description\":\"second\",\"description_html\":\"example-description-html\",\"evidences\":[],\"name\":\"{{name}}\",\"tag_name\":\"{{name}}\",\"tag_path\":\"/root/app/-/tags/v1.0\",\"upcoming_release\":true,\"warnings\":[]}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/releases/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"_links\":{},\"author\":{},\"commit\":{},\"commit_path\":\"/root/app/commit/588440f66559714280628a4f9799f0c4eb880a4a\",\"created_at\":\"2019-01-03T01:56:19.539Z\",\"description\":\"second\",\"description_html\":\"example-description-html\",\"evidences\":[],\"name\":\"{{name}}\",\"tag_name\":\"{{name}}\",\"tag_path\":\"/root/app/-/tags/v1.0\",\"upcoming_release\":true,\"warnings\":[]}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/projects/280000002/releases/{{name}}",
+      "body": "{\"description\":\"hfl-live-drift\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"_links\":{},\"author\":{},\"commit\":{},\"commit_path\":\"/root/app/commit/588440f66559714280628a4f9799f0c4eb880a4a\",\"created_at\":\"2019-01-03T01:56:19.539Z\",\"description\":\"hfl-live-drift\",\"description_html\":\"example-description-html\",\"evidences\":[],\"name\":\"{{name}}\",\"tag_name\":\"{{name}}\",\"tag_path\":\"/root/app/-/tags/v1.0\",\"upcoming_release\":true,\"warnings\":[]}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/releases/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"_links\":{},\"author\":{},\"commit\":{},\"commit_path\":\"/root/app/commit/588440f66559714280628a4f9799f0c4eb880a4a\",\"created_at\":\"2019-01-03T01:56:19.539Z\",\"description\":\"hfl-live-drift\",\"description_html\":\"example-description-html\",\"evidences\":[],\"name\":\"{{name}}\",\"tag_name\":\"{{name}}\",\"tag_path\":\"/root/app/-/tags/v1.0\",\"upcoming_release\":true,\"warnings\":[]}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/projects/280000002/releases/{{name}}",
+      "body": "{\"description\":\"second\",\"name\":\"{{name}}\",\"ref\":\"main\",\"tag_name\":\"{{name}}\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"_links\":{},\"author\":{},\"commit\":{},\"commit_path\":\"/root/app/commit/588440f66559714280628a4f9799f0c4eb880a4a\",\"created_at\":\"2019-01-03T01:56:19.539Z\",\"description\":\"second\",\"description_html\":\"example-description-html\",\"evidences\":[],\"name\":\"{{name}}\",\"tag_name\":\"{{name}}\",\"tag_path\":\"/root/app/-/tags/v1.0\",\"upcoming_release\":true,\"warnings\":[]}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/releases/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"_links\":{},\"author\":{},\"commit\":{},\"commit_path\":\"/root/app/commit/588440f66559714280628a4f9799f0c4eb880a4a\",\"created_at\":\"2019-01-03T01:56:19.539Z\",\"description\":\"second\",\"description_html\":\"example-description-html\",\"evidences\":[],\"name\":\"{{name}}\",\"tag_name\":\"{{name}}\",\"tag_path\":\"/root/app/-/tags/v1.0\",\"upcoming_release\":true,\"warnings\":[]}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/projects/280000002/releases/{{name}}",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/releases/{{name}}",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

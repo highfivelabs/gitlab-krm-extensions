@@ -1,0 +1,879 @@
+openapi: 3.0.0
+info:
+  title: 'GitLab REST API: accounts supplement'
+  version: '19.6'
+paths:
+  /api/v4/service_accounts:
+    post:
+      operationId: postApiV4ServiceAccounts
+      summary: Create an instance service account
+      description: Creates an instance service account.
+      tags:
+      - Service accounts
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIEntitiesServiceAccount'
+        '400':
+          description: 400 Bad request
+        '401':
+          description: 401 Unauthorized
+        '403':
+          description: 403 Forbidden
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postApiV4ServiceAccountsRequest'
+  /api/v4/users/{user_id}:
+    get:
+      operationId: getServiceAccountUser
+      summary: Get a service account (GET /users/:id, as an administrator)
+      tags:
+      - users
+      parameters:
+      - name: user_id
+        required: true
+        description: ID of the user.
+        schema:
+          type: integer
+        in: path
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIEntitiesUserWithAdmin'
+        '404':
+          description: Not found
+    put:
+      operationId: putServiceAccountUser
+      summary: Modify a service account (PUT /users/:id)
+      tags:
+      - users
+      parameters:
+      - name: user_id
+        required: true
+        description: ID of the user.
+        schema:
+          type: integer
+        in: path
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ServiceAccountUpdate'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIEntitiesUserWithAdmin'
+        '404':
+          description: Not found
+    delete:
+      operationId: deleteServiceAccountUser
+      summary: Delete a service account (DELETE /users/:id)
+      tags:
+      - users
+      parameters:
+      - name: user_id
+        required: true
+        description: ID of the user.
+        schema:
+          type: integer
+        in: path
+      responses:
+        '204':
+          description: No Content
+        '404':
+          description: Not found
+  /api/v4/user/runners:
+    post:
+      operationId: postApiV4UserRunners
+      summary: Create a runner owned by currently authenticated user
+      tags:
+      - Users
+      - Runners
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIEntitiesCiRunnerRegistrationDetails'
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postApiV4UserRunnersRequest'
+  /api/v4/runners/{runner_id}:
+    get:
+      operationId: getUserRunner
+      summary: Retrieve details on a runner
+      description: Retrieves details of a runner. Instance runner details are available to all authenticated users through
+        this endpoint. For groups and projects, you must have the Maintainer or Owner role for the associated project or group.
+        The Security Manager role in the associated project or group, or a custom role with the `admin_runners` permission
+        in the owner group or project, also grants access. Requires a token with the `api`, `read_api`, or `manage_runner`
+        scope.
+      tags:
+      - Runners
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIEntitiesCiRunnerDetails'
+        '404':
+          description: Not found
+      parameters:
+      - name: runner_id
+        required: true
+        description: ID of the runner.
+        schema:
+          type: integer
+        in: path
+    put:
+      operationId: putUserRunner
+      summary: Update a runner
+      description: Updates a specified runner. For instance runners, you must be an administrator. For group runners, you
+        must have the Owner role in the owner group. For project runners, you must have the Maintainer or Owner role in a
+        project assigned to the runner. A custom role with the `admin_runners` permission in the owner group or project also
+        grants access. Requires a token with the `api` or `manage_runner` scope.
+      tags:
+      - Runners
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIEntitiesCiRunnerDetails'
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: No access granted
+        '404':
+          description: Runner not found
+      parameters:
+      - name: runner_id
+        required: true
+        description: ID of the runner.
+        schema:
+          type: integer
+        in: path
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/putApiV4RunnersIdRequest'
+    delete:
+      operationId: deleteUserRunner
+      summary: Delete a runner
+      description: Deletes a specified runner. For instance runners, you must be an administrator. For group runners, you
+        must have the Owner role in the owner group. For project runners, you must have the Maintainer or Owner role in the
+        project that owns the runner. A custom role with the `admin_runners` permission in the owner group or project also
+        grants access. Requires a token with the `api` or `manage_runner` scope.
+      tags:
+      - Runners
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIEntitiesCiRunner'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Runner associated with more than one project
+        '404':
+          description: Runner not found
+        '412':
+          description: Precondition Failed
+        '400':
+          description: Bad Request
+      parameters:
+      - name: runner_id
+        required: true
+        description: ID of the runner.
+        schema:
+          type: integer
+        in: path
+components:
+  schemas:
+    APIEntitiesBasicGroupDetails:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: ID of the group.
+          format: int64
+        web_url:
+          type: string
+          description: URL to access the group in a browser.
+          example: http://gitlab.example.com/groups/diaspora
+        name:
+          type: string
+          example: Diaspora
+    APIEntitiesBasicProjectDetails:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        description:
+          type: string
+          example: desc
+        name:
+          type: string
+          example: project1
+        name_with_namespace:
+          type: string
+          example: John Doe / project1
+        path:
+          type: string
+          example: project1
+        path_with_namespace:
+          type: string
+          example: namespace1/project1
+        created_at:
+          type: string
+          format: date-time
+          example: '2020-05-07T04:27:17.016Z'
+        default_branch:
+          type: string
+          example: main
+        tag_list:
+          type: array
+          example:
+          - tag
+          items:
+            type: string
+        topics:
+          type: array
+          example:
+          - topic
+          items:
+            type: string
+        ssh_url_to_repo:
+          type: string
+          example: git@gitlab.example.com:gitlab/gitlab.git
+        http_url_to_repo:
+          type: string
+          example: https://gitlab.example.com/gitlab/gitlab.git
+        web_url:
+          type: string
+          example: https://gitlab.example.com/gitlab/gitlab
+        readme_url:
+          type: string
+          example: https://gitlab.example.com/gitlab/gitlab/blob/master/README.md
+        forks_count:
+          type: integer
+          example: 1
+        license_url:
+          type: string
+          example: https://gitlab.example.com/gitlab/gitlab/blob/master/LICENCE
+        license:
+          $ref: '#/components/schemas/APIEntitiesLicenseBasic'
+        avatar_url:
+          type: string
+          example: http://example.com/uploads/project/avatar/3/uploads/avatar.png
+        star_count:
+          type: integer
+          example: 1
+        last_activity_at:
+          type: string
+          format: date-time
+          example: '2013-09-30T13:46:02Z'
+        visibility:
+          type: string
+          example: public
+        namespace:
+          $ref: '#/components/schemas/APIEntitiesNamespaceBasic'
+        custom_attributes:
+          $ref: '#/components/schemas/APIEntitiesCustomAttribute'
+        repository_storage:
+          type: string
+          example: default
+    APIEntitiesCiRunnerDetails:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 8
+        description:
+          type: string
+          example: test-1-20150125
+        ip_address:
+          type: string
+          description: Always `null`. Deprecated. Use the runner manager fields in the GraphQL API instead.
+          example: 127.0.0.1
+        active:
+          type: boolean
+          description: If `true`, the runner is allowed to receive jobs. Deprecated. Use `paused` instead.
+          example: true
+        paused:
+          type: boolean
+          example: false
+        is_shared:
+          type: boolean
+          example: true
+        runner_type:
+          type: string
+          enum:
+          - instance_type
+          - group_type
+          - project_type
+          example: instance_type
+        name:
+          type: string
+          example: test
+        online:
+          type: boolean
+          example: true
+        created_by:
+          $ref: '#/components/schemas/APIEntitiesUserBasic'
+        created_at:
+          type: string
+          format: date-time
+          example: '2025-05-03T00:00:00.000Z'
+        status:
+          type: string
+          example: online
+        job_execution_status:
+          type: string
+          enum:
+          - active
+          - idle
+          example: idle
+        uuid:
+          type: string
+          description: UUID of the runner. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/266813) in GitLab
+            19.6.
+          example: 01966aa0-f383-7a6b-b694-cd4f2f96cca1
+        tag_list:
+          type: string
+        run_untagged:
+          type: string
+        locked:
+          type: string
+        maximum_timeout:
+          type: string
+        access_level:
+          type: string
+        token_expires_at:
+          type: string
+          description: Expiry time of the runner authentication token. `null` if the token does not expire. Returned only
+            to users who can view sensitive runner data. For instance runners, only administrators.
+          format: date-time
+          example: '2025-01-01T00:00:00.000Z'
+        version:
+          type: string
+          description: Version of the runner, from its most recently contacted runner manager. Deprecated. Use the runner
+            manager fields in the GraphQL API instead.
+        revision:
+          type: string
+          description: Revision of the runner, from its most recently contacted runner manager. Deprecated. Use the runner
+            manager fields in the GraphQL API instead.
+        platform:
+          type: string
+          description: Platform of the runner, from its most recently contacted runner manager. Deprecated. Use the runner
+            manager fields in the GraphQL API instead.
+        architecture:
+          type: string
+          description: Architecture of the runner, from its most recently contacted runner manager. Deprecated. Use the runner
+            manager fields in the GraphQL API instead.
+        contacted_at:
+          type: string
+        maintenance_note:
+          type: string
+        projects:
+          type: array
+          items:
+            $ref: '#/components/schemas/APIEntitiesBasicProjectDetails'
+        groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/APIEntitiesBasicGroupDetails'
+    APIEntitiesCiRunnerRegistrationDetails:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        token:
+          type: string
+          example: glrt-abc123
+        token_expires_at:
+          type: string
+          format: date-time
+          example: '2025-01-01T00:00:00.000Z'
+    APIEntitiesCustomAttribute:
+      type: object
+      properties:
+        key:
+          type: string
+          example: foo
+        value:
+          type: string
+          example: bar
+    APIEntitiesIdentity:
+      type: object
+      properties:
+        provider:
+          type: string
+        extern_uid:
+          type: string
+        saml_provider_id:
+          type: integer
+    APIEntitiesLicenseBasic:
+      type: object
+      properties:
+        key:
+          type: string
+          example: gpl-3.0
+        name:
+          type: string
+          example: GNU General Public License v3.0
+        nickname:
+          type: string
+          example: GNU GPLv3
+        html_url:
+          type: string
+          example: http://choosealicense.com/licenses/gpl-3.0
+        source_url:
+          type: string
+    APIEntitiesNamespaceBasic:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: ID of the namespace.
+          format: int64
+          example: 2
+        name:
+          type: string
+          example: project
+        path:
+          type: string
+          example: my_project
+        kind:
+          type: string
+          description: 'Type of the namespace: `user`, `group`, or `project`.'
+          example: project
+        full_path:
+          type: string
+          description: Full path of the namespace, including the paths of its parent groups.
+          example: group/my_project
+        parent_id:
+          type: integer
+          description: ID of the parent namespace. `null` for top-level namespaces.
+          format: int64
+          example: 1
+        avatar_url:
+          type: string
+          description: URL of the namespace avatar. For a group, `null` if no avatar is set.
+          example: https://example.com/avatar/12345
+        web_url:
+          type: string
+          description: Web URL of the namespace. For a user namespace, the URL of the user profile.
+          example: https://example.com/group/my_project
+    APIEntitiesScimIdentity:
+      type: object
+      properties:
+        extern_uid:
+          type: string
+        group_id:
+          type: integer
+        active:
+          type: boolean
+    APIEntitiesServiceAccount:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        username:
+          type: string
+          example: admin
+        public_email:
+          type: string
+          example: john@example.com
+        name:
+          type: string
+          example: Administrator
+        email:
+          type: string
+          example: service_account@example.com
+        unconfirmed_email:
+          type: string
+          example: updated_service_account@example.com
+        external:
+          type: boolean
+          example: true
+    APIEntitiesUserBasic:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        username:
+          type: string
+          example: admin
+        public_email:
+          type: string
+          example: john@example.com
+        name:
+          type: string
+          example: Administrator
+        state:
+          type: string
+          example: active
+        locked:
+          type: boolean
+        avatar_url:
+          type: string
+          example: https://gravatar.com/avatar/1
+        avatar_path:
+          type: string
+          example: /user/avatar/28/The-Big-Lebowski-400-400.png
+        custom_attributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/APIEntitiesCustomAttribute'
+        web_url:
+          type: string
+          example: https://gitlab.example.com/root
+    APIEntitiesUserWithAdmin:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        username:
+          type: string
+          example: admin
+        public_email:
+          type: string
+          example: john@example.com
+        name:
+          type: string
+          example: Administrator
+        state:
+          type: string
+          example: active
+        locked:
+          type: boolean
+        avatar_url:
+          type: string
+          example: https://gravatar.com/avatar/1
+        avatar_path:
+          type: string
+          example: /user/avatar/28/The-Big-Lebowski-400-400.png
+        custom_attributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/APIEntitiesCustomAttribute'
+        web_url:
+          type: string
+          example: https://gitlab.example.com/root
+        created_at:
+          type: string
+        bio:
+          type: string
+        location:
+          type: string
+        linkedin:
+          type: string
+        twitter:
+          type: string
+        discord:
+          type: string
+        website_url:
+          type: string
+        github:
+          type: string
+        job_title:
+          type: string
+        pronouns:
+          type: string
+        organization:
+          type: string
+        bot:
+          type: boolean
+        work_information:
+          type: string
+        followers:
+          type: string
+        following:
+          type: string
+        is_followed:
+          type: string
+        local_time:
+          type: string
+        last_sign_in_at:
+          type: string
+          format: date-time
+          example: '2015-09-03T07:24:01.670Z'
+        confirmed_at:
+          type: string
+          format: date-time
+          example: '2015-09-03T07:24:01.670Z'
+        last_activity_on:
+          type: string
+          format: date-time
+          example: '2015-09-03T07:24:01.670Z'
+        email:
+          type: string
+          example: john@example.com
+        theme_id:
+          type: integer
+          example: 2
+        color_scheme_id:
+          type: integer
+          example: 1
+        projects_limit:
+          type: integer
+          example: 10
+        current_sign_in_at:
+          type: string
+          format: date-time
+          example: '2015-09-03T07:24:01.670Z'
+        identities:
+          type: array
+          items:
+            $ref: '#/components/schemas/APIEntitiesIdentity'
+        can_create_group:
+          type: boolean
+          example: true
+        can_create_project:
+          type: boolean
+          example: true
+        two_factor_enabled:
+          type: boolean
+          example: true
+        external:
+          type: boolean
+        private_profile:
+          type: boolean
+          example: false
+        commit_email:
+          type: string
+        preferred_language:
+          type: string
+          example: en
+        shared_runners_minutes_limit:
+          type: string
+        extra_shared_runners_minutes_limit:
+          type: string
+        scim_identities:
+          type: array
+          items:
+            $ref: '#/components/schemas/APIEntitiesScimIdentity'
+        is_admin:
+          type: string
+        note:
+          type: string
+        namespace_id:
+          type: string
+        provisioned_by_project_id:
+          type: string
+        created_by:
+          $ref: '#/components/schemas/APIEntitiesUserBasic'
+        using_license_seat:
+          type: string
+        is_auditor:
+          type: string
+        provisioned_by_group_id:
+          type: string
+        enterprise_group_id:
+          type: string
+        enterprise_group_associated_at:
+          type: string
+    ServiceAccountUpdate:
+      type: object
+      properties:
+        email:
+          type: string
+          description: Email address to add to the user account.
+          nullable: true
+        name:
+          type: string
+          description: The name of the user
+          nullable: true
+        username:
+          type: string
+          description: The username of the user
+          nullable: true
+    postApiV4ServiceAccountsRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the user. If omitted, uses `Service account user`.
+          nullable: true
+        username:
+          type: string
+          description: Username of the user account. If omitted, generates a name prefixed with `service_account_`.
+          nullable: true
+        email:
+          type: string
+          description: Email address of the user account. If omitted, generates a no-reply email address. Custom email addresses
+            require confirmation, unless the email confirmation settings are [turned off](https://docs.gitlab.com/administration/settings/sign_up_restrictions/#confirm-user-email).
+          nullable: true
+        external:
+          type: boolean
+          description: Flag indicating the user is an external user
+          nullable: true
+    postApiV4UserRunnersRequest:
+      type: object
+      properties:
+        runner_type:
+          type: string
+          enum:
+          - instance_type
+          - group_type
+          - project_type
+          minLength: 1
+        group_id:
+          type: integer
+          description: ID of the group to create the runner in. Required if `runner_type` is `group_type`.
+          example: 1
+          nullable: true
+        project_id:
+          type: integer
+          description: ID of the project to create the runner in. Required if `runner_type` is `project_type`.
+          example: 1
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        maintenance_note:
+          type: string
+          description: Free-form maintenance notes for the runner. Limited to 1024 characters.
+          nullable: true
+        paused:
+          type: boolean
+          description: If `true`, the runner ignores new jobs.
+          nullable: true
+        locked:
+          type: boolean
+          description: Specifies if the runner should be locked for the current project.
+          default: false
+        access_level:
+          type: string
+          enum:
+          - not_protected
+          - ref_protected
+          description: Access level of the runner.
+          nullable: true
+        run_untagged:
+          type: boolean
+          description: Specifies if the runner should handle untagged jobs.
+          default: true
+        tag_list:
+          type: array
+          items:
+            type: string
+          description: Comma-separated list of runner tags.
+          nullable: true
+        maximum_timeout:
+          type: integer
+          description: Maximum time, in seconds, that runners can spend running a job.
+          nullable: true
+        token_expires_at:
+          type: string
+          format: date-time
+          description: Expiration time for the runner authentication token in ISO 8601 format. Must be between 5 minutes and
+            21 days in the future and cannot exceed instance, group, or project-level limits. Only applies to the initial
+            token. Rotated tokens use the computed expiry from settings. Premium and Ultimate only.
+          nullable: true
+        token_rotation_deadline:
+          type: string
+          format: date-time
+          description: Deadline after which token rotation requests are rejected. Requires `token_expires_at` and must be
+            less than or equal to it. Setting both to the same value disables token rotation. Cleared on successful rotation.
+            Premium and Ultimate only.
+          nullable: true
+      required:
+      - runner_type
+    putApiV4RunnersIdRequest:
+      type: object
+      properties:
+        description:
+          type: string
+          description: Description of the runner. At least one of `description`, `active`, `paused`, `tag_list`, `run_untagged`,
+            `locked`, `access_level`, `maximum_timeout`, `maintenance_note` must be provided.
+          nullable: true
+        active:
+          type: boolean
+          description: If `true`, the runner is allowed to receive jobs. Deprecated. Use `paused` instead. Mutually exclusive
+            with `paused`. At least one of `description`, `active`, `paused`, `tag_list`, `run_untagged`, `locked`, `access_level`,
+            `maximum_timeout`, `maintenance_note` must be provided.
+          nullable: true
+        paused:
+          type: boolean
+          description: If `true`, the runner ignores new jobs. Mutually exclusive with `active`. At least one of `description`,
+            `active`, `paused`, `tag_list`, `run_untagged`, `locked`, `access_level`, `maximum_timeout`, `maintenance_note`
+            must be provided.
+          nullable: true
+        tag_list:
+          type: array
+          items:
+            type: string
+          description: List of tags for the runner. At least one of `description`, `active`, `paused`, `tag_list`, `run_untagged`,
+            `locked`, `access_level`, `maximum_timeout`, `maintenance_note` must be provided.
+          nullable: true
+        run_untagged:
+          type: boolean
+          description: If `true`, the runner can execute untagged jobs. At least one of `description`, `active`, `paused`,
+            `tag_list`, `run_untagged`, `locked`, `access_level`, `maximum_timeout`, `maintenance_note` must be provided.
+          nullable: true
+        locked:
+          type: boolean
+          description: If `true`, the runner is locked. At least one of `description`, `active`, `paused`, `tag_list`, `run_untagged`,
+            `locked`, `access_level`, `maximum_timeout`, `maintenance_note` must be provided.
+          nullable: true
+        access_level:
+          type: string
+          enum:
+          - not_protected
+          - ref_protected
+          description: Access level of the runner. At least one of `description`, `active`, `paused`, `tag_list`, `run_untagged`,
+            `locked`, `access_level`, `maximum_timeout`, `maintenance_note` must be provided.
+          nullable: true
+        maximum_timeout:
+          type: integer
+          description: Maximum time, in seconds, that runners can spend running a job. At least one of `description`, `active`,
+            `paused`, `tag_list`, `run_untagged`, `locked`, `access_level`, `maximum_timeout`, `maintenance_note` must be
+            provided.
+          nullable: true
+        maintenance_note:
+          type: string
+          description: Free-form maintenance notes for the runner. Limited to 1024 characters. At least one of `description`,
+            `active`, `paused`, `tag_list`, `run_untagged`, `locked`, `access_level`, `maximum_timeout`, `maintenance_note`
+            must be provided.
+          nullable: true

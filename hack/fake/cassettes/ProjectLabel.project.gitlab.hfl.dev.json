@@ -1,0 +1,89 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "group": 280000001,
+    "project": 280000002
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/projects/280000002/labels",
+      "body": "{\"color\":\"#FF0000\",\"name\":\"{{name}}\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"closed_issues_count\":0,\"color\":\"#FF0000\",\"description_html\":\"\\u003cp\\u003eBug reported by user\\u003c/p\\u003e\",\"is_project_label\":true,\"name\":\"{{name}}\",\"open_issues_count\":1,\"open_merge_requests_count\":1,\"subscribed\":false,\"text_color\":\"#FFFFFF\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/labels/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"closed_issues_count\":0,\"color\":\"#FF0000\",\"description_html\":\"\\u003cp\\u003eBug reported by user\\u003c/p\\u003e\",\"is_project_label\":true,\"name\":\"{{name}}\",\"open_issues_count\":1,\"open_merge_requests_count\":1,\"subscribed\":false,\"text_color\":\"#FFFFFF\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/labels/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"closed_issues_count\":0,\"color\":\"#FF0000\",\"description_html\":\"\\u003cp\\u003eBug reported by user\\u003c/p\\u003e\",\"is_project_label\":true,\"name\":\"{{name}}\",\"open_issues_count\":1,\"open_merge_requests_count\":1,\"subscribed\":false,\"text_color\":\"#FFFFFF\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/projects/280000002/labels/{{name}}",
+      "body": "{\"color\":\"#00FF00\",\"name\":\"{{name}}\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"closed_issues_count\":0,\"color\":\"#00FF00\",\"description_html\":\"\\u003cp\\u003eBug reported by user\\u003c/p\\u003e\",\"is_project_label\":true,\"name\":\"{{name}}\",\"open_issues_count\":1,\"open_merge_requests_count\":1,\"subscribed\":false,\"text_color\":\"#FFFFFF\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/labels/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"closed_issues_count\":0,\"color\":\"#00FF00\",\"description_html\":\"\\u003cp\\u003eBug reported by user\\u003c/p\\u003e\",\"is_project_label\":true,\"name\":\"{{name}}\",\"open_issues_count\":1,\"open_merge_requests_count\":1,\"subscribed\":false,\"text_color\":\"#FFFFFF\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/projects/280000002/labels/{{name}}",
+      "body": "{\"color\":\"#0000FF\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"closed_issues_count\":0,\"color\":\"#0000FF\",\"description_html\":\"\\u003cp\\u003eBug reported by user\\u003c/p\\u003e\",\"is_project_label\":true,\"name\":\"{{name}}\",\"open_issues_count\":1,\"open_merge_requests_count\":1,\"subscribed\":false,\"text_color\":\"#FFFFFF\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/labels/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"closed_issues_count\":0,\"color\":\"#0000FF\",\"description_html\":\"\\u003cp\\u003eBug reported by user\\u003c/p\\u003e\",\"is_project_label\":true,\"name\":\"{{name}}\",\"open_issues_count\":1,\"open_merge_requests_count\":1,\"subscribed\":false,\"text_color\":\"#FFFFFF\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/projects/280000002/labels/{{name}}",
+      "body": "{\"color\":\"#00FF00\",\"name\":\"{{name}}\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"closed_issues_count\":0,\"color\":\"#00FF00\",\"description_html\":\"\\u003cp\\u003eBug reported by user\\u003c/p\\u003e\",\"is_project_label\":true,\"name\":\"{{name}}\",\"open_issues_count\":1,\"open_merge_requests_count\":1,\"subscribed\":false,\"text_color\":\"#FFFFFF\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/labels/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"closed_issues_count\":0,\"color\":\"#00FF00\",\"description_html\":\"\\u003cp\\u003eBug reported by user\\u003c/p\\u003e\",\"is_project_label\":true,\"name\":\"{{name}}\",\"open_issues_count\":1,\"open_merge_requests_count\":1,\"subscribed\":false,\"text_color\":\"#FFFFFF\"}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/projects/280000002/labels/{{name}}",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/labels/{{name}}",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

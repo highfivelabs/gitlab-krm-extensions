@@ -1,0 +1,30 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "group": 280000001,
+    "project": 280000002
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/projects/280000002/access_tokens",
+      "body": "{\"access_level\":30,\"expires_at\":\"2000-01-31\",\"name\":\"{{name}}\",\"scopes\":[\"read_api\"]}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"access_level\":30,\"active\":true,\"created_at\":\"2000-01-01T00:00:00Z\",\"expires_at\":\"2000-01-31\",\"granular\":true,\"granular_scopes\":[],\"id\":270000015,\"last_used_at\":\"2020-08-31T15:53:00.073Z\",\"last_used_ips\":[],\"name\":\"{{name}}\",\"resource_id\":1234,\"resource_type\":\"project\",\"revoked\":true,\"scopes\":[\"read_api\"],\"user_id\":3}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/280000002/access_tokens/270000015",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"access_level\":30,\"active\":true,\"created_at\":\"2000-01-01T00:00:00Z\",\"expires_at\":\"2000-01-31\",\"granular\":true,\"granular_scopes\":[],\"id\":270000015,\"last_used_at\":\"2020-08-31T15:53:00.073Z\",\"last_used_ips\":[],\"name\":\"{{name}}\",\"resource_id\":1234,\"resource_type\":\"project\",\"revoked\":true,\"scopes\":[\"read_api\"],\"user_id\":3}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/projects/280000002/access_tokens/270000015",
+      "status": 204
+    }
+  ]
+}

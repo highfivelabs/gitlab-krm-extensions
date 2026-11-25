@@ -1,0 +1,74 @@
+# The compliance frameworks a project is under (all of them, as one set).
+# GraphQL only. GitLab Premium.
+#
+# An upsert kind: setting the list replaces the project's frameworks;
+# deleting the object sets an empty list, as Terraform does. The update
+# names the project by its global ID (gid://gitlab/Project/<id>, from
+# projectId); the read by its full path (fullPath). Reads alias
+# complianceFrameworks as complianceFrameworkIds (the update's input
+# name), so that the API answers the spec's own field, as the connection
+# of the frameworks it names ({"nodes": [{"id": ...}]}, compared as a set:
+# nodeIDs).
+#
+# Sources:
+#   - gitlabhq/terraform-provider-gitlab v19.5.0,
+#     internal/provider/resource_gitlab_project_compliance_frameworks.go:
+#     the query project(fullPath) { id, fullPath, complianceFrameworks {
+#     nodes { id } } } and the mutation projectUpdateComplianceFrameworks(input:
+#     {projectId: "gid://gitlab/Project/<id>", complianceFrameworkIds: [...]})
+#     { project { id, fullPath, complianceFrameworks { nodes { id } } }
+#     errors }, with an empty list to remove them all. Terraform writes the
+#     values into the documents; here they are variables, the input as one
+#     object.
+#   - GitLab's GraphQL reference: mutation projectUpdateComplianceFrameworks
+#     (input type ProjectUpdateComplianceFrameworksInput:
+#     complianceFrameworkIds [ComplianceManagementFrameworkID!]!, projectId
+#     ProjectID!):
+#     https://docs.gitlab.com/api/graphql/reference/#mutationprojectupdatecomplianceframeworks
+# Written 2026-11-22.
+terraform: [gitlab_project_compliance_frameworks]
+shape: upsert
+params:
+  projectId:
+    description: The project's numeric ID; the update names the project as gid://gitlab/Project/<projectId>.
+  fullPath:
+    description: The project's full path (namespace/project), which the read names it by.
+fields:
+  complianceFrameworkIds:
+    type: array
+    items: {type: string}
+    description: Global IDs of the compliance frameworks the project is under (gid://gitlab/ComplianceManagement::Framework/<id>).
+required: [complianceFrameworkIds]
+compare: {complianceFrameworkIds: nodeIDs}
+sample: {projectId: "7", fullPath: example-group/example-project, complianceFrameworkIds: ["gid://gitlab/ComplianceManagement::Framework/1"]}
+read:
+  query: |
+    query ProjectComplianceFrameworks($fullPath: ID!) {
+      project(fullPath: $fullPath) {
+        id,
+        fullPath,
+        complianceFrameworkIds: complianceFrameworks { nodes { id } }
+      }
+    }
+  variables: {fullPath: "{fullPath}"}
+  result: project
+update:
+  query: |
+    mutation ProjectUpdateComplianceFrameworks($input: ProjectUpdateComplianceFrameworksInput!) {
+      projectUpdateComplianceFrameworks(input: $input) {
+        project { id, fullPath, complianceFrameworkIds: complianceFrameworks { nodes { id } } }
+        errors
+      }
+    }
+  variables:
+    input: {projectId: "gid://gitlab/Project/{projectId}", complianceFrameworkIds: "{complianceFrameworkIds}"}
+  result: projectUpdateComplianceFrameworks/project
+delete:
+  query: |
+    mutation ProjectRemoveComplianceFrameworks($input: ProjectUpdateComplianceFrameworksInput!) {
+      projectUpdateComplianceFrameworks(input: $input) {
+        errors
+      }
+    }
+  variables:
+    input: {projectId: "gid://gitlab/Project/{projectId}", complianceFrameworkIds: []}

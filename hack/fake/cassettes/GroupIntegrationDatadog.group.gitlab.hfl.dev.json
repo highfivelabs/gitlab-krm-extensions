@@ -1,0 +1,121 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "a": "rehearsal-a",
+    "agent": 280000008,
+    "b": "rehearsal-b",
+    "g": 280000030,
+    "group": 280000001,
+    "key": 280000026,
+    "mr": "rehearsal-mr",
+    "project": 280000002,
+    "runner": 280000028,
+    "sa": 280000031,
+    "schedule": 280000009,
+    "src": 280000027,
+    "sub": 280000034,
+    "user": 280000020
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/groups",
+      "body": "{\"name\":\"{{name}}-g\",\"parent_id\":280000001,\"path\":\"{{name}}-g\",\"visibility\":\"private\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"_stub\":\"rehearsal stand-in: the fake API has no such resource\",\"id\":280000034,\"name\":\"{{name}}-g\",\"parent_id\":280000001,\"path\":\"{{name}}-g\",\"visibility\":\"private\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/groups/280000034/integrations/datadog",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/groups/280000034/integrations/datadog",
+      "body": "{\"api_key\":\"{{redacted}}\",\"api_url\":\"https://hfl-live.example\",\"pipeline_events\":true}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"active\":true,\"alert_events\":true,\"comment_on_event_enabled\":true,\"commit_events\":true,\"confidential_issues_events\":true,\"confidential_note_events\":true,\"created_at\":\"2019-11-20T11:20:25.297Z\",\"deployment_events\":true,\"incident_events\":true,\"inherited\":true,\"issues_events\":true,\"job_events\":true,\"pipeline_events\":true,\"properties\":{},\"slug\":\"jenkins\",\"title\":\"Jenkins CI\",\"updated_at\":\"2019-11-20T12:24:37.498Z\",\"vulnerability_events\":true,\"wiki_page_events\":true}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/groups/280000034/integrations/datadog",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"active\":true,\"alert_events\":true,\"comment_on_event_enabled\":true,\"commit_events\":true,\"confidential_issues_events\":true,\"confidential_note_events\":true,\"created_at\":\"2019-11-20T11:20:25.297Z\",\"deployment_events\":true,\"incident_events\":true,\"inherited\":true,\"issues_events\":true,\"job_events\":true,\"pipeline_events\":true,\"properties\":{},\"slug\":\"jenkins\",\"title\":\"Jenkins CI\",\"updated_at\":\"2019-11-20T12:24:37.498Z\",\"vulnerability_events\":true,\"wiki_page_events\":true}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/groups/280000034/integrations/datadog",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"active\":true,\"alert_events\":true,\"comment_on_event_enabled\":true,\"commit_events\":true,\"confidential_issues_events\":true,\"confidential_note_events\":true,\"created_at\":\"2019-11-20T11:20:25.297Z\",\"deployment_events\":true,\"incident_events\":true,\"inherited\":true,\"issues_events\":true,\"job_events\":true,\"pipeline_events\":true,\"properties\":{},\"slug\":\"jenkins\",\"title\":\"Jenkins CI\",\"updated_at\":\"2019-11-20T12:24:37.498Z\",\"vulnerability_events\":true,\"wiki_page_events\":true}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/groups/280000034/integrations/datadog",
+      "body": "{\"api_key\":\"{{redacted}}\",\"api_url\":\"https://hfl-live.example\",\"pipeline_events\":false}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"active\":true,\"alert_events\":true,\"comment_on_event_enabled\":true,\"commit_events\":true,\"confidential_issues_events\":true,\"confidential_note_events\":true,\"created_at\":\"2019-11-20T11:20:25.297Z\",\"deployment_events\":true,\"incident_events\":true,\"inherited\":true,\"issues_events\":true,\"job_events\":true,\"pipeline_events\":false,\"properties\":{},\"slug\":\"jenkins\",\"title\":\"Jenkins CI\",\"updated_at\":\"2019-11-20T12:24:37.498Z\",\"vulnerability_events\":true,\"wiki_page_events\":true}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/groups/280000034/integrations/datadog",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"active\":true,\"alert_events\":true,\"comment_on_event_enabled\":true,\"commit_events\":true,\"confidential_issues_events\":true,\"confidential_note_events\":true,\"created_at\":\"2019-11-20T11:20:25.297Z\",\"deployment_events\":true,\"incident_events\":true,\"inherited\":true,\"issues_events\":true,\"job_events\":true,\"pipeline_events\":false,\"properties\":{},\"slug\":\"jenkins\",\"title\":\"Jenkins CI\",\"updated_at\":\"2019-11-20T12:24:37.498Z\",\"vulnerability_events\":true,\"wiki_page_events\":true}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/groups/280000034/integrations/datadog",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"active\":true,\"alert_events\":true,\"comment_on_event_enabled\":true,\"commit_events\":true,\"confidential_issues_events\":true,\"confidential_note_events\":true,\"created_at\":\"2019-11-20T11:20:25.297Z\",\"deployment_events\":true,\"incident_events\":true,\"inherited\":true,\"issues_events\":true,\"job_events\":true,\"pipeline_events\":false,\"properties\":{},\"slug\":\"jenkins\",\"title\":\"Jenkins CI\",\"updated_at\":\"2019-11-20T12:24:37.498Z\",\"vulnerability_events\":true,\"wiki_page_events\":true}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/groups/280000034/integrations/datadog",
+      "body": "{\"active\":true,\"alert_events\":true,\"api_key\":\"{{redacted}}\",\"api_url\":\"https://hfl-live.example\",\"comment_on_event_enabled\":true,\"commit_events\":true,\"confidential_issues_events\":true,\"confidential_note_events\":true,\"created_at\":\"2019-11-20T11:20:25.297Z\",\"deployment_events\":true,\"incident_events\":true,\"inherited\":true,\"issues_events\":true,\"job_events\":true,\"pipeline_events\":true,\"properties\":{},\"slug\":\"jenkins\",\"title\":\"Jenkins CI\",\"updated_at\":\"2019-11-20T12:24:37.498Z\",\"vulnerability_events\":true,\"wiki_page_events\":true}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"active\":true,\"alert_events\":true,\"comment_on_event_enabled\":true,\"commit_events\":true,\"confidential_issues_events\":true,\"confidential_note_events\":true,\"created_at\":\"2019-11-20T11:20:25.297Z\",\"deployment_events\":true,\"incident_events\":true,\"inherited\":true,\"issues_events\":true,\"job_events\":true,\"pipeline_events\":true,\"properties\":{},\"slug\":\"jenkins\",\"title\":\"Jenkins CI\",\"updated_at\":\"2019-11-20T12:24:37.498Z\",\"vulnerability_events\":true,\"wiki_page_events\":true}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/groups/280000034/integrations/datadog",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"active\":true,\"alert_events\":true,\"comment_on_event_enabled\":true,\"commit_events\":true,\"confidential_issues_events\":true,\"confidential_note_events\":true,\"created_at\":\"2019-11-20T11:20:25.297Z\",\"deployment_events\":true,\"incident_events\":true,\"inherited\":true,\"issues_events\":true,\"job_events\":true,\"pipeline_events\":true,\"properties\":{},\"slug\":\"jenkins\",\"title\":\"Jenkins CI\",\"updated_at\":\"2019-11-20T12:24:37.498Z\",\"vulnerability_events\":true,\"wiki_page_events\":true}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/groups/280000034/integrations/datadog",
+      "body": "{\"api_key\":\"{{redacted}}\",\"api_url\":\"https://hfl-live.example\",\"pipeline_events\":false}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"active\":true,\"alert_events\":true,\"comment_on_event_enabled\":true,\"commit_events\":true,\"confidential_issues_events\":true,\"confidential_note_events\":true,\"created_at\":\"2019-11-20T11:20:25.297Z\",\"deployment_events\":true,\"incident_events\":true,\"inherited\":true,\"issues_events\":true,\"job_events\":true,\"pipeline_events\":false,\"properties\":{},\"slug\":\"jenkins\",\"title\":\"Jenkins CI\",\"updated_at\":\"2019-11-20T12:24:37.498Z\",\"vulnerability_events\":true,\"wiki_page_events\":true}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/groups/280000034/integrations/datadog",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"active\":true,\"alert_events\":true,\"comment_on_event_enabled\":true,\"commit_events\":true,\"confidential_issues_events\":true,\"confidential_note_events\":true,\"created_at\":\"2019-11-20T11:20:25.297Z\",\"deployment_events\":true,\"incident_events\":true,\"inherited\":true,\"issues_events\":true,\"job_events\":true,\"pipeline_events\":false,\"properties\":{},\"slug\":\"jenkins\",\"title\":\"Jenkins CI\",\"updated_at\":\"2019-11-20T12:24:37.498Z\",\"vulnerability_events\":true,\"wiki_page_events\":true}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/groups/280000034/integrations/datadog",
+      "status": 204
+    },
+    {
+      "method": "DELETE",
+      "path": "/groups/280000034",
+      "status": 204
+    }
+  ]
+}

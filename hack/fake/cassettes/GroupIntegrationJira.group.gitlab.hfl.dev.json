@@ -1,0 +1,121 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "a": "rehearsal-a",
+    "agent": 280000008,
+    "b": "rehearsal-b",
+    "g": 280000030,
+    "group": 280000001,
+    "key": 280000026,
+    "mr": "rehearsal-mr",
+    "project": 280000002,
+    "runner": 280000028,
+    "sa": 280000031,
+    "schedule": 280000009,
+    "src": 280000027,
+    "sub": 280000035,
+    "user": 280000020
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/groups",
+      "body": "{\"name\":\"{{name}}-g\",\"parent_id\":280000001,\"path\":\"{{name}}-g\",\"visibility\":\"private\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"_stub\":\"rehearsal stand-in: the fake API has no such resource\",\"id\":280000035,\"name\":\"{{name}}-g\",\"parent_id\":280000001,\"path\":\"{{name}}-g\",\"visibility\":\"private\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/groups/280000035/integrations/jira",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/groups/280000035/integrations/jira",
+      "body": "{\"commit_events\":true,\"password\":\"{{redacted}}\",\"url\":\"https://jira.hfl-live.example\",\"username\":\"hfl-live\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"active\":true,\"alert_events\":true,\"commit_events\":true,\"confidential_issues_events\":true,\"confidential_note_events\":true,\"created_at\":\"2019-11-20T11:20:25.297Z\",\"deployment_events\":true,\"incident_events\":true,\"inherited\":true,\"issues_events\":true,\"job_events\":true,\"note_events\":true,\"pipeline_events\":true,\"properties\":{},\"push_events\":true,\"slug\":\"jenkins\",\"tag_push_events\":true,\"title\":\"Jenkins CI\",\"updated_at\":\"2019-11-20T12:24:37.498Z\",\"vulnerability_events\":true,\"wiki_page_events\":true}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/groups/280000035/integrations/jira",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"active\":true,\"alert_events\":true,\"commit_events\":true,\"confidential_issues_events\":true,\"confidential_note_events\":true,\"created_at\":\"2019-11-20T11:20:25.297Z\",\"deployment_events\":true,\"incident_events\":true,\"inherited\":true,\"issues_events\":true,\"job_events\":true,\"note_events\":true,\"pipeline_events\":true,\"properties\":{},\"push_events\":true,\"slug\":\"jenkins\",\"tag_push_events\":true,\"title\":\"Jenkins CI\",\"updated_at\":\"2019-11-20T12:24:37.498Z\",\"vulnerability_events\":true,\"wiki_page_events\":true}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/groups/280000035/integrations/jira",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"active\":true,\"alert_events\":true,\"commit_events\":true,\"confidential_issues_events\":true,\"confidential_note_events\":true,\"created_at\":\"2019-11-20T11:20:25.297Z\",\"deployment_events\":true,\"incident_events\":true,\"inherited\":true,\"issues_events\":true,\"job_events\":true,\"note_events\":true,\"pipeline_events\":true,\"properties\":{},\"push_events\":true,\"slug\":\"jenkins\",\"tag_push_events\":true,\"title\":\"Jenkins CI\",\"updated_at\":\"2019-11-20T12:24:37.498Z\",\"vulnerability_events\":true,\"wiki_page_events\":true}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/groups/280000035/integrations/jira",
+      "body": "{\"commit_events\":false,\"password\":\"{{redacted}}\",\"url\":\"https://jira.hfl-live.example\",\"username\":\"hfl-live\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"active\":true,\"alert_events\":true,\"commit_events\":false,\"confidential_issues_events\":true,\"confidential_note_events\":true,\"created_at\":\"2019-11-20T11:20:25.297Z\",\"deployment_events\":true,\"incident_events\":true,\"inherited\":true,\"issues_events\":true,\"job_events\":true,\"note_events\":true,\"pipeline_events\":true,\"properties\":{},\"push_events\":true,\"slug\":\"jenkins\",\"tag_push_events\":true,\"title\":\"Jenkins CI\",\"updated_at\":\"2019-11-20T12:24:37.498Z\",\"vulnerability_events\":true,\"wiki_page_events\":true}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/groups/280000035/integrations/jira",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"active\":true,\"alert_events\":true,\"commit_events\":false,\"confidential_issues_events\":true,\"confidential_note_events\":true,\"created_at\":\"2019-11-20T11:20:25.297Z\",\"deployment_events\":true,\"incident_events\":true,\"inherited\":true,\"issues_events\":true,\"job_events\":true,\"note_events\":true,\"pipeline_events\":true,\"properties\":{},\"push_events\":true,\"slug\":\"jenkins\",\"tag_push_events\":true,\"title\":\"Jenkins CI\",\"updated_at\":\"2019-11-20T12:24:37.498Z\",\"vulnerability_events\":true,\"wiki_page_events\":true}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/groups/280000035/integrations/jira",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"active\":true,\"alert_events\":true,\"commit_events\":false,\"confidential_issues_events\":true,\"confidential_note_events\":true,\"created_at\":\"2019-11-20T11:20:25.297Z\",\"deployment_events\":true,\"incident_events\":true,\"inherited\":true,\"issues_events\":true,\"job_events\":true,\"note_events\":true,\"pipeline_events\":true,\"properties\":{},\"push_events\":true,\"slug\":\"jenkins\",\"tag_push_events\":true,\"title\":\"Jenkins CI\",\"updated_at\":\"2019-11-20T12:24:37.498Z\",\"vulnerability_events\":true,\"wiki_page_events\":true}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/groups/280000035/integrations/jira",
+      "body": "{\"active\":true,\"alert_events\":true,\"commit_events\":true,\"confidential_issues_events\":true,\"confidential_note_events\":true,\"created_at\":\"2019-11-20T11:20:25.297Z\",\"deployment_events\":true,\"incident_events\":true,\"inherited\":true,\"issues_events\":true,\"job_events\":true,\"note_events\":true,\"password\":\"{{redacted}}\",\"pipeline_events\":true,\"properties\":{},\"push_events\":true,\"slug\":\"jenkins\",\"tag_push_events\":true,\"title\":\"Jenkins CI\",\"updated_at\":\"2019-11-20T12:24:37.498Z\",\"url\":\"https://jira.hfl-live.example\",\"username\":\"hfl-live\",\"vulnerability_events\":true,\"wiki_page_events\":true}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"active\":true,\"alert_events\":true,\"commit_events\":true,\"confidential_issues_events\":true,\"confidential_note_events\":true,\"created_at\":\"2019-11-20T11:20:25.297Z\",\"deployment_events\":true,\"incident_events\":true,\"inherited\":true,\"issues_events\":true,\"job_events\":true,\"note_events\":true,\"pipeline_events\":true,\"properties\":{},\"push_events\":true,\"slug\":\"jenkins\",\"tag_push_events\":true,\"title\":\"Jenkins CI\",\"updated_at\":\"2019-11-20T12:24:37.498Z\",\"vulnerability_events\":true,\"wiki_page_events\":true}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/groups/280000035/integrations/jira",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"active\":true,\"alert_events\":true,\"commit_events\":true,\"confidential_issues_events\":true,\"confidential_note_events\":true,\"created_at\":\"2019-11-20T11:20:25.297Z\",\"deployment_events\":true,\"incident_events\":true,\"inherited\":true,\"issues_events\":true,\"job_events\":true,\"note_events\":true,\"pipeline_events\":true,\"properties\":{},\"push_events\":true,\"slug\":\"jenkins\",\"tag_push_events\":true,\"title\":\"Jenkins CI\",\"updated_at\":\"2019-11-20T12:24:37.498Z\",\"vulnerability_events\":true,\"wiki_page_events\":true}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/groups/280000035/integrations/jira",
+      "body": "{\"commit_events\":false,\"password\":\"{{redacted}}\",\"url\":\"https://jira.hfl-live.example\",\"username\":\"hfl-live\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"active\":true,\"alert_events\":true,\"commit_events\":false,\"confidential_issues_events\":true,\"confidential_note_events\":true,\"created_at\":\"2019-11-20T11:20:25.297Z\",\"deployment_events\":true,\"incident_events\":true,\"inherited\":true,\"issues_events\":true,\"job_events\":true,\"note_events\":true,\"pipeline_events\":true,\"properties\":{},\"push_events\":true,\"slug\":\"jenkins\",\"tag_push_events\":true,\"title\":\"Jenkins CI\",\"updated_at\":\"2019-11-20T12:24:37.498Z\",\"vulnerability_events\":true,\"wiki_page_events\":true}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/groups/280000035/integrations/jira",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"active\":true,\"alert_events\":true,\"commit_events\":false,\"confidential_issues_events\":true,\"confidential_note_events\":true,\"created_at\":\"2019-11-20T11:20:25.297Z\",\"deployment_events\":true,\"incident_events\":true,\"inherited\":true,\"issues_events\":true,\"job_events\":true,\"note_events\":true,\"pipeline_events\":true,\"properties\":{},\"push_events\":true,\"slug\":\"jenkins\",\"tag_push_events\":true,\"title\":\"Jenkins CI\",\"updated_at\":\"2019-11-20T12:24:37.498Z\",\"vulnerability_events\":true,\"wiki_page_events\":true}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/groups/280000035/integrations/jira",
+      "status": 204
+    },
+    {
+      "method": "DELETE",
+      "path": "/groups/280000035",
+      "status": 204
+    }
+  ]
+}

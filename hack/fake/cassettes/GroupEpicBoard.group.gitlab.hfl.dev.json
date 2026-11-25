@@ -1,0 +1,127 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "a": "rehearsal-a",
+    "agent": 280000008,
+    "avatarUser": 280000038,
+    "b": "rehearsal-b",
+    "catalogProject": 280000037,
+    "g": 280000030,
+    "group": 280000001,
+    "key": 280000026,
+    "mr": "rehearsal-mr",
+    "project": 280000002,
+    "runner": 280000028,
+    "sa": 280000031,
+    "schedule": 280000009,
+    "src": 280000027,
+    "sub": 280000036,
+    "user": 280000020
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"EpicBoardCreate\",\"query\":\"mutation EpicBoardCreate($groupPath: ID!, $name: String, $hideBacklogList: Boolean, $hideClosedList: Boolean) { epicBoardCreate(input: {groupPath: $groupPath, name: $name, hideBacklogList: $hideBacklogList, hideClosedList: $hideClosedList}) { epicBoard { id name hideBacklogList hideClosedList } errors } }\",\"variables\":{\"groupPath\":\"example-group\",\"hideBacklogList\":false,\"hideClosedList\":false,\"name\":\"example-name\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"epicBoardCreate\":{\"epicBoard\":{\"hide_backlog_list\":false,\"hide_closed_list\":false,\"id\":\"gid://gitlab/Boards::EpicBoard/270000061\",\"name\":\"example-name\"},\"errors\":[]}}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/groups/example-group/epic_boards/270000061",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"hide_backlog_list\":false,\"hide_closed_list\":false,\"id\":\"gid://gitlab/Boards::EpicBoard/270000061\",\"name\":\"example-name\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/groups/example-group/epic_boards/270000061",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"hide_backlog_list\":false,\"hide_closed_list\":false,\"id\":\"gid://gitlab/Boards::EpicBoard/270000061\",\"name\":\"example-name\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/groups/example-group/epic_boards/270000061",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"hide_backlog_list\":false,\"hide_closed_list\":false,\"id\":\"gid://gitlab/Boards::EpicBoard/270000061\",\"name\":\"example-name\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"EpicBoardUpdate\",\"query\":\"mutation EpicBoardUpdate($id: BoardsEpicBoardID!, $name: String, $hideBacklogList: Boolean, $hideClosedList: Boolean) { epicBoardUpdate(input: {id: $id, name: $name, hideBacklogList: $hideBacklogList, hideClosedList: $hideClosedList}) { epicBoard { id name hideBacklogList hideClosedList } errors } }\",\"variables\":{\"hideBacklogList\":false,\"hideClosedList\":false,\"id\":\"gid://gitlab/Boards::EpicBoard/270000061\",\"name\":\"changed-name\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"epicBoardUpdate\":{\"epicBoard\":{\"hide_backlog_list\":false,\"hide_closed_list\":false,\"id\":\"gid://gitlab/Boards::EpicBoard/270000061\",\"name\":\"changed-name\"},\"errors\":[]}}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/groups/example-group/epic_boards/270000061",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"hide_backlog_list\":false,\"hide_closed_list\":false,\"id\":\"gid://gitlab/Boards::EpicBoard/270000061\",\"name\":\"changed-name\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/groups/example-group/epic_boards/270000061",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"hide_backlog_list\":false,\"hide_closed_list\":false,\"id\":\"gid://gitlab/Boards::EpicBoard/270000061\",\"name\":\"changed-name\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"EpicBoardUpdate\",\"query\":\"mutation EpicBoardUpdate($id: BoardsEpicBoardID!, $name: String, $hideBacklogList: Boolean, $hideClosedList: Boolean) { epicBoardUpdate(input: {id: $id, name: $name, hideBacklogList: $hideBacklogList, hideClosedList: $hideClosedList}) { epicBoard { id name hideBacklogList hideClosedList } errors } }\",\"variables\":{\"id\":\"gid://gitlab/Boards::EpicBoard/270000061\",\"name\":\"hfl-live-drift\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"epicBoardUpdate\":{\"epicBoard\":{\"hide_backlog_list\":false,\"hide_closed_list\":false,\"id\":\"gid://gitlab/Boards::EpicBoard/270000061\",\"name\":\"hfl-live-drift\"},\"errors\":[]}}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/groups/example-group/epic_boards/270000061",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"hide_backlog_list\":false,\"hide_closed_list\":false,\"id\":\"gid://gitlab/Boards::EpicBoard/270000061\",\"name\":\"hfl-live-drift\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"EpicBoardUpdate\",\"query\":\"mutation EpicBoardUpdate($id: BoardsEpicBoardID!, $name: String, $hideBacklogList: Boolean, $hideClosedList: Boolean) { epicBoardUpdate(input: {id: $id, name: $name, hideBacklogList: $hideBacklogList, hideClosedList: $hideClosedList}) { epicBoard { id name hideBacklogList hideClosedList } errors } }\",\"variables\":{\"hideBacklogList\":false,\"hideClosedList\":false,\"id\":\"gid://gitlab/Boards::EpicBoard/270000061\",\"name\":\"changed-name\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"epicBoardUpdate\":{\"epicBoard\":{\"hide_backlog_list\":false,\"hide_closed_list\":false,\"id\":\"gid://gitlab/Boards::EpicBoard/270000061\",\"name\":\"changed-name\"},\"errors\":[]}}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/groups/example-group/epic_boards/270000061",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"hide_backlog_list\":false,\"hide_closed_list\":false,\"id\":\"gid://gitlab/Boards::EpicBoard/270000061\",\"name\":\"changed-name\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/groups/example-group/epic_boards/270000061",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"hide_backlog_list\":false,\"hide_closed_list\":false,\"id\":\"gid://gitlab/Boards::EpicBoard/270000061\",\"name\":\"changed-name\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"DestroyEpicBoard\",\"query\":\"mutation DestroyEpicBoard($id: BoardsEpicBoardID!) { destroyEpicBoard(input: {id: $id}) { errors } }\",\"variables\":{\"id\":\"gid://gitlab/Boards::EpicBoard/270000061\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"destroyEpicBoard\":{\"errors\":[]}}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/groups/example-group/epic_boards/270000061",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

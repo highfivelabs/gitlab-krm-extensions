@@ -1,0 +1,51 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "a": "rehearsal-a",
+    "agent": 280000008,
+    "avatarUser": 280000038,
+    "b": "rehearsal-b",
+    "catalogProject": 280000037,
+    "g": 280000030,
+    "group": 280000001,
+    "key": 280000026,
+    "mr": "rehearsal-mr",
+    "project": 280000002,
+    "runner": 280000028,
+    "sa": 280000031,
+    "schedule": 280000009,
+    "src": 280000027,
+    "sub": 280000036,
+    "user": 280000020
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/projects/example-id/registry/protection/tag/rules",
+      "body": "{\"minimum_access_level_for_delete\":\"maintainer\",\"minimum_access_level_for_push\":\"maintainer\",\"tag_name_pattern\":\"example-tag-name-pattern\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"id\":270000054,\"minimum_access_level_for_delete\":\"maintainer\",\"minimum_access_level_for_push\":\"maintainer\",\"project_id\":123,\"tag_name_pattern\":\"example-tag-name-pattern\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/example-id/registry/protection/tag/rules?per_page=100",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "[{\"id\":270000054,\"minimum_access_level_for_delete\":\"maintainer\",\"minimum_access_level_for_push\":\"maintainer\",\"tag_name_pattern\":\"example-tag-name-pattern\"}]\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/projects/example-id/registry/protection/tag/rules/270000054",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/projects/example-id/registry/protection/tag/rules?per_page=100",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "[]\n"
+    }
+  ]
+}

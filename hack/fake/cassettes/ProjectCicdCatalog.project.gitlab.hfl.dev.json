@@ -1,0 +1,84 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "a": "rehearsal-a",
+    "agent": 280000008,
+    "b": "rehearsal-b",
+    "catalogProject": 280000037,
+    "g": 280000030,
+    "group": 280000001,
+    "key": 280000026,
+    "mr": "rehearsal-mr",
+    "project": 280000002,
+    "runner": 280000028,
+    "sa": 280000031,
+    "schedule": 280000009,
+    "src": 280000027,
+    "sub": 280000036,
+    "user": 280000020
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/projects",
+      "body": "{\"description\":\"hfl live test\",\"initialize_with_readme\":true,\"name\":\"{{name}}\",\"namespace_id\":280000001,\"path\":\"{{name}}\",\"visibility\":\"private\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"_stub\":\"rehearsal stand-in: the fake API has no such resource\",\"description\":\"hfl live test\",\"id\":280000037,\"initialize_with_readme\":true,\"name\":\"{{name}}\",\"namespace_id\":280000001,\"path\":\"{{name}}\",\"visibility\":\"private\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"ProjectCatalogResource\",\"query\":\"query ProjectCatalogResource($fullPath: ID!) { project(fullPath: $fullPath) { id isCatalogResource } }\",\"variables\":{\"fullPath\":\"{{run}}/{{name}}\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"project\":{\"isCatalogResource\":false}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"CatalogResourcesCreate\",\"query\":\"mutation CatalogResourcesCreate($projectPath: ID!) { catalogResourcesCreate(input: {projectPath: $projectPath}) { errors } }\",\"variables\":{\"projectPath\":\"{{run}}/{{name}}\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"catalogResourcesCreate\":{\"errors\":[]}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"ProjectCatalogResource\",\"query\":\"query ProjectCatalogResource($fullPath: ID!) { project(fullPath: $fullPath) { id isCatalogResource } }\",\"variables\":{\"fullPath\":\"{{run}}/{{name}}\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"project\":{\"isCatalogResource\":true}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"ProjectCatalogResource\",\"query\":\"query ProjectCatalogResource($fullPath: ID!) { project(fullPath: $fullPath) { id isCatalogResource } }\",\"variables\":{\"fullPath\":\"{{run}}/{{name}}\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"project\":{\"isCatalogResource\":true}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"CatalogResourcesDestroy\",\"query\":\"mutation CatalogResourcesDestroy($projectPath: ID!) { catalogResourcesDestroy(input: {projectPath: $projectPath}) { errors } }\",\"variables\":{\"projectPath\":\"{{run}}/{{name}}\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"catalogResourcesDestroy\":{\"errors\":[]}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/graphql",
+      "body": "{\"operationName\":\"ProjectCatalogResource\",\"query\":\"query ProjectCatalogResource($fullPath: ID!) { project(fullPath: $fullPath) { id isCatalogResource } }\",\"variables\":{\"fullPath\":\"{{run}}/{{name}}\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"project\":{\"isCatalogResource\":false}}}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/projects/280000037",
+      "status": 204
+    }
+  ]
+}
