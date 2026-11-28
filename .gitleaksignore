@@ -1,0 +1,7 @@
+# gitleaks false positives, by fingerprint (commit:file:rule:line); krm-ci's
+# gitleaks.toml asks for them here rather than a disabled rule. Each one was
+# read and is not a credential: example values from the vendor's API spec,
+# made-up test inputs, or generated IDs (HFL-815).
+f80a257114138af59249cf7150b5801326d915a7:types.yaml:generic-api-key:1890
+f80a257114138af59249cf7150b5801326d915a7:types.yaml:generic-api-key:1995
+f80a257114138af59249cf7150b5801326d915a7:types.yaml:generic-api-key:532
